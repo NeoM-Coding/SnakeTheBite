@@ -10,11 +10,14 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace MapleShadow.Scripts.Cards;
 
+// 状态牌加入状态卡池
+[Pool(typeof(StatusCardPool))]
 public class SnakeBiteStatusCard : CustomCardModel
 {
     // 不可打出（费用-1），状态牌
@@ -51,6 +54,7 @@ public class SnakeBiteStatusCard : CustomCardModel
 
         // 自身获得2层中毒
         int poisonAmount = DynamicVars.Poison.IntValue;
+        await Cmd.Wait(0.25f);
         await PowerCmd.Apply<PoisonPower>(Owner.Creature, poisonAmount, Owner.Creature, this);
     }
 }

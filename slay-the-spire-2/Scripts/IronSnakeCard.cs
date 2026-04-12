@@ -58,12 +58,14 @@ public class IronSnakeCard : CustomCardModel
             snakeBites.Add(snakeBite);
         }
 
-        // 放入抽牌堆
-        await CardPileCmd.AddGeneratedCardsToCombat(
-            snakeBites, 
-            PileType.Draw, 
-            addedByPlayer: true, 
-            CardPilePosition.Random
+        // 放入抽牌堆并播放动画
+        CardCmd.PreviewCardPileAdd(
+            await CardPileCmd.AddGeneratedCardsToCombat(
+                snakeBites, 
+                PileType.Draw, 
+                addedByPlayer: true, 
+                CardPilePosition.Random
+            )
         );
     }
 
