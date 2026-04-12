@@ -1,4 +1,9 @@
 {
     "MAPLESHADOW-TEST_CARD.title": "暴风骤雨",
-    "MAPLESHADOW-TEST_CARD.description": "造成{Damage:diff()}点伤害{Repeat:diff()}次。"
+    "MAPLESHADOW-TEST_CARD.description": "造成{Damage:diff()}点伤害{Repeat:diff()}次。",
+    "MAPLESHADOW-SNAKE_SNAKE_CARD.title": "！？蛇蛇？！",
+    "MAPLESHADOW-SNAKE_SNAKE_CARD.description": "将2张蛇咬放入手牌。这些蛇咬本回合不消耗费用。",
+    "MAPLESHADOW-SPINNING_SNAKEBITE_CARD.title": "旋转蛇咬",
+    "MAPLESHADOW-SPINNING_SNAKEBITE_CARD.description": "给与所有敌人{PoisonPower:diff()}层中毒{Repeat:diff()}次。每回合开始时，额外给予一次中毒。",
+    "MAPLESHADOW-SPINNING_SNAKEBITE_CARD_UPGRADE.description": "给与所有敌人{PoisonPower:diff()}层中毒{Repeat:diff()}次。每回合开始时，额外给予一次中毒。"
 }
