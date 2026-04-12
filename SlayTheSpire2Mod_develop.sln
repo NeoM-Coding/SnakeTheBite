@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "slay-the-spire-2", "slay-the-spire-2", "{8BB3E687-C27A-514E-C8A0-96BDD1C388ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapleShadow", "slay-the-spire-2\MapleShadow.csproj", "{31AE7AD7-5E9F-7508-6005-E6BC701F5DCF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31AE7AD7-5E9F-7508-6005-E6BC701F5DCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31AE7AD7-5E9F-7508-6005-E6BC701F5DCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31AE7AD7-5E9F-7508-6005-E6BC701F5DCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31AE7AD7-5E9F-7508-6005-E6BC701F5DCF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{31AE7AD7-5E9F-7508-6005-E6BC701F5DCF} = {8BB3E687-C27A-514E-C8A0-96BDD1C388ED}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1F807F7D-EB33-4FE9-9ECC-A82E9DBE300F}
+	EndGlobalSection
+EndGlobal

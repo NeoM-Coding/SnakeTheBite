@@ -1,0 +1,12 @@
+{
+    "id": "MapleShadow",
+    "author": "MapleShadow",
+    "description": "一个简单的模组",
+    "version": "0.0.2",
+    "has_pck": true,
+    "has_dll": true,
+    "dependencies": [
+        ""
+    ],
+    "affects_gameplay": true
+}
