@@ -1,1 +1,8 @@
-{}
+{
+    "MAPLESHADOW-SNAKE_FANG_RELIC.title": "异蛇之牙",
+    "MAPLESHADOW-SNAKE_FANG_RELIC.description": "每当你对敌人给予一次中毒时，对随机一名敌人造成[blue]{Damage}[/blue]点伤害。",
+    "MAPLESHADOW-SNAKE_FANG_RELIC.flavor": "蛇牙上滴落的毒液闪烁着危险的光芒。",
+    "MAPLESHADOW-SNAKE_SCALE_RELIC.title": "异蛇之鳞",
+    "MAPLESHADOW-SNAKE_SCALE_RELIC.description": "每当你对敌人给予一次中毒时，获得[blue]{Block}[/blue]点格挡。",
+    "MAPLESHADOW-SNAKE_SCALE_RELIC.flavor": "坚硬的蛇鳞能在毒雾中护你周全。"
+}
