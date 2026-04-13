@@ -21,7 +21,7 @@ namespace MapleShadow.Scripts.Cards;
 
 
 [Pool(typeof(IroncladCardPool))]
-public class IronSnakeCard : CustomCardModel
+public class IronSnakeCard : MapleShadowCardModel
 {
     private const int energyCost = 1;
     private const CardType type = CardType.Skill;

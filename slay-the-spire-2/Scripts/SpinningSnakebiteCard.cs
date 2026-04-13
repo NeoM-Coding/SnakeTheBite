@@ -17,7 +17,7 @@ namespace MapleShadow.Scripts.Cards;
 
 // 加入无色卡池
 [Pool(typeof(ColorlessCardPool))]
-public class SpinningSnakebiteCard : CustomCardModel
+public class SpinningSnakebiteCard : MapleShadowCardModel
 {
     // 基础耗能 - 3费
     private const int energyCost = 3;

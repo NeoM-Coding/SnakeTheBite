@@ -11,7 +11,7 @@ namespace MapleShadow.Scripts.Cards;
 
 // 加入哪个卡池
 [Pool(typeof(ColorlessCardPool))]
-public class TestCard : CustomCardModel
+public class TestCard : MapleShadowCardModel
 {
     // 基础耗能
     private const int energyCost = 3;
@@ -25,9 +25,6 @@ public class TestCard : CustomCardModel
     private const bool shouldShowInCardLibrary = true;
     // 卡牌的基础属性（例如这里是12点伤害）
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5, ValueProp.Move), new RepeatVar(5)]; 
-    // 卡牌的图标
-    public override string PortraitPath => "res://MapleShadow/images/cards/MapleShadow-test_card.png";
-
     public TestCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
     }

@@ -18,7 +18,7 @@ namespace MapleShadow.Scripts.Cards;
 
 // 状态牌加入状态卡池
 [Pool(typeof(StatusCardPool))]
-public class SnakeBiteStatusCard : CustomCardModel
+public class SnakeBiteStatusCard : MapleShadowCardModel
 {
     // 不可打出（费用-1），状态牌
     private const int energyCost = -1;

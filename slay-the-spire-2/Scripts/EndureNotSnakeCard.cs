@@ -18,7 +18,7 @@ namespace MapleShadow.Scripts.Cards;
 
 // 加入无色卡池
 [Pool(typeof(ColorlessCardPool))]
-public class EndureNotSnakeCard : CustomCardModel
+public class EndureNotSnakeCard : MapleShadowCardModel
 {
     // 基础耗能 - 4费
     private const int energyCost = 4;
