@@ -17,7 +17,7 @@ namespace MapleShadow.Scripts.Cards;
 public class SnakeSnakeCard : CustomCardModel
 {
     // 基础耗能
-    private const int energyCost = 2;
+    private const int energyCost = 3;
     // 卡牌类型 - 技能牌
     private const CardType type = CardType.Skill;
     // 卡牌稀有度 - 罕见
@@ -51,12 +51,12 @@ public class SnakeSnakeCard : CustomCardModel
         await CardPileCmd.AddGeneratedCardsToCombat(list, PileType.Hand, addedByPlayer: true);
     }
 
-    // 升级后的效果逻辑 - 升级后改为1费用
+    // 升级后的效果逻辑 - 升级后改为2费用
     protected override void OnUpgrade()
     {
         if (DynamicVars.TryGetValue("Cost", out DynamicVar? costVar))
         {
-            costVar.BaseValue = 1;
+            costVar.BaseValue = 3;
         }
     }
 }

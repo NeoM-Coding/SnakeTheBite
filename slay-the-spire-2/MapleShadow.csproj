@@ -31,6 +31,7 @@
 
   <ItemGroup>
     <AdditionalFiles Include="MapleShadow\localization\zhs\cards.json" />
+    <AdditionalFiles Include="MapleShadow\localization\zhs\powers.json" />
   </ItemGroup>
 
   <!-- 自动复制dll和json -->
