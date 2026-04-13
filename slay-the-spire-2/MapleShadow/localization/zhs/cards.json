@@ -29,5 +29,8 @@
     "MAPLESHADOW-SNAKE_CALAMITY_CARD_UPGRADE.description": "给予{DoomPower:diff()}层灾厄。",
     "MAPLESHADOW-SNAKE_ONE_BITE_CARD.title": "蛇一咬",
     "MAPLESHADOW-SNAKE_ONE_BITE_CARD.description": "给予{PoisonPower:diff()}层中毒。给予{WeakPower:diff()}层虚弱。",
-    "MAPLESHADOW-SNAKE_ONE_BITE_CARD_UPGRADE.description": "给予{PoisonPower:diff()}层中毒。给予{WeakPower:diff()}层虚弱。"
+    "MAPLESHADOW-SNAKE_ONE_BITE_CARD_UPGRADE.description": "给予{PoisonPower:diff()}层中毒。给予{WeakPower:diff()}层虚弱。",
+    "MAPLESHADOW-SNAKE_SCATTER_CANNON_CARD.title": "散蛇炮",
+    "MAPLESHADOW-SNAKE_SCATTER_CANNON_CARD.description": "移除你身上的所有中毒。每移除1层，随机给予一名敌人{PoisonPower:diff()}层中毒。",
+    "MAPLESHADOW-SNAKE_SCATTER_CANNON_CARD_UPGRADE.description": "移除你身上的所有中毒。每移除1层，随机给予一名敌人{PoisonPower:diff()}层中毒。"
 }
