@@ -32,5 +32,11 @@
     "MAPLESHADOW-SNAKE_VENOM_CARD.title": "毒液",
     "MAPLESHADOW-SNAKE_VENOM_CARD.description": "给予{PoisonPower:diff()}层中毒。",
     "MAPLESHADOW-SNAKE_BITE_NOW_CARD.title": "蛇，咬！",
-    "MAPLESHADOW-SNAKE_BITE_NOW_CARD.description": "立刻触发一次目标敌人的中毒。"
+    "MAPLESHADOW-SNAKE_BITE_NOW_CARD.description": "立刻触发一次目标敌人的中毒。",
+    "MAPLESHADOW-SNAKE_BITE_THORNS_CARD.title": "荆棘蛇咬",
+    "MAPLESHADOW-SNAKE_BITE_THORNS_CARD.description": "敌人每攻击一次，就会被蛇咬一次。",
+    "MAPLESHADOW-SNAKE_EYE_DROPS_CARD.title": "蛇！眼药水",
+    "MAPLESHADOW-SNAKE_EYE_DROPS_CARD.description": "自身获得{PoisonPower:diff()}层中毒。\n抽牌至手牌满。\n所有手牌费用随机。",
+    "MAPLESHADOW-SNAKE_DRY_BITE_CARD.title": "蛇干咬",
+    "MAPLESHADOW-SNAKE_DRY_BITE_CARD.description": "造成{Damage:diff()}点伤害。"
 }
