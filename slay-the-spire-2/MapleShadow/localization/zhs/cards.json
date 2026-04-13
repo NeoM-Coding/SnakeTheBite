@@ -38,5 +38,7 @@
     "MAPLESHADOW-SNAKE_EYE_DROPS_CARD.title": "蛇！眼药水",
     "MAPLESHADOW-SNAKE_EYE_DROPS_CARD.description": "自身获得{PoisonPower:diff()}层中毒。\n抽牌至手牌满。\n所有手牌费用随机。",
     "MAPLESHADOW-SNAKE_DRY_BITE_CARD.title": "蛇干咬",
-    "MAPLESHADOW-SNAKE_DRY_BITE_CARD.description": "造成{Damage:diff()}点伤害。"
+    "MAPLESHADOW-SNAKE_DRY_BITE_CARD.description": "造成{Damage:diff()}点伤害。",
+    "MAPLESHADOW-GREEN_SNAKE_STUDY_CARD.title": "青蛇大学习",
+    "MAPLESHADOW-GREEN_SNAKE_STUDY_CARD.description": "造成{Damage:diff()}点伤害。\n如果这张牌斩杀敌人，随机升级一张蛇咬牌。"
 }
