@@ -24,5 +24,11 @@
     "MAPLESHADOW-SNAKE_SCATTER_CANNON_CARD.title": "散蛇炮",
     "MAPLESHADOW-SNAKE_SCATTER_CANNON_CARD.description": "移除你身上的所有中毒。每移除1层，随机给予一名敌人{PoisonPower:diff()}层中毒。",
     "MAPLESHADOW-SNAKE_ASH_CARD.title": "蛇烬",
-    "MAPLESHADOW-SNAKE_ASH_CARD.description": "给予{PoisonPower:diff()}层中毒。\n消耗你抽牌堆顶的一张牌。"
+    "MAPLESHADOW-SNAKE_ASH_CARD.description": "给予{PoisonPower:diff()}层中毒。\n消耗你抽牌堆顶的一张牌。",
+    "MAPLESHADOW-FLYING_SNAKE_SPIN_BITE_CARD.title": "飞蛇回旋咬",
+    "MAPLESHADOW-FLYING_SNAKE_SPIN_BITE_CARD.description": "对随机3个敌人给予{PoisonPower:diff()}层中毒。",
+    "MAPLESHADOW-SNAKE_DANCE_CARD.title": "蛇之舞",
+    "MAPLESHADOW-SNAKE_DANCE_CARD.description": "获得{Block:diff()}点格挡。\n下回合获得{Energy}点能量。",
+    "MAPLESHADOW-SNAKE_VENOM_CARD.title": "毒液",
+    "MAPLESHADOW-SNAKE_VENOM_CARD.description": "给予{PoisonPower:diff()}层中毒。"
 }
