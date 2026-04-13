@@ -1,4 +1,6 @@
 {
     "MAPLESHADOW-GOLDEN_SNAKE_BLOOD_POTION.title": "黄金蛇血",
-    "MAPLESHADOW-GOLDEN_SNAKE_BLOOD_POTION.description": "获得[gold]{Gold}[/gold]点[gold]金币[/gold]。"
+    "MAPLESHADOW-GOLDEN_SNAKE_BLOOD_POTION.description": "获得[gold]{Gold}[/gold]点[gold]金币[/gold]。",
+    "MAPLESHADOW-SNAKE_IN_A_BOTTLE_POTION.title": "瓶中异蛇",
+    "MAPLESHADOW-SNAKE_IN_A_BOTTLE_POTION.description": "受到致命伤害时，自动丢弃并以[gold]25%[/gold]生命值复活，但获得[blue]3[/blue]层[blue]中毒[/blue]。"
 }
