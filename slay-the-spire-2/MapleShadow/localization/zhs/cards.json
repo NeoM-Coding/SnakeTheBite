@@ -30,5 +30,7 @@
     "MAPLESHADOW-SNAKE_DANCE_CARD.title": "蛇之舞",
     "MAPLESHADOW-SNAKE_DANCE_CARD.description": "获得{Block:diff()}点格挡。\n下回合获得{Energy}点能量。",
     "MAPLESHADOW-SNAKE_VENOM_CARD.title": "毒液",
-    "MAPLESHADOW-SNAKE_VENOM_CARD.description": "给予{PoisonPower:diff()}层中毒。"
+    "MAPLESHADOW-SNAKE_VENOM_CARD.description": "给予{PoisonPower:diff()}层中毒。",
+    "MAPLESHADOW-SNAKE_BITE_NOW_CARD.title": "蛇，咬！",
+    "MAPLESHADOW-SNAKE_BITE_NOW_CARD.description": "立刻触发一次目标敌人的中毒。"
 }
