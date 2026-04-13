@@ -60,9 +60,6 @@ public class SnakeBiteThornsCard : MapleShadowCardModel
     /// <summary>升级后的效果：费用减1（3 → 2）。</summary>
     protected override void OnUpgrade()
     {
-        if (DynamicVars.TryGetValue("Cost", out DynamicVar? costVar))
-        {
-            costVar.BaseValue = 2;
-        }
+        EnergyCost.UpgradeBy(-1);
     }
 }

@@ -57,12 +57,9 @@ public class SnakeSnakeCard : MapleShadowCardModel
         await CardPileCmd.AddGeneratedCardsToCombat(list, PileType.Hand, addedByPlayer: true);
     }
 
-    // 升级后的效果逻辑 - 升级后改为2费用
+    // 升级后的效果逻辑 - 升级后费用减1（3 → 2）
     protected override void OnUpgrade()
     {
-        if (DynamicVars.TryGetValue("Cost", out DynamicVar? costVar))
-        {
-            costVar.BaseValue = 3;
-        }
+        EnergyCost.UpgradeBy(-1);
     }
 }
