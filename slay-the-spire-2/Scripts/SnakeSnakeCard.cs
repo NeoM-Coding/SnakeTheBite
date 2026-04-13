@@ -41,6 +41,12 @@ public class SnakeSnakeCard : CustomCardModel
             // 直接泛型创建，不需要 ModelDb.GetById（参考Guards.cs）
             CardModel snakeBite = CombatState.CreateCard<Snakebite>(Owner);
             
+            // 升级后生成蛇咬+（参考Guards.cs）
+            if (IsUpgraded)
+            {
+                CardCmd.Upgrade(snakeBite);
+            }
+            
             // 设置本回合免费打出（参考Splash.cs）
             snakeBite.SetToFreeThisTurn();
             
