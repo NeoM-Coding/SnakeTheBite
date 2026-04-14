@@ -60,5 +60,7 @@
     "MAPLESHADOW-SNAKE_WALK_CARD.title": "蛇行",
     "MAPLESHADOW-SNAKE_WALK_CARD.description": "抽{Draw:diff()}张牌。\n给予自身{PoisonPower:diff()}层中毒。",
     "MAPLESHADOW-SNEAKY_SNAKE_CARD.title": "偷偷的蛇",
-    "MAPLESHADOW-SNEAKY_SNAKE_CARD.description": "敌人有中毒时，本回合其对你造成的伤害减少{SneakySnakePower:diff()}%。"
+    "MAPLESHADOW-SNEAKY_SNAKE_CARD.description": "敌人有中毒时，本回合其对你造成的伤害减少{SneakySnakePower:diff()}%。",
+    "MAPLESHADOW-SNAKE_BITE_STORM_CARD.title": "蛇咬风暴",
+    "MAPLESHADOW-SNAKE_BITE_STORM_CARD.description": "丢弃所有手牌。将等量的本回合1费的{IfUpgraded:show:蛇咬+|蛇咬}加入手牌。"
 }
