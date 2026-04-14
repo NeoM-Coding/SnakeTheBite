@@ -44,5 +44,21 @@
     "MAPLESHADOW-FURIOUS_SNAKE_CARD.title": "暴蛇",
     "MAPLESHADOW-FURIOUS_SNAKE_CARD.description": "给予自身{PoisonPower:diff()}点中毒。\n本回合进入怒蛇。",
     "MAPLESHADOW-PERFECT_SNAKE_BITE_CARD.title": "完美蛇咬",
-    "MAPLESHADOW-PERFECT_SNAKE_BITE_CARD.description": "给予{PerfectSnakeBitePoison}点中毒。\n卡组中每有一张{IfUpgraded:show:蛇|蛇咬}牌，给予的中毒层数加2。"
+    "MAPLESHADOW-PERFECT_SNAKE_BITE_CARD.description": "给予{PerfectSnakeBitePoison}点中毒。\n卡组中每有一张{IfUpgraded:show:蛇|蛇咬}牌，给予的中毒层数加2。",
+    "MAPLESHADOW-CREATIVE_SNAKE_BITE_CARD.title": "创造性蛇咬",
+    "MAPLESHADOW-CREATIVE_SNAKE_BITE_CARD.description": "在你的回合开始时，将一张蛇能力牌放入手牌。",
+    "MAPLESHADOW-SNAKE_HARD_BITE_CARD.title": "蛇大力咬",
+    "MAPLESHADOW-SNAKE_HARD_BITE_CARD.description": "给予{PoisonPower:diff()}层中毒。",
+    "MAPLESHADOW-BOUNCING_SNAKE_BOTTLE_CARD.title": "弹跳蛇瓶",
+    "MAPLESHADOW-BOUNCING_SNAKE_BOTTLE_CARD.description": "对随机{Repeat:diff()}个敌人给予{PoisonPower:diff()}层中毒。",
+    "MAPLESHADOW-SNAKE_PRECISION_CARD.title": "蛇精要准",
+    "MAPLESHADOW-SNAKE_PRECISION_CARD.description": "保留。\n获得蛇之精准。",
+    "MAPLESHADOW-SNAKE_VENOM_BOOST_CARD.title": "蛇液补充",
+    "MAPLESHADOW-SNAKE_VENOM_BOOST_CARD.description": "每场战斗结束后，随机为一张蛇牌增加{SnakeVenomBoostPower:diff()}点中毒数值。",
+    "MAPLESHADOW-FULL_BODY_SNAKE_BITE_CARD.title": "全身蛇咬",
+    "MAPLESHADOW-FULL_BODY_SNAKE_BITE_CARD.description": "给予敌人等于自身格挡值的中毒层数。",
+    "MAPLESHADOW-SNAKE_WALK_CARD.title": "蛇行",
+    "MAPLESHADOW-SNAKE_WALK_CARD.description": "抽{Draw:diff()}张牌。\n给予自身{PoisonPower:diff()}层中毒。",
+    "MAPLESHADOW-SNEAKY_SNAKE_CARD.title": "偷偷的蛇",
+    "MAPLESHADOW-SNEAKY_SNAKE_CARD.description": "敌人有中毒时，本回合其对你造成的伤害减少{SneakySnakePower:diff()}%。"
 }

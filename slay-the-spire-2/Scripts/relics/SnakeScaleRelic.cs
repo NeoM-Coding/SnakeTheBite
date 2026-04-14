@@ -1,3 +1,4 @@
+// 异蛇之鳞 - 普通遗物，给敌人上毒时获得1格挡
 using System.Collections.Generic;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
@@ -12,15 +13,8 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MapleShadow.Scripts.Relics;
 
-/// <summary>
-/// 异蛇之鳞（SnakeScaleRelic）——普通遗物。
-/// 
-/// 效果：每当你对敌人施加中毒时，获得 1 点格挡。
-/// 获取限制：通过 RelicFactoryShopExclusionPatch 排除在商店生成之外，
-/// 但仍可通过战斗奖励、宝箱、事件等非商店途径获得。
-/// </summary>
 [Pool(typeof(SharedRelicPool))]
-public class SnakeScaleRelic : CustomRelicModel
+public class SnakeScaleRelic : MapleShadowRelicModel
 {
     /// <summary>遗物稀有度：普通（白）。</summary>
     public override RelicRarity Rarity => RelicRarity.Common;
@@ -30,18 +24,6 @@ public class SnakeScaleRelic : CustomRelicModel
     /// 此处使用 BlockVar(1, Unpowered)，在本地化文本中可用 {Block} 引用该数值。
     /// </summary>
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(1, ValueProp.Unpowered)];
-
-    /// <summary>
-    /// 遗物图标路径（小图标，通常 85×85）。
-    /// 使用遗物 ID 的小写形式作为文件名，对应 res://MapleShadow/images/relics/mapleshadow-snake_scale_relic.png。
-    /// </summary>
-    // public override string PackedIconPath => $"res://MapleShadow/images/relics/{Id.Entry.ToLowerInvariant()}.png";
-
-    /// <summary>遗物轮廓图标路径（通常 85×85）。</summary>
-    // protected override string PackedIconOutlinePath => $"res://MapleShadow/images/relics/{Id.Entry.ToLowerInvariant()}.png";
-
-    /// <summary>遗物大图标路径（通常 256×256）。</summary>
-    // protected override string BigIconPath => $"res://MapleShadow/images/relics/{Id.Entry.ToLowerInvariant()}.png";
 
     /// <summary>
     /// 当战场上任意 Power（状态/能力）的层数发生变化后触发。

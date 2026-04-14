@@ -1,3 +1,4 @@
+// 蛇斩波 - 2费红卡攻击，给予7层中毒并获得7格挡
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;

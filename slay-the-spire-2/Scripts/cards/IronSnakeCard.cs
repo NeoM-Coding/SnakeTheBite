@@ -1,8 +1,4 @@
-/// <summary>
-/// 硬蛇 - 红色技能牌
-/// 1费，蓝卡
-/// 将两张蛇噬放入抽牌堆，获得15点格挡（升级20防）
-/// </summary>
+// 硬蛇 - 1费红卡技能，获得25格挡并生成2张蛇噬放入抽牌堆
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;

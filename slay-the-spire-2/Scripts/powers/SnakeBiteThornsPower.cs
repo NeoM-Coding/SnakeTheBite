@@ -1,3 +1,4 @@
+// 荆棘蛇咬能力 - 敌人攻击命中时受到7层中毒
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -11,13 +12,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MapleShadow.Scripts.Powers;
 
-/// <summary>
-/// 荆棘蛇咬能力（SnakeBiteThornsPower）——Buff 类型能力。
-/// 
-/// 效果：每当敌人攻击命中你一次，该敌人会被蛇咬，受到 7 层中毒（多段攻击每段都会触发）。
-/// 能力层数仅表示剩余触发次数。
-/// </summary>
-public class SnakeBiteThornsPower : CustomPowerModel
+public class SnakeBiteThornsPower : MapleShadowPowerModel
 {
     public override PowerType Type => PowerType.Buff;
 
@@ -25,9 +20,6 @@ public class SnakeBiteThornsPower : CustomPowerModel
 
     /// <summary>不显示能力层数。</summary>
     public override int DisplayAmount => 0;
-
-    /// <summary>大图标路径。若留空，CustomPowerModel 会回退到默认逻辑。</summary>
-    // public override string? CustomPackedIconPath => $"res://MapleShadow/images/powers/{GetType().Name.ToLowerInvariant()}.png";
 
     /// <summary>
     /// 当能力持有者受到伤害前触发（参考荆棘能力的实现）。

@@ -1,4 +1,4 @@
-//!?蛇蛇?!
+// ！？蛇蛇？！ - 3费无色技能，将2张蛇咬放入手牌
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;

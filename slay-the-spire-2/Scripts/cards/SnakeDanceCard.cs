@@ -1,3 +1,4 @@
+// 蛇之舞 - 1费红卡技能，获得7格挡，下回合获得1点能量
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -11,12 +12,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MapleShadow.Scripts.Cards;
 
-/// <summary>
-/// 蛇之舞——战士（红色）技能牌。
-/// 
-/// 效果：1费，获得7点格挡，下回合获得1点能量。
-/// 升级后：获得9点格挡，下回合获得2点能量。
-/// </summary>
 [Pool(typeof(IroncladCardPool))]
 public class SnakeDanceCard : MapleShadowCardModel
 {

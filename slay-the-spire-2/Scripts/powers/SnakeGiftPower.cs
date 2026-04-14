@@ -1,3 +1,4 @@
+// 蛇之赠礼能力 - 战斗结束随机升级非蛇牌
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -10,10 +11,7 @@ using System.Linq;
 
 namespace MapleShadow.Scripts.Powers;
 
-/// <summary>
-/// 蛇之赠礼 —— 战斗结束时随机升级一张非蛇的卡牌。
-/// </summary>
-public class SnakeGiftPower : CustomPowerModel
+public class SnakeGiftPower : MapleShadowPowerModel
 {
     public override PowerType Type => PowerType.Buff;
 

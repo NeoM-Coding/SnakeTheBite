@@ -1,7 +1,4 @@
-/// <summary>
-/// 蛇噬 - 状态牌
-/// 不可打出，当你抽到此牌时，自身获得2层中毒
-/// </summary>
+// 蛇噬 - 状态牌，抽到获得2层中毒
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;

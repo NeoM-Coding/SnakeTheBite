@@ -1,3 +1,4 @@
+// 飞蛇回旋咬 - 1费红卡攻击，随机3个敌人分别给予2层中毒
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -10,12 +11,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace MapleShadow.Scripts.Cards;
-/// <summary>
-/// 飞蛇回旋咬——战士（红色）攻击牌。
-/// 
-/// 效果：1费，对随机3个敌人分别给予2层中毒。
-/// 升级后：对随机3个敌人分别给予3层中毒。
-/// </summary>
+
 [Pool(typeof(IroncladCardPool))]
 public class FlyingSnakeSpinBiteCard : MapleShadowCardModel
 {

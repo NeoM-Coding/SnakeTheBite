@@ -1,4 +1,4 @@
-// 青蛇大学习
+// 青蛇大学习 - 1费无色攻击，造成14点伤害，斩杀升级蛇牌
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -27,6 +27,8 @@ public class GreenSnakeStudyCard : MapleShadowCardModel
     private const TargetType targetType = TargetType.AnyEnemy;
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
+    /// <summary>该卡牌自带"消耗"关键词。</summary>
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     // 定义变量：伤害(不升级14，升级18)
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(14, ValueProp.Move)];

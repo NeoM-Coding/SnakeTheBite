@@ -1,3 +1,4 @@
+// Mod entry point
 using Godot.Bridge;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Logging;

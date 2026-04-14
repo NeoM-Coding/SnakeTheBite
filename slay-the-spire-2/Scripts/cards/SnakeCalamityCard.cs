@@ -1,3 +1,4 @@
+// 灾厄之蛇 - 2费红卡技能，给予7层灾厄
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;

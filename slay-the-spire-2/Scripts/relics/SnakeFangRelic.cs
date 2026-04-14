@@ -1,3 +1,4 @@
+// 异蛇之牙 - 普通遗物，给敌人上毒时随机打1
 using System.Collections.Generic;
 using System.Linq;
 using BaseLib.Abstracts;
@@ -17,14 +18,8 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MapleShadow.Scripts.Relics;
 
-/// <summary>
-/// 异蛇之牙（SnakeFangRelic）——普通遗物。
-/// 
-/// 效果：每当你对敌人施加中毒时，对随机一名可攻击敌人造成 1 点伤害。
-/// 获取限制：通过 Harmony 补丁排除在商店生成之外，但仍可通过战斗奖励、宝箱、事件等途径获得。
-/// </summary>
 [Pool(typeof(SharedRelicPool))]
-public class SnakeFangRelic : CustomRelicModel
+public class SnakeFangRelic : MapleShadowRelicModel
 {
     /// <summary>遗物稀有度：普通（白）。</summary>
     public override RelicRarity Rarity => RelicRarity.Common;
@@ -34,18 +29,6 @@ public class SnakeFangRelic : CustomRelicModel
     /// 此处使用 DamageVar(1, Unpowered)，在本地化文本中可用 {Damage} 引用该数值。
     /// </summary>
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(1, ValueProp.Unpowered)];
-
-    /// <summary>
-    /// 遗物图标路径（小图标，通常 85×85）。
-    /// 使用遗物 ID 的小写形式作为文件名，对应 res://MapleShadow/images/relics/mapleshadow-snake_fang_relic.png。
-    /// </summary>
-    // public override string PackedIconPath => $"res://MapleShadow/images/relics/{Id.Entry.ToLowerInvariant()}.png";
-
-    /// <summary>遗物轮廓图标路径（通常 85×85）。</summary>
-    // protected override string PackedIconOutlinePath => $"res://MapleShadow/images/relics/{Id.Entry.ToLowerInvariant()}.png";
-
-    /// <summary>遗物大图标路径（通常 256×256）。</summary>
-    // protected override string BigIconPath => $"res://MapleShadow/images/relics/{Id.Entry.ToLowerInvariant()}.png";
 
     /// <summary>
     /// 当战场上任意 Power（状态/能力）的层数发生变化后触发。

@@ -1,4 +1,3 @@
-// 毒液 - 1费无色技能，给予5层中毒
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -11,40 +10,34 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace MapleShadow.Scripts.Cards;
 
-[Pool(typeof(ColorlessCardPool))]
-public class SnakeVenomCard : MapleShadowCardModel
+// 蛇大力咬
+[Pool(typeof(IroncladCardPool))]
+public class SnakeHardBiteCard : MapleShadowCardModel
 {
-    // 基础耗能
-    private const int energyCost = 1;
-    // 卡牌类型
-    private const CardType type = CardType.Skill;
-    // 卡牌稀有度（白色 = 普通）
-    private const CardRarity rarity = CardRarity.Common;
-    // 目标类型（任意敌人）
+    // 基础耗能 - 3费(蓝卡)
+    private const int energyCost = 3;
+    // 卡牌类型 - 攻击牌
+    private const CardType type = CardType.Attack;
+    // 卡牌稀有度 - 罕见
+    private const CardRarity rarity = CardRarity.Uncommon;
+    // 目标类型 - 任意敌人
     private const TargetType targetType = TargetType.AnyEnemy;
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
-    /// <summary>卡牌动态变量：5层中毒（升级后7层）。</summary>
+    // 定义变量：中毒层数(不升级12，升级16)
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-    [
-        new PowerVar<PoisonPower>(5m)
-    ];
+        [new PowerVar<PoisonPower>(12m)];
 
-    /// 悬停提示：显示中毒效果的提示信息。
+    // 悬停提示 - 显示中毒 power 的提示
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        new[] { HoverTipFactory.FromPower<PoisonPower>() };
+        [HoverTipFactory.FromPower<PoisonPower>()];
 
-    public SnakeVenomCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
+    public SnakeHardBiteCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
     }
 
-    /// <summary>
-    /// 打出时的效果逻辑。
-    /// 1. 播放攻击动画；
-    /// 2. 在目标身上播放咬击特效；
-    /// 3. 给予目标 DynamicVars.Poison 层数的中毒。
-    /// </summary>
+    // 打出时的效果逻辑 - 给予敌人中毒
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
@@ -53,9 +46,9 @@ public class SnakeVenomCard : MapleShadowCardModel
         await PowerCmd.Apply<PoisonPower>(cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
     }
 
-    /// <summary>升级后的效果：中毒层数 +2（5 → 7）。</summary>
+    // 升级后的效果逻辑 - 升级后增加4层中毒 (12 -> 16)
     protected override void OnUpgrade()
     {
-        DynamicVars.Poison.UpgradeValueBy(2m);
+        DynamicVars.Poison.UpgradeValueBy(4m);
     }
 }

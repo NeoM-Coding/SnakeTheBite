@@ -1,4 +1,4 @@
-// 忍住不蛇
+// 忍住不蛇 - 4费无色技能，保留减费，给予17层中毒
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;

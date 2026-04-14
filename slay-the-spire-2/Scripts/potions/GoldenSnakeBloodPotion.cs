@@ -1,3 +1,4 @@
+// 黄金蛇血 - 罕见药水，获得25金币
 using System.Collections.Generic;
 using System.Linq;
 using BaseLib.Abstracts;
@@ -16,13 +17,8 @@ using MegaCrit.Sts2.Core.Models.PotionPools;
 
 namespace MapleShadow.Scripts.Potions;
 
-/// <summary>
-/// 黄金蛇血 - 罕见药水
-/// 饮用后获得25金币，可扔给队友，战斗内外皆可使用
-/// 不会出现在商店中
-/// </summary>
 [Pool(typeof(SharedPotionPool))]
-public class GoldenSnakeBloodPotion : CustomPotionModel
+public class GoldenSnakeBloodPotion : MapleShadowPotionModel
 {
     // 稀有度 - 罕见（蓝）
     public override PotionRarity Rarity => PotionRarity.Uncommon;
@@ -37,8 +33,8 @@ public class GoldenSnakeBloodPotion : CustomPotionModel
     protected override IEnumerable<DynamicVar> CanonicalVars => [new GoldVar(25)];
 
     // 药水图片路径
-    // public override string? PackedImagePath => "res://MapleShadow/images/potions/MapleShadow-golden_snake_blood_potion.png";
-    // public override string? PackedOutlinePath => "res://MapleShadow/images/potions/MapleShadow-golden_snake_blood_potion.png";
+    public override string? PackedImagePath => "res://MapleShadow/images/potions/MapleShadow-golden_snake_blood_potion.png";
+    public override string? PackedOutlinePath => "res://MapleShadow/images/potions/MapleShadow-golden_snake_blood_potion.png";
 
     // 标记是否正在商店生成过程中
     public static bool IsInShopGeneration { get; set; }

@@ -1,3 +1,4 @@
+// 蛇一咬 - 1费红卡攻击，给予5层中毒和1层虚弱
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;

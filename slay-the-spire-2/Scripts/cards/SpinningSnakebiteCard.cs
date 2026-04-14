@@ -1,4 +1,4 @@
-//旋转蛇咬
+// 旋转蛇咬 - 3费无色技能，保留叠加给予所有敌人中毒
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;

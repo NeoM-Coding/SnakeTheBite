@@ -1,3 +1,4 @@
+// 蛇干咬 - 1费红卡攻击，造成9点伤害
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -9,12 +10,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MapleShadow.Scripts.Cards;
 
-/// <summary>
-/// 蛇干咬——战士（红色）攻击牌。
-/// 
-/// 效果：1费，造成7点伤害。
-/// 升级后：造成10点伤害。
-/// </summary>
 [Pool(typeof(IroncladCardPool))]
 public class SnakeDryBiteCard : MapleShadowCardModel
 {
@@ -29,7 +24,7 @@ public class SnakeDryBiteCard : MapleShadowCardModel
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
-    /// <summary>卡牌动态变量：7点伤害（升级后10点）。</summary>
+    /// <summary>卡牌动态变量：9点伤害（升级后12点）。</summary>
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(7, ValueProp.Move)
@@ -50,7 +45,7 @@ public class SnakeDryBiteCard : MapleShadowCardModel
             .Execute(choiceContext);
     }
 
-    /// <summary>升级后的效果：伤害 +3（7 → 10）。</summary>
+    /// <summary>升级后的效果：伤害 +3（9 → 12）。</summary>
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(3);

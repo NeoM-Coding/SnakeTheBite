@@ -1,3 +1,4 @@
+// 散蛇炮 - 2费红卡技能，移除自身中毒分给敌人
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;

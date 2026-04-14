@@ -6,5 +6,13 @@
     "MAPLESHADOW-SNAKE_BITE_THORNS_POWER.title": "荆棘蛇咬",
     "MAPLESHADOW-SNAKE_BITE_THORNS_POWER.description": "敌人每攻击一次，就会被蛇咬一次。",
     "MAPLESHADOW-FURIOUS_SNAKE_POWER.title": "怒蛇",
-    "MAPLESHADOW-FURIOUS_SNAKE_POWER.description": "你打出的蛇牌会额外打出一次。受到来自敌人的未被格挡的攻击时，获得等量的中毒。"
+    "MAPLESHADOW-FURIOUS_SNAKE_POWER.description": "你打出的蛇牌会额外打出一次。受到来自敌人的未被格挡的攻击时，获得等量的中毒。",
+    "MAPLESHADOW-CREATIVE_SNAKE_BITE_POWER.title": "创造性蛇咬",
+    "MAPLESHADOW-CREATIVE_SNAKE_BITE_POWER.description": "在你的回合开始时，将一张蛇能力牌放入手牌。",
+    "MAPLESHADOW-SNAKE_PRECISION_POWER.title": "蛇之精准",
+    "MAPLESHADOW-SNAKE_PRECISION_POWER.description": "给予中毒时额外给予一次。",
+    "MAPLESHADOW-SNAKE_VENOM_BOOST_POWER.title": "蛇液补充",
+    "MAPLESHADOW-SNAKE_VENOM_BOOST_POWER.description": "每场战斗结束后，随机为一张蛇牌增加{Amount}点中毒数值。",
+    "MAPLESHADOW-SNEAKY_SNAKE_POWER.title": "偷偷的蛇",
+    "MAPLESHADOW-SNEAKY_SNAKE_POWER.description": "有中毒的敌人对你造成的伤害减少{Amount}%。"
 }

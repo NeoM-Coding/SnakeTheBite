@@ -1,4 +1,4 @@
-// 完美蛇咬
+// 完美蛇咬 - 2费红卡攻击，给予5层中毒，牌库每有一张蛇咬额外+2层中毒
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -15,12 +15,6 @@ using System.Linq;
 
 namespace MapleShadow.Scripts.Cards;
 
-/// <summary>
-/// 完美蛇咬 —— 铁甲战士攻击牌。
-/// 
-/// 效果：2费，给予敌人5层中毒。卡组中每有一张蛇咬牌，额外给予2层中毒。
-/// 升级后：改为卡组中每有一张蛇牌，额外给予2层中毒。
-/// </summary>
 [Pool(typeof(IroncladCardPool))]
 public class PerfectSnakeBiteCard : MapleShadowCardModel
 {

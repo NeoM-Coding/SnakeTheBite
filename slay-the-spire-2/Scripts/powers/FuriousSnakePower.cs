@@ -1,3 +1,4 @@
+// 怒蛇能力 - 本回合蛇牌额外打出，受未被格挡伤害时获得中毒
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Combat;
@@ -12,14 +13,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MapleShadow.Scripts.Powers;
 
-/// <summary>
-/// 怒蛇 —— 本回合内生效的 Buff 状态。
-/// 
-/// 效果：
-/// 1. 打出的类名含 "Snake" 的卡牌会额外打出一次（参考 BurstPower / EchoFormPower）。
-/// 2. 受到来自敌人的 Powered Attack 且存在未被格挡的伤害时，给予自身等量的中毒。
-/// </summary>
-public class FuriousSnakePower : CustomPowerModel
+public class FuriousSnakePower : MapleShadowPowerModel
 {
     public override PowerType Type => PowerType.Buff;
 

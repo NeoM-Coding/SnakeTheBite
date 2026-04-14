@@ -1,3 +1,4 @@
+// 测试卡 - 3费无色攻击，造成5点伤害5次
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;

@@ -1,4 +1,3 @@
-// 暴蛇 - 2费红卡技能，给予自身7层中毒并进入怒蛇状态
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -6,56 +5,52 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MapleShadow.Scripts.Powers;
 
 namespace MapleShadow.Scripts.Cards;
 
+// 蛇行
 [Pool(typeof(IroncladCardPool))]
-public class FuriousSnakeCard : MapleShadowCardModel
+public class SnakeWalkCard : MapleShadowCardModel
 {
-    // 基础耗能 - 2费
-    private const int energyCost = 2;
+    // 基础耗能 - 1费(白卡)
+    private const int energyCost = 1;
     // 卡牌类型 - 技能牌
     private const CardType type = CardType.Skill;
-    // 卡牌稀有度 - 罕见(蓝卡)
-    private const CardRarity rarity = CardRarity.Uncommon;
+    // 卡牌稀有度 - 普通
+    private const CardRarity rarity = CardRarity.Common;
     // 目标类型 - 自己
     private const TargetType targetType = TargetType.Self;
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
-    // 定义变量：中毒层数(不升级7，升级不变)
+    // 定义变量：抽牌数(不升级3，升级4)，中毒层数(2)
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<PoisonPower>(7m)
+        new DynamicVar("Draw", 3m),
+        new PowerVar<PoisonPower>(2m)
     ];
 
-    // 悬停提示 - 显示怒蛇 power 的提示
+    // 悬停提示 - 显示中毒 power 的提示
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        new[] { HoverTipFactory.FromPower<FuriousSnakePower>() };
+        [HoverTipFactory.FromPower<PoisonPower>()];
 
-    public FuriousSnakeCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
+    public SnakeWalkCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
     }
 
-    // 打出时的效果逻辑
+    // 打出时的效果逻辑 - 抽牌并给予自身中毒
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-
-        // 给予自身中毒
+        await CardPileCmd.Draw(choiceContext, DynamicVars["Draw"].IntValue, Owner);
         await PowerCmd.Apply<PoisonPower>(Owner.Creature, DynamicVars.Poison.BaseValue, Owner.Creature, this);
-
-        // 本回合进入怒蛇状态
-        await PowerCmd.Apply<FuriousSnakePower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 
-    // 升级后的效果逻辑 - 费用减1（2 → 1）
+    // 升级后的效果逻辑 - 抽牌数加1（3 -> 4）
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars["Draw"].UpgradeValueBy(1m);
     }
 }

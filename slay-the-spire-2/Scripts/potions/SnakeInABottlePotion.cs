@@ -1,3 +1,4 @@
+// 瓶中异蛇 - 稀有自动药水，致死时复活并中毒
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -11,14 +12,8 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace MapleShadow.Scripts.Potions;
 
-/// <summary>
-/// 瓶中异蛇 - 稀有药水（金）
-/// 
-/// 效果：受到致命伤害时自动使用，丢弃这瓶药水，以25%生命值复活，
-/// 但在复活时给予自身3层中毒。
-/// </summary>
 [Pool(typeof(SharedPotionPool))]
-public class SnakeInABottlePotion : CustomPotionModel
+public class SnakeInABottlePotion : MapleShadowPotionModel
 {
     /// <summary>稀有度 - 稀有（金）。</summary>
     public override PotionRarity Rarity => PotionRarity.Rare;
@@ -31,12 +26,6 @@ public class SnakeInABottlePotion : CustomPotionModel
 
     /// <summary>不在战斗奖励中生成（参考瓶中精灵）。</summary>
     public override bool CanBeGeneratedInCombat => false;
-
-    /// <summary>药水图片路径。</summary>
-    public override string? PackedImagePath => $"res://MapleShadow/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
-
-    /// <summary>药水轮廓图片路径。</summary>
-    public override string? PackedOutlinePath => $"res://MapleShadow/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
 
     /// <summary>
     /// 使用时的效果逻辑：恢复至25%最大生命值，并施加3层中毒。

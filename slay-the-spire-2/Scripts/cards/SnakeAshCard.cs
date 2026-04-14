@@ -1,3 +1,4 @@
+// 蛇烬 - 2费红卡攻击，给予11层中毒并消耗抽牌堆顶牌
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;

@@ -1,3 +1,4 @@
+// 蛇，咬！ - 2费无色技能，立刻触发敌人中毒一次
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -10,12 +11,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MapleShadow.Scripts.Cards;
 
-/// <summary>
-/// 蛇，咬！——无色技能牌。
-/// 
-/// 效果：2费，立刻触发一次目标敌人的中毒伤害，消耗。
-/// 升级后：1费。
-/// </summary>
 [Pool(typeof(ColorlessCardPool))]
 public class SnakeBiteNowCard : MapleShadowCardModel
 {

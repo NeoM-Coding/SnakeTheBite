@@ -1,3 +1,4 @@
+// 蛇！眼药水 - 0费红卡技能，自身中毒、抽满手牌、随机费用
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -13,12 +14,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace MapleShadow.Scripts.Cards;
 
-/// <summary>
-/// 蛇！眼药水——战士（红色）技能牌。
-/// 
-/// 效果：0费，自身获得3层中毒，抽牌至手牌满，所有手牌费用随机。消耗。
-/// 升级后：获得保留。
-/// </summary>
 [Pool(typeof(IroncladCardPool))]
 public class SnakeEyeDropsCard : MapleShadowCardModel
 {

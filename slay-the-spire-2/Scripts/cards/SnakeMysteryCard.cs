@@ -1,4 +1,4 @@
-// 蛇之神秘
+// 蛇之神秘 - 2费无色能力，虚无，打出蛇咬累积隐秘点数获得无实体
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -11,13 +11,6 @@ using MapleShadow.Scripts.Powers;
 
 namespace MapleShadow.Scripts.Cards;
 
-/// <summary>
-/// 蛇之神秘 —— 无色能力金卡。
-/// 
-/// 效果：2费，虚无。每当你打出蛇咬时，获得2点隐秘点数；
-/// 当点数到达7时，消耗7点并获得一层无实体。
-/// 升级后费用减1（2 → 1）。
-/// </summary>
 [Pool(typeof(ColorlessCardPool))]
 public class SnakeMysteryCard : MapleShadowCardModel
 {

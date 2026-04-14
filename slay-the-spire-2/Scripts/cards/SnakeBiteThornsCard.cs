@@ -1,3 +1,4 @@
+// 荆棘蛇咬 - 3费无色能力，敌人每攻击一次被蛇咬（受到7层中毒）
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -11,12 +12,6 @@ using MapleShadow.Scripts.Powers;
 
 namespace MapleShadow.Scripts.Cards;
 
-/// <summary>
-/// 荆棘蛇咬——无色能力牌。
-/// 
-/// 效果：3费，获得荆棘蛇咬能力：敌人每攻击一次，就会被蛇咬一次（受到1层中毒）。
-/// 升级后：费用减1（3 → 2）。
-/// </summary>
 [Pool(typeof(ColorlessCardPool))]
 public class SnakeBiteThornsCard : MapleShadowCardModel
 {

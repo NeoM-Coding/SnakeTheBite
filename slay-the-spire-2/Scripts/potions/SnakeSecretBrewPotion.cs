@@ -1,3 +1,4 @@
+// 蛇之秘酿 - 罕见药水，从3张随机蛇牌中选择一张加入手牌，本回合费用随机
 using System.Collections.Generic;
 using System.Linq;
 using BaseLib.Abstracts;
@@ -13,15 +14,8 @@ using MegaCrit.Sts2.Core.Models.PotionPools;
 
 namespace MapleShadow.Scripts.Potions;
 
-/// <summary>
-/// 蛇之秘酿 - 罕见药水
-/// 
-/// 饮用后，从三张随机"蛇"能力牌中选择一张放入手牌，
-/// 该牌在本回合费用随机（0-3）。
-/// 只能在战斗中使用，不能给队友。
-/// </summary>
 [Pool(typeof(SharedPotionPool))]
-public class SnakeSecretBrewPotion : CustomPotionModel
+public class SnakeSecretBrewPotion : MapleShadowPotionModel
 {
     // 稀有度 - 罕见（蓝）
     public override PotionRarity Rarity => PotionRarity.Uncommon;
@@ -33,8 +27,8 @@ public class SnakeSecretBrewPotion : CustomPotionModel
     public override TargetType TargetType => TargetType.Self;
 
     // 药水图片路径
-    // public override string? PackedImagePath => $"res://MapleShadow/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
-    // public override string? PackedOutlinePath => $"res://MapleShadow/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
+    public override string? PackedImagePath => $"res://MapleShadow/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
+    public override string? PackedOutlinePath => $"res://MapleShadow/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
 
     /// <summary>
     /// 使用时的效果逻辑：从三张随机蛇牌中选择一张，本回合费用随机后加入手牌。

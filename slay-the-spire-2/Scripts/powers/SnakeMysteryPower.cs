@@ -1,3 +1,4 @@
+// 隐秘能力 - 打出蛇咬累积点数获得无实体
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -11,13 +12,7 @@ using System.Linq;
 
 namespace MapleShadow.Scripts.Powers;
 
-/// <summary>
-/// 隐秘 —— 蛇之神秘对应的能力。
-/// 
-/// 效果：每当你打出蛇咬时，获得若干点隐秘点数；当点数到达7时，
-/// 消耗7点并获得一层无实体。
-/// </summary>
-public class SnakeMysteryPower : CustomPowerModel
+public class SnakeMysteryPower : MapleShadowPowerModel
 {
     /// <summary>内部数据，用于保存当前隐秘点数。</summary>
     private class Data
