@@ -64,17 +64,19 @@ public class GreenSnakeStudyCard : MapleShadowCardModel
                 if (cardToUpgrade != null)
                 {
                     CardCmd.Upgrade(cardToUpgrade);
+                    // 等待升级动画（NCardUpgradeVfx）播放完毕
+                    await Cmd.Wait(1.5f);
                 }
             }
         }
     }
 
-    // 判断一张牌是否属于蛇咬牌（根据类名中是否包含 Snakebite 或 SnakeBite）
+    // 判断一张牌是否属于蛇牌（根据类名中是否包含 Snake）
+    // 本 mod 中除 TestCard 外所有自定义卡牌类名均含 Snake
     private static bool IsSnakeBiteCard(CardModel card)
     {
         string typeName = card.GetType().Name;
-        return typeName.Contains("Snakebite", StringComparison.OrdinalIgnoreCase)
-            || typeName.Contains("SnakeBite", StringComparison.OrdinalIgnoreCase);
+        return typeName.Contains("Snake", StringComparison.OrdinalIgnoreCase);
     }
 
     // 升级后的效果逻辑 - 升级后增加4点伤害 (14 -> 18)

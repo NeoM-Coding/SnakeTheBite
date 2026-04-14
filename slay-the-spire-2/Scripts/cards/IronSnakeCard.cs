@@ -29,9 +29,9 @@ public class IronSnakeCard : MapleShadowCardModel
     private const TargetType targetType = TargetType.Self;
     private const bool shouldShowInCardLibrary = true;
 
-    // 格挡数值：不升级15，升级20
+    // 格挡数值：不升级25，升级30
     protected override IEnumerable<DynamicVar> CanonicalVars => 
-        new[] { new BlockVar(15m, ValueProp.Move) };
+        new[] { new BlockVar(25m, ValueProp.Move) };
 
     // 悬停提示
     protected override IEnumerable<IHoverTip> ExtraHoverTips => 
@@ -72,7 +72,7 @@ public class IronSnakeCard : MapleShadowCardModel
     // 升级效果
     protected override void OnUpgrade()
     {
-        // 升级后增加5点格挡 (15 -> 20)
+        // 升级后增加5点格挡
         DynamicVars.Block.UpgradeValueBy(5m);
     }
 }

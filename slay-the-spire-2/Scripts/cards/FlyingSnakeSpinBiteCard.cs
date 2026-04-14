@@ -10,7 +10,6 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace MapleShadow.Scripts.Cards;
-
 /// <summary>
 /// 飞蛇回旋咬——战士（红色）攻击牌。
 /// 
@@ -27,7 +26,8 @@ public class FlyingSnakeSpinBiteCard : MapleShadowCardModel
     // 卡牌稀有度
     private const CardRarity rarity = CardRarity.Common;
     // 目标类型（AnyEnemy表示任意敌人，实际效果在OnPlay中处理随机目标）
-    private const TargetType targetType = TargetType.AnyEnemy;
+    private const TargetType targetType = TargetType.AllEnemies;
+
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
