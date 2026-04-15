@@ -37,9 +37,9 @@ public class SnakeSecretBrewPotion : MapleShadowPotionModel
     {
         PotionModel.AssertValidForTargetedPotion(target);
 
-        // 从所有卡牌中筛选出蛇牌
+        // 从所有卡牌中筛选出蛇牌，排除状态与诅咒
         var snakeCards = ModelDb.AllCards
-            .Where(c => IsSnakeCard(c))
+            .Where(c => IsSnakeCard(c) && c.Type != CardType.Status && c.Type != CardType.Curse)
             .ToList();
 
         if (snakeCards.Count == 0)

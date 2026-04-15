@@ -4,18 +4,21 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Powers;
+
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace MapleShadow.Scripts.Powers;
 
 // 创造性蛇咬能力
-// 在你的回合开始时，将一张蛇能力牌放入手牌
+// 在你的回合开始时，将 Amount 张蛇能力牌放入手牌
 public class CreativeSnakeBitePower : MapleShadowPowerModel
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.None;
-    public override int DisplayAmount => 0;
+    public override PowerStackType StackType => PowerStackType.Counter;
+    public override int DisplayAmount => (int)Amount;
+
+    protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 
     // 回合开始时触发
     public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
@@ -31,13 +34,15 @@ public class CreativeSnakeBitePower : MapleShadowPowerModel
         if (snakePowers.Count == 0)
             return;
 
-        var selected = Owner.Player!.RunState.Rng.CombatCardSelection.NextItem(snakePowers);
-        if (selected == null)
-            return;
+        for (int i = 0; i < Amount; i++)
+        {
+            var selected = Owner.Player!.RunState.Rng.CombatCardSelection.NextItem(snakePowers);
+            if (selected == null)
+                continue;
 
-        Flash();
-        // 创建该能力牌的实例并加入手牌
-        var card = CombatState.CreateCard(selected, Owner.Player!);
-        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, addedByPlayer: true);
+            Flash();
+            var card = CombatState.CreateCard(selected, Owner.Player!);
+            await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, addedByPlayer: true);
+        }
     }
 }

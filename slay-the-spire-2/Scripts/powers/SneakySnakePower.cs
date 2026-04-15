@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -13,12 +14,17 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace MapleShadow.Scripts.Powers;
 
 // 偷偷的蛇能力
-// 本回合内，有中毒的敌人对你造成的伤害减少一定百分比
+// 本回合内，有中毒的敌人对你造成的伤害减少 Amount%
 public class SneakySnakePower : MapleShadowPowerModel
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.None;
-    public override int DisplayAmount => 0;
+    public override PowerStackType StackType => PowerStackType.Counter;
+    public override int DisplayAmount => (int)Amount;
+
+    // 强制使用 description 作为 smartDescription，以便 HoverTips 中注入 Amount 变量
+    protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
+
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Amount", 25m)];
 
     // 修改受到的伤害倍数（百分比减免）
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
@@ -28,7 +34,6 @@ public class SneakySnakePower : MapleShadowPowerModel
         if (!dealer.HasPower<PoisonPower>())
             return 1m;
 
-        // Amount 存储的是减免百分比（25 或 50）
         decimal multiplier = 1m - (Amount / 100m);
         return multiplier;
     }

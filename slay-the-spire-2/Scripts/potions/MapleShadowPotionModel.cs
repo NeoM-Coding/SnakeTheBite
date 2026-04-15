@@ -7,7 +7,7 @@ public abstract class MapleShadowPotionModel : CustomPotionModel
 {
     private string? _potionImagePath;
 
-    private string PotionImagePath => _potionImagePath ??= $"res://MapleShadow/images/potions/mapleshadow-{MapleShadowModelHelper.ToSnakeCase(GetType().Name)}.png";
+    private string PotionImagePath => _potionImagePath ??= $"res://MapleShadow/images/potions/MapleShadow-{MapleShadowModelHelper.ToSnakeCase(GetType().Name)}.png";
 
     /// <summary>药水图片路径。</summary>
     public override string? PackedImagePath => PotionImagePath;

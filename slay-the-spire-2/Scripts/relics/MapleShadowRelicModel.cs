@@ -8,7 +8,7 @@ public abstract class MapleShadowRelicModel : CustomRelicModel
 {
     private string? _imagePath;
 
-    private string ImagePath => _imagePath ??= $"res://MapleShadow/images/relics/mapleshadow-{MapleShadowModelHelper.ToSnakeCase(GetType().Name)}.png";
+    private string ImagePath => _imagePath ??= $"res://MapleShadow/images/relics/MapleShadow-{MapleShadowModelHelper.ToSnakeCase(GetType().Name)}.png";
 
     /// <summary>遗物小图标路径。</summary>
     public override string PackedIconPath => ImagePath;

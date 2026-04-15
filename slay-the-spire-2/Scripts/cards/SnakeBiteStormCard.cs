@@ -58,7 +58,7 @@ public class SnakeBiteStormCard : MapleShadowCardModel
             }
 
             // 本回合费用设为1
-            snakeBite.EnergyCost.SetThisCombat(1);
+            snakeBite.EnergyCost.SetThisTurn(1);
             snakeBites.Add(snakeBite);
         }
 

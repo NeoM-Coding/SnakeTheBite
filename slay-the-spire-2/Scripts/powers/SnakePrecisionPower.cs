@@ -2,6 +2,7 @@ using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -9,12 +10,14 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 namespace MapleShadow.Scripts.Powers;
 
 // 蛇之精准能力
-// 给予中毒时额外给予一次同样的层数
+// 给予中毒时额外给予 Amount 次同样的层数
 public class SnakePrecisionPower : MapleShadowPowerModel
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.None;
-    public override int DisplayAmount => 0;
+    public override PowerStackType StackType => PowerStackType.Counter;
+    public override int DisplayAmount => (int)Amount;
+
+    protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 
     // 防止递归触发的标志
     private bool _isApplyingBonus;
@@ -34,8 +37,11 @@ public class SnakePrecisionPower : MapleShadowPowerModel
             return;
 
         _isApplyingBonus = true;
-        Flash();
-        await PowerCmd.Apply<PoisonPower>(power.Owner, amount, Owner, cardSource);
+        for (int i = 0; i < Amount; i++)
+        {
+            Flash();
+            await PowerCmd.Apply<PoisonPower>(power.Owner, amount, Owner, cardSource);
+        }
         _isApplyingBonus = false;
     }
 }

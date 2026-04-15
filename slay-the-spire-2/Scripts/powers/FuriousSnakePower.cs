@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -16,13 +17,13 @@ namespace MapleShadow.Scripts.Powers;
 public class FuriousSnakePower : MapleShadowPowerModel
 {
     public override PowerType Type => PowerType.Buff;
+    public override PowerStackType StackType => PowerStackType.Counter;
+    public override int DisplayAmount => (int)Amount;
 
-    public override PowerStackType StackType => PowerStackType.None;
-
-    public override int DisplayAmount => 0;
+    protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 
     /// <summary>
-    /// 修改符合条件的卡牌的打出次数，使其额外打出一次。
+    /// 修改符合条件的卡牌的打出次数，使其额外打出 Amount 次。
     /// </summary>
     public override int ModifyCardPlayCount(CardModel card, Creature? target, int playCount)
     {
@@ -33,7 +34,7 @@ public class FuriousSnakePower : MapleShadowPowerModel
         if (!typeName.Contains("Snake", StringComparison.OrdinalIgnoreCase))
             return playCount;
 
-        return playCount + 1;
+        return playCount + (int)Amount;
     }
 
     /// <summary>
@@ -57,7 +58,7 @@ public class FuriousSnakePower : MapleShadowPowerModel
     }
 
     /// <summary>
-    /// 受到敌人攻击前触发：若存在未被格挡的伤害，则给予自身等量中毒。
+    /// 受到敌人攻击前触发：若存在未被格挡的伤害，则给予自身等量×Amount 的中毒。
     /// 过滤条件同荆棘类实现，排除非攻击/非敌人来源。
     /// </summary>
     public override async Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
@@ -73,7 +74,7 @@ public class FuriousSnakePower : MapleShadowPowerModel
         if (unblockedDamage > 0)
         {
             Flash();
-            await PowerCmd.Apply<PoisonPower>(target, unblockedDamage, target, null);
+            await PowerCmd.Apply<PoisonPower>(target, unblockedDamage * Amount, target, null);
         }
     }
 }
