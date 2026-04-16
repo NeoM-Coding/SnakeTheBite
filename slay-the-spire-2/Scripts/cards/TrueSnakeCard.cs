@@ -25,8 +25,7 @@ public class TrueSnakeCard : MapleShadowCardModel
         new PowerVar<TrueSnakePower>(1m)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        new[] { HoverTipFactory.FromPower<TrueSnakePower>() };
+    // 无额外悬停提示，效果已写在卡牌描述中
 
     public TrueSnakeCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {

@@ -12,7 +12,7 @@
     "MAPLESHADOW-SNAKE_PRECISION_POWER.title": "蛇之精准",
     "MAPLESHADOW-SNAKE_PRECISION_POWER.description": "给予中毒时额外给予[blue]{Amount}[/blue]次。",
     "MAPLESHADOW-SNAKE_VENOM_BOOST_POWER.title": "蛇液补充",
-    "MAPLESHADOW-SNAKE_VENOM_BOOST_POWER.description": "每场战斗结束后，随机为[blue]{Amount}[/blue]张蛇牌各增加1点中毒数值。",
+    "MAPLESHADOW-SNAKE_VENOM_BOOST_POWER.description": "战斗结束后，随机为[blue]{Amount}[/blue]张蛇牌[purple]附魔[/purple]：[gold]蛇液强化[/gold]。",
     "MAPLESHADOW-SNEAKY_SNAKE_POWER.title": "偷偷的蛇",
     "MAPLESHADOW-SNEAKY_SNAKE_POWER.description": "有中毒的敌人对你造成的伤害减少[blue]{Amount}[/blue]%。",
     "MAPLESHADOW-TRUE_POISON_POWER.title": "真实中毒",
@@ -22,5 +22,5 @@
     "MAPLESHADOW-SNAKE_RAIN_POWER.title": "要蛇喽！",
     "MAPLESHADOW-SNAKE_RAIN_POWER.description": "在你的回合开始时，给予所有敌人[blue]{Amount}[/blue]层中毒。",
     "MAPLESHADOW-SNAKE_BLASPHEMY_POWER.title": "渎蛇",
-    "MAPLESHADOW-SNAKE_BLASPHEMY_POWER.description": "这回合内，你给予敌人的中毒层数变为[blue]{Amount}[/blue]倍。在你的回合开始时，自身获得[blue]{Amount}[/blue]×7层中毒。"
+    "MAPLESHADOW-SNAKE_BLASPHEMY_POWER.description": "这回合内，你给予敌人的中毒层数变为[blue]{Amount}[/blue]倍。在你的回合开始时，自身获得[blue]{NextTurnPoison}[/blue]层中毒。"
 }

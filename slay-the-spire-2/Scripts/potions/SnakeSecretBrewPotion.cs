@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
+using MapleShadow.Scripts.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -39,7 +40,7 @@ public class SnakeSecretBrewPotion : MapleShadowPotionModel
 
         // 从所有卡牌中筛选出蛇牌，排除状态与诅咒
         var snakeCards = ModelDb.AllCards
-            .Where(c => IsSnakeCard(c) && c.Type != CardType.Status && c.Type != CardType.Curse)
+            .Where(c => MapleShadowCardTags.IsSnakeCard(c) && c.Type != CardType.Status && c.Type != CardType.Curse)
             .ToList();
 
         if (snakeCards.Count == 0)
@@ -69,9 +70,5 @@ public class SnakeSecretBrewPotion : MapleShadowPotionModel
         }
     }
 
-    /// <summary>判断卡牌是否属于蛇牌（类名含 Snake）。</summary>
-    private static bool IsSnakeCard(CardModel card)
-    {
-        return card.GetType().Name.Contains("Snake", StringComparison.OrdinalIgnoreCase);
-    }
+
 }

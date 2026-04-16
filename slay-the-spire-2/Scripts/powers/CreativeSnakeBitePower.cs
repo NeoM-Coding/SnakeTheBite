@@ -1,4 +1,5 @@
 using BaseLib.Abstracts;
+using MapleShadow.Scripts.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -28,7 +29,7 @@ public class CreativeSnakeBitePower : MapleShadowPowerModel
 
         // 从所有卡牌中筛选出类名含 Snake 的能力牌
         var snakePowers = ModelDb.AllCards
-            .Where(c => c.GetType().Name.Contains("Snake", StringComparison.OrdinalIgnoreCase) && c.Type == CardType.Power)
+            .Where(c => MapleShadowCardTags.IsSnakeCard(c) && c.Type == CardType.Power)
             .ToList();
 
         if (snakePowers.Count == 0)

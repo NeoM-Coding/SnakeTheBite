@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using HarmonyLib;
+using MapleShadow.Scripts.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -50,7 +51,7 @@ public class TrueSnakePower : MapleShadowPowerModel
 
         // 筛选手牌中的蛇牌毒牌：类名含 Snake 且 DynamicVars 包含 PoisonPower
         var poisonCards = hand.Cards
-            .Where(c => IsSnakeCard(c) && c.DynamicVars.ContainsKey("PoisonPower"))
+            .Where(c => MapleShadowCardTags.IsSnakeCard(c) && c.DynamicVars.ContainsKey("PoisonPower"))
             .ToList();
 
         if (poisonCards.Count == 0)
@@ -104,11 +105,7 @@ public class TrueSnakePower : MapleShadowPowerModel
         await Task.CompletedTask;
     }
 
-    // 判断卡牌是否属于蛇牌（类名含 Snake）
-    private static bool IsSnakeCard(CardModel card)
-    {
-        return card.GetType().Name.Contains("Snake", StringComparison.OrdinalIgnoreCase);
-    }
+
 }
 
 // Harmony 补丁：将被标记卡牌描述中的带数值"中毒"替换为紫色的"真实中毒"

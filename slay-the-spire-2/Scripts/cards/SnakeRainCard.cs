@@ -25,8 +25,7 @@ public class SnakeRainCard : MapleShadowCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new PowerVar<SnakeRainPower>(15m)];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        [HoverTipFactory.FromPower<SnakeRainPower>()];
+    // 无额外悬停提示，效果已写在卡牌描述中
 
     public SnakeRainCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {

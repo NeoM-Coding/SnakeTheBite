@@ -23,13 +23,13 @@ public class SnakeBlasphemyCard : MapleShadowCardModel
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new PowerVar<SnakeBlasphemyPower>(3m)];
+    [
+        new PowerVar<SnakeBlasphemyPower>(3m),
+        new DynamicVar("SnakeBlasphemyNextTurnPoison", 21m)
+    ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        [
-            HoverTipFactory.FromPower<SnakeBlasphemyPower>(),
-            HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
-        ];
+        [HoverTipFactory.FromKeyword(CardKeyword.Exhaust)];
 
     public SnakeBlasphemyCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {

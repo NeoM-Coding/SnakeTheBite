@@ -2,6 +2,7 @@
 using BaseLib.Abstracts;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -19,6 +20,17 @@ public class SnakeBlasphemyPower : MapleShadowPowerModel
     public override PowerStackType StackType => PowerStackType.Counter;
     public override int DisplayAmount => (int)Amount;
     protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
+
+    public override LocString Description
+    {
+        get
+        {
+            var desc = base.Description;
+            desc.Add("Amount", Amount);
+            desc.Add("NextTurnPoison", Amount * 7m);
+            return desc;
+        }
+    }
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {

@@ -1,10 +1,12 @@
 using BaseLib.Abstracts;
+using MapleShadow.Scripts.Enchantments;
+using MapleShadow.Scripts.Utils;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Helpers;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes;
@@ -25,8 +27,6 @@ public class SnakeVenomBoostPower : MapleShadowPowerModel
     // 强制使用 description 作为 smartDescription，以便 HoverTips 中注入 Amount 变量
     protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Amount", 1m)];
-
     // 战斗结束后触发
     // 注意：Power 的 AfterCombatVictory 会在玩家 Power 被清除后调用，因此使用 AfterCombatEnd。
     public override async Task AfterCombatEnd(CombatRoom room)
@@ -36,33 +36,43 @@ public class SnakeVenomBoostPower : MapleShadowPowerModel
 
         var deck = PileType.Deck.GetPile(Owner.Player);
         var snakeCards = deck.Cards
-            .Where(c => IsSnakeCard(c) && c.DynamicVars.ContainsKey("PoisonPower"))
+            .Where(c => MapleShadowCardTags.IsSnakeCard(c)
+                && c.DynamicVars.ContainsKey("PoisonPower")
+                && (c.Enchantment == null || c.Enchantment is SnakeVenomBoostEnchantment))
             .ToList();
 
         if (snakeCards.Count == 0)
             return;
 
-        int boostCount = Math.Min(snakeCards.Count, (int)Amount);
+        bool isLocalOwner = LocalContext.IsMe(Owner.Player);
+
+        int boostCount = (int)Amount;
         for (int i = 0; i < boostCount; i++)
         {
             var targetCard = Owner.Player.RunState.Rng.CombatCardSelection.NextItem(snakeCards);
             if (targetCard == null)
                 continue;
 
-            Flash();
-            targetCard.DynamicVars["PoisonPower"].UpgradeValueBy(1m);
-            snakeCards.Remove(targetCard);
+            if (isLocalOwner)
+            {
+                Flash();
+            }
 
-            // 播放升级动画（仅视觉效果，不真正升级卡牌）
-            NRun.Instance?.GlobalUi.CardPreviewContainer.AddChildSafely(NCardUpgradeVfx.Create(targetCard));
+            CardCmd.Enchant<SnakeVenomBoostEnchantment>(targetCard, 1m);
+            if (targetCard.Enchantment is SnakeVenomBoostEnchantment enchantment)
+            {
+                enchantment.ModifyCard();
+            }
+
+            // 只有能力拥有者的本地客户端才播放附魔动画
+            if (isLocalOwner)
+            {
+                NRun.Instance?.GlobalUi.CardPreviewContainer.AddChildSafely(NCardEnchantVfx.Create(targetCard));
+            }
         }
 
         await Task.CompletedTask;
     }
 
-    // 判断卡牌是否属于蛇牌
-    private static bool IsSnakeCard(CardModel card)
-    {
-        return card.GetType().Name.Contains("Snake", StringComparison.OrdinalIgnoreCase);
-    }
+
 }

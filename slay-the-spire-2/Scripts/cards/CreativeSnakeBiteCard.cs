@@ -30,9 +30,7 @@ public class CreativeSnakeBiteCard : MapleShadowCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new PowerVar<CreativeSnakeBitePower>(1m)];
 
-    // 悬停提示 - 显示创造性蛇咬能力的提示
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        [HoverTipFactory.FromPower<CreativeSnakeBitePower>()];
+    // 无额外悬停提示，效果已写在卡牌描述中
 
     public CreativeSnakeBiteCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {

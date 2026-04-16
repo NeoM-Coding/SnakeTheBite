@@ -1,6 +1,7 @@
 // 青蛇大学习 - 1费无色攻击，造成14点伤害，斩杀升级蛇牌
 using BaseLib.Abstracts;
 using BaseLib.Utils;
+using MapleShadow.Scripts.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -57,7 +58,7 @@ public class GreenSnakeStudyCard : MapleShadowCardModel
         {
             var deck = PileType.Deck.GetPile(Owner);
             var snakeBiteCards = deck.Cards
-                .Where(c => c.IsUpgradable && IsSnakeBiteCard(c))
+                .Where(c => c.IsUpgradable && MapleShadowCardTags.IsSnakeBiteCard(c))
                 .ToList();
 
             if (snakeBiteCards.Count > 0)
@@ -73,13 +74,7 @@ public class GreenSnakeStudyCard : MapleShadowCardModel
         }
     }
 
-    // 判断一张牌是否属于蛇牌（根据类名中是否包含 Snake）
-    // 本 mod 中除 TestCard 外所有自定义卡牌类名均含 Snake
-    private static bool IsSnakeBiteCard(CardModel card)
-    {
-        string typeName = card.GetType().Name;
-        return typeName.Contains("Snake", StringComparison.OrdinalIgnoreCase);
-    }
+
 
     // 升级后的效果逻辑 - 升级后增加4点伤害 (14 -> 18)
     protected override void OnUpgrade()

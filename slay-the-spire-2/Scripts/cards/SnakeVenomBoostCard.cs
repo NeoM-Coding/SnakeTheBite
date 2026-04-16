@@ -1,5 +1,6 @@
 using BaseLib.Abstracts;
 using BaseLib.Utils;
+using MapleShadow.Scripts.Enchantments;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -29,9 +30,8 @@ public class SnakeVenomBoostCard : MapleShadowCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new PowerVar<SnakeVenomBoostPower>(1m)];
 
-    // 悬停提示 - 显示蛇液补充能力的提示
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        [HoverTipFactory.FromPower<SnakeVenomBoostPower>()];
+    // 悬停提示中显示蛇液强化附魔的效果
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => HoverTipFactory.FromEnchantment<SnakeVenomBoostEnchantment>();
 
     public SnakeVenomBoostCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {

@@ -1,5 +1,6 @@
 // 怒蛇能力 - 本回合蛇牌额外打出，受未被格挡伤害时获得中毒
 using BaseLib.Abstracts;
+using MapleShadow.Scripts.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -30,8 +31,7 @@ public class FuriousSnakePower : MapleShadowPowerModel
         if (card.Owner.Creature != base.Owner)
             return playCount;
 
-        string typeName = card.GetType().Name;
-        if (!typeName.Contains("Snake", StringComparison.OrdinalIgnoreCase))
+        if (!MapleShadowCardTags.IsSnakeCard(card))
             return playCount;
 
         return playCount + (int)Amount;

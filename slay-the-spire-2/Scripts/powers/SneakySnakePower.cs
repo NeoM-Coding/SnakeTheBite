@@ -24,8 +24,6 @@ public class SneakySnakePower : MapleShadowPowerModel
     // 强制使用 description 作为 smartDescription，以便 HoverTips 中注入 Amount 变量
     protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Amount", 25m)];
-
     // 修改受到的伤害倍数（百分比减免）
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {

@@ -1,5 +1,6 @@
 // 蛇之赠礼能力 - 战斗结束随机升级非蛇牌
 using BaseLib.Abstracts;
+using MapleShadow.Scripts.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -31,7 +32,7 @@ public class SnakeGiftPower : MapleShadowPowerModel
 
         var deck = PileType.Deck.GetPile(base.Owner.Player);
         var upgradableCards = deck.Cards
-            .Where(c => c.IsUpgradable && !IsSnakeCard(c))
+            .Where(c => c.IsUpgradable && !MapleShadowCardTags.IsSnakeCard(c))
             .ToList();
 
         int upgradeCount = Math.Min(upgradableCards.Count, (int)Amount);
@@ -48,9 +49,5 @@ public class SnakeGiftPower : MapleShadowPowerModel
         await Task.CompletedTask;
     }
 
-    /// <summary>判断卡牌是否属于蛇牌（类名含 Snake）。</summary>
-    private static bool IsSnakeCard(CardModel card)
-    {
-        return card.GetType().Name.Contains("Snake", StringComparison.OrdinalIgnoreCase);
-    }
+
 }

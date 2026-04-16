@@ -27,15 +27,12 @@ public class FuriousSnakeCard : MapleShadowCardModel
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
-    // 定义变量：中毒层数(不升级7，升级不变)
+    // 定义变量：中毒层数与怒蛇层数
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<PoisonPower>(7m)
+        new PowerVar<PoisonPower>(7m),
+        new PowerVar<FuriousSnakePower>(1m)
     ];
-
-    // 悬停提示 - 显示怒蛇 power 的提示
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        new[] { HoverTipFactory.FromPower<FuriousSnakePower>() };
 
     public FuriousSnakeCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
@@ -50,7 +47,7 @@ public class FuriousSnakeCard : MapleShadowCardModel
         await PowerCmd.Apply<PoisonPower>(Owner.Creature, DynamicVars.Poison.BaseValue, Owner.Creature, this);
 
         // 本回合进入怒蛇状态
-        await PowerCmd.Apply<FuriousSnakePower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<FuriousSnakePower>(Owner.Creature, DynamicVars["FuriousSnakePower"].BaseValue, Owner.Creature, this);
     }
 
     // 升级后的效果逻辑 - 费用减1（2 → 1）
