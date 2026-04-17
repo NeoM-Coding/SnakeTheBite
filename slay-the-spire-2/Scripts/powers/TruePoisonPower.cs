@@ -152,13 +152,13 @@ internal static class TruePoisonHealthBarHelper
 
         if (totalPoison > 0 && totalPoison >= creature.CurrentHp)
         {
-            hpLabel.AddThemeColorOverride(ThemeConstants.Label.fontColor, new Color("76FF40"));
-            hpLabel.AddThemeColorOverride(ThemeConstants.Label.fontOutlineColor, new Color("074700"));
+            hpLabel.AddThemeColorOverride("font_color", new Color("76FF40"));
+            hpLabel.AddThemeColorOverride("font_outline_color", new Color("074700"));
         }
         else if (doomAmount > 0 && doomAmount >= creature.CurrentHp - totalPoison)
         {
-            hpLabel.AddThemeColorOverride(ThemeConstants.Label.fontColor, new Color("FB8DFF"));
-            hpLabel.AddThemeColorOverride(ThemeConstants.Label.fontOutlineColor, new Color("2D1263"));
+            hpLabel.AddThemeColorOverride("font_color", new Color("FB8DFF"));
+            hpLabel.AddThemeColorOverride("font_outline_color", new Color("2D1263"));
         }
     }
 }

@@ -24,7 +24,7 @@
     </Reference>
 
     <Reference Include="BaseLib">
-      <HintPath>$(Sts2Dir)\mods\sts2-heybox-support\BaseLib.dll</HintPath>
+      <HintPath>$(Sts2Dir)\mods\Baselib\BaseLib.dll</HintPath>
       <Private>false</Private>
     </Reference>
   </ItemGroup>

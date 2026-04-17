@@ -27,9 +27,9 @@ public class SnakeSecretBrewPotion : MapleShadowPotionModel
     // 目标类型 - 自己（不能给队友）
     public override TargetType TargetType => TargetType.Self;
 
-    // 药水图片路径
-    public override string? PackedImagePath => $"res://MapleShadow/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
-    public override string? PackedOutlinePath => $"res://MapleShadow/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
+    // 药水自定义图片路径
+    public override string? CustomImagePath => $"res://MapleShadow/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
+    public override string? CustomOutlinePath => $"res://MapleShadow/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
 
     /// <summary>
     /// 使用时的效果逻辑：从三张随机蛇牌中选择一张，本回合费用随机后加入手牌。

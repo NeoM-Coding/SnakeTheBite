@@ -77,23 +77,25 @@ public class SnakeFangRelic : MapleShadowRelicModel
 /// <summary>
 /// Harmony 补丁：阻止异蛇之牙与异蛇之鳞在商店生成。
 /// 
-/// 原理：RelicFactory.PullNextRelicFromBack(Player, RelicRarity, IEnumerable&lt;RelicModel&gt;) 
-/// 是商店填充/补货遗物时的专用方法。通过 Prefix 将两个遗物的 canonical 实例追加到 blacklist，
+/// 原理：RelicFactory.PullNextRelicFromBack(Player, RelicRarity, Func&lt;RelicModel, bool&gt;)
+/// 是商店填充/补货遗物时的专用方法。通过 Prefix 将两个遗物的 canonical 实例追加到过滤条件中，
 /// 使商店抽奖池在过滤时自动跳过它们。
 /// </summary>
-[HarmonyPatch(typeof(RelicFactory), nameof(RelicFactory.PullNextRelicFromBack), new[] { typeof(Player), typeof(RelicRarity), typeof(IEnumerable<RelicModel>) })]
+[HarmonyPatch(typeof(RelicFactory), nameof(RelicFactory.PullNextRelicFromBack), new[] { typeof(Player), typeof(RelicRarity), typeof(Func<RelicModel, bool>) })]
 public static class RelicFactoryShopExclusionPatch
 {
     /// <summary>
-    /// 在 RelicFactory.PullNextRelicFromBack 执行前，将 SnakeFangRelic 与 SnakeScaleRelic 加入黑名单。
+    /// 在 RelicFactory.PullNextRelicFromBack 执行前，将 SnakeFangRelic 与 SnakeScaleRelic 加入过滤器。
     /// </summary>
-    /// <param name="blacklist">商店当前已禁止的遗物列表（ref 参数，可直接修改）。</param>
-    static void Prefix(ref IEnumerable<RelicModel> blacklist)
+    /// <param name="filter">商店当前已使用的遗物过滤函数（ref 参数，可直接修改）。</param>
+    static void Prefix(ref Func<RelicModel, bool> filter)
     {
-        blacklist = blacklist.Concat(new RelicModel[]
+        var originalFilter = filter;
+        filter = relic =>
         {
-            ModelDb.Relic<SnakeFangRelic>(),
-            ModelDb.Relic<SnakeScaleRelic>()
-        });
+            if (relic is SnakeFangRelic || relic is SnakeScaleRelic)
+                return false;
+            return originalFilter?.Invoke(relic) ?? true;
+        };
     }
 }

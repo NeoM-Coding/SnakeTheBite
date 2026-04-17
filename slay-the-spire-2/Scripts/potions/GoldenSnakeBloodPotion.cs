@@ -32,9 +32,9 @@ public class GoldenSnakeBloodPotion : MapleShadowPotionModel
     // 动态变量 - 获得25金币
     protected override IEnumerable<DynamicVar> CanonicalVars => [new GoldVar(25)];
 
-    // 药水图片路径
-    public override string? PackedImagePath => "res://MapleShadow/images/potions/MapleShadow-golden_snake_blood_potion.png";
-    public override string? PackedOutlinePath => "res://MapleShadow/images/potions/MapleShadow-golden_snake_blood_potion.png";
+    // 药水自定义图片路径
+    public override string? CustomImagePath => "res://MapleShadow/images/potions/MapleShadow-golden_snake_blood_potion.png";
+    public override string? CustomOutlinePath => "res://MapleShadow/images/potions/MapleShadow-golden_snake_blood_potion.png";
 
     // 标记是否正在商店生成过程中
     public static bool IsInShopGeneration { get; set; }
