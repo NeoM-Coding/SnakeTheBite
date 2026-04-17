@@ -1,8 +1,8 @@
 {
     "MAPLESHADOW-SNAKE_FANG_RELIC.title": "异蛇之牙",
-    "MAPLESHADOW-SNAKE_FANG_RELIC.description": "每当你对敌人给予一次中毒时，对随机一名敌人造成[blue]{Damage}[/blue]点伤害。",
+    "MAPLESHADOW-SNAKE_FANG_RELIC.description": "每当你对敌人给予[blue]1[/blue]次[gold]中毒[/gold]时，对随机一名敌人造成[blue]{Damage}[/blue]点[gold]伤害[/gold]。",
     "MAPLESHADOW-SNAKE_FANG_RELIC.flavor": "从异蛇身上取下的牙齿。",
     "MAPLESHADOW-SNAKE_SCALE_RELIC.title": "异蛇之鳞",
-    "MAPLESHADOW-SNAKE_SCALE_RELIC.description": "每当你对敌人给予一次中毒时，获得[blue]{Block}[/blue]点格挡。",
+    "MAPLESHADOW-SNAKE_SCALE_RELIC.description": "每当你对敌人给予[blue]1[/blue]次[gold]中毒[/gold]时，获得[blue]{Block}[/blue]点[gold]格挡[/gold]。",
     "MAPLESHADOW-SNAKE_SCALE_RELIC.flavor": "从异蛇身上剥下的鳞片。"
 }

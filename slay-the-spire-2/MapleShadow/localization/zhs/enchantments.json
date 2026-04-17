@@ -1,4 +1,4 @@
 {
     "SNAKE_VENOM_BOOST_ENCHANTMENT.title": "蛇液强化",
-    "SNAKE_VENOM_BOOST_ENCHANTMENT.description": "中毒数值 +{Amount}。"
+    "SNAKE_VENOM_BOOST_ENCHANTMENT.description": "[gold]中毒[/gold]数值 +[blue]{Amount}[/blue]。"
 }
