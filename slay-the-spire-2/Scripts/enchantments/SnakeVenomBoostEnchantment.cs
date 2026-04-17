@@ -13,7 +13,7 @@ public class SnakeVenomBoostEnchantment : MapleShadowEnchantmentModel
     public override bool IsStackable => true;
 
     // 附魔图标路径
-    public override string? CustomIconPath => $"res://MapleShadow/images/enchantments/{MapleShadowModelHelper.ToSnakeCase(GetType().Name)}.png";
+    protected override string? CustomIconPath => $"res://MapleShadow/images/enchantments/{MapleShadowModelHelper.ToSnakeCase(GetType().Name)}.png";
 
     // 只能附魔到带毒的蛇牌上
     public override bool CanEnchant(CardModel card)

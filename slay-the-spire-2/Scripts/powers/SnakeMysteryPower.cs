@@ -14,7 +14,7 @@ namespace MapleShadow.Scripts.Powers;
 
 public class SnakeMysteryPower : MapleShadowPowerModel
 {
-    /// <summary>内部数据，用于保存当前隐秘点数。</summary>
+    // 内部数据，用于保存当前隐秘点数。
     private class Data
     {
         public int points = 0;
@@ -24,26 +24,26 @@ public class SnakeMysteryPower : MapleShadowPowerModel
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    /// <summary>显示当前隐秘点数作为能力层数。</summary>
+    // 显示当前隐秘点数作为能力层数。
     public override int DisplayAmount => GetInternalData<Data>().points;
 
-    /// <summary>该能力使用实例化内部数据。</summary>
+    // 该能力使用实例化内部数据。
     public override bool IsInstanced => true;
 
-    /// <summary>每次打出蛇咬获得的隐秘点数（默认2点）。</summary>
+    // 每次打出蛇咬获得的隐秘点数（默认2点）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         new[] { new DynamicVar("PointsPerSnakeBite", 2m) };
 
-    /// <summary>初始化内部数据。</summary>
+    // 初始化内部数据。
     protected override object InitInternalData()
     {
         return new Data();
     }
 
-    /// <summary>
-    /// 打出卡牌后触发：若打出的是蛇咬，则获得隐秘点数。
-    /// 累积满7点时，消耗7点并施加一层无实体；支持连续多次触发。
-    /// </summary>
+    //
+    // 打出卡牌后触发：若打出的是蛇咬，则获得隐秘点数。
+    // 累积满7点时，消耗7点并施加一层无实体；支持连续多次触发。
+    //
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
         if (cardPlay.Card.Owner.Creature != base.Owner)
@@ -66,7 +66,7 @@ public class SnakeMysteryPower : MapleShadowPowerModel
         }
     }
 
-    /// <summary>判断卡牌是否属于蛇咬牌（类名含 Snakebite）。</summary>
+    // 判断卡牌是否属于蛇咬牌（类名含 Snakebite）。
     private static bool IsSnakeBiteCard(CardModel card)
     {
         return card.GetType().Name.Contains("Snakebite", StringComparison.OrdinalIgnoreCase);

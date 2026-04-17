@@ -25,13 +25,13 @@ public class SnakeVenomCard : MapleShadowCardModel
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
-    /// <summary>卡牌动态变量：5层中毒（升级后7层）。</summary>
+    // 卡牌动态变量：5层中毒（升级后7层）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<PoisonPower>(5m)
     ];
 
-    /// 悬停提示：显示中毒效果的提示信息。
+    // 悬停提示：显示中毒效果的提示信息。
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
 
@@ -39,12 +39,12 @@ public class SnakeVenomCard : MapleShadowCardModel
     {
     }
 
-    /// <summary>
-    /// 打出时的效果逻辑。
-    /// 1. 播放攻击动画；
-    /// 2. 在目标身上播放咬击特效；
-    /// 3. 给予目标 DynamicVars.Poison 层数的中毒。
-    /// </summary>
+    //
+    // 打出时的效果逻辑。
+    // 1. 播放攻击动画；
+    // 2. 在目标身上播放咬击特效；
+    // 3. 给予目标 DynamicVars.Poison 层数的中毒。
+    //
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
@@ -53,7 +53,7 @@ public class SnakeVenomCard : MapleShadowCardModel
         await PowerCmd.Apply<PoisonPower>(cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
     }
 
-    /// <summary>升级后的效果：中毒层数 +2（5 → 7）。</summary>
+    // 升级后的效果：中毒层数 +2（5 → 7）。
     protected override void OnUpgrade()
     {
         DynamicVars.Poison.UpgradeValueBy(2m);

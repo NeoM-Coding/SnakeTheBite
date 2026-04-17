@@ -15,21 +15,21 @@ namespace MapleShadow.Scripts.Potions;
 [Pool(typeof(SharedPotionPool))]
 public class SnakeInABottlePotion : MapleShadowPotionModel
 {
-    /// <summary>稀有度 - 稀有（金）。</summary>
+    // 稀有度 - 稀有（金）。
     public override PotionRarity Rarity => PotionRarity.Rare;
 
-    /// <summary>使用方式 - 自动（受到致命伤害时自动触发）。</summary>
+    // 使用方式 - 自动（受到致命伤害时自动触发）。
     public override PotionUsage Usage => PotionUsage.Automatic;
 
-    /// <summary>目标类型 - 自己。</summary>
+    // 目标类型 - 自己。
     public override TargetType TargetType => TargetType.Self;
 
-    /// <summary>不在战斗奖励中生成（参考瓶中精灵）。</summary>
+    // 不在战斗奖励中生成（参考瓶中精灵）。
     public override bool CanBeGeneratedInCombat => false;
 
-    /// <summary>
-    /// 使用时的效果逻辑：恢复至25%最大生命值，并施加3层中毒。
-    /// </summary>
+    //
+    // 使用时的效果逻辑：恢复至25%最大生命值，并施加3层中毒。
+    //
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
         PotionModel.AssertValidForTargetedPotion(target);
@@ -38,9 +38,9 @@ public class SnakeInABottlePotion : MapleShadowPotionModel
         await PowerCmd.Apply<PoisonPower>(target, 3m, target, null);
     }
 
-    /// <summary>
-    /// 当持有者受到致命伤害时，阻止死亡（返回 false 表示不死亡）。
-    /// </summary>
+    //
+    // 当持有者受到致命伤害时，阻止死亡（返回 false 表示不死亡）。
+    //
     public override bool ShouldDie(Creature creature)
     {
         if (creature != Owner.Creature)
@@ -50,9 +50,9 @@ public class SnakeInABottlePotion : MapleShadowPotionModel
         return false;
     }
 
-    /// <summary>
-    /// 阻止死亡后触发药水效果（自动丢弃并恢复生命+中毒）。
-    /// </summary>
+    //
+    // 阻止死亡后触发药水效果（自动丢弃并恢复生命+中毒）。
+    //
     public override async Task AfterPreventingDeath(Creature creature)
     {
         await OnUseWrapper(new ThrowingPlayerChoiceContext(), creature);

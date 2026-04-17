@@ -10,15 +10,15 @@ public abstract class MapleShadowPowerModel : CustomPowerModel
 
     private string ImagePath => _imagePath ??= $"res://MapleShadow/images/powers/{MapleShadowModelHelper.ToSnakeCase(GetType().Name)}.png";
 
-    /// <summary>能力小图标路径（power atlas）。</summary>
+    // 能力小图标路径（power atlas）。
     public override string? CustomPackedIconPath => ImagePath;
 
-    /// <summary>能力大图标路径。</summary>
+    // 能力大图标路径。
     public override string? CustomBigIconPath => ImagePath;
 
-    /// <summary>
-    /// 在 Description 中自动注入当前 Amount，确保 DumbHoverTip 等场景也能正确显示数值。
-    /// </summary>
+    //
+    // 在 Description 中自动注入当前 Amount，确保 DumbHoverTip 等场景也能正确显示数值。
+    //
     public override LocString Description
     {
         get

@@ -27,16 +27,16 @@ public class FlyingSnakeSpinBiteCard : MapleShadowCardModel
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
-    /// <summary>
-    /// 卡牌动态变量：2层中毒（升级后3层）。
-    /// 在本地化描述中可用 {PoisonPower:diff()} 引用。
-    /// </summary>
+    //
+    // 卡牌动态变量：2层中毒（升级后3层）。
+    // 在本地化描述中可用 {PoisonPower:diff()} 引用。
+    //
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<PoisonPower>(2m)
     ];
 
-    /// <summary>悬停提示：显示中毒效果的提示信息。</summary>
+    // 悬停提示：显示中毒效果的提示信息。
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         new[] { HoverTipFactory.FromPower<PoisonPower>() };
 
@@ -44,15 +44,15 @@ public class FlyingSnakeSpinBiteCard : MapleShadowCardModel
     {
     }
 
-    /// <summary>
-    /// 打出时的效果逻辑。
-    /// 
-    /// 流程：
-    /// 1. 播放攻击动画；
-    /// 2. 获取当前所有可攻击敌人；
-    /// 3. 随机选取3名敌人（若敌人少于3名，允许重复命中同一敌人），
-    ///    每次命中播放咬击特效并施加 DynamicVars.Poison 层数的中毒。
-    /// </summary>
+    //
+    // 打出时的效果逻辑。
+    //
+    // 流程：
+    // 1. 播放攻击动画；
+    // 2. 获取当前所有可攻击敌人；
+    // 3. 随机选取3名敌人（若敌人少于3名，允许重复命中同一敌人），
+    // 每次命中播放咬击特效并施加 DynamicVars.Poison 层数的中毒。
+    //
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         // 播放攻击动画
@@ -80,7 +80,7 @@ public class FlyingSnakeSpinBiteCard : MapleShadowCardModel
         }
     }
 
-    /// <summary>升级后的效果：中毒层数 +1（2 → 3）。</summary>
+    // 升级后的效果：中毒层数 +1（2 → 3）。
     protected override void OnUpgrade()
     {
         DynamicVars.Poison.UpgradeValueBy(1m);

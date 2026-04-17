@@ -25,19 +25,19 @@ public class SnakeBiteNowCard : MapleShadowCardModel
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
-    /// <summary>该卡牌自带"消耗"关键词。</summary>
+    // 该卡牌自带"消耗"关键词。
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     public SnakeBiteNowCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
     }
 
-    /// <summary>
-    /// 打出时的效果逻辑。
-    /// 
-    /// 获取目标当前的中毒层数，并立即对其造成同等数值的不可格挡、不受力量/敏捷影响的伤害，
-    /// 随后减少目标身上 1 层中毒。
-    /// </summary>
+    //
+    // 打出时的效果逻辑。
+    //
+    // 获取目标当前的中毒层数，并立即对其造成同等数值的不可格挡、不受力量/敏捷影响的伤害，
+    // 随后减少目标身上 1 层中毒。
+    //
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
@@ -62,7 +62,7 @@ public class SnakeBiteNowCard : MapleShadowCardModel
         }
     }
 
-    /// <summary>升级后的效果：费用减1（2 → 1）。</summary>
+    // 升级后的效果：费用减1（2 → 1）。
     protected override void OnUpgrade()
     {
         EnergyCost.UpgradeBy(-1);

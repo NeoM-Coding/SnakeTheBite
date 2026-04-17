@@ -28,7 +28,7 @@ public class GreenSnakeStudyCard : MapleShadowCardModel
     private const TargetType targetType = TargetType.AnyEnemy;
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
-    /// <summary>该卡牌自带"消耗"关键词。</summary>
+    // 该卡牌自带"消耗"关键词。
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     // 定义变量：伤害(不升级14，升级18)

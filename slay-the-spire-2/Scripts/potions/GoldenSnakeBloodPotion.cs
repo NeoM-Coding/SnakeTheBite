@@ -33,8 +33,8 @@ public class GoldenSnakeBloodPotion : MapleShadowPotionModel
     protected override IEnumerable<DynamicVar> CanonicalVars => [new GoldVar(25)];
 
     // 药水自定义图片路径
-    public override string? CustomImagePath => "res://MapleShadow/images/potions/MapleShadow-golden_snake_blood_potion.png";
-    public override string? CustomOutlinePath => "res://MapleShadow/images/potions/MapleShadow-golden_snake_blood_potion.png";
+    public override string? CustomPackedImagePath => "res://MapleShadow/images/potions/MapleShadow-golden_snake_blood_potion.png";
+    public override string? CustomPackedOutlinePath => "res://MapleShadow/images/potions/MapleShadow-golden_snake_blood_potion.png";
 
     // 标记是否正在商店生成过程中
     public static bool IsInShopGeneration { get; set; }
@@ -47,9 +47,7 @@ public class GoldenSnakeBloodPotion : MapleShadowPotionModel
     }
 }
 
-/// <summary>
-/// 商店库存生成补丁：在商店生成药水时将黄金蛇血加入黑名单
-/// </summary>
+// 商店库存生成补丁：在商店生成药水时将黄金蛇血加入黑名单
 [HarmonyPatch(typeof(MerchantInventory), "PopulatePotionEntries")]
 public static class MerchantInventoryPotionPatch
 {
@@ -64,9 +62,7 @@ public static class MerchantInventoryPotionPatch
     }
 }
 
-/// <summary>
-/// 商店补货补丁：在商店补货时将黄金蛇血加入黑名单
-/// </summary>
+// 商店补货补丁：在商店补货时将黄金蛇血加入黑名单
 [HarmonyPatch(typeof(MerchantPotionEntry), "FillSlot")]
 public static class MerchantPotionEntryRestockPatch
 {
@@ -81,9 +77,7 @@ public static class MerchantPotionEntryRestockPatch
     }
 }
 
-/// <summary>
-/// 药水选项过滤器：当处于商店生成流程时，排除黄金蛇血
-/// </summary>
+// 药水选项过滤器：当处于商店生成流程时，排除黄金蛇血
 [HarmonyPatch(typeof(PotionFactory), nameof(PotionFactory.GetPotionOptions))]
 public static class PotionFactoryShopExclusionPatch
 {

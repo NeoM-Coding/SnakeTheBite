@@ -23,9 +23,9 @@ public class FuriousSnakePower : MapleShadowPowerModel
 
     protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 
-    /// <summary>
-    /// 修改符合条件的卡牌的打出次数，使其额外打出 Amount 次。
-    /// </summary>
+    //
+    // 修改符合条件的卡牌的打出次数，使其额外打出 Amount 次。
+    //
     public override int ModifyCardPlayCount(CardModel card, Creature? target, int playCount)
     {
         if (card.Owner.Creature != base.Owner)
@@ -37,18 +37,18 @@ public class FuriousSnakePower : MapleShadowPowerModel
         return playCount + (int)Amount;
     }
 
-    /// <summary>
-    /// 成功修改卡牌打出次数后触发：播放闪光特效。
-    /// </summary>
+    //
+    // 成功修改卡牌打出次数后触发：播放闪光特效。
+    //
     public override Task AfterModifyingCardPlayCount(CardModel card)
     {
         Flash();
         return Task.CompletedTask;
     }
 
-    /// <summary>
-    /// 自己的回合开始时移除该状态，确保敌人的攻击阶段仍然生效。
-    /// </summary>
+    //
+    // 自己的回合开始时移除该状态，确保敌人的攻击阶段仍然生效。
+    //
     public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
     {
         if (side == base.Owner.Side)
@@ -57,10 +57,10 @@ public class FuriousSnakePower : MapleShadowPowerModel
         }
     }
 
-    /// <summary>
-    /// 受到敌人攻击前触发：若存在未被格挡的伤害，则给予自身等量×Amount 的中毒。
-    /// 过滤条件同荆棘类实现，排除非攻击/非敌人来源。
-    /// </summary>
+    //
+    // 受到敌人攻击前触发：若存在未被格挡的伤害，则给予自身等量×Amount 的中毒。
+    // 过滤条件同荆棘类实现，排除非攻击/非敌人来源。
+    //
     public override async Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
         if (target != base.Owner || dealer == null || !dealer.IsEnemy)

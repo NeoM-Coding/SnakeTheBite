@@ -5,10 +5,10 @@ namespace MapleShadow.Scripts;
 
 public static class MapleShadowModelHelper
 {
-    /// <summary>
-    /// 将 PascalCase 文本转换为 snake_case。
-    /// 例如：TestCard -> test_card，SnakeBiteThornsPower -> snake_bite_thorns_power
-    /// </summary>
+    //
+    // 将 PascalCase 文本转换为 snake_case。
+    // 例如：TestCard -> test_card，SnakeBiteThornsPower -> snake_bite_thorns_power
+    //
     public static string ToSnakeCase(string text)
     {
         if (string.IsNullOrEmpty(text))

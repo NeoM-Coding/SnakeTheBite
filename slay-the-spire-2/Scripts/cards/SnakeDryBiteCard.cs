@@ -24,7 +24,7 @@ public class SnakeDryBiteCard : MapleShadowCardModel
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
-    /// <summary>卡牌动态变量：9点伤害（升级后12点）。</summary>
+    // 卡牌动态变量：9点伤害（升级后12点）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(7, ValueProp.Move)
@@ -34,9 +34,9 @@ public class SnakeDryBiteCard : MapleShadowCardModel
     {
     }
 
-    /// <summary>
-    /// 打出时的效果逻辑：对目标造成 DynamicVars.Damage 点伤害。
-    /// </summary>
+    //
+    // 打出时的效果逻辑：对目标造成 DynamicVars.Damage 点伤害。
+    //
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
@@ -45,7 +45,7 @@ public class SnakeDryBiteCard : MapleShadowCardModel
             .Execute(choiceContext);
     }
 
-    /// <summary>升级后的效果：伤害 +3（9 → 12）。</summary>
+    // 升级后的效果：伤害 +3（9 → 12）。
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(3);

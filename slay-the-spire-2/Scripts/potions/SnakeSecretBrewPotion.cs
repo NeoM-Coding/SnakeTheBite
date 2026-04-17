@@ -28,12 +28,10 @@ public class SnakeSecretBrewPotion : MapleShadowPotionModel
     public override TargetType TargetType => TargetType.Self;
 
     // 药水自定义图片路径
-    public override string? CustomImagePath => $"res://MapleShadow/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
-    public override string? CustomOutlinePath => $"res://MapleShadow/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
+    public override string? CustomPackedImagePath => $"res://MapleShadow/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
+    public override string? CustomPackedOutlinePath => $"res://MapleShadow/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
 
-    /// <summary>
-    /// 使用时的效果逻辑：从三张随机蛇牌中选择一张，本回合费用随机后加入手牌。
-    /// </summary>
+    // 使用时的效果逻辑：从三张随机蛇牌中选择一张，本回合费用随机后加入手牌。
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
         PotionModel.AssertValidForTargetedPotion(target);

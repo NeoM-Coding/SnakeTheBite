@@ -21,10 +21,10 @@ public class SnakeGiftPower : MapleShadowPowerModel
 
     protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 
-    /// <summary>
-    /// 战斗结束后触发：从牌库中筛选出可升级且非蛇的卡牌，随机升级其中 Amount 张。
-    /// 注意：Power 的 AfterCombatVictory 会在玩家 Power 被清除后调用，因此使用 AfterCombatEnd。
-    /// </summary>
+    //
+    // 战斗结束后触发：从牌库中筛选出可升级且非蛇的卡牌，随机升级其中 Amount 张。
+    // 注意：Power 的 AfterCombatVictory 会在玩家 Power 被清除后调用，因此使用 AfterCombatEnd。
+    //
     public override async Task AfterCombatEnd(CombatRoom room)
     {
         if (base.Owner.Player == null)
