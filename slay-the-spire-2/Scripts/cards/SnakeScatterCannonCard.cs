@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MapleShadow.Scripts.Powers;
 
 namespace MapleShadow.Scripts.Cards;
 
@@ -47,23 +48,30 @@ public class SnakeScatterCannonCard : MapleShadowCardModel
         // 播放动画
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         
-        // 获取自身当前的中毒层数
+        // 获取自身当前的中毒层数（普通中毒 + 真实中毒）
         int poisonRemoved = Owner.Creature.GetPowerAmount<PoisonPower>();
+        int truePoisonRemoved = Owner.Creature.GetPowerAmount<TruePoisonPower>();
+        int totalRemoved = poisonRemoved + truePoisonRemoved;
         
         // 如果有中毒层数，则移除并给予敌人
-        if (poisonRemoved > 0)
+        if (totalRemoved > 0)
         {
-            // 移除自身所有中毒
-            await PowerCmd.Remove<PoisonPower>(Owner.Creature);
+            // 移除自身所有普通中毒
+            if (poisonRemoved > 0)
+                await PowerCmd.Remove<PoisonPower>(Owner.Creature);
+            
+            // 移除自身所有真实中毒
+            if (truePoisonRemoved > 0)
+                await PowerCmd.Remove<TruePoisonPower>(Owner.Creature);
             
             // 获取可攻击的敌人列表
             var enemies = CombatState?.HittableEnemies;
             if (enemies == null || enemies.Count == 0)
                 return;
             
-            // 每移除1层中毒，随机给予一名敌人对应层数的中毒，执行poisonRemoved次
+            // 每移除1层中毒，随机给予一名敌人对应层数的中毒
             int poisonPerHit = DynamicVars.Poison.IntValue;
-            for (int i = 0; i < poisonRemoved; i++)
+            for (int i = 0; i < totalRemoved; i++)
             {
                 Creature? enemy = Owner.RunState.Rng.CombatTargets.NextItem(enemies);
                 if (enemy == null)

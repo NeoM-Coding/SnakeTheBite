@@ -62,7 +62,7 @@ public class SnakeSlashWaveCard : MapleShadowCardModel
     // 升级后的效果逻辑
     protected override void OnUpgrade()
     {
-        DynamicVars.Poison.UpgradeValueBy(2m); // 升级后增加2层中毒（7 -> 9）
-        DynamicVars.Block.UpgradeValueBy(2m);  // 升级后增加2点格挡（7 -> 9）
+        DynamicVars.Poison.UpgradeValueBy(3m); // 升级后增加3层中毒（7 -> 10）
+        DynamicVars.Block.UpgradeValueBy(3m);  // 升级后增加3点格挡（7 -> 10）
     }
 }

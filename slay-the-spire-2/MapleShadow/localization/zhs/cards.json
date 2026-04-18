@@ -74,7 +74,7 @@
     "MAPLESHADOW-SNAKE_BITE_CARD.title": "你好，蛇咬",
     "MAPLESHADOW-SNAKE_BITE_CARD.description": "在你的回合开始时，将{SnakeBitePower:diff()}张非[gold]能力[/gold]非[gold]状态[/gold]的蛇牌放入手牌。",
     "MAPLESHADOW-HANG_SNAKE_CARD.title": "吊蛇",
-    "MAPLESHADOW-HANG_SNAKE_CARD.description": "造成{Damage:diff()}点伤害。\n施加[gold]吊蛇[/gold]。",
+    "MAPLESHADOW-HANG_SNAKE_CARD.description": "给予敌人{PoisonPower:diff()}层[gold]中毒[/gold]。\n施加[gold]吊蛇[/gold]。",
     "MAPLESHADOW-TOXIC_SNAKE_FLAME_CARD.title": "至毒蛇焰",
     "MAPLESHADOW-TOXIC_SNAKE_FLAME_CARD.description": "自身获得{PoisonPower:diff()}层中毒。\n抽{Draw:diff()}张牌。",
     "MAPLESHADOW-SNAKE_BITE_YOU_CARD.title": "蛇咬着你",
