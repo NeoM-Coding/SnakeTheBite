@@ -27,9 +27,13 @@ public class SneakySnakePower : MapleShadowPowerModel
     // 修改受到的伤害倍数（百分比减免）
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
+        if (target != Owner)
+            return 1m;
         if (dealer == null || !dealer.IsEnemy)
             return 1m;
         if (!dealer.HasPower<PoisonPower>() && !dealer.HasPower<TruePoisonPower>())
+            return 1m;
+        if (!props.IsPoweredAttack())
             return 1m;
 
         decimal multiplier = 1m - (Amount / 100m);
