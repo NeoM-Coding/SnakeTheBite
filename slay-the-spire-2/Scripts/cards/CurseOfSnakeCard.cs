@@ -20,9 +20,9 @@ public class CurseOfSnakeCard : MapleShadowCardModel
 
     public override int MaxUpgradeLevel => 0;
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Unplayable];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Unplayable, CardKeyword.Eternal];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromKeyword(CardKeyword.Unplayable)];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromKeyword(CardKeyword.Unplayable), HoverTipFactory.FromKeyword(CardKeyword.Eternal)];
 
     public CurseOfSnakeCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
