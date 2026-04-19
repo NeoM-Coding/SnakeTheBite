@@ -4,5 +4,9 @@
     "MAPLESHADOW-SNAKE_IN_A_BOTTLE_POTION.title": "瓶中异蛇",
     "MAPLESHADOW-SNAKE_IN_A_BOTTLE_POTION.description": "受到致命[gold]伤害[/gold]时，自动丢弃并以[blue]25%[/blue]生命值复活，但获得[blue]3[/blue]层[gold]中毒[/gold]。",
     "MAPLESHADOW-SNAKE_SECRET_BREW_POTION.title": "蛇之秘酿",
-    "MAPLESHADOW-SNAKE_SECRET_BREW_POTION.description": "从[blue]3[/blue]张随机蛇牌中选择[blue]1[/blue]张加入手牌。该牌本回合费用随机。"
+    "MAPLESHADOW-SNAKE_SECRET_BREW_POTION.description": "从[blue]3[/blue]张随机蛇牌中选择[blue]1[/blue]张加入手牌。该牌本回合费用随机。",
+    "MAPLESHADOW-ESSENCE_SNAKE_VENOM_POTION.title": "精粹蛇毒",
+    "MAPLESHADOW-ESSENCE_SNAKE_VENOM_POTION.description": "本场战斗你的[gold]蛇[/gold]标签牌均获得[blue]1[/blue]次[gold]重放[/gold]。",
+    "MAPLESHADOW-DEADLY_SNAKE_VENOM_POTION.title": "致命蛇毒",
+    "MAPLESHADOW-DEADLY_SNAKE_VENOM_POTION.description": "对一名敌人造成[blue]{TruePoisonPower:diff()}[/blue]层[gold]真实中毒[/gold]。"
 }

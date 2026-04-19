@@ -35,6 +35,7 @@
     <AdditionalFiles Include="MapleShadow\localization\zhs\potions.json" />
     <AdditionalFiles Include="MapleShadow\localization\zhs\relics.json" />
     <AdditionalFiles Include="MapleShadow\localization\zhs\enchantments.json" />
+    <AdditionalFiles Include="MapleShadow\localization\zhs\events.json" />
   </ItemGroup>
 
   <!-- 自动复制dll和json -->

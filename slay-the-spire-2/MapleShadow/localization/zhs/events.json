@@ -1,0 +1,14 @@
+{
+    "MAPLESHADOW-SNAKE_LIBRARY_EVENT.title": "蛇之图书馆",
+    "MAPLESHADOW-SNAKE_LIBRARY_EVENT.pages.INITIAL.description": "你发现了一座隐藏在废墟深处的古老图书馆。书架上摆满了关于[gold]蛇咬技艺[/gold]的典籍，空气中弥漫着淡淡的蛇蜕气味。",
+    "MAPLESHADOW-SNAKE_LIBRARY_EVENT.pages.INITIAL.options.READ_BOOK.title": "阅读蛇咬典籍",
+    "MAPLESHADOW-SNAKE_LIBRARY_EVENT.pages.INITIAL.options.READ_BOOK.description": "从[blue]30[/blue]张随机[gold]蛇牌[/gold]中选择[blue]5[/blue]张加入牌组。",
+    "MAPLESHADOW-SNAKE_LIBRARY_EVENT.pages.INITIAL.options.TAKE_RELIC.title": "拿走蛇之遗物",
+    "MAPLESHADOW-SNAKE_LIBRARY_EVENT.pages.INITIAL.options.TAKE_RELIC.description": "获得[gold]蛇之书[/gold]。",
+    "MAPLESHADOW-SNAKE_LIBRARY_EVENT.pages.INITIAL.options.TAKE_MEDUSA_EYE.title": "凝视蛇瞳",
+    "MAPLESHADOW-SNAKE_LIBRARY_EVENT.pages.INITIAL.options.TAKE_MEDUSA_EYE.description": "获得[gold]美杜莎之眼[/gold]。",
+    "MAPLESHADOW-SNAKE_LIBRARY_EVENT.pages.READ_BOOK.description": "你翻阅典籍，领悟了多种蛇咬技艺。",
+    "MAPLESHADOW-SNAKE_LIBRARY_EVENT.pages.READ_BOOK_SELECTION_PROMPT.description": "选择5张蛇牌加入牌组",
+    "MAPLESHADOW-SNAKE_LIBRARY_EVENT.pages.TAKE_RELIC.description": "你拿走了蛇之书。",
+    "MAPLESHADOW-SNAKE_LIBRARY_EVENT.pages.TAKE_MEDUSA_EYE.description": "你获得了美杜莎之眼。"
+}
