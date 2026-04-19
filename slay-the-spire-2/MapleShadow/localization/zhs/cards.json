@@ -82,5 +82,7 @@
     "MAPLESHADOW-KING_SNAKE_BITE_CARD.title": "王之蛇咬",
     "MAPLESHADOW-KING_SNAKE_BITE_CARD.description": "本回合，你每打出1张[gold]蛇[/gold]牌，所有敌人获得{KingSnakeBitePower:diff()}层[gold]中毒[/gold]。",
     "MAPLESHADOW-TOXIC_CONVERSION_CARD.title": "毒性转化",
-    "MAPLESHADOW-TOXIC_CONVERSION_CARD.description": "将你身上的[gold]中毒[/gold]{IfUpgraded:show:与[gold]真实中毒[/gold]|}转移给一名随机敌人。"
+    "MAPLESHADOW-TOXIC_CONVERSION_CARD.description": "将你身上的[gold]中毒[/gold]{IfUpgraded:show:与[gold]真实中毒[/gold]|}转移给一名随机敌人。",
+    "MAPLESHADOW-SEARING_SNAKEBITE_CARD.title": "灼热蛇咬",
+    "MAPLESHADOW-SEARING_SNAKEBITE_CARD.description": "[gold]保留[/gold]。给予敌人{PoisonPower:diff()}层[gold]中毒[/gold]。可无限[gold]升级[/gold]。"
 }
