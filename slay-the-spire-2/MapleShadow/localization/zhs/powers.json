@@ -1,4 +1,4 @@
-{
+﻿{
     "MAPLESHADOW-SNAKE_MYSTERY_POWER.title": "隐秘",
     "MAPLESHADOW-SNAKE_MYSTERY_POWER.description": "每当你打出蛇咬时，获得[blue]2[/blue]点[gold]点数[/gold]。当[gold]点数[/gold]到达[blue]7[/blue]时，消耗[blue]7[/blue]点获得[blue]1[/blue]层[gold]无实体[/gold]。",
     "MAPLESHADOW-SNAKE_GIFT_POWER.title": "蛇之赠礼",
@@ -26,5 +26,7 @@
     "MAPLESHADOW-SNAKE_BITE_POWER.title": "你好，蛇咬",
     "MAPLESHADOW-SNAKE_BITE_POWER.description": "在你的回合开始时，将[blue]{Amount}[/blue]张非[gold]能力[/gold]非[gold]状态[/gold]的蛇牌放入手牌。",
     "MAPLESHADOW-HANG_SNAKE_POWER.title": "吊蛇",
-    "MAPLESHADOW-HANG_SNAKE_POWER.description": "被吊蛇[gold]攻击[/gold]时，受到的伤害变为[blue]{Amount}[/blue]倍。"
+    "MAPLESHADOW-HANG_SNAKE_POWER.description": "被吊蛇[gold]攻击[/gold]时，受到的伤害变为[blue]{Amount}[/blue]倍。",
+    "MAPLESHADOW-KING_SNAKE_BITE_POWER.title": "王之蛇咬",
+    "MAPLESHADOW-KING_SNAKE_BITE_POWER.description": "本回合，每打出1张[gold]蛇[/gold]牌，所有敌人获得[blue]{Amount}[/blue]层[gold]中毒[/gold]。"
 }
