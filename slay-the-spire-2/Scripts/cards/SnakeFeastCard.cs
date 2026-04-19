@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace MapleShadow.Scripts.Cards;
 
-[Pool(typeof(ColorlessCardPool))]
+[Pool(typeof(EventCardPool))]
 public class SnakeFeastCard : MapleShadowCardModel
 {
     private const int energyCost = 2;

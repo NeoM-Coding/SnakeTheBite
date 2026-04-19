@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Rewards;
 using MegaCrit.Sts2.Core.Runs;
+using MapleShadow.Scripts.Cards;
 using MapleShadow.Scripts.Relics;
 using MapleShadow.Scripts.Utils;
 
@@ -42,7 +43,8 @@ public class SnakeLibraryEvent : CustomEventModel
                 && c.Type != CardType.Status
                 && c.Type != CardType.Curse
                 && c.Rarity != CardRarity.Basic
-                && c.Rarity != CardRarity.Ancient)
+                && c.Rarity != CardRarity.Ancient
+                && c is not SnakeFeastCard)
             .ToList();
 
         if (snakeCards.Count == 0)

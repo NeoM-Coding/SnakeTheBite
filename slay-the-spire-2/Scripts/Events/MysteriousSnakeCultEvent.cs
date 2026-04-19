@@ -36,7 +36,7 @@ public class MysteriousSnakeCultEvent : CustomEventModel
         CardCmd.PreviewCardPileAdd(await CardPileCmd.Add(snakeFeast, PileType.Deck), 2f);
 
         // 获得三张蛇不咬
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 5; i++)
         {
             CardModel snakeNoBite = Owner.RunState.CreateCard<SnakeNoBiteCard>(Owner);
             CardCmd.PreviewCardPileAdd(await CardPileCmd.Add(snakeNoBite, PileType.Deck), 2f);
