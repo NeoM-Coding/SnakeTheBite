@@ -21,7 +21,7 @@ public class SnakeVenomBoostEnchantment : MapleShadowEnchantmentModel
         if (!base.CanEnchant(card))
             return false;
         return MapleShadowCardTags.IsSnakeCard(card)
-            && card.DynamicVars.ContainsKey("PoisonPower");
+            && (card.DynamicVars.ContainsKey("PoisonPower") || card.DynamicVars.ContainsKey("TruePoisonPower"));
     }
 
     // 每次重算时，把当前卡牌的对应数值设为【Canonical Base + Amount】
@@ -35,6 +35,12 @@ public class SnakeVenomBoostEnchantment : MapleShadowEnchantmentModel
         {
             decimal canonical = GetCanonicalValue("PoisonPower");
             Card.DynamicVars["PoisonPower"].BaseValue = canonical + Amount;
+        }
+
+        if (Card.DynamicVars.ContainsKey("TruePoisonPower"))
+        {
+            decimal canonical = GetCanonicalValue("TruePoisonPower");
+            Card.DynamicVars["TruePoisonPower"].BaseValue = canonical + Amount;
         }
 
         if (Card.DynamicVars.ContainsKey("CalculationBase"))

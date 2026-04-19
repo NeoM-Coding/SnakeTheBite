@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MapleShadow.Scripts.Powers;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace MapleShadow.Scripts.Cards;
 
@@ -29,8 +30,6 @@ public class CreativeSnakeBiteCard : MapleShadowCardModel
     // 定义变量：能力层数
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new PowerVar<CreativeSnakeBitePower>(1m)];
-
-    // 无额外悬停提示，效果已写在卡牌描述中
 
     public CreativeSnakeBiteCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {

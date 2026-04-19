@@ -37,7 +37,7 @@ public class SnakeVenomBoostPower : MapleShadowPowerModel
         var deck = PileType.Deck.GetPile(Owner.Player);
         var snakeCards = deck.Cards
             .Where(c => MapleShadowCardTags.IsSnakeCard(c)
-                && c.DynamicVars.ContainsKey("PoisonPower")
+                && (c.DynamicVars.ContainsKey("PoisonPower") || c.DynamicVars.ContainsKey("TruePoisonPower"))
                 && (c.Enchantment == null || c.Enchantment is SnakeVenomBoostEnchantment))
             .ToList();
 

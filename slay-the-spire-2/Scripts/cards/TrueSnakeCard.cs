@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MapleShadow.Scripts.Powers;
 
 namespace MapleShadow.Scripts.Cards;
@@ -25,7 +26,7 @@ public class TrueSnakeCard : MapleShadowCardModel
         new PowerVar<TrueSnakePower>(1m)
     ];
 
-    // 无额外悬停提示，效果已写在卡牌描述中
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<TruePoisonPower>()];
 
     public TrueSnakeCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {

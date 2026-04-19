@@ -29,7 +29,7 @@ public class SneakySnakePower : MapleShadowPowerModel
     {
         if (dealer == null || !dealer.IsEnemy)
             return 1m;
-        if (!dealer.HasPower<PoisonPower>())
+        if (!dealer.HasPower<PoisonPower>() && !dealer.HasPower<TruePoisonPower>())
             return 1m;
 
         decimal multiplier = 1m - (Amount / 100m);
@@ -41,7 +41,7 @@ public class SneakySnakePower : MapleShadowPowerModel
     {
         if (target != Owner || dealer == null || !dealer.IsEnemy)
             return Task.CompletedTask;
-        if (!dealer.HasPower<PoisonPower>())
+        if (!dealer.HasPower<PoisonPower>() && !dealer.HasPower<TruePoisonPower>())
             return Task.CompletedTask;
 
         bool isPoweredAttack = props.HasFlag(ValueProp.Move) && !props.HasFlag(ValueProp.Unpowered);

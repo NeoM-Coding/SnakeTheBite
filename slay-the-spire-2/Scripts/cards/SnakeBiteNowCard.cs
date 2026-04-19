@@ -1,6 +1,7 @@
 // 蛇，咬！ - 2费无色技能，立刻触发敌人中毒一次
 using BaseLib.Abstracts;
 using BaseLib.Utils;
+using MapleShadow.Scripts.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -43,12 +44,15 @@ public class SnakeBiteNowCard : MapleShadowCardModel
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
 
         int poisonAmount = cardPlay.Target.GetPowerAmount<PoisonPower>();
-        if (poisonAmount > 0)
+        int truePoisonAmount = cardPlay.Target.GetPowerAmount<TruePoisonPower>();
+        int totalPoison = poisonAmount + truePoisonAmount;
+
+        if (totalPoison > 0)
         {
             await CreatureCmd.Damage(
                 choiceContext,
                 cardPlay.Target,
-                poisonAmount,
+                totalPoison,
                 ValueProp.Unblockable | ValueProp.Unpowered,
                 Owner.Creature,
                 this

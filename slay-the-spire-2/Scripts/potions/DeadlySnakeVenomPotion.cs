@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.PotionPools;
@@ -28,6 +29,8 @@ public class DeadlySnakeVenomPotion : MapleShadowPotionModel
 
     // 动态变量 - 15层真实中毒
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<TruePoisonPower>(15m)];
+
+    public override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<TruePoisonPower>()];
 
     // 使用时的效果逻辑
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)

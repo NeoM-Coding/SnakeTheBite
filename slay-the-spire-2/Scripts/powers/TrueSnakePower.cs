@@ -51,7 +51,7 @@ public class TrueSnakePower : MapleShadowPowerModel
 
         // 筛选手牌中的蛇牌毒牌：类名含 Snake 且 DynamicVars 包含 PoisonPower
         var poisonCards = hand.Cards
-            .Where(c => MapleShadowCardTags.IsSnakeCard(c) && c.DynamicVars.ContainsKey("PoisonPower"))
+            .Where(c => MapleShadowCardTags.IsSnakeCard(c) && (c.DynamicVars.ContainsKey("PoisonPower") || c.DynamicVars.ContainsKey("TruePoisonPower")))
             .ToList();
 
         if (poisonCards.Count == 0)

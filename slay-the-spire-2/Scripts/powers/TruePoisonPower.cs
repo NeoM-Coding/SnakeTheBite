@@ -1,14 +1,19 @@
 // 真实中毒 - 无视人工、缓冲、无实体等限伤效果的中毒
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
@@ -24,9 +29,29 @@ public class TruePoisonPower : MapleShadowPowerModel
     public override int DisplayAmount => (int)Amount;
 
     // 计算下回合将要造成的伤害（用于血条绿色预览）
+    // 适配触媒（AccelerantPower）：每有一层触媒额外触发一次
+    private int TriggerCount
+    {
+        get
+        {
+            IEnumerable<Creature> source = from c in Owner.CombatState.GetOpponentsOf(Owner)
+                where c.IsAlive
+                select c;
+            return Math.Min((int)Amount, 1 + source.Sum(a => a.GetPowerAmount<AccelerantPower>()));
+        }
+    }
+
     public int CalculateTotalDamageNextTurn()
     {
-        return (int)Amount;
+        decimal num = default(decimal);
+        int iterations = TriggerCount;
+        for (int i = 0; i < iterations; i++)
+        {
+            decimal damage = Amount;
+            damage = Hook.ModifyDamage(Owner.CombatState.RunState, Owner.CombatState, Owner, null, damage, ValueProp.Unblockable | ValueProp.Unpowered, null, ModifyDamageHookType.All, CardPreviewMode.None, out IEnumerable<AbstractModel> _);
+            num += damage;
+        }
+        return (int)num;
     }
 
     // 标志位，用于 Harmony 补丁识别真实中毒造成的伤害
@@ -37,20 +62,25 @@ public class TruePoisonPower : MapleShadowPowerModel
         if (side != Owner.Side)
             return;
 
-        int damage = (int)Amount;
-        IsDealingDamage = true;
-        try
+        int iterations = TriggerCount;
+        for (int i = 0; i < iterations; i++)
         {
-            await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), Owner, damage, ValueProp.Unblockable | ValueProp.Unpowered, null, null);
-        }
-        finally
-        {
-            IsDealingDamage = false;
-        }
+            int damage = (int)Amount;
+            IsDealingDamage = true;
+            try
+            {
+                await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), Owner, damage, ValueProp.Unblockable | ValueProp.Unpowered, null, null);
+            }
+            finally
+            {
+                IsDealingDamage = false;
+            }
 
-        if (Owner.IsAlive)
-        {
-            await PowerCmd.Decrement(this);
+            if (!Owner.IsAlive)
+            {
+                await Cmd.CustomScaledWait(0.1f, 0.25f);
+                break;
+            }
         }
     }
 }

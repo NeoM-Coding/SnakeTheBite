@@ -4,12 +4,14 @@ using System.Linq;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using HarmonyLib;
+using MapleShadow.Scripts.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -29,6 +31,8 @@ public class SnakeFangRelic : MapleShadowRelicModel
     // 此处使用 DamageVar(1, Unpowered)，在本地化文本中可用 {Damage} 引用该数值。
     //
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(1, ValueProp.Unpowered)];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<TruePoisonPower>()];
 
     //
     // 当战场上任意 Power（状态/能力）的层数发生变化后触发。
@@ -50,7 +54,7 @@ public class SnakeFangRelic : MapleShadowRelicModel
             return;
         if (amount <= 0)
             return;
-        if (power is not PoisonPower)
+        if (power is not PoisonPower and not TruePoisonPower)
             return;
         if (!power.Owner.IsEnemy)
             return;

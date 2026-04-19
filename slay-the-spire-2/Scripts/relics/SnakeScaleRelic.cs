@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
+using MapleShadow.Scripts.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -24,6 +26,8 @@ public class SnakeScaleRelic : MapleShadowRelicModel
     // 此处使用 BlockVar(1, Unpowered)，在本地化文本中可用 {Block} 引用该数值。
     //
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(1, ValueProp.Unpowered)];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(StaticHoverTip.Block), HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<TruePoisonPower>()];
 
     //
     // 当战场上任意 Power（状态/能力）的层数发生变化后触发。
@@ -45,7 +49,7 @@ public class SnakeScaleRelic : MapleShadowRelicModel
             return;
         if (amount <= 0)
             return;
-        if (power is not PoisonPower)
+        if (power is not PoisonPower and not TruePoisonPower)
             return;
         if (!power.Owner.IsEnemy)
             return;

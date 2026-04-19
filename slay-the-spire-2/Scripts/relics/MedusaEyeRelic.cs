@@ -2,11 +2,13 @@
 // 每当你对敌人给予一次中毒时，同时给予一层虚弱
 using BaseLib.Abstracts;
 using BaseLib.Utils;
+using MapleShadow.Scripts.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Models.RelicPools;
@@ -16,6 +18,8 @@ namespace MapleShadow.Scripts.Relics;
 [Pool(typeof(SharedRelicPool))]
 public class MedusaEyeRelic : MapleShadowRelicModel
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<TruePoisonPower>(), HoverTipFactory.FromPower<WeakPower>()];
+
     // 遗物稀有度：事件
     public override RelicRarity Rarity => RelicRarity.Event;
 
@@ -26,7 +30,7 @@ public class MedusaEyeRelic : MapleShadowRelicModel
             return;
         if (amount <= 0)
             return;
-        if (power is not PoisonPower)
+        if (power is not PoisonPower and not TruePoisonPower)
             return;
         if (!power.Owner.IsEnemy)
             return;

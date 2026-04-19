@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.PotionPools;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -26,6 +27,8 @@ public class SnakeInABottlePotion : MapleShadowPotionModel
 
     // 不在战斗奖励中生成（参考瓶中精灵）。
     public override bool CanBeGeneratedInCombat => false;
+
+    public override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<PoisonPower>()];
 
     //
     // 使用时的效果逻辑：恢复至25%最大生命值，并施加3层中毒。

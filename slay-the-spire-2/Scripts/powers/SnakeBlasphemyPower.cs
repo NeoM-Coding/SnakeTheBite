@@ -49,7 +49,7 @@ public static class SnakeBlasphemyModifyPowerAmountGivenPatch
 {
     static decimal Postfix(decimal __result, PowerModel power, Creature giver, decimal amount, Creature? target, CardModel? cardSource)
     {
-        if (power is PoisonPower && giver?.GetPower<SnakeBlasphemyPower>() is { } blasphemy && target != null && target.IsEnemy)
+        if ((power is PoisonPower or TruePoisonPower) && giver?.GetPower<SnakeBlasphemyPower>() is { } blasphemy && target != null && target.IsEnemy)
         {
             return __result * blasphemy.Amount;
         }

@@ -1,14 +1,14 @@
 {
     "MAPLESHADOW-SNAKE_FANG_RELIC.title": "异蛇之牙",
-    "MAPLESHADOW-SNAKE_FANG_RELIC.description": "每当你对敌人给予[blue]1[/blue]次[gold]中毒[/gold]时，对随机一名敌人造成[blue]{Damage}[/blue]点[gold]伤害[/gold]。",
+    "MAPLESHADOW-SNAKE_FANG_RELIC.description": "每当你对敌人给予[blue]1[/blue]次[gold]中毒[/gold]或[gold]真实中毒[/gold]时，对随机一名敌人造成[blue]{Damage}[/blue]点伤害。",
     "MAPLESHADOW-SNAKE_FANG_RELIC.flavor": "从异蛇身上取下的牙齿。",
     "MAPLESHADOW-SNAKE_SCALE_RELIC.title": "异蛇之鳞",
-    "MAPLESHADOW-SNAKE_SCALE_RELIC.description": "每当你对敌人给予[blue]1[/blue]次[gold]中毒[/gold]时，获得[blue]{Block}[/blue]点[gold]格挡[/gold]。",
+    "MAPLESHADOW-SNAKE_SCALE_RELIC.description": "每当你对敌人给予[blue]1[/blue]次[gold]中毒[/gold]或[gold]真实中毒[/gold]时，获得[blue]{Block}[/blue]点[gold]格挡[/gold]。",
     "MAPLESHADOW-SNAKE_SCALE_RELIC.flavor": "从异蛇身上剥下的鳞片。",
     "MAPLESHADOW-HAPPY_SNAKE_FLOWER_RELIC.title": "开心蛇花",
     "MAPLESHADOW-HAPPY_SNAKE_FLOWER_RELIC.description": "你的[gold]蛇咬[/gold]牌获得[blue]1[/blue]次[gold]重放[/gold]。",
     "MAPLESHADOW-SNAKE_BOOK_RELIC.title": "蛇之书",
     "MAPLESHADOW-SNAKE_BOOK_RELIC.description": "之后每场战斗额外掉落一组[gold]蛇[/gold]卡牌。",
     "MAPLESHADOW-MEDUSA_EYE_RELIC.title": "美杜莎之眼",
-    "MAPLESHADOW-MEDUSA_EYE_RELIC.description": "每当你对敌人给予[gold]中毒[/gold]时，同时给予[blue]1[/blue]层[gold]虚弱[/gold]。"
+    "MAPLESHADOW-MEDUSA_EYE_RELIC.description": "每当你对敌人给予[gold]中毒[/gold]或[gold]真实中毒[/gold]时，同时给予[blue]1[/blue]层[gold]虚弱[/gold]。"
 }

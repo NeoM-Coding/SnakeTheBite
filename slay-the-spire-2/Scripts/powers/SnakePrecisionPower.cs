@@ -31,7 +31,7 @@ public class SnakePrecisionPower : MapleShadowPowerModel
             return;
         if (amount <= 0)
             return;
-        if (power is not PoisonPower)
+        if (power is not PoisonPower and not TruePoisonPower)
             return;
         if (!power.Owner.IsEnemy)
             return;
@@ -40,7 +40,10 @@ public class SnakePrecisionPower : MapleShadowPowerModel
         for (int i = 0; i < Amount; i++)
         {
             Flash();
-            await PowerCmd.Apply<PoisonPower>(power.Owner, amount, Owner, cardSource);
+            if (power is TruePoisonPower)
+                await PowerCmd.Apply<TruePoisonPower>(power.Owner, amount, Owner, cardSource);
+            else
+                await PowerCmd.Apply<PoisonPower>(power.Owner, amount, Owner, cardSource);
         }
         _isApplyingBonus = false;
     }
