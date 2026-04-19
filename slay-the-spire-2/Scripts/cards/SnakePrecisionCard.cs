@@ -33,7 +33,7 @@ public class SnakePrecisionCard : MapleShadowCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new PowerVar<SnakePrecisionPower>(1m)];
 
-    // 无额外悬停提示，效果已写在卡牌描述中
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<SnakePrecisionPower>()];
 
     public SnakePrecisionCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {

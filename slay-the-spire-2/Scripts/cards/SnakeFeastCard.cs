@@ -24,7 +24,7 @@ public class SnakeFeastCard : MapleShadowCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<SnakeFeastPower>(1m)];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<TruePoisonPower>()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<SnakeFeastPower>(), HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<TruePoisonPower>()];
 
     public SnakeFeastCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {

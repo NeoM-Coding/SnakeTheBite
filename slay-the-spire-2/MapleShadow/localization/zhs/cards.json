@@ -86,9 +86,9 @@
     "MAPLESHADOW-SEARING_SNAKEBITE_CARD.title": "灼热蛇咬",
     "MAPLESHADOW-SEARING_SNAKEBITE_CARD.description": "[gold]保留[/gold]。给予敌人{PoisonPower:diff()}层[gold]中毒[/gold]。可无限[gold]升级[/gold]。",
     "MAPLESHADOW-SNAKE_NO_BITE_CARD.title": "蛇不咬",
-    "MAPLESHADOW-SNAKE_NO_BITE_CARD.description": "[gold]保留[/gold]。[gold]永恒[/gold]。",
+    "MAPLESHADOW-SNAKE_NO_BITE_CARD.description": "",
     "MAPLESHADOW-SNAKE_FEAST_CARD.title": "蛇宴",
-    "MAPLESHADOW-SNAKE_FEAST_CARD.description": "给予敌人[gold]蛇宴[/gold]。若其因[gold]中毒[/gold]或[gold]真实中毒[/gold]死亡，获得其最大生命加到血上限。（对[gold]爪牙[/gold]不生效）",
+    "MAPLESHADOW-SNAKE_FEAST_CARD.description": "给予敌人[gold]蛇宴[/gold]。",
     "MAPLESHADOW-CURSE_OF_SNAKE_CARD.title": "蛇之诅咒",
-    "MAPLESHADOW-CURSE_OF_SNAKE_CARD.description": "[gold]不可打出[/gold]。当这张牌在你的手牌中时，你只能打出[gold]蛇[/gold]标签牌。"
+    "MAPLESHADOW-CURSE_OF_SNAKE_CARD.description": "当这张牌在你的手牌中时，你只能打出[gold]蛇[/gold]标签牌。"
 }

@@ -27,6 +27,7 @@ public class SnakeFeastPower : MapleShadowPowerModel
             return;
 
         Flash();
-        await CreatureCmd.GainMaxHp(Owner, target.MaxHp);
+        if (Applier != null)
+            await CreatureCmd.GainMaxHp(Applier, target.MaxHp);
     }
 }

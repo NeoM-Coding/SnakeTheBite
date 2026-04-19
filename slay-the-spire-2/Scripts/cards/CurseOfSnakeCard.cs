@@ -12,7 +12,7 @@ namespace MapleShadow.Scripts.Cards;
 [Pool(typeof(CurseCardPool))]
 public class CurseOfSnakeCard : MapleShadowCardModel
 {
-    private const int energyCost = 0;
+    private const int energyCost = -1;
     private const CardType type = CardType.Curse;
     private const CardRarity rarity = CardRarity.Curse;
     private const TargetType targetType = TargetType.Self;

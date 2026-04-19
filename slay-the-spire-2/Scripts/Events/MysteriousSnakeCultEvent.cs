@@ -18,13 +18,13 @@ public class MysteriousSnakeCultEvent : CustomEventModel
     // 仅出现在第二幕（Act 2）
     public override bool IsAllowed(IRunState runState) => runState.CurrentActIndex == 1;
 
-    public override string? CustomInitialPortraitPath => "res://MapleShadow/images/events/MapleShadow-Mysterious_snake_cult_event.png";
+    public override string? CustomInitialPortraitPath => "res://MapleShadow/images/events/mapleshadow-mysterious_snake_cult_event.png";
 
     protected override IReadOnlyList<EventOption> GenerateInitialOptions()
     {
         return new List<EventOption>
         {
-            Option(JoinCult, "INITIAL", HoverTipFactory.FromCard<SnakeFeastCard>(), HoverTipFactory.FromCard<SnakeNoBiteCard>()),
+            Option(JoinCult, "INITIAL", HoverTipFactory.FromCard<SnakeFeastCard>(), HoverTipFactory.FromCard<SnakeNoBiteCard>(), HoverTipFactory.FromCard<CurseOfSnakeCard>()),
             Option(TakeMoneyAndRun)
         };
     }
@@ -41,6 +41,10 @@ public class MysteriousSnakeCultEvent : CustomEventModel
             CardModel snakeNoBite = Owner.RunState.CreateCard<SnakeNoBiteCard>(Owner);
             CardCmd.PreviewCardPileAdd(await CardPileCmd.Add(snakeNoBite, PileType.Deck), 2f);
         }
+
+        // 获得一张蛇之诅咒
+        CardModel curseOfSnake = Owner.RunState.CreateCard<CurseOfSnakeCard>(Owner);
+        CardCmd.PreviewCardPileAdd(await CardPileCmd.Add(curseOfSnake, PileType.Deck), 2f);
 
         SetEventFinished(PageDescription("JOIN_CULT"));
     }

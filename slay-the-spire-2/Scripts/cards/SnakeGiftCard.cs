@@ -30,6 +30,8 @@ public class SnakeGiftCard : MapleShadowCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new PowerVar<SnakeGiftPower>(1m)];
 
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<SnakeGiftPower>()];
+
     public SnakeGiftCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
     }

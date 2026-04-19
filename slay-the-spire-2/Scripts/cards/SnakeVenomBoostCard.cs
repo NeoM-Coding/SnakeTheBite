@@ -30,8 +30,8 @@ public class SnakeVenomBoostCard : MapleShadowCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new PowerVar<SnakeVenomBoostPower>(1m)];
 
-    // 悬停提示中显示蛇液强化附魔的效果
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => HoverTipFactory.FromEnchantment<SnakeVenomBoostEnchantment>();
+    // 悬停提示中显示蛇液补充能力与蛇液强化附魔的效果
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<SnakeVenomBoostPower>(), HoverTipFactory.FromEnchantment<SnakeVenomBoostEnchantment>()];
 
     public SnakeVenomBoostCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {

@@ -29,7 +29,7 @@ public class SnakeBlasphemyCard : MapleShadowCardModel
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        [HoverTipFactory.FromKeyword(CardKeyword.Exhaust)];
+        [HoverTipFactory.FromKeyword(CardKeyword.Exhaust), HoverTipFactory.FromPower<SnakeBlasphemyPower>()];
 
     public SnakeBlasphemyCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {

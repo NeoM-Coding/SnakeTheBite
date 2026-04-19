@@ -26,7 +26,7 @@ public class TrueSnakeCard : MapleShadowCardModel
         new PowerVar<TrueSnakePower>(1m)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<TruePoisonPower>()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<TrueSnakePower>()];
 
     public TrueSnakeCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {

@@ -34,7 +34,7 @@ public class FuriousSnakeCard : MapleShadowCardModel
         new PowerVar<FuriousSnakePower>(1m)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<PoisonPower>()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<FuriousSnakePower>()];
 
     public FuriousSnakeCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {

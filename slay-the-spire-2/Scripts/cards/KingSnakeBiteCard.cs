@@ -23,7 +23,7 @@ public class KingSnakeBiteCard : MapleShadowCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<KingSnakeBitePower>(1m)];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<PoisonPower>()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<KingSnakeBitePower>()];
 
     public KingSnakeBiteCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {

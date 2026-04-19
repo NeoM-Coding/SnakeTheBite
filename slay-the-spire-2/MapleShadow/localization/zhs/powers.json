@@ -30,5 +30,5 @@
     "MAPLESHADOW-KING_SNAKE_BITE_POWER.title": "王之蛇咬",
     "MAPLESHADOW-KING_SNAKE_BITE_POWER.description": "本场战斗，每打出1张[gold]蛇[/gold]牌，所有敌人获得[blue]{Amount}[/blue]层[gold]中毒[/gold]。",
     "MAPLESHADOW-SNAKE_FEAST_POWER.title": "蛇宴",
-    "MAPLESHADOW-SNAKE_FEAST_POWER.description": "若该敌人因[gold]中毒[/gold]死亡，获得其最大生命加到血上限。"
+    "MAPLESHADOW-SNAKE_FEAST_POWER.description": "若该敌人因[gold]中毒[/gold]死亡，获得其最大生命值[gold]等量[/gold]的最大生命值。"
 }
