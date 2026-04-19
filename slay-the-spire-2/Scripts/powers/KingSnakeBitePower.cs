@@ -1,4 +1,4 @@
-// 王之蛇咬能力 - 本回合每打出一张蛇牌，所有敌人获得中毒（不叠加）
+// 王之蛇咬能力 - 本场战斗每打出一张蛇牌，所有敌人获得中毒（不叠加）
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -41,9 +41,5 @@ public class KingSnakeBitePower : MapleShadowPowerModel
         }
     }
 
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
-    {
-        if (side == Owner.Side)
-            await PowerCmd.Remove(this);
-    }
+    // 本场战斗持续，无需在回合开始时移除
 }
