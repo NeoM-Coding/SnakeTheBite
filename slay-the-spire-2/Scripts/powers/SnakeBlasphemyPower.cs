@@ -19,7 +19,9 @@ public class SnakeBlasphemyPower : MapleShadowPowerModel
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
     public override int DisplayAmount => (int)Amount;
-    protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
+    // 使用 .smartDescription 指向不存在的键，使 HasSmartDescription 为 false，
+    // 从而回退到 Description。因为 Description 中注入了 NextTurnPoison，而 SmartDescription 不会。
+    protected override string SmartDescriptionLocKey => base.Id.Entry + ".smartDescription";
 
     public override LocString Description
     {

@@ -35,6 +35,19 @@ public class Entry
             Log.Warn($"注入附魔本地化失败: {ex.Message}");
         }
 
+        // 注入卡选提示本地化
+        try
+        {
+            LocManager.Instance.GetTable("card_selection").MergeWith(new Dictionary<string, string>
+            {
+                { "TO_DRAW", "选择 {Amount} 张蛇牌加入手牌" }
+            });
+        }
+        catch (Exception ex)
+        {
+            Log.Warn($"注入 card_selection 本地化失败: {ex.Message}");
+        }
+
         Log.Debug("模组加载成功 By:MapleShadow");
     }
 }

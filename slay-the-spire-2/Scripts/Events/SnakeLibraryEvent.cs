@@ -53,8 +53,8 @@ public class SnakeLibraryEvent : CustomEventModel
             return;
         }
 
-        // 随机抽取30张（若总数不足则取全部）
-        int count = System.Math.Min(30, snakeCards.Count);
+        // 随机抽取20张（若总数不足则取全部）
+        int count = System.Math.Min(20, snakeCards.Count);
         var selected = snakeCards
             .OrderBy(_ => Rng.NextInt(int.MaxValue))
             .Take(count)
@@ -65,12 +65,12 @@ public class SnakeLibraryEvent : CustomEventModel
             .Select(c => new CardCreationResult(c))
             .ToList();
 
-        // 弹出网格选择界面，让玩家从中选择5张
+        // 弹出网格选择界面，让玩家从中选择3张
         var selectedCards = await CardSelectCmd.FromSimpleGridForRewards(
             new BlockingPlayerChoiceContext(),
             cards,
             Owner!,
-            new CardSelectorPrefs(PageDescription("READ_BOOK_SELECTION_PROMPT"), 5)
+            new CardSelectorPrefs(PageDescription("READ_BOOK_SELECTION_PROMPT"), 3)
         );
 
         foreach (CardModel card in selectedCards)

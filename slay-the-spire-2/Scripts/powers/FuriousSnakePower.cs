@@ -18,8 +18,7 @@ namespace MapleShadow.Scripts.Powers;
 public class FuriousSnakePower : MapleShadowPowerModel
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Counter;
-    public override int DisplayAmount => (int)Amount;
+    public override PowerStackType StackType => PowerStackType.Single;
 
     protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 

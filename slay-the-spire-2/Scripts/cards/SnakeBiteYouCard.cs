@@ -15,7 +15,7 @@ namespace MapleShadow.Scripts.Cards;
 public class SnakeBiteYouCard : MapleShadowCardModel
 {
     // 基础耗能 - 1费(蓝卡)
-    private const int energyCost = 1;
+    private const int energyCost = 0;
     // 卡牌类型 - 技能牌
     private const CardType type = CardType.Skill;
     // 卡牌稀有度 - 罕见（蓝色）

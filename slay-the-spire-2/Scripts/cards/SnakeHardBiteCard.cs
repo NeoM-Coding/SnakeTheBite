@@ -25,9 +25,9 @@ public class SnakeHardBiteCard : MapleShadowCardModel
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
-    // 定义变量：中毒层数(不升级12，升级16)
+    // 定义变量：中毒层数(不升级15，升级19)
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new PowerVar<PoisonPower>(12m)];
+        [new PowerVar<PoisonPower>(15m)];
 
     // 悬停提示 - 显示中毒 power 的提示
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -46,7 +46,7 @@ public class SnakeHardBiteCard : MapleShadowCardModel
         await PowerCmd.Apply<PoisonPower>(cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
     }
 
-    // 升级后的效果逻辑 - 升级后增加4层中毒 (12 -> 16)
+    // 升级后的效果逻辑 - 升级后增加4层中毒 (15 -> 19)
     protected override void OnUpgrade()
     {
         DynamicVars.Poison.UpgradeValueBy(4m);

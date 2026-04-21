@@ -1,4 +1,5 @@
 using BaseLib.Abstracts;
+using MapleShadow.Scripts.Cards;
 using MapleShadow.Scripts.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
@@ -27,11 +28,13 @@ public class SnakeBitePower : MapleShadowPowerModel
         if (side != Owner.Side)
             return;
 
-        // 从所有卡牌中筛选出蛇牌，且非能力、非状态
+        // 从所有卡牌中筛选出蛇牌，且非能力、非状态、非诅咒、非事件专属
         var snakeCards = ModelDb.AllCards
             .Where(c => MapleShadowCardTags.IsSnakeCard(c)
                 && c.Type != CardType.Power
-                && c.Type != CardType.Status)
+                && c.Type != CardType.Status
+                && c.Type != CardType.Curse
+                && c is not SnakeFeastCard)
             .ToList();
 
         if (snakeCards.Count == 0)
