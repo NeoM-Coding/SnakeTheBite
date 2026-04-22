@@ -1,4 +1,4 @@
-// 蛇之图书馆事件
+﻿// 蛇之图书馆事件
 using System.Collections.Generic;
 using System.Linq;
 using BaseLib.Abstracts;
@@ -11,11 +11,11 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Rewards;
 using MegaCrit.Sts2.Core.Runs;
-using MapleShadow.Scripts.Cards;
-using MapleShadow.Scripts.Relics;
-using MapleShadow.Scripts.Utils;
+using SnakeTheBite.Scripts.Cards;
+using SnakeTheBite.Scripts.Relics;
+using SnakeTheBite.Scripts.Utils;
 
-namespace MapleShadow.Scripts.Events;
+namespace SnakeTheBite.Scripts.Events;
 
 public class SnakeLibraryEvent : CustomEventModel
 {
@@ -23,7 +23,7 @@ public class SnakeLibraryEvent : CustomEventModel
     public override bool IsAllowed(IRunState runState) => false;
 
     // 事件立绘路径
-    public override string? CustomInitialPortraitPath => $"res://MapleShadow/images/events/mapleshadow-{MapleShadowModelHelper.ToSnakeCase(GetType().Name)}.png";
+    public override string? CustomInitialPortraitPath => $"res://SnakeTheBite/images/events/snakethebite-{SnakeTheBiteModelHelper.ToSnakeCase(GetType().Name)}.png";
 
     protected override IReadOnlyList<EventOption> GenerateInitialOptions()
     {
@@ -39,7 +39,7 @@ public class SnakeLibraryEvent : CustomEventModel
     {
         // 从所有已注册卡牌中筛选蛇牌，排除状态、诅咒、基础与古代稀有度
         var snakeCards = ModelDb.AllCards
-            .Where(c => MapleShadowCardTags.IsSnakeCard(c)
+            .Where(c => SnakeTheBiteCardTags.IsSnakeCard(c)
                 && c.Type != CardType.Status
                 && c.Type != CardType.Curse
                 && c.Rarity != CardRarity.Basic

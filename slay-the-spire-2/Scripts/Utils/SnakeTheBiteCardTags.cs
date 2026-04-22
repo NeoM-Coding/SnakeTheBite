@@ -1,11 +1,11 @@
-using System;
+﻿using System;
 using MegaCrit.Sts2.Core.Models;
 
-namespace MapleShadow.Scripts.Utils;
+namespace SnakeTheBite.Scripts.Utils;
 
 // 卡牌标签判断工具类
 // 统一处理“蛇牌”、“蛇咬牌”等分类逻辑，避免散落在各处的硬编码字符串匹配
-public static class MapleShadowCardTags
+public static class SnakeTheBiteCardTags
 {
     // 蛇牌：类名中包含 "Snake"
     public static bool IsSnakeCard(CardModel card)

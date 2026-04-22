@@ -1,4 +1,4 @@
-// 真实要蛇了能力
+﻿// 真实要蛇了能力
 // 每回合抽完牌后，为 Amount 张手牌中的蛇牌毒牌添加真实中毒效果
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using HarmonyLib;
-using MapleShadow.Scripts.Utils;
+using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -23,9 +23,9 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 
-namespace MapleShadow.Scripts.Powers;
+namespace SnakeTheBite.Scripts.Powers;
 
-public class TrueSnakePower : MapleShadowPowerModel
+public class TrueSnakePower : SnakeTheBitePowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -51,7 +51,7 @@ public class TrueSnakePower : MapleShadowPowerModel
 
         // 筛选手牌中的蛇牌毒牌：类名含 Snake 且 DynamicVars 包含 PoisonPower
         var poisonCards = hand.Cards
-            .Where(c => MapleShadowCardTags.IsSnakeCard(c) && (c.DynamicVars.ContainsKey("PoisonPower") || c.DynamicVars.ContainsKey("TruePoisonPower")))
+            .Where(c => SnakeTheBiteCardTags.IsSnakeCard(c) && (c.DynamicVars.ContainsKey("PoisonPower") || c.DynamicVars.ContainsKey("TruePoisonPower")))
             .ToList();
 
         if (poisonCards.Count == 0)

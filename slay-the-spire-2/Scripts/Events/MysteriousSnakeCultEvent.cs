@@ -1,8 +1,8 @@
-// 神秘蛇教集会所 - 普通事件，选项一获得蛇宴+3张蛇不咬，选项二获得50-100金币
+﻿// 神秘蛇教集会所 - 普通事件，选项一获得蛇宴+3张蛇不咬，选项二获得50-100金币
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BaseLib.Abstracts;
-using MapleShadow.Scripts.Cards;
+using SnakeTheBite.Scripts.Cards;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Events;
@@ -11,14 +11,14 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Runs;
 
-namespace MapleShadow.Scripts.Events;
+namespace SnakeTheBite.Scripts.Events;
 
 public class MysteriousSnakeCultEvent : CustomEventModel
 {
     // 仅出现在第二幕（Act 2）
     public override bool IsAllowed(IRunState runState) => runState.CurrentActIndex == 1;
 
-    public override string? CustomInitialPortraitPath => "res://MapleShadow/images/events/mapleshadow-mysterious_snake_cult_event.png";
+    public override string? CustomInitialPortraitPath => "res://SnakeTheBite/images/events/snakethebite-mysterious_snake_cult_event.png";
 
     protected override IReadOnlyList<EventOption> GenerateInitialOptions()
     {

@@ -1,14 +1,14 @@
-// 蛇不咬 - 2费诅咒牌，保留、永恒
+﻿// 蛇不咬 - 2费诅咒牌，保留、永恒
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(CurseCardPool))]
-public class SnakeNoBiteCard : MapleShadowCardModel
+public class SnakeNoBiteCard : SnakeTheBiteCardModel
 {
     private const int energyCost = 2;
     private const CardType type = CardType.Curse;

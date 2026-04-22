@@ -1,8 +1,8 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
-using MapleShadow.Scripts.Powers;
+using SnakeTheBite.Scripts.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -11,12 +11,12 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 // 蛇不可挡 —— 2费 Ironclad 罕见能力牌
 // 每获得一次格挡，给予随机一名敌人1层真实中毒（可叠加）
 [Pool(typeof(IroncladCardPool))]
-public class SnakeUnstoppableCard : MapleShadowCardModel
+public class SnakeUnstoppableCard : SnakeTheBiteCardModel
 {
     private const int energyCost = 2;
     private const CardType type = CardType.Power;

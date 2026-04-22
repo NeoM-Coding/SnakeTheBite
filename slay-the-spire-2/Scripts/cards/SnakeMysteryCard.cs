@@ -1,4 +1,4 @@
-// 蛇之神秘 - 2费无色能力，虚无，打出蛇咬累积隐秘点数获得无实体
+﻿// 蛇之神秘 - 2费无色能力，虚无，打出蛇咬累积隐秘点数获得无实体
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -7,12 +7,12 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
-using MapleShadow.Scripts.Powers;
+using SnakeTheBite.Scripts.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(ColorlessCardPool))]
-public class SnakeMysteryCard : MapleShadowCardModel
+public class SnakeMysteryCard : SnakeTheBiteCardModel
 {
     // 基础耗能 - 2费
     private const int energyCost = 2;

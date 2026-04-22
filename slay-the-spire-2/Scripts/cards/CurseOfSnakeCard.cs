@@ -1,16 +1,16 @@
-// 蛇之诅咒 - 不可打出的诅咒牌，在手牌中时只能打出蛇标签牌
+﻿// 蛇之诅咒 - 不可打出的诅咒牌，在手牌中时只能打出蛇标签牌
 using BaseLib.Abstracts;
 using BaseLib.Utils;
-using MapleShadow.Scripts.Utils;
+using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(CurseCardPool))]
-public class CurseOfSnakeCard : MapleShadowCardModel
+public class CurseOfSnakeCard : SnakeTheBiteCardModel
 {
     private const int energyCost = -1;
     private const CardType type = CardType.Curse;
@@ -40,6 +40,6 @@ public class CurseOfSnakeCard : MapleShadowCardModel
             return true;
 
         // 只允许打出蛇标签牌
-        return MapleShadowCardTags.IsSnakeCard(card);
+        return SnakeTheBiteCardTags.IsSnakeCard(card);
     }
 }

@@ -1,7 +1,7 @@
-// 完美蛇咬 - 2费红卡攻击，给予5层中毒，牌库每有一张蛇咬额外+4层中毒
+﻿// 完美蛇咬 - 2费红卡攻击，给予5层中毒，牌库每有一张蛇咬额外+4层中毒
 using BaseLib.Abstracts;
 using BaseLib.Utils;
-using MapleShadow.Scripts.Utils;
+using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -14,10 +14,10 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using System;
 using System.Linq;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(IroncladCardPool))]
-public class PerfectSnakeBiteCard : MapleShadowCardModel
+public class PerfectSnakeBiteCard : SnakeTheBiteCardModel
 {
     private const int energyCost = 2;
     private const CardType type = CardType.Attack;
@@ -33,8 +33,8 @@ public class PerfectSnakeBiteCard : MapleShadowCardModel
         {
             var allCards = card.Owner.PlayerCombatState.AllCards;
             return card.IsUpgraded
-                ? allCards.Count(c => MapleShadowCardTags.IsSnakeCard(c))
-                : allCards.Count(c => MapleShadowCardTags.IsSnakeBiteCard(c));
+                ? allCards.Count(c => SnakeTheBiteCardTags.IsSnakeCard(c))
+                : allCards.Count(c => SnakeTheBiteCardTags.IsSnakeBiteCard(c));
         }),
         new PowerVar<PoisonPower>(0m)
     ];

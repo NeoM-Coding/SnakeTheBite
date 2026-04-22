@@ -1,4 +1,4 @@
-// 蛇一咬 - 1费红卡攻击，给予5层中毒和1层虚弱
+﻿// 蛇一咬 - 1费红卡攻击，给予5层中毒和1层虚弱
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -9,11 +9,11 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 // 加入战士卡池
 [Pool(typeof(IroncladCardPool))]
-public class SnakeOneBiteCard : MapleShadowCardModel
+public class SnakeOneBiteCard : SnakeTheBiteCardModel
 {
     // 基础耗能
     private const int energyCost = 1;

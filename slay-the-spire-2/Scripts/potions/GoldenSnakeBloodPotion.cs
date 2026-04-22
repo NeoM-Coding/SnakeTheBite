@@ -1,4 +1,4 @@
-// 黄金蛇血 - 罕见药水，获得25金币
+﻿// 黄金蛇血 - 罕见药水，获得25金币
 using System.Collections.Generic;
 using System.Linq;
 using BaseLib.Abstracts;
@@ -15,10 +15,10 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.PotionPools;
 
-namespace MapleShadow.Scripts.Potions;
+namespace SnakeTheBite.Scripts.Potions;
 
 [Pool(typeof(SharedPotionPool))]
-public class GoldenSnakeBloodPotion : MapleShadowPotionModel
+public class GoldenSnakeBloodPotion : SnakeTheBitePotionModel
 {
     // 稀有度 - 罕见（蓝）
     public override PotionRarity Rarity => PotionRarity.Uncommon;
@@ -33,8 +33,8 @@ public class GoldenSnakeBloodPotion : MapleShadowPotionModel
     protected override IEnumerable<DynamicVar> CanonicalVars => [new GoldVar(25)];
 
     // 药水自定义图片路径
-    public override string? CustomPackedImagePath => "res://MapleShadow/images/potions/MapleShadow-golden_snake_blood_potion.png";
-    public override string? CustomPackedOutlinePath => "res://MapleShadow/images/potions/MapleShadow-golden_snake_blood_potion.png";
+    public override string? CustomPackedImagePath => "res://SnakeTheBite/images/potions/SnakeTheBite-golden_snake_blood_potion.png";
+    public override string? CustomPackedOutlinePath => "res://SnakeTheBite/images/potions/SnakeTheBite-golden_snake_blood_potion.png";
 
     // 标记是否正在商店生成过程中
     public static bool IsInShopGeneration { get; set; }

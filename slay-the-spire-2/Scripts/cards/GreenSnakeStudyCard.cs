@@ -1,7 +1,7 @@
-// 青蛇大学习 - 1费无色攻击，造成14点伤害，斩杀升级蛇牌
+﻿// 青蛇大学习 - 1费无色攻击，造成14点伤害，斩杀升级蛇牌
 using BaseLib.Abstracts;
 using BaseLib.Utils;
-using MapleShadow.Scripts.Utils;
+using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -12,11 +12,11 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 // 加入无色卡池
 [Pool(typeof(ColorlessCardPool))]
-public class GreenSnakeStudyCard : MapleShadowCardModel
+public class GreenSnakeStudyCard : SnakeTheBiteCardModel
 {
     // 基础耗能 - 1费
     private const int energyCost = 1;
@@ -58,7 +58,7 @@ public class GreenSnakeStudyCard : MapleShadowCardModel
         {
             var deck = PileType.Deck.GetPile(Owner);
             var snakeBiteCards = deck.Cards
-                .Where(c => c.IsUpgradable && MapleShadowCardTags.IsSnakeBiteCard(c))
+                .Where(c => c.IsUpgradable && SnakeTheBiteCardTags.IsSnakeBiteCard(c))
                 .ToList();
 
             if (snakeBiteCards.Count > 0)

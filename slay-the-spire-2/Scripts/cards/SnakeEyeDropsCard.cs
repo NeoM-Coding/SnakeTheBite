@@ -1,4 +1,4 @@
-// 蛇！眼药水 - 0费红卡技能，自身中毒、抽满手牌、随机费用
+﻿// 蛇！眼药水 - 0费红卡技能，自身中毒、抽满手牌、随机费用
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -12,10 +12,10 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Cards;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(IroncladCardPool))]
-public class SnakeEyeDropsCard : MapleShadowCardModel
+public class SnakeEyeDropsCard : SnakeTheBiteCardModel
 {
     // 基础耗能
     private const int energyCost = 0;

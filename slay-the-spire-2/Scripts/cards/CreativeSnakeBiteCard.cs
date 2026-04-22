@@ -1,4 +1,4 @@
-using BaseLib.Abstracts;
+﻿using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -7,14 +7,14 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
-using MapleShadow.Scripts.Powers;
+using SnakeTheBite.Scripts.Powers;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 // 创造性蛇咬
 [Pool(typeof(IroncladCardPool))]
-public class CreativeSnakeBiteCard : MapleShadowCardModel
+public class CreativeSnakeBiteCard : SnakeTheBiteCardModel
 {
     // 基础耗能 - 3费(金卡)
     private const int energyCost = 3;

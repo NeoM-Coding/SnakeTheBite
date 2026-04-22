@@ -1,8 +1,8 @@
-// 平静之蛇 - 1费稀有技能。若已在蓄蛇，从抽牌堆选2(3)张蛇牌加入手牌；否则退出怒蛇（若有）并进入蓄蛇。
+﻿// 平静之蛇 - 1费稀有技能。若已在蓄蛇，从抽牌堆选2(3)张蛇牌加入手牌；否则退出怒蛇（若有）并进入蓄蛇。
 using BaseLib.Abstracts;
 using BaseLib.Utils;
-using MapleShadow.Scripts.Powers;
-using MapleShadow.Scripts.Utils;
+using SnakeTheBite.Scripts.Powers;
+using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -13,10 +13,10 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(IroncladCardPool))]
-public class CalmSnakeCard : MapleShadowCardModel
+public class CalmSnakeCard : SnakeTheBiteCardModel
 {
     private const int energyCost = 1;
     private const CardType type = CardType.Skill;
@@ -41,7 +41,7 @@ public class CalmSnakeCard : MapleShadowCardModel
         {
             var drawPile = PileType.Draw.GetPile(Owner);
             var snakeCards = drawPile.Cards
-                .Where(c => MapleShadowCardTags.IsSnakeCard(c))
+                .Where(c => SnakeTheBiteCardTags.IsSnakeCard(c))
                 .ToList();
 
             if (snakeCards.Count > 0)

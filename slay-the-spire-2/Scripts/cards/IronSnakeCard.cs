@@ -1,4 +1,4 @@
-// 硬蛇 - 1费红卡技能，获得25格挡并生成2张蛇噬放入抽牌堆
+﻿// 硬蛇 - 1费红卡技能，获得25格挡并生成2张蛇噬放入抽牌堆
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -13,11 +13,11 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 
 [Pool(typeof(IroncladCardPool))]
-public class IronSnakeCard : MapleShadowCardModel
+public class IronSnakeCard : SnakeTheBiteCardModel
 {
     private const int energyCost = 1;
     private const CardType type = CardType.Skill;

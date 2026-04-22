@@ -1,10 +1,10 @@
-// 异蛇之牙 - 普通遗物，给敌人上毒时随机打1
+﻿// 异蛇之牙 - 普通遗物，给敌人上毒时随机打1
 using System.Collections.Generic;
 using System.Linq;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using HarmonyLib;
-using MapleShadow.Scripts.Powers;
+using SnakeTheBite.Scripts.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -18,10 +18,10 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace MapleShadow.Scripts.Relics;
+namespace SnakeTheBite.Scripts.Relics;
 
 [Pool(typeof(SharedRelicPool))]
-public class SnakeFangRelic : MapleShadowRelicModel
+public class SnakeFangRelic : SnakeTheBiteRelicModel
 {
     // 遗物稀有度：普通（白）。
     public override RelicRarity Rarity => RelicRarity.Common;

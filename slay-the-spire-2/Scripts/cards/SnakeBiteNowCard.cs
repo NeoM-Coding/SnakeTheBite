@@ -1,7 +1,7 @@
-// 蛇，咬！ - 2费无色技能，立刻触发敌人中毒一次
+﻿// 蛇，咬！ - 2费无色技能，立刻触发敌人中毒一次
 using BaseLib.Abstracts;
 using BaseLib.Utils;
-using MapleShadow.Scripts.Powers;
+using SnakeTheBite.Scripts.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -10,10 +10,10 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(ColorlessCardPool))]
-public class SnakeBiteNowCard : MapleShadowCardModel
+public class SnakeBiteNowCard : SnakeTheBiteCardModel
 {
     // 基础耗能
     private const int energyCost = 2;

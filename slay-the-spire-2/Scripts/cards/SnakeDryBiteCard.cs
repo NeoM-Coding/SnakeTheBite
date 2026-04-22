@@ -1,4 +1,4 @@
-// 蛇干咬 - 1费红卡攻击，造成9点伤害
+﻿// 蛇干咬 - 1费红卡攻击，造成9点伤害
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -8,10 +8,10 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(IroncladCardPool))]
-public class SnakeDryBiteCard : MapleShadowCardModel
+public class SnakeDryBiteCard : SnakeTheBiteCardModel
 {
     // 基础耗能
     private const int energyCost = 1;

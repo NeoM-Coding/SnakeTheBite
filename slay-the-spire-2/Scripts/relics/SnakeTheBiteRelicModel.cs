@@ -1,14 +1,14 @@
-// Relic base class
+﻿// Relic base class
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Models;
 
-namespace MapleShadow.Scripts.Relics;
+namespace SnakeTheBite.Scripts.Relics;
 
-public abstract class MapleShadowRelicModel : CustomRelicModel
+public abstract class SnakeTheBiteRelicModel : CustomRelicModel
 {
     private string? _imagePath;
 
-    private string ImagePath => _imagePath ??= $"res://MapleShadow/images/relics/MapleShadow-{MapleShadowModelHelper.ToSnakeCase(GetType().Name)}.png";
+    private string ImagePath => _imagePath ??= $"res://SnakeTheBite/images/relics/SnakeTheBite-{SnakeTheBiteModelHelper.ToSnakeCase(GetType().Name)}.png";
 
     // 遗物小图标路径。
     public override string PackedIconPath => ImagePath;
@@ -19,7 +19,7 @@ public abstract class MapleShadowRelicModel : CustomRelicModel
     // 遗物大图标路径。
     protected override string BigIconPath => ImagePath;
 
-    protected MapleShadowRelicModel(bool autoAdd = true) : base(autoAdd)
+    protected SnakeTheBiteRelicModel(bool autoAdd = true) : base(autoAdd)
     {
     }
 }

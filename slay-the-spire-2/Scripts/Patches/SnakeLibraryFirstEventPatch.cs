@@ -1,11 +1,11 @@
-// 强制第一场普通事件为蛇咬大图书馆
+﻿// 强制第一场普通事件为蛇咬大图书馆
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Runs;
-using MapleShadow.Scripts.Events;
+using SnakeTheBite.Scripts.Events;
 
-namespace MapleShadow.Scripts.Patches;
+namespace SnakeTheBite.Scripts.Patches;
 
 [HarmonyPatch(typeof(Hook), nameof(Hook.ModifyNextEvent))]
 public static class SnakeLibraryFirstEventPatch

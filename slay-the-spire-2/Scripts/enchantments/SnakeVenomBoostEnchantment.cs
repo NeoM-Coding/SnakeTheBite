@@ -1,26 +1,26 @@
-using System;
-using MapleShadow.Scripts.Utils;
+﻿using System;
+using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Models;
 
-namespace MapleShadow.Scripts.Enchantments;
+namespace SnakeTheBite.Scripts.Enchantments;
 
 // 蛇液强化附魔
 // 为蛇牌永久增加中毒数值，可重复叠加。
-public class SnakeVenomBoostEnchantment : MapleShadowEnchantmentModel
+public class SnakeVenomBoostEnchantment : SnakeTheBiteEnchantmentModel
 {
     // 允许同一张牌上叠加多次（Amount +1）
     public override bool IsStackable => true;
 
     // 附魔图标路径
-    protected override string? CustomIconPath => $"res://MapleShadow/images/enchantments/{MapleShadowModelHelper.ToSnakeCase(GetType().Name)}.png";
+    protected override string? CustomIconPath => $"res://SnakeTheBite/images/enchantments/{SnakeTheBiteModelHelper.ToSnakeCase(GetType().Name)}.png";
 
     // 只能附魔到带毒的蛇牌上
     public override bool CanEnchant(CardModel card)
     {
         if (!base.CanEnchant(card))
             return false;
-        return MapleShadowCardTags.IsSnakeCard(card)
+        return SnakeTheBiteCardTags.IsSnakeCard(card)
             && (card.DynamicVars.ContainsKey("PoisonPower") || card.DynamicVars.ContainsKey("TruePoisonPower"));
     }
 

@@ -1,4 +1,4 @@
-// 神蛇能力 - 蛇之姿态。本回合内，施加的中毒与真实中毒变为三倍。自己回合开始时移除。
+﻿// 神蛇能力 - 蛇之姿态。本回合内，施加的中毒与真实中毒变为三倍。自己回合开始时移除。
 using BaseLib.Abstracts;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Commands;
@@ -8,9 +8,9 @@ using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Powers;
+namespace SnakeTheBite.Scripts.Powers;
 
-public class DivineSnakePower : MapleShadowPowerModel
+public class DivineSnakePower : SnakeTheBitePowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Single;

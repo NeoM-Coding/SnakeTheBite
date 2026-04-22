@@ -1,4 +1,4 @@
-// 旋转蛇咬 - 3费无色技能，保留叠加给予所有敌人中毒
+﻿// 旋转蛇咬 - 3费无色技能，保留叠加给予所有敌人中毒
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -13,11 +13,11 @@ using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Saves.Runs;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 // 加入无色卡池
 [Pool(typeof(ColorlessCardPool))]
-public class SpinningSnakebiteCard : MapleShadowCardModel
+public class SpinningSnakebiteCard : SnakeTheBiteCardModel
 {
     // 基础耗能 - 3费
     private const int energyCost = 3;

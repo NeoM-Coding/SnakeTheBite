@@ -1,4 +1,4 @@
-// 渎蛇 - 1费稀有技能，消耗，进入神蛇姿态，之后每回合开始时自身获得21层中毒。升级后获得保留。
+﻿// 渎蛇 - 1费稀有技能，消耗，进入神蛇姿态，之后每回合开始时自身获得21层中毒。升级后获得保留。
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -7,12 +7,12 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
-using MapleShadow.Scripts.Powers;
+using SnakeTheBite.Scripts.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(IroncladCardPool))]
-public class SnakeBlasphemyCard : MapleShadowCardModel
+public class SnakeBlasphemyCard : SnakeTheBiteCardModel
 {
     private const int energyCost = 1;
     private const CardType type = CardType.Skill;

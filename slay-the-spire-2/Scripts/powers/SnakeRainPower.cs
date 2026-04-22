@@ -1,4 +1,4 @@
-// 要蛇喽！能力 - 下回合开始时给予所有敌人中毒
+﻿// 要蛇喽！能力 - 下回合开始时给予所有敌人中毒
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Combat;
@@ -7,9 +7,9 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Powers;
+namespace SnakeTheBite.Scripts.Powers;
 
-public class SnakeRainPower : MapleShadowPowerModel
+public class SnakeRainPower : SnakeTheBitePowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;

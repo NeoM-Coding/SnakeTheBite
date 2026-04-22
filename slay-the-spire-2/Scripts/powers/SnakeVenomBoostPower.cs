@@ -1,6 +1,6 @@
-using BaseLib.Abstracts;
-using MapleShadow.Scripts.Enchantments;
-using MapleShadow.Scripts.Utils;
+﻿using BaseLib.Abstracts;
+using SnakeTheBite.Scripts.Enchantments;
+using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -14,11 +14,11 @@ using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.Rooms;
 using System.Linq;
 
-namespace MapleShadow.Scripts.Powers;
+namespace SnakeTheBite.Scripts.Powers;
 
 // 蛇液补充能力
 // 每场战斗结束后，随机为 Amount 张蛇牌各增加 1 点中毒数值
-public class SnakeVenomBoostPower : MapleShadowPowerModel
+public class SnakeVenomBoostPower : SnakeTheBitePowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -36,7 +36,7 @@ public class SnakeVenomBoostPower : MapleShadowPowerModel
 
         var deck = PileType.Deck.GetPile(Owner.Player);
         var snakeCards = deck.Cards
-            .Where(c => MapleShadowCardTags.IsSnakeCard(c)
+            .Where(c => SnakeTheBiteCardTags.IsSnakeCard(c)
                 && (c.DynamicVars.ContainsKey("PoisonPower") || c.DynamicVars.ContainsKey("TruePoisonPower"))
                 && (c.Enchantment == null || c.Enchantment is SnakeVenomBoostEnchantment))
             .ToList();

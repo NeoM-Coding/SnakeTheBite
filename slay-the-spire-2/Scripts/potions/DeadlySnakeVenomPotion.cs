@@ -1,4 +1,4 @@
-// 致命蛇毒 - 普通药水
+﻿// 致命蛇毒 - 普通药水
 // 扔出，对一名敌人造成15点真实中毒
 using BaseLib.Abstracts;
 using BaseLib.Utils;
@@ -11,12 +11,12 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.PotionPools;
-using MapleShadow.Scripts.Powers;
+using SnakeTheBite.Scripts.Powers;
 
-namespace MapleShadow.Scripts.Potions;
+namespace SnakeTheBite.Scripts.Potions;
 
 [Pool(typeof(SharedPotionPool))]
-public class DeadlySnakeVenomPotion : MapleShadowPotionModel
+public class DeadlySnakeVenomPotion : SnakeTheBitePotionModel
 {
     // 稀有度 - 普通（白）
     public override PotionRarity Rarity => PotionRarity.Common;

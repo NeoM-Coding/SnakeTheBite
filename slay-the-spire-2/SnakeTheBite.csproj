@@ -30,12 +30,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="MapleShadow\localization\zhs\cards.json" />
-    <AdditionalFiles Include="MapleShadow\localization\zhs\powers.json" />
-    <AdditionalFiles Include="MapleShadow\localization\zhs\potions.json" />
-    <AdditionalFiles Include="MapleShadow\localization\zhs\relics.json" />
-    <AdditionalFiles Include="MapleShadow\localization\zhs\enchantments.json" />
-    <AdditionalFiles Include="MapleShadow\localization\zhs\events.json" />
+    <AdditionalFiles Include="SnakeTheBite\localization\zhs\cards.json" />
+    <AdditionalFiles Include="SnakeTheBite\localization\zhs\powers.json" />
+    <AdditionalFiles Include="SnakeTheBite\localization\zhs\potions.json" />
+    <AdditionalFiles Include="SnakeTheBite\localization\zhs\relics.json" />
+    <AdditionalFiles Include="SnakeTheBite\localization\zhs\enchantments.json" />
+    <AdditionalFiles Include="SnakeTheBite\localization\zhs\events.json" />
   </ItemGroup>
 
   <!-- 自动复制dll和json -->

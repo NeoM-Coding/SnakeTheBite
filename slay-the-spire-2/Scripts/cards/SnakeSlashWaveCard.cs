@@ -1,4 +1,4 @@
-// 蛇斩波 - 2费红卡攻击，给予7层中毒并获得7格挡
+﻿// 蛇斩波 - 2费红卡攻击，给予7层中毒并获得7格挡
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -10,11 +10,11 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 // 加入战士卡池
 [Pool(typeof(IroncladCardPool))]
-public class SnakeSlashWaveCard : MapleShadowCardModel
+public class SnakeSlashWaveCard : SnakeTheBiteCardModel
 {
     // 基础耗能
     private const int energyCost = 2;

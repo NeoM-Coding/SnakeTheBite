@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapleShadow", "MapleShadow.csproj", "{91830E6C-A442-4EDC-A356-66249A568365}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakeTheBite", "SnakeTheBite.csproj", "{91830E6C-A442-4EDC-A356-66249A568365}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

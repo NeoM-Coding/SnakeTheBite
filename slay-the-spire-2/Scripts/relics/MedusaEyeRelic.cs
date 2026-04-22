@@ -1,8 +1,8 @@
-// 美杜莎之眼 - 事件遗物
+﻿// 美杜莎之眼 - 事件遗物
 // 每当你对敌人给予一次中毒时，同时给予一层虚弱
 using BaseLib.Abstracts;
 using BaseLib.Utils;
-using MapleShadow.Scripts.Powers;
+using SnakeTheBite.Scripts.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -13,10 +13,10 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 
-namespace MapleShadow.Scripts.Relics;
+namespace SnakeTheBite.Scripts.Relics;
 
 [Pool(typeof(SharedRelicPool))]
-public class MedusaEyeRelic : MapleShadowRelicModel
+public class MedusaEyeRelic : SnakeTheBiteRelicModel
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<TruePoisonPower>(), HoverTipFactory.FromPower<WeakPower>()];
 

@@ -1,5 +1,5 @@
-using BaseLib.Abstracts;
-using MapleShadow.Scripts.Utils;
+﻿using BaseLib.Abstracts;
+using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -9,11 +9,11 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Powers;
+namespace SnakeTheBite.Scripts.Powers;
 
 // 创造性蛇咬能力
 // 在你的回合开始时，将 Amount 张蛇能力牌放入手牌
-public class CreativeSnakeBitePower : MapleShadowPowerModel
+public class CreativeSnakeBitePower : SnakeTheBitePowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -29,7 +29,7 @@ public class CreativeSnakeBitePower : MapleShadowPowerModel
 
         // 从所有卡牌中筛选出类名含 Snake 的能力牌
         var snakePowers = ModelDb.AllCards
-            .Where(c => MapleShadowCardTags.IsSnakeCard(c) && c.Type == CardType.Power)
+            .Where(c => SnakeTheBiteCardTags.IsSnakeCard(c) && c.Type == CardType.Power)
             .ToList();
 
         if (snakePowers.Count == 0)

@@ -1,4 +1,4 @@
-// 测试卡 - 3费无色攻击，造成5点伤害5次
+﻿// 测试卡 - 3费无色攻击，造成5点伤害5次
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -8,11 +8,11 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 // 加入哪个卡池
 [Pool(typeof(ColorlessCardPool))]
-public class TestCard : MapleShadowCardModel
+public class TestCard : SnakeTheBiteCardModel
 {
     // 基础耗能
     private const int energyCost = 3;

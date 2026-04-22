@@ -1,4 +1,4 @@
-// 蛇爆术能力 - 死亡时对其他敌人造成等于层数×自身最大生命值的伤害
+﻿// 蛇爆术能力 - 死亡时对其他敌人造成等于层数×自身最大生命值的伤害
 using System.Linq;
 using System.Threading.Tasks;
 using BaseLib.Abstracts;
@@ -9,9 +9,9 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace MapleShadow.Scripts.Powers;
+namespace SnakeTheBite.Scripts.Powers;
 
-public class SnakeBlastPower : MapleShadowPowerModel
+public class SnakeBlastPower : SnakeTheBitePowerModel
 {
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;

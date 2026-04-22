@@ -1,4 +1,4 @@
-// 灼热蛇咬 - 2费红卡攻击，保留，给予敌人7层中毒，可无限升级
+﻿// 灼热蛇咬 - 2费红卡攻击，保留，给予敌人7层中毒，可无限升级
 using System;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
@@ -10,10 +10,10 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(IroncladCardPool))]
-public class SearingSnakebiteCard : MapleShadowCardModel
+public class SearingSnakebiteCard : SnakeTheBiteCardModel
 {
     private const int energyCost = 2;
     private const CardType type = CardType.Attack;

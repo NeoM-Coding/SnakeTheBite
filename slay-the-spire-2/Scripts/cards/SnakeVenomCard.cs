@@ -1,4 +1,4 @@
-// 毒液 - 1费无色技能，给予5层中毒
+﻿// 毒液 - 1费无色技能，给予5层中毒
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -9,10 +9,10 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(ColorlessCardPool))]
-public class SnakeVenomCard : MapleShadowCardModel
+public class SnakeVenomCard : SnakeTheBiteCardModel
 {
     // 基础耗能
     private const int energyCost = 1;

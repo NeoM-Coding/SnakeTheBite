@@ -1,4 +1,4 @@
-// 荆棘蛇咬 - 3费无色能力，敌人每攻击一次被蛇咬（受到7层中毒）
+﻿// 荆棘蛇咬 - 3费无色能力，敌人每攻击一次被蛇咬（受到7层中毒）
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -8,12 +8,12 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MapleShadow.Scripts.Powers;
+using SnakeTheBite.Scripts.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(ColorlessCardPool))]
-public class SnakeBiteThornsCard : MapleShadowCardModel
+public class SnakeBiteThornsCard : SnakeTheBiteCardModel
 {
     // 基础耗能
     private const int energyCost = 3;

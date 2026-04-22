@@ -1,4 +1,4 @@
-using BaseLib.Abstracts;
+﻿using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -9,11 +9,11 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 // 蛇咬风暴
 [Pool(typeof(IroncladCardPool))]
-public class SnakeBiteStormCard : MapleShadowCardModel
+public class SnakeBiteStormCard : SnakeTheBiteCardModel
 {
     // 基础耗能
     private const int energyCost = 1;

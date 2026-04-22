@@ -1,4 +1,4 @@
-// 隐秘能力 - 打出蛇咬累积点数获得无实体
+﻿// 隐秘能力 - 打出蛇咬累积点数获得无实体
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -10,9 +10,9 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MapleShadow.Scripts.Powers;
+namespace SnakeTheBite.Scripts.Powers;
 
-public class SnakeMysteryPower : MapleShadowPowerModel
+public class SnakeMysteryPower : SnakeTheBitePowerModel
 {
     // 内部数据，用于保存当前隐秘点数。
     private class Data

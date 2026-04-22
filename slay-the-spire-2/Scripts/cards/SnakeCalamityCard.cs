@@ -1,4 +1,4 @@
-// 灾厄之蛇 - 2费红卡技能，给予7层灾厄
+﻿// 灾厄之蛇 - 2费红卡技能，给予7层灾厄
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -9,11 +9,11 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 // 加入战士卡池
 [Pool(typeof(IroncladCardPool))]
-public class SnakeCalamityCard : MapleShadowCardModel
+public class SnakeCalamityCard : SnakeTheBiteCardModel
 {
     // 基础耗能
     private const int energyCost = 2;

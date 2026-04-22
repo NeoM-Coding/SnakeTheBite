@@ -1,9 +1,9 @@
-// Public snake_case helper
+﻿// Public snake_case helper
 using System.Text;
 
-namespace MapleShadow.Scripts;
+namespace SnakeTheBite.Scripts;
 
-public static class MapleShadowModelHelper
+public static class SnakeTheBiteModelHelper
 {
     //
     // 将 PascalCase 文本转换为 snake_case。

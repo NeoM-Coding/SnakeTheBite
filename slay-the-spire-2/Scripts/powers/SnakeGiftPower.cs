@@ -1,6 +1,6 @@
-// 蛇之赠礼能力 - 战斗结束随机升级非蛇牌
+﻿// 蛇之赠礼能力 - 战斗结束随机升级非蛇牌
 using BaseLib.Abstracts;
-using MapleShadow.Scripts.Utils;
+using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -11,9 +11,9 @@ using MegaCrit.Sts2.Core.Rooms;
 
 using System.Linq;
 
-namespace MapleShadow.Scripts.Powers;
+namespace SnakeTheBite.Scripts.Powers;
 
-public class SnakeGiftPower : MapleShadowPowerModel
+public class SnakeGiftPower : SnakeTheBitePowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -32,7 +32,7 @@ public class SnakeGiftPower : MapleShadowPowerModel
 
         var deck = PileType.Deck.GetPile(base.Owner.Player);
         var upgradableCards = deck.Cards
-            .Where(c => c.IsUpgradable && !MapleShadowCardTags.IsSnakeCard(c))
+            .Where(c => c.IsUpgradable && !SnakeTheBiteCardTags.IsSnakeCard(c))
             .ToList();
 
         int upgradeCount = Math.Min(upgradableCards.Count, (int)Amount);

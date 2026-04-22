@@ -1,7 +1,7 @@
-// 毒性转化 - 1费红卡技能，将自身中毒转移给随机敌人（升级后包含真实中毒）
+﻿// 毒性转化 - 1费红卡技能，将自身中毒转移给随机敌人（升级后包含真实中毒）
 using BaseLib.Abstracts;
 using BaseLib.Utils;
-using MapleShadow.Scripts.Powers;
+using SnakeTheBite.Scripts.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -9,10 +9,10 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(IroncladCardPool))]
-public class ToxicConversionCard : MapleShadowCardModel
+public class ToxicConversionCard : SnakeTheBiteCardModel
 {
     private const int energyCost = 1;
     private const CardType type = CardType.Skill;

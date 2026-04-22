@@ -1,10 +1,10 @@
-// 精粹蛇毒 - 稀有药水，仅商店
+﻿// 精粹蛇毒 - 稀有药水，仅商店
 // 本场战斗所有蛇牌获得重放1；若持有开心蛇花，蛇咬牌获得重放2
 using System.Linq;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
-using MapleShadow.Scripts.Relics;
-using MapleShadow.Scripts.Utils;
+using SnakeTheBite.Scripts.Relics;
+using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Potions;
@@ -12,10 +12,10 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.PotionPools;
 
-namespace MapleShadow.Scripts.Potions;
+namespace SnakeTheBite.Scripts.Potions;
 
 [Pool(typeof(SharedPotionPool))]
-public class EssenceSnakeVenomPotion : MapleShadowPotionModel
+public class EssenceSnakeVenomPotion : SnakeTheBitePotionModel
 {
     // 稀有度 - 稀有（金）
     public override PotionRarity Rarity => PotionRarity.Rare;
@@ -39,11 +39,11 @@ public class EssenceSnakeVenomPotion : MapleShadowPotionModel
 
         foreach (var card in allCards)
         {
-            if (!MapleShadowCardTags.IsSnakeCard(card))
+            if (!SnakeTheBiteCardTags.IsSnakeCard(card))
                 continue;
 
             int bonus = 1;
-            if (hasHappySnakeFlower && MapleShadowCardTags.IsSnakeBiteCard(card))
+            if (hasHappySnakeFlower && SnakeTheBiteCardTags.IsSnakeBiteCard(card))
                 bonus = 2;
 
             card.BaseReplayCount += bonus;

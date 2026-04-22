@@ -1,6 +1,6 @@
-using BaseLib.Abstracts;
-using MapleShadow.Scripts.Cards;
-using MapleShadow.Scripts.Utils;
+﻿using BaseLib.Abstracts;
+using SnakeTheBite.Scripts.Cards;
+using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -10,11 +10,11 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Powers;
+namespace SnakeTheBite.Scripts.Powers;
 
 // 你好，蛇咬能力
 // 在你的回合开始时，将 Amount 张非能力非状态的蛇牌放入手牌
-public class SnakeBitePower : MapleShadowPowerModel
+public class SnakeBitePower : SnakeTheBitePowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
@@ -30,7 +30,7 @@ public class SnakeBitePower : MapleShadowPowerModel
 
         // 从所有卡牌中筛选出蛇牌，且非能力、非状态、非诅咒、非事件专属
         var snakeCards = ModelDb.AllCards
-            .Where(c => MapleShadowCardTags.IsSnakeCard(c)
+            .Where(c => SnakeTheBiteCardTags.IsSnakeCard(c)
                 && c.Type != CardType.Power
                 && c.Type != CardType.Status
                 && c.Type != CardType.Curse

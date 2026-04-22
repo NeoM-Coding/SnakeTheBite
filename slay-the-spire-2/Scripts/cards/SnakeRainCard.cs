@@ -1,4 +1,4 @@
-// 要蛇喽！ - 2费罕见技能，保留，下回合给予所有敌人中毒
+﻿// 要蛇喽！ - 2费罕见技能，保留，下回合给予所有敌人中毒
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -7,12 +7,12 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
-using MapleShadow.Scripts.Powers;
+using SnakeTheBite.Scripts.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(IroncladCardPool))]
-public class SnakeRainCard : MapleShadowCardModel
+public class SnakeRainCard : SnakeTheBiteCardModel
 {
     private const int energyCost = 2;
     private const CardType type = CardType.Skill;

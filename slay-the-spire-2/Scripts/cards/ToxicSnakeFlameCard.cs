@@ -1,4 +1,4 @@
-using BaseLib.Abstracts;
+﻿using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -8,11 +8,11 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 // 至毒蛇焰
 [Pool(typeof(ColorlessCardPool))]
-public class ToxicSnakeFlameCard : MapleShadowCardModel
+public class ToxicSnakeFlameCard : SnakeTheBiteCardModel
 {
     // 基础耗能 - 0费(金卡)
     private const int energyCost = 0;

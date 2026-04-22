@@ -1,4 +1,4 @@
-// 蛇咬不咬 - 2费无色技能，保留。给予12层中毒，50%概率给予随机敌人，50%概率给予自己或队友。
+﻿// 蛇咬不咬 - 2费无色技能，保留。给予12层中毒，50%概率给予随机敌人，50%概率给予自己或队友。
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -10,10 +10,10 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(ColorlessCardPool))]
-public class SnakeBiteOrNotCard : MapleShadowCardModel
+public class SnakeBiteOrNotCard : SnakeTheBiteCardModel
 {
     private const int energyCost = 2;
     private const CardType type = CardType.Skill;

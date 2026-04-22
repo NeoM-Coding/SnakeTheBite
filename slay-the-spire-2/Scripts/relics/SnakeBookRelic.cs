@@ -1,9 +1,9 @@
-// 蛇之书 - 事件遗物
+﻿// 蛇之书 - 事件遗物
 // 之后每场战斗额外掉落一组蛇卡牌
 using System.Linq;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
-using MapleShadow.Scripts.Utils;
+using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
@@ -14,10 +14,10 @@ using MegaCrit.Sts2.Core.Rewards;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
 
-namespace MapleShadow.Scripts.Relics;
+namespace SnakeTheBite.Scripts.Relics;
 
 [Pool(typeof(SharedRelicPool))]
-public class SnakeBookRelic : MapleShadowRelicModel
+public class SnakeBookRelic : SnakeTheBiteRelicModel
 {
     // 遗物稀有度：事件
     public override RelicRarity Rarity => RelicRarity.Event;
@@ -29,7 +29,7 @@ public class SnakeBookRelic : MapleShadowRelicModel
             return;
 
         var snakeCards = ModelDb.AllCards
-            .Where(c => MapleShadowCardTags.IsSnakeCard(c)
+            .Where(c => SnakeTheBiteCardTags.IsSnakeCard(c)
                 && c.Type != CardType.Status
                 && c.Type != CardType.Curse)
             .ToList();
@@ -51,7 +51,7 @@ public class SnakeBookRelic : MapleShadowRelicModel
             new[] { Owner.Character.CardPool },
             CardCreationSource.Encounter,
             CardRarityOddsType.RegularEncounter,
-            c => MapleShadowCardTags.IsSnakeCard(c) && c.Type != CardType.Status && c.Type != CardType.Curse
+            c => SnakeTheBiteCardTags.IsSnakeCard(c) && c.Type != CardType.Status && c.Type != CardType.Curse
         );
 
         var reward = new CardReward(options, 3, Owner);

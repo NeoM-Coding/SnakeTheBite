@@ -1,4 +1,4 @@
-// ！？蛇蛇？！ - 3费无色技能，将2张蛇咬放入手牌
+﻿// ！？蛇蛇？！ - 3费无色技能，将2张蛇咬放入手牌
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -10,11 +10,11 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 // 加入无色卡池
 [Pool(typeof(ColorlessCardPool))]
-public class SnakeSnakeCard : MapleShadowCardModel
+public class SnakeSnakeCard : SnakeTheBiteCardModel
 {
     // 基础耗能
     private const int energyCost = 3;

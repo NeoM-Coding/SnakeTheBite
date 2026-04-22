@@ -1,4 +1,4 @@
-// 真实要蛇了 - 3费红卡能力，每回合开始时为一张手牌中的毒牌添加真实中毒（升级后2费）
+﻿// 真实要蛇了 - 3费红卡能力，每回合开始时为一张手牌中的毒牌添加真实中毒（升级后2费）
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -8,12 +8,12 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MapleShadow.Scripts.Powers;
+using SnakeTheBite.Scripts.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(IroncladCardPool))]
-public class TrueSnakeCard : MapleShadowCardModel
+public class TrueSnakeCard : SnakeTheBiteCardModel
 {
     private const int energyCost = 3;
     private const CardType type = CardType.Power;

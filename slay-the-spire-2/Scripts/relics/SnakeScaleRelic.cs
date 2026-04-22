@@ -1,8 +1,8 @@
-// 异蛇之鳞 - 普通遗物，给敌人上毒时获得1格挡
+﻿// 异蛇之鳞 - 普通遗物，给敌人上毒时获得1格挡
 using System.Collections.Generic;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
-using MapleShadow.Scripts.Powers;
+using SnakeTheBite.Scripts.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
@@ -13,10 +13,10 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Models.RelicPools;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace MapleShadow.Scripts.Relics;
+namespace SnakeTheBite.Scripts.Relics;
 
 [Pool(typeof(SharedRelicPool))]
-public class SnakeScaleRelic : MapleShadowRelicModel
+public class SnakeScaleRelic : SnakeTheBiteRelicModel
 {
     // 遗物稀有度：普通（白）。
     public override RelicRarity Rarity => RelicRarity.Common;

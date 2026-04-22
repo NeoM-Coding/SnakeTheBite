@@ -1,4 +1,4 @@
-// 蛇宴能力 - 若敌人因中毒死亡，玩家获得其最大生命加到血上限（爪牙不生效）
+﻿// 蛇宴能力 - 若敌人因中毒死亡，玩家获得其最大生命加到血上限（爪牙不生效）
 using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
@@ -6,9 +6,9 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Powers;
+namespace SnakeTheBite.Scripts.Powers;
 
-public class SnakeFeastPower : MapleShadowPowerModel
+public class SnakeFeastPower : SnakeTheBitePowerModel
 {
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Single;

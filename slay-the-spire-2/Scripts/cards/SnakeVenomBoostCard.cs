@@ -1,19 +1,19 @@
-using BaseLib.Abstracts;
+﻿using BaseLib.Abstracts;
 using BaseLib.Utils;
-using MapleShadow.Scripts.Enchantments;
+using SnakeTheBite.Scripts.Enchantments;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
-using MapleShadow.Scripts.Powers;
+using SnakeTheBite.Scripts.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 // 蛇液补充
 [Pool(typeof(IroncladCardPool))]
-public class SnakeVenomBoostCard : MapleShadowCardModel
+public class SnakeVenomBoostCard : SnakeTheBiteCardModel
 {
     // 基础耗能 - 2费(蓝卡)
     private const int energyCost = 2;

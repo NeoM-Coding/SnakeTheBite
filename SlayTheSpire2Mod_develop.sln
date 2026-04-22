@@ -4,7 +4,7 @@ VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "slay-the-spire-2", "slay-the-spire-2", "{8BB3E687-C27A-514E-C8A0-96BDD1C388ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapleShadow", "slay-the-spire-2\MapleShadow.csproj", "{31AE7AD7-5E9F-7508-6005-E6BC701F5DCF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakeTheBite", "slay-the-spire-2\SnakeTheBite.csproj", "{31AE7AD7-5E9F-7508-6005-E6BC701F5DCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

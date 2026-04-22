@@ -1,7 +1,7 @@
-{
-    "id": "MapleShadow",
+﻿{
+    "id": "SnakeTheBite",
     "author": "MapleShadow",
-    "description": "MapleShaodw的模组",
+    "description": "蛇咬宇宙",
     "version": "0.8.0",
     "has_pck": true,
     "has_dll": true,

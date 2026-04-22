@@ -1,4 +1,4 @@
-// 蛇烬 - 2费红卡攻击，给予11层中毒并消耗抽牌堆顶牌
+﻿// 蛇烬 - 2费红卡攻击，给予11层中毒并消耗抽牌堆顶牌
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -10,11 +10,11 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 // 加入战士卡池
 [Pool(typeof(IroncladCardPool))]
-public class SnakeAshCard : MapleShadowCardModel
+public class SnakeAshCard : SnakeTheBiteCardModel
 {
     // 基础耗能
     private const int energyCost = 2;

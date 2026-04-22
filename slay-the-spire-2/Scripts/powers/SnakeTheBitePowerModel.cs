@@ -1,14 +1,14 @@
-// Power base class
+﻿// Power base class
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Localization;
 
-namespace MapleShadow.Scripts.Powers;
+namespace SnakeTheBite.Scripts.Powers;
 
-public abstract class MapleShadowPowerModel : CustomPowerModel
+public abstract class SnakeTheBitePowerModel : CustomPowerModel
 {
     private string? _imagePath;
 
-    private string ImagePath => _imagePath ??= $"res://MapleShadow/images/powers/{MapleShadowModelHelper.ToSnakeCase(GetType().Name)}.png";
+    private string ImagePath => _imagePath ??= $"res://SnakeTheBite/images/powers/{SnakeTheBiteModelHelper.ToSnakeCase(GetType().Name)}.png";
 
     // 能力小图标路径（power atlas）。
     public override string? CustomPackedIconPath => ImagePath;

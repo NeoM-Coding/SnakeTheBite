@@ -1,4 +1,4 @@
-// 散蛇炮 - 2费红卡技能，移除自身中毒分给敌人
+﻿// 散蛇炮 - 2费红卡技能，移除自身中毒分给敌人
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -9,13 +9,13 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MapleShadow.Scripts.Powers;
+using SnakeTheBite.Scripts.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 // 加入战士卡池
 [Pool(typeof(IroncladCardPool))]
-public class SnakeScatterCannonCard : MapleShadowCardModel
+public class SnakeScatterCannonCard : SnakeTheBiteCardModel
 {
     // 基础耗能
     private const int energyCost = 2;

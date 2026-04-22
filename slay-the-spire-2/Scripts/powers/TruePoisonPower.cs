@@ -1,4 +1,4 @@
-// 真实中毒 - 无视人工、缓冲、无实体等限伤效果的中毒
+﻿// 真实中毒 - 无视人工、缓冲、无实体等限伤效果的中毒
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +20,9 @@ using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.ValueProps;
 using MegaCrit.Sts2.addons.mega_text;
 
-namespace MapleShadow.Scripts.Powers;
+namespace SnakeTheBite.Scripts.Powers;
 
-public class TruePoisonPower : MapleShadowPowerModel
+public class TruePoisonPower : SnakeTheBitePowerModel
 {
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;

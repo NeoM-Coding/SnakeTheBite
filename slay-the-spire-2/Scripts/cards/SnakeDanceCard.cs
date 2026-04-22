@@ -1,4 +1,4 @@
-// 蛇之舞 - 1费红卡技能，获得7格挡，下回合获得1点能量
+﻿// 蛇之舞 - 1费红卡技能，获得7格挡，下回合获得1点能量
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -10,10 +10,10 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(IroncladCardPool))]
-public class SnakeDanceCard : MapleShadowCardModel
+public class SnakeDanceCard : SnakeTheBiteCardModel
 {
     // 基础耗能
     private const int energyCost = 1;

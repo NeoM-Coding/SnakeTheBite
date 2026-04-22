@@ -1,4 +1,4 @@
-// 瓶中异蛇 - 稀有自动药水，致死时复活并中毒
+﻿// 瓶中异蛇 - 稀有自动药水，致死时复活并中毒
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -11,10 +11,10 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.PotionPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Potions;
+namespace SnakeTheBite.Scripts.Potions;
 
 [Pool(typeof(SharedPotionPool))]
-public class SnakeInABottlePotion : MapleShadowPotionModel
+public class SnakeInABottlePotion : SnakeTheBitePotionModel
 {
     // 稀有度 - 稀有（金）。
     public override PotionRarity Rarity => PotionRarity.Rare;

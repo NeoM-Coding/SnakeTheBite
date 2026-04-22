@@ -1,4 +1,4 @@
-// 忍住不蛇 - 4费无色技能，保留减费，给予17层中毒
+﻿// 忍住不蛇 - 4费无色技能，保留减费，给予17层中毒
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -14,11 +14,11 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Saves.Runs;
 using System;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 // 加入无色卡池
 [Pool(typeof(ColorlessCardPool))]
-public class EndureNotSnakeCard : MapleShadowCardModel
+public class EndureNotSnakeCard : SnakeTheBiteCardModel
 {
     // 基础耗能 - 4费
     private const int energyCost = 4;

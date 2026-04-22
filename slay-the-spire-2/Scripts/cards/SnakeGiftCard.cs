@@ -1,4 +1,4 @@
-// 蛇之赠礼 - 3费无色能力，战斗结束随机升级非蛇牌
+﻿// 蛇之赠礼 - 3费无色能力，战斗结束随机升级非蛇牌
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -8,12 +8,12 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
-using MapleShadow.Scripts.Powers;
+using SnakeTheBite.Scripts.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(ColorlessCardPool))]
-public class SnakeGiftCard : MapleShadowCardModel
+public class SnakeGiftCard : SnakeTheBiteCardModel
 {
     // 基础耗能 - 3费
     private const int energyCost = 3;

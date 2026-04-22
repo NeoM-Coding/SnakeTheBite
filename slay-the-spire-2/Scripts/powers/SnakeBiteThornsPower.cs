@@ -1,4 +1,4 @@
-// 荆棘蛇咬能力 - 敌人攻击命中时受到7层中毒
+﻿// 荆棘蛇咬能力 - 敌人攻击命中时受到7层中毒
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -10,9 +10,9 @@ using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace MapleShadow.Scripts.Powers;
+namespace SnakeTheBite.Scripts.Powers;
 
-public class SnakeBiteThornsPower : MapleShadowPowerModel
+public class SnakeBiteThornsPower : SnakeTheBitePowerModel
 {
     public override PowerType Type => PowerType.Buff;
 

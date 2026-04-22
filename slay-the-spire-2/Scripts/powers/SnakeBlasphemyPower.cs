@@ -1,12 +1,12 @@
-// 渎蛇能力 - 每回合开始时，获得21*Amount层中毒。
+﻿// 渎蛇能力 - 每回合开始时，获得21*Amount层中毒。
 using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
-namespace MapleShadow.Scripts.Powers;
+namespace SnakeTheBite.Scripts.Powers;
 
-public class SnakeBlasphemyPower : MapleShadowPowerModel
+public class SnakeBlasphemyPower : SnakeTheBitePowerModel
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;

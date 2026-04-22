@@ -1,4 +1,4 @@
-// 蛇噬 - 状态牌，抽到获得2层中毒
+﻿// 蛇噬 - 状态牌，抽到获得2层中毒
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -11,11 +11,11 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 // 状态牌加入状态卡池
 [Pool(typeof(StatusCardPool))]
-public class SnakeBiteStatusCard : MapleShadowCardModel
+public class SnakeBiteStatusCard : SnakeTheBiteCardModel
 {
     // 不可打出（费用-1），状态牌
     private const int energyCost = -1;

@@ -1,4 +1,4 @@
-// 飞蛇回旋咬 - 1费红卡攻击，随机3个敌人分别给予2层中毒
+﻿// 飞蛇回旋咬 - 1费红卡攻击，随机3个敌人分别给予2层中毒
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -10,10 +10,10 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(IroncladCardPool))]
-public class FlyingSnakeSpinBiteCard : MapleShadowCardModel
+public class FlyingSnakeSpinBiteCard : SnakeTheBiteCardModel
 {
     // 基础耗能
     private const int energyCost = 1;

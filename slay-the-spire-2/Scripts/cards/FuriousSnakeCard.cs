@@ -1,4 +1,4 @@
-// 暴蛇 - 2费红卡技能，给予自身7层中毒并进入怒蛇状态
+﻿// 暴蛇 - 2费红卡技能，给予自身7层中毒并进入怒蛇状态
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -9,12 +9,12 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MapleShadow.Scripts.Powers;
+using SnakeTheBite.Scripts.Powers;
 
-namespace MapleShadow.Scripts.Cards;
+namespace SnakeTheBite.Scripts.Cards;
 
 [Pool(typeof(IroncladCardPool))]
-public class FuriousSnakeCard : MapleShadowCardModel
+public class FuriousSnakeCard : SnakeTheBiteCardModel
 {
     // 基础耗能 - 2费
     private const int energyCost = 2;

@@ -1,11 +1,11 @@
-// Mod entry point
+﻿// Mod entry point
 using Godot.Bridge;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Modding;
 
-namespace MapleShadow.Scripts;
+namespace SnakeTheBite.Scripts;
 
 // 必须要加的属性，用于注册Mod。字符串和初始化函数命名一致。
 [ModInitializer(nameof(Init))]
@@ -48,6 +48,6 @@ public class Entry
             Log.Warn($"注入 card_selection 本地化失败: {ex.Message}");
         }
 
-        Log.Debug("模组加载成功 By:MapleShadow");
+        Log.Debug("模组加载成功 By:SnakeTheBite");
     }
 }
