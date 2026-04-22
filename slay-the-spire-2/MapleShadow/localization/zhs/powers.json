@@ -10,7 +10,7 @@
     "MAPLESHADOW-CREATIVE_SNAKE_BITE_POWER.title": "创造性蛇咬",
     "MAPLESHADOW-CREATIVE_SNAKE_BITE_POWER.description": "在你的回合开始时，将[blue]{Amount}[/blue]张蛇[gold]能力[/gold]牌放入手牌。",
     "MAPLESHADOW-SNAKE_PRECISION_POWER.title": "蛇之精准",
-    "MAPLESHADOW-SNAKE_PRECISION_POWER.description": "给予[gold]中毒[/gold]或[gold]真实中毒[/gold]时额外给予[blue]{Amount}[/blue]次。",
+    "MAPLESHADOW-SNAKE_PRECISION_POWER.description": "给予[gold]中毒[/gold]或[gold]真实中毒[/gold]时额外给予[blue]{Amount}[/blue]层。",
     "MAPLESHADOW-SNAKE_VENOM_BOOST_POWER.title": "蛇液补充",
     "MAPLESHADOW-SNAKE_VENOM_BOOST_POWER.description": "战斗结束后，随机为[blue]{Amount}[/blue]张蛇牌[purple]附魔[/purple]：[gold]蛇液强化[/gold]。",
     "MAPLESHADOW-SNEAKY_SNAKE_POWER.title": "偷偷的蛇",
@@ -22,7 +22,7 @@
     "MAPLESHADOW-SNAKE_RAIN_POWER.title": "要蛇喽！",
     "MAPLESHADOW-SNAKE_RAIN_POWER.description": "在你的回合开始时，给予所有敌人[blue]{Amount}[/blue]层[gold]中毒[/gold]。",
     "MAPLESHADOW-SNAKE_BLASPHEMY_POWER.title": "渎蛇",
-    "MAPLESHADOW-SNAKE_BLASPHEMY_POWER.description": "这回合内，你给予敌人的[gold]中毒[/gold]和[gold]真实中毒[/gold]层数变为[blue]{Amount}[/blue]倍。在你的回合开始时，自身获得[blue]{NextTurnPoison}[/blue]层[gold]中毒[/gold]。",
+    "MAPLESHADOW-SNAKE_BLASPHEMY_POWER.description": "每回合开始时，自身获得[blue]{NextTurnPoison}[/blue]层[gold]中毒[/gold]。",
     "MAPLESHADOW-SNAKE_BITE_POWER.title": "你好，蛇咬",
     "MAPLESHADOW-SNAKE_BITE_POWER.description": "在你的回合开始时，将[blue]{Amount}[/blue]张[gold]随机[/gold]的蛇牌放入手牌。",
     "MAPLESHADOW-HANG_SNAKE_POWER.title": "吊蛇",
@@ -35,6 +35,8 @@
     "MAPLESHADOW-SNAKE_BLAST_POWER.description": "死亡时，对其他敌人造成等于[blue]{Amount}[/blue]倍自身[gold]最大生命值[/gold]的[gold]伤害[/gold]。",
     "MAPLESHADOW-SNAKE_UNSTOPPABLE_POWER.title": "蛇不可挡",
     "MAPLESHADOW-SNAKE_UNSTOPPABLE_POWER.description": "每获得[blue]1[/blue]点[gold]格挡[/gold]，给予随机一名敌人[blue]{Amount}[/blue]层[gold]真实中毒[/gold]。",
+    "MAPLESHADOW-DIVINE_SNAKE_POWER.title": "神蛇",
+    "MAPLESHADOW-DIVINE_SNAKE_POWER.description": "本回合内，给予[gold]中毒[/gold]或[gold]真实中毒[/gold]时层数变为[blue]3[/blue]倍。",
     "MAPLESHADOW-CHARGING_SNAKE_POWER.title": "蓄蛇",
-    "MAPLESHADOW-CHARGING_SNAKE_POWER.description": "退出蓄蛇时，随机使手中[blue]2[/blue]张蛇咬牌本回合不消耗[gold]能量[/gold]。"
+    "MAPLESHADOW-CHARGING_SNAKE_POWER.description": "退出改[gold]姿态[/gold]时，随机使手中[blue]2[/blue]张蛇咬牌本回合不消耗[gold]能量[/gold]。"
 }

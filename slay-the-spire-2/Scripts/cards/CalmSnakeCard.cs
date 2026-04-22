@@ -66,6 +66,12 @@ public class CalmSnakeCard : MapleShadowCardModel
                 await PowerCmd.Remove<FuriousSnakePower>(Owner.Creature);
             }
 
+            // 退出神蛇（若有）
+            if (Owner.Creature.HasPower<DivineSnakePower>())
+            {
+                await PowerCmd.Remove<DivineSnakePower>(Owner.Creature);
+            }
+
             // 进入蓄蛇
             await PowerCmd.Apply<ChargingSnakePower>(Owner.Creature, 1m, Owner.Creature, this);
         }

@@ -1,4 +1,4 @@
-// 渎蛇 - 1费稀有技能，消耗，本回合给予敌人的中毒层数变为3倍，下回合自身获得21层中毒。升级后获得保留。
+// 渎蛇 - 1费稀有技能，消耗，进入神蛇姿态，之后每回合开始时自身获得21层中毒。升级后获得保留。
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -24,12 +24,11 @@ public class SnakeBlasphemyCard : MapleShadowCardModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<SnakeBlasphemyPower>(3m),
-        new DynamicVar("SnakeBlasphemyNextTurnPoison", 21m)
+        new PowerVar<SnakeBlasphemyPower>(1m)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        [HoverTipFactory.FromKeyword(CardKeyword.Exhaust), HoverTipFactory.FromPower<SnakeBlasphemyPower>()];
+        [HoverTipFactory.FromKeyword(CardKeyword.Exhaust), HoverTipFactory.FromPower<SnakeBlasphemyPower>(), HoverTipFactory.FromPower<DivineSnakePower>()];
 
     public SnakeBlasphemyCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
@@ -38,6 +37,17 @@ public class SnakeBlasphemyCard : MapleShadowCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+
+        // 退出其他蛇姿态
+        if (Owner.Creature.HasPower<FuriousSnakePower>())
+            await PowerCmd.Remove<FuriousSnakePower>(Owner.Creature);
+        if (Owner.Creature.HasPower<ChargingSnakePower>())
+            await PowerCmd.Remove<ChargingSnakePower>(Owner.Creature);
+
+        // 进入神蛇姿态
+        await PowerCmd.Apply<DivineSnakePower>(Owner.Creature, 1m, Owner.Creature, this);
+
+        // 给予渎蛇效果
         await PowerCmd.Apply<SnakeBlasphemyPower>(Owner.Creature, DynamicVars["SnakeBlasphemyPower"].BaseValue, Owner.Creature, this);
     }
 

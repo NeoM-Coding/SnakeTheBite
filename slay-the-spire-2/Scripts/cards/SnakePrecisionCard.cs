@@ -46,9 +46,10 @@ public class SnakePrecisionCard : MapleShadowCardModel
         await PowerCmd.Apply<SnakePrecisionPower>(Owner.Creature, DynamicVars["SnakePrecisionPower"].BaseValue, Owner.Creature, this);
     }
 
-    // 升级后的效果逻辑 - 费用减1（2 → 1）
+    // 升级后的效果逻辑 - 费用减1（2 → 1），额外层数 +1（1 → 2）
     protected override void OnUpgrade()
     {
         EnergyCost.UpgradeBy(-1);
+        DynamicVars["SnakePrecisionPower"].UpgradeValueBy(1m);
     }
 }

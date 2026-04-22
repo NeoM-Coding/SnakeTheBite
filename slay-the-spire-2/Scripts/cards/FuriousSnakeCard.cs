@@ -48,6 +48,12 @@ public class FuriousSnakeCard : MapleShadowCardModel
         // 给予自身中毒
         await PowerCmd.Apply<PoisonPower>(Owner.Creature, DynamicVars.Poison.BaseValue, Owner.Creature, this);
 
+        // 退出其他蛇姿态
+        if (Owner.Creature.HasPower<ChargingSnakePower>())
+            await PowerCmd.Remove<ChargingSnakePower>(Owner.Creature);
+        if (Owner.Creature.HasPower<DivineSnakePower>())
+            await PowerCmd.Remove<DivineSnakePower>(Owner.Creature);
+
         // 本回合进入怒蛇状态
         await PowerCmd.Apply<FuriousSnakePower>(Owner.Creature, DynamicVars["FuriousSnakePower"].BaseValue, Owner.Creature, this);
     }

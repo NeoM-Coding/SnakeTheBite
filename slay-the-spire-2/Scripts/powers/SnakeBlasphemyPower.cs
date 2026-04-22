@@ -1,16 +1,8 @@
-// 渎蛇能力 - 本回合给予敌人的中毒层数变为Amount倍，下回合自身获得7×Amount层中毒
+// 渎蛇能力 - 每回合开始时，获得21*Amount层中毒。
 using BaseLib.Abstracts;
-using HarmonyLib;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Localization;
-using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Entities.Players;
-using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Hooks;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace MapleShadow.Scripts.Powers;
 
@@ -19,9 +11,8 @@ public class SnakeBlasphemyPower : MapleShadowPowerModel
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
     public override int DisplayAmount => (int)Amount;
-    // 使用 .smartDescription 指向不存在的键，使 HasSmartDescription 为 false，
-    // 从而回退到 Description。因为 Description 中注入了 NextTurnPoison，而 SmartDescription 不会。
-    protected override string SmartDescriptionLocKey => base.Id.Entry + ".smartDescription";
+
+    protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 
     public override LocString Description
     {
@@ -29,32 +20,18 @@ public class SnakeBlasphemyPower : MapleShadowPowerModel
         {
             var desc = base.Description;
             desc.Add("Amount", Amount);
-            desc.Add("NextTurnPoison", Amount * 7m);
+            desc.Add("NextTurnPoison", 21m * Amount);
             return desc;
         }
     }
 
-    public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
+    // 每回合开始时给予自身21*Amount层中毒
+    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
     {
-        if (player != Owner.Player)
+        if (side != base.Owner.Side)
             return;
 
         Flash();
-        await PowerCmd.Apply<PoisonPower>(Owner, 7m * Amount, Owner, null);
-        await PowerCmd.Remove(this);
-    }
-}
-
-// Harmony 补丁：本回合内玩家给予敌人的中毒层数乘以 SnakeBlasphemyPower 的 Amount
-[HarmonyPatch(typeof(Hook), nameof(Hook.ModifyPowerAmountGiven))]
-public static class SnakeBlasphemyModifyPowerAmountGivenPatch
-{
-    static decimal Postfix(decimal __result, PowerModel power, Creature giver, decimal amount, Creature? target, CardModel? cardSource)
-    {
-        if ((power is PoisonPower or TruePoisonPower) && giver?.GetPower<SnakeBlasphemyPower>() is { } blasphemy && target != null && target.IsEnemy)
-        {
-            return __result * blasphemy.Amount;
-        }
-        return __result;
+        await PowerCmd.Apply<PoisonPower>(Owner, 21m * Amount, Owner, null);
     }
 }
