@@ -28,6 +28,8 @@ public class TruePoisonPower : SnakeTheBitePowerModel
     public override PowerStackType StackType => PowerStackType.Counter;
     public override int DisplayAmount => (int)Amount;
 
+    protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
+
     // 计算下回合将要造成的伤害（用于血条绿色预览）
     // 适配触媒（AccelerantPower）：每有一层触媒额外触发一次
     private int TriggerCount

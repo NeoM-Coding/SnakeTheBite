@@ -1,4 +1,4 @@
-﻿// 怒蛇能力 - 本回合蛇牌额外打出，受未被格挡伤害时获得中毒
+﻿// 怒蛇能力 - 蛇之姿态。蛇牌额外打出，受未被格挡伤害时获得中毒。
 using BaseLib.Abstracts;
 using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -43,17 +43,6 @@ public class FuriousSnakePower : SnakeTheBitePowerModel
     {
         Flash();
         return Task.CompletedTask;
-    }
-
-    //
-    // 自己的回合开始时移除该状态，确保敌人的攻击阶段仍然生效。
-    //
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
-    {
-        if (side == base.Owner.Side)
-        {
-            await PowerCmd.Remove(this);
-        }
     }
 
     //

@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
+using SnakeTheBite.Scripts.Utils;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -33,6 +34,8 @@ public class SnakeMysteryPower : SnakeTheBitePowerModel
     // 每次打出蛇咬获得的隐秘点数（默认2点）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         new[] { new DynamicVar("PointsPerSnakeBite", 2m) };
+
+    protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 
     // 初始化内部数据。
     protected override object InitInternalData()
@@ -66,9 +69,9 @@ public class SnakeMysteryPower : SnakeTheBitePowerModel
         }
     }
 
-    // 判断卡牌是否属于蛇咬牌（类名含 Snakebite）。
+    // 判断卡牌是否属于蛇咬牌（使用统一工具类，兼容本 mod 与原版）。
     private static bool IsSnakeBiteCard(CardModel card)
     {
-        return card.GetType().Name.Contains("Snakebite", StringComparison.OrdinalIgnoreCase);
+        return SnakeTheBiteCardTags.IsSnakeBiteCard(card);
     }
 }

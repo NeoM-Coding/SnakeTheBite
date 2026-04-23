@@ -1,8 +1,10 @@
-﻿// 神蛇能力 - 蛇之姿态。本回合内，施加的中毒与真实中毒变为三倍。自己回合开始时移除。
+﻿// 神蛇能力 - 蛇之姿态。施加的中毒与真实中毒变为三倍。
 using BaseLib.Abstracts;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
@@ -17,14 +19,6 @@ public class DivineSnakePower : SnakeTheBitePowerModel
 
     protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 
-    // 自己回合开始时移除该姿态
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
-    {
-        if (side == base.Owner.Side)
-        {
-            await PowerCmd.Remove(this);
-        }
-    }
 }
 
 // Harmony 补丁：神蛇姿态下，玩家给予敌人的中毒与真实中毒层数变为三倍

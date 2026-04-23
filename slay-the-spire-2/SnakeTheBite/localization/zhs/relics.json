@@ -6,7 +6,7 @@
     "SNAKETHEBITE-SNAKE_SCALE_RELIC.description": "每当你对敌人给予[blue]1[/blue]次[gold]中毒[/gold]或[gold]真实中毒[/gold]时，获得[blue]{Block}[/blue]点[gold]格挡[/gold]。",
     "SNAKETHEBITE-SNAKE_SCALE_RELIC.flavor": "从异蛇身上剥下的鳞片。",
     "SNAKETHEBITE-HAPPY_SNAKE_FLOWER_RELIC.title": "开心蛇花",
-    "SNAKETHEBITE-HAPPY_SNAKE_FLOWER_RELIC.description": "你牌组中的[gold]蛇咬[/gold]牌获得[blue]1[/blue]次[gold]重放[/gold]。",
+    "SNAKETHEBITE-HAPPY_SNAKE_FLOWER_RELIC.description": "你[gold]牌组[/gold]中的[gold]蛇咬[/gold]牌获得[blue]1[/blue]次[gold]重放[/gold]。",
     "SNAKETHEBITE-SNAKE_BOOK_RELIC.title": "蛇之书",
     "SNAKETHEBITE-SNAKE_BOOK_RELIC.description": "之后每场战斗额外掉落一组[gold]蛇[/gold]卡牌。",
     "SNAKETHEBITE-MEDUSA_EYE_RELIC.title": "美杜莎之眼",

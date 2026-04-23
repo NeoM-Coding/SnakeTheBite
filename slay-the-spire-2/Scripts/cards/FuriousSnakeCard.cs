@@ -54,7 +54,7 @@ public class FuriousSnakeCard : SnakeTheBiteCardModel
         if (Owner.Creature.HasPower<DivineSnakePower>())
             await PowerCmd.Remove<DivineSnakePower>(Owner.Creature);
 
-        // 本回合进入怒蛇状态
+        // 进入怒蛇姿态
         await PowerCmd.Apply<FuriousSnakePower>(Owner.Creature, DynamicVars["FuriousSnakePower"].BaseValue, Owner.Creature, this);
     }
 

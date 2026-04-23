@@ -18,7 +18,7 @@ public class MysteriousSnakeCultEvent : CustomEventModel
     // 仅出现在第二幕（Act 2）
     public override bool IsAllowed(IRunState runState) => runState.CurrentActIndex == 1;
 
-    public override string? CustomInitialPortraitPath => "res://SnakeTheBite/images/events/snakethebite-mysterious_snake_cult_event.png";
+    public override string? CustomInitialPortraitPath => "res://SnakeTheBite/images/events/SnakeTheBite-mysterious_snake_cult_event.png";
 
     protected override IReadOnlyList<EventOption> GenerateInitialOptions()
     {

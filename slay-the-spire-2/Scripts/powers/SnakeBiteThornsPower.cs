@@ -21,6 +21,8 @@ public class SnakeBiteThornsPower : SnakeTheBitePowerModel
     // 不显示能力层数。
     public override int DisplayAmount => 0;
 
+    protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
+
     //
     // 当能力持有者受到伤害前触发（参考荆棘能力的实现）。
     //

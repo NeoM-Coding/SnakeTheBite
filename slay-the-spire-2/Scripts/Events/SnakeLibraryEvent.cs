@@ -23,7 +23,7 @@ public class SnakeLibraryEvent : CustomEventModel
     public override bool IsAllowed(IRunState runState) => false;
 
     // 事件立绘路径
-    public override string? CustomInitialPortraitPath => $"res://SnakeTheBite/images/events/snakethebite-{SnakeTheBiteModelHelper.ToSnakeCase(GetType().Name)}.png";
+    public override string? CustomInitialPortraitPath => $"res://SnakeTheBite/images/events/SnakeTheBite-{SnakeTheBiteModelHelper.ToSnakeCase(GetType().Name)}.png";
 
     protected override IReadOnlyList<EventOption> GenerateInitialOptions()
     {

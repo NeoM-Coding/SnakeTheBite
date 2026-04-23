@@ -1,4 +1,4 @@
-﻿// 蛇咬不咬 - 2费无色技能，保留。给予12层中毒，50%概率给予随机敌人，50%概率给予自己或队友。
+﻿// 蛇咬不咬 - 2费无色技能，保留。给予12层中毒，90%概率给予随机敌人，10%概率给予自己或队友。
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -38,8 +38,8 @@ public class SnakeBiteOrNotCard : SnakeTheBiteCardModel
         int poisonAmount = DynamicVars.Poison.IntValue;
         var rng = Owner.RunState.Rng.CombatTargets;
 
-        // 50% 概率给予随机敌人，50% 概率给予自己或队友
-        bool giveToEnemy = rng.NextBool();
+        // 90% 概率给予随机敌人，10% 概率给予自己或队友
+        bool giveToEnemy = rng.NextInt(10) < 9;
 
         if (giveToEnemy)
         {

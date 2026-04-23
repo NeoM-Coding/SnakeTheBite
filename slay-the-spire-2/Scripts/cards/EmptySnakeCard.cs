@@ -34,6 +34,7 @@ public class EmptySnakeCard : SnakeTheBiteCardModel
 
         // 退出所有蛇-related姿态
         await PowerCmd.Remove<FuriousSnakePower>(Owner.Creature);
+        await PowerCmd.Remove<DivineSnakePower>(Owner.Creature);
         await PowerCmd.Remove<ChargingSnakePower>(Owner.Creature);
         await PowerCmd.Remove<SnakeBlasphemyPower>(Owner.Creature);
 
