@@ -17,14 +17,19 @@ public abstract class SnakeTheBitePowerModel : CustomPowerModel
     public override string? CustomBigIconPath => ImagePath;
 
     //
-    // 在 Description 中自动注入当前 Amount，确保 DumbHoverTip 等场景也能正确显示数值。
+    // 卡牌悬浮提示（DumbHoverTip）统一显示"对应层数"，能力悬浮（SmartDescription）保持实际层数。
     //
     public override LocString Description
     {
         get
         {
             var desc = base.Description;
-            desc.Add("Amount", Amount);
+            string rawText = desc.GetRawText();
+            if (rawText.Contains("{Amount}"))
+            {
+                rawText = rawText.Replace("{Amount}", "对应层数");
+                return new LocString(desc.LocTable, rawText);
+            }
             return desc;
         }
     }

@@ -28,7 +28,7 @@
     "SNAKETHEBITE-FLYING_SNAKE_SPIN_BITE_CARD.title": "飞蛇回旋咬",
     "SNAKETHEBITE-FLYING_SNAKE_SPIN_BITE_CARD.description": "随机对敌人给予{PoisonPower:diff()}层[gold]中毒[/gold]3次。",
     "SNAKETHEBITE-SNAKE_DANCE_CARD.title": "蛇之舞",
-    "SNAKETHEBITE-SNAKE_DANCE_CARD.description": "获得{Block:diff()}点[gold]格挡[/gold]。\n下回合获得{Energy}点[gold]能量[/gold]。",
+    "SNAKETHEBITE-SNAKE_DANCE_CARD.description": "获得{Block:diff()}点[gold]格挡[/gold]。\n下回合获得{Energy:energyIcons()}。",
     "SNAKETHEBITE-SNAKE_VENOM_CARD.title": "毒液",
     "SNAKETHEBITE-SNAKE_VENOM_CARD.description": "给予{PoisonPower:diff()}层[gold]中毒[/gold]。",
     "SNAKETHEBITE-SNAKE_BITE_NOW_CARD.title": "蛇，咬！",

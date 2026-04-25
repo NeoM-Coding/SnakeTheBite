@@ -29,6 +29,8 @@ public class SnakeHardBiteCard : SnakeTheBiteCardModel
     protected override IEnumerable<DynamicVar> CanonicalVars =>
         [new PowerVar<PoisonPower>(15m)];
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
+
     // 悬停提示 - 显示中毒 power 的提示
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         [HoverTipFactory.FromPower<PoisonPower>()];

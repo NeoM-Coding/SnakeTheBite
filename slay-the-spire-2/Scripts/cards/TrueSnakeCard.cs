@@ -2,6 +2,7 @@
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -34,7 +35,10 @@ public class TrueSnakeCard : SnakeTheBiteCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        if (LocalContext.IsMe(Owner.Creature))
+        {
+            await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        }
         await PowerCmd.Apply<TrueSnakePower>(Owner.Creature, DynamicVars["TrueSnakePower"].BaseValue, Owner.Creature, this);
     }
 
