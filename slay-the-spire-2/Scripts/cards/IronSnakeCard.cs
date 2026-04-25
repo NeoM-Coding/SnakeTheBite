@@ -59,7 +59,7 @@ public class IronSnakeCard : SnakeTheBiteCardModel
             await CardPileCmd.AddGeneratedCardsToCombat(
                 snakeBites, 
                 PileType.Draw, 
-                addedByPlayer: true, 
+                Owner, 
                 CardPilePosition.Random
             )
         );

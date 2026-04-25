@@ -38,7 +38,7 @@ public class SearingSnakebiteCard : SnakeTheBiteCardModel
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
         await CreatureCmd.TriggerAnim(Owner.Creature, "Attack", Owner.Character.AttackAnimDelay);
-        await PowerCmd.Apply<PoisonPower>(cardPlay.Target, DynamicVars["PoisonPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, DynamicVars["PoisonPower"].BaseValue, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()

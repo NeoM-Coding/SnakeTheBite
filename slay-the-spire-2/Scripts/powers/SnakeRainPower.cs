@@ -28,7 +28,7 @@ public class SnakeRainPower : SnakeTheBitePowerModel
         Flash();
         foreach (var enemy in enemies)
         {
-            await PowerCmd.Apply<PoisonPower>(enemy, Amount, Owner, null);
+            await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), enemy, Amount, Owner, null, false);
         }
 
         await PowerCmd.Remove(this);

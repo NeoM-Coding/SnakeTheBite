@@ -41,7 +41,7 @@ public class SnakeVenomBoostCard : SnakeTheBiteCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<SnakeVenomBoostPower>(Owner.Creature, DynamicVars["SnakeVenomBoostPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<SnakeVenomBoostPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, DynamicVars["SnakeVenomBoostPower"].BaseValue, Owner.Creature, this, false);
     }
 
     // 升级后的效果逻辑 - 增加的中毒数值加1（1 -> 2）

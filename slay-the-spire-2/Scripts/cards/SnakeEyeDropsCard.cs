@@ -58,7 +58,7 @@ public class SnakeEyeDropsCard : SnakeTheBiteCardModel
     {
         // 1. 自身获得3层中毒
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<PoisonPower>(Owner.Creature, DynamicVars.Poison.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, DynamicVars.Poison.BaseValue, Owner.Creature, this, false);
 
         // 2. 抽牌至手牌满
         int handSize = PileType.Hand.GetPile(Owner).Cards.Count;

@@ -46,6 +46,6 @@ public class SnakeBiteThornsPower : SnakeTheBitePowerModel
         Flash();
         await CreatureCmd.TriggerAnim(dealer, "Hit", 0f);
         VfxCmd.PlayOnCreatureCenter(dealer, "vfx/vfx_bite");
-        await PowerCmd.Apply<PoisonPower>(dealer, 7m, base.Owner, null);
+        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), dealer, 7m, base.Owner, null, false);
     }
 }

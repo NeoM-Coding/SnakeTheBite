@@ -33,7 +33,7 @@ public class SnakeFeastCard : SnakeTheBiteCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-        await PowerCmd.Apply<SnakeFeastPower>(cardPlay.Target, DynamicVars["SnakeFeastPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<SnakeFeastPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, DynamicVars["SnakeFeastPower"].BaseValue, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()

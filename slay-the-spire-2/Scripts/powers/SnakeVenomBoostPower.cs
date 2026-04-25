@@ -31,7 +31,7 @@ public class SnakeVenomBoostPower : SnakeTheBitePowerModel
     // 注意：Power 的 AfterCombatVictory 会在玩家 Power 被清除后调用，因此使用 AfterCombatEnd。
     public override async Task AfterCombatEnd(CombatRoom room)
     {
-        if (Owner.Player == null)
+        if (Owner == null)
             return;
 
         var deck = PileType.Deck.GetPile(Owner.Player);
@@ -44,7 +44,7 @@ public class SnakeVenomBoostPower : SnakeTheBitePowerModel
         if (snakeCards.Count == 0)
             return;
 
-        bool isLocalOwner = LocalContext.IsMe(Owner.Player);
+        bool isLocalOwner = LocalContext.IsMe(Owner);
 
         int boostCount = (int)Amount;
         for (int i = 0; i < boostCount; i++)

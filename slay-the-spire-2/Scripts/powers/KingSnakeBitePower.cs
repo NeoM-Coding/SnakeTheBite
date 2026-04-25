@@ -25,7 +25,7 @@ public class KingSnakeBitePower : SnakeTheBitePowerModel
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner != Owner.Player)
+        if (cardPlay.Card.Owner.Creature != Owner)
             return;
         if (!SnakeTheBiteCardTags.IsSnakeCard(cardPlay.Card))
             return;
@@ -37,7 +37,7 @@ public class KingSnakeBitePower : SnakeTheBitePowerModel
         Flash();
         foreach (var enemy in enemies)
         {
-            await PowerCmd.Apply<PoisonPower>(enemy, Amount, Owner, null);
+            await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), enemy, Amount, Owner, null, false);
         }
     }
 

@@ -57,7 +57,7 @@ public class SneakySnakePower : SnakeTheBitePowerModel
     }
 
     // 自己的回合开始时移除该状态（确保只持续一回合）
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
+    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, ICombatState combatState)
     {
         if (side == Owner.Side)
             await PowerCmd.Remove(this);

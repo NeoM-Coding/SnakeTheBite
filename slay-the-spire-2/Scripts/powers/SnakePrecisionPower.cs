@@ -23,7 +23,7 @@ public class SnakePrecisionPower : SnakeTheBitePowerModel
     private bool _isApplyingBonus;
 
     // 当战场上任意 Power 层数变化后触发
-    public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext context, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (_isApplyingBonus)
             return;
@@ -39,9 +39,9 @@ public class SnakePrecisionPower : SnakeTheBitePowerModel
         _isApplyingBonus = true;
         Flash();
         if (power is TruePoisonPower)
-            await PowerCmd.Apply<TruePoisonPower>(power.Owner, Amount, Owner, cardSource);
+            await PowerCmd.Apply<TruePoisonPower>(new ThrowingPlayerChoiceContext(), power.Owner, Amount, Owner, cardSource, false);
         else
-            await PowerCmd.Apply<PoisonPower>(power.Owner, Amount, Owner, cardSource);
+            await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), power.Owner, Amount, Owner, cardSource, false);
         _isApplyingBonus = false;
     }
 }

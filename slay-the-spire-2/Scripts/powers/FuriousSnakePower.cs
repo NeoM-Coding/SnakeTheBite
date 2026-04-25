@@ -62,7 +62,7 @@ public class FuriousSnakePower : SnakeTheBitePowerModel
         if (unblockedDamage > 0)
         {
             Flash();
-            await PowerCmd.Apply<PoisonPower>(target, unblockedDamage * Amount, target, null);
+            await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), target, unblockedDamage * Amount, target, null, false);
         }
     }
 }

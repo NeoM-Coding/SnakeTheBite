@@ -39,7 +39,7 @@ public class TrueSnakeCard : SnakeTheBiteCardModel
         {
             await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         }
-        await PowerCmd.Apply<TrueSnakePower>(Owner.Creature, DynamicVars["TrueSnakePower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<TrueSnakePower>(new ThrowingPlayerChoiceContext(), Owner.Creature, DynamicVars["TrueSnakePower"].BaseValue, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()

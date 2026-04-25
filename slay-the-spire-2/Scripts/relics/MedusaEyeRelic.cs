@@ -24,7 +24,7 @@ public class MedusaEyeRelic : SnakeTheBiteRelicModel
     public override RelicRarity Rarity => RelicRarity.Event;
 
     // 当任意 Power 层数变化后触发：若自己施加的中毒增加，则目标额外获得一层虚弱
-    public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext context, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (applier != Owner.Creature)
             return;
@@ -36,6 +36,6 @@ public class MedusaEyeRelic : SnakeTheBiteRelicModel
             return;
 
         Flash();
-        await PowerCmd.Apply<WeakPower>(power.Owner, 1m, Owner.Creature, cardSource);
+        await PowerCmd.Apply<WeakPower>(new ThrowingPlayerChoiceContext(), power.Owner, 1m, Owner.Creature, cardSource, false);
     }
 }

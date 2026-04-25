@@ -41,7 +41,7 @@ public class TrueSnakebiteCard : SnakeTheBiteCardModel
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
         await CreatureCmd.TriggerAnim(Owner.Creature, "Attack", Owner.Character.AttackAnimDelay);
         VfxCmd.PlayOnCreatureCenter(cardPlay.Target, "vfx/vfx_bite");
-        await PowerCmd.Apply<TruePoisonPower>(cardPlay.Target, DynamicVars["TruePoisonPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<TruePoisonPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, DynamicVars["TruePoisonPower"].BaseValue, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()

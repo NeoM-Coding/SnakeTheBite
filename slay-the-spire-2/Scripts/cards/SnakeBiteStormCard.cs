@@ -69,7 +69,7 @@ public class SnakeBiteStormCard : SnakeTheBiteCardModel
         }
 
         // 批量加入手牌
-        await CardPileCmd.AddGeneratedCardsToCombat(snakeBites, PileType.Hand, addedByPlayer: true);
+        await CardPileCmd.AddGeneratedCardsToCombat(snakeBites, PileType.Hand, Owner);
     }
 
     // 升级后的效果逻辑 - 在 OnPlay 中通过 IsUpgraded 判断生成蛇咬+

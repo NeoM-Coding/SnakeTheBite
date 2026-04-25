@@ -54,7 +54,7 @@ public class SnakeSlashWaveCard : SnakeTheBiteCardModel
         // 播放咬击特效
         VfxCmd.PlayOnCreatureCenter(cardPlay.Target, "vfx/vfx_bite");
         // 给予目标中毒，数值来源于卡牌的中毒属性
-        await PowerCmd.Apply<PoisonPower>(cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this, false);
         // 自身获得格挡，数值来源于卡牌的格挡属性
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
     }

@@ -45,7 +45,7 @@ public class SnakeWalkCard : SnakeTheBiteCardModel
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await CardPileCmd.Draw(choiceContext, DynamicVars["Draw"].IntValue, Owner);
-        await PowerCmd.Apply<PoisonPower>(Owner.Creature, DynamicVars.Poison.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, DynamicVars.Poison.BaseValue, Owner.Creature, this, false);
     }
 
     // 升级后的效果逻辑 - 抽牌数加1（3 -> 4）

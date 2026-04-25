@@ -124,14 +124,34 @@ public static class TrueSnakeCardDescriptionPatch
 }
 
 // Harmony 补丁：拦截 PowerCmd.Apply 非泛型方法，将标记卡牌新施加的 PoisonPower 替换为 TruePoisonPower
-[HarmonyPatch(typeof(PowerCmd), nameof(PowerCmd.Apply), new[] { typeof(PowerModel), typeof(Creature), typeof(decimal), typeof(Creature), typeof(CardModel), typeof(bool) })]
+// 0.104 beta 中 Apply 新增了 PlayerChoiceContext 参数，使用 TargetMethod 动态查找以兼容新旧版本
+[HarmonyPatch]
 public static class TrueSnakeApplyPatch
 {
-    static bool Prefix(PowerModel power, Creature target, decimal amount, Creature? applier, CardModel? cardSource, bool silent, ref Task __result)
+    static MethodBase TargetMethod()
     {
+        var targetMethod = AccessTools.DeclaredMethod(typeof(PowerCmd), "Apply",
+            [typeof(PlayerChoiceContext), typeof(PowerModel), typeof(Creature), typeof(decimal), typeof(Creature), typeof(CardModel), typeof(bool)]);
+        if (targetMethod == null)
+            targetMethod = AccessTools.DeclaredMethod(typeof(PowerCmd), "Apply",
+                [typeof(PowerModel), typeof(Creature), typeof(decimal), typeof(Creature), typeof(CardModel), typeof(bool)]);
+        return targetMethod;
+    }
+
+    static bool Prefix(object[] __args, ref Task __result)
+    {
+        // 0.104 新签名含 7 个参数（第一位是 PlayerChoiceContext），旧签名 6 个
+        int off = __args.Length == 7 ? 1 : 0;
+        var power = (PowerModel)__args[off];
+        var target = (Creature)__args[off + 1];
+        var amount = (decimal)__args[off + 2];
+        var applier = (Creature?)__args[off + 3];
+        var cardSource = (CardModel?)__args[off + 4];
+        var silent = (bool)__args[off + 5];
+
         if (power is PoisonPower && cardSource != null && TrueSnakePower.MarkedCards.Contains(cardSource))
         {
-            __result = PowerCmd.Apply<TruePoisonPower>(target, amount, applier, cardSource, silent);
+            __result = PowerCmd.Apply<TruePoisonPower>(new ThrowingPlayerChoiceContext(), target, amount, applier, cardSource, silent);
             return false;
         }
         return true;
@@ -139,7 +159,7 @@ public static class TrueSnakeApplyPatch
 }
 
 // Harmony 补丁：拦截 PowerCmd.ModifyAmount，将标记卡牌追加的 PoisonPower 层数改为追加 TruePoisonPower
-[HarmonyPatch(typeof(PowerCmd), nameof(PowerCmd.ModifyAmount), new[] { typeof(PowerModel), typeof(decimal), typeof(Creature), typeof(CardModel), typeof(bool) })]
+[HarmonyPatch(typeof(PowerCmd), nameof(PowerCmd.ModifyAmount), new[] { typeof(PlayerChoiceContext), typeof(PowerModel), typeof(decimal), typeof(Creature), typeof(CardModel), typeof(bool) })]
 public static class TrueSnakeModifyAmountPatch
 {
     static bool Prefix(PowerModel power, decimal offset, Creature? applier, CardModel? cardSource, bool silent, ref Task<int> __result)
@@ -157,12 +177,12 @@ public static class TrueSnakeModifyAmountPatch
         var existing = target.GetPower<TruePoisonPower>();
         if (existing == null)
         {
-            await PowerCmd.Apply<TruePoisonPower>(target, offset, applier, cardSource, silent);
+            await PowerCmd.Apply<TruePoisonPower>(new ThrowingPlayerChoiceContext(), target, offset, applier, cardSource, silent);
             return (int)offset;
         }
         else
         {
-            await PowerCmd.ModifyAmount(existing, offset, applier, cardSource, silent);
+            await PowerCmd.ModifyAmount(new ThrowingPlayerChoiceContext(), existing, offset, applier, cardSource, silent);
             return existing.Amount;
         }
     }

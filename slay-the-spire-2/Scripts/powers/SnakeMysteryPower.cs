@@ -65,7 +65,7 @@ public class SnakeMysteryPower : SnakeTheBitePowerModel
             data.points -= 7;
             InvokeDisplayAmountChanged();
             Flash();
-            await PowerCmd.Apply<IntangiblePower>(base.Owner, 1m, base.Owner, null);
+            await PowerCmd.Apply<IntangiblePower>(new ThrowingPlayerChoiceContext(), base.Owner, 1m, base.Owner, null, false);
         }
     }
 

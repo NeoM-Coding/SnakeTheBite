@@ -40,7 +40,7 @@ public class FullBodySnakeBiteCard : SnakeTheBiteCardModel
         int poisonAmount = Owner.Creature.Block;
         if (poisonAmount > 0)
         {
-            await PowerCmd.Apply<PoisonPower>(cardPlay.Target, poisonAmount, Owner.Creature, this);
+            await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, poisonAmount, Owner.Creature, this, false);
         }
     }
 

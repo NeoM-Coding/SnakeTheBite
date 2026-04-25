@@ -52,7 +52,7 @@ public class SnakeHoneyBrewPotion : SnakeTheBitePotionModel
         {
             int cost = base.Owner.RunState.Rng.CombatEnergyCosts.NextInt(4);
             selectedCard.EnergyCost.SetThisTurn(cost);
-            await CardPileCmd.AddGeneratedCardToCombat(selectedCard, PileType.Hand, addedByPlayer: true);
+            await CardPileCmd.AddGeneratedCardToCombat(selectedCard, PileType.Hand, Owner);
         }
     }
 }

@@ -81,7 +81,7 @@ public class SnakeScatterCannonCard : SnakeTheBiteCardModel
                 VfxCmd.PlayOnCreatureCenter(enemy, "vfx/vfx_bite");
                 
                 // 给予该敌人中毒
-                await PowerCmd.Apply<PoisonPower>(enemy, poisonPerHit, Owner.Creature, this);
+                await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), enemy, poisonPerHit, Owner.Creature, this, false);
             }
         }
     }

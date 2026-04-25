@@ -23,7 +23,7 @@ public class SnakeBitePower : SnakeTheBitePowerModel
     protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 
     // 回合开始时触发
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
+    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, ICombatState combatState)
     {
         if (side != Owner.Side)
             return;
@@ -42,13 +42,13 @@ public class SnakeBitePower : SnakeTheBitePowerModel
 
         for (int i = 0; i < Amount; i++)
         {
-            var selected = Owner.Player!.RunState.Rng.CombatCardSelection.NextItem(snakeCards);
+            var selected = Owner!.Player.RunState.Rng.CombatCardSelection.NextItem(snakeCards);
             if (selected == null)
                 continue;
 
             Flash();
             var card = CombatState.CreateCard(selected, Owner.Player!);
-            await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, addedByPlayer: true);
+            await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner.Player);
         }
     }
 }

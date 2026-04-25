@@ -38,7 +38,7 @@ public class SnakeInABottlePotion : SnakeTheBitePotionModel
         PotionModel.AssertValidForTargetedPotion(target);
         decimal healAmount = Math.Max((decimal)target.MaxHp * 0.25m, 1m);
         await CreatureCmd.Heal(target, healAmount);
-        await PowerCmd.Apply<PoisonPower>(target, 3m, target, null);
+        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), target, 3m, target, null, false);
     }
 
     //

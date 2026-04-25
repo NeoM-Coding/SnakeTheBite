@@ -6,6 +6,7 @@ using SnakeTheBite.Scripts.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -43,7 +44,7 @@ public class SnakeScaleRelic : SnakeTheBiteRelicModel
     // 层数变化量（正值表示增加）。
     // 施加该 Power 的生物（此处应为玩家角色）。
     // 触发该变化的卡牌来源（若有）。
-    public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext context, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (applier != Owner.Creature)
             return;

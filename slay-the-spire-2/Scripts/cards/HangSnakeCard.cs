@@ -52,7 +52,7 @@ public class HangSnakeCard : SnakeTheBiteCardModel
         int totalPoison = basePoison * multiplier;
 
         VfxCmd.PlayOnCreatureCenter(cardPlay.Target, "vfx/vfx_bite");
-        await PowerCmd.Apply<PoisonPower>(cardPlay.Target, totalPoison, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, totalPoison, Owner.Creature, this, false);
 
         int num = Math.Max(2, hangSnakeAmount);
         if (hangSnakeAmount + num > 999)
@@ -60,7 +60,7 @@ public class HangSnakeCard : SnakeTheBiteCardModel
             num = Math.Max(0, 999 - hangSnakeAmount);
         }
 
-        await PowerCmd.Apply<HangSnakePower>(cardPlay.Target, num, Owner.Creature, this);
+        await PowerCmd.Apply<HangSnakePower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, num, Owner.Creature, this, false);
     }
 
     // 升级后的效果逻辑 - 中毒加4

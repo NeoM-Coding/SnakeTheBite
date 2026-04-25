@@ -94,7 +94,7 @@ public class SpinningSnakebiteCard : SnakeTheBiteCardModel
             {
                 //播放咬击动画
                 VfxCmd.PlayOnCreatureCenter(enemy, "vfx/vfx_bite");
-                await PowerCmd.Apply<PoisonPower>(enemy, poisonAmount, Owner.Creature, this);
+                await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), enemy, poisonAmount, Owner.Creature, this, false);
             }
         }
         
@@ -103,7 +103,7 @@ public class SpinningSnakebiteCard : SnakeTheBiteCardModel
     }
 
     // 每回合开始时触发的效果 - 增加下次打出时的中毒次数
-    public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
+    public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, ICombatState combatState)
     {
         // 只在自己的回合触发，且卡牌在手牌中时增加计数
         if (side == Owner.Creature.Side && Pile?.Type == PileType.Hand)

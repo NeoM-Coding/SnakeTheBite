@@ -73,7 +73,7 @@ public class CalmSnakeCard : SnakeTheBiteCardModel
             }
 
             // 进入蓄蛇
-            await PowerCmd.Apply<ChargingSnakePower>(Owner.Creature, 1m, Owner.Creature, this);
+            await PowerCmd.Apply<ChargingSnakePower>(new ThrowingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this, false);
         }
     }
 

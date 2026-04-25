@@ -56,7 +56,7 @@ public class PerfectSnakeBiteCard : SnakeTheBiteCardModel
 
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         VfxCmd.PlayOnCreatureCenter(cardPlay.Target, "vfx/vfx_bite");
-        await PowerCmd.Apply<PoisonPower>(cardPlay.Target, poisonAmount, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, poisonAmount, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()

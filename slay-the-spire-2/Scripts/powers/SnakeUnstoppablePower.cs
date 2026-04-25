@@ -31,7 +31,7 @@ public class SnakeUnstoppablePower : SnakeTheBitePowerModel
             return;
 
         Flash();
-        var target = Owner.Player!.RunState.Rng.CombatTargets.NextItem(hittableEnemies);
-        await PowerCmd.Apply<TruePoisonPower>(target, Amount, Owner, null);
+        var target = Owner!.Player.RunState.Rng.CombatTargets.NextItem(hittableEnemies);
+        await PowerCmd.Apply<TruePoisonPower>(new ThrowingPlayerChoiceContext(), target, Amount, Owner, null, false);
     }
 }

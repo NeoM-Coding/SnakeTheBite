@@ -51,7 +51,7 @@ public class SnakeCalamityCard : SnakeTheBiteCardModel
         // 播放动画
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         // 给予目标灾厄，数值来源于卡牌的灾厄属性
-        await PowerCmd.Apply<DoomPower>(cardPlay.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<DoomPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this, false);
     }
 
     // 升级后的效果逻辑

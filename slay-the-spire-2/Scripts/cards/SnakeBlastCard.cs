@@ -40,8 +40,8 @@ public class SnakeBlastCard : SnakeTheBiteCardModel
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<PoisonPower>(cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<SnakeBlastPower>(cardPlay.Target, DynamicVars["SnakeBlastPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this, false);
+        await PowerCmd.Apply<SnakeBlastPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, DynamicVars["SnakeBlastPower"].BaseValue, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()

@@ -62,7 +62,7 @@ public class BouncingSnakeBottleCard : SnakeTheBiteCardModel
                 continue;
 
             VfxCmd.PlayOnCreatureCenter(enemy, "vfx/vfx_bite");
-            await PowerCmd.Apply<PoisonPower>(enemy, poisonAmount, Owner.Creature, this);
+            await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), enemy, poisonAmount, Owner.Creature, this, false);
         }
     }
 

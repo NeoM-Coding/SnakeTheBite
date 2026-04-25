@@ -34,7 +34,7 @@ public class SnakeRainCard : SnakeTheBiteCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<SnakeRainPower>(Owner.Creature, DynamicVars["SnakeRainPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<SnakeRainPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, DynamicVars["SnakeRainPower"].BaseValue, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()

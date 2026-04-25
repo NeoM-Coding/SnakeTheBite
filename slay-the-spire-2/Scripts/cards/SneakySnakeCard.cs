@@ -40,7 +40,7 @@ public class SneakySnakeCard : SnakeTheBiteCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<SneakySnakePower>(Owner.Creature, DynamicVars["SneakySnakePower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<SneakySnakePower>(new ThrowingPlayerChoiceContext(), Owner.Creature, DynamicVars["SneakySnakePower"].BaseValue, Owner.Creature, this, false);
     }
 
     // 升级后的效果逻辑 - 减免百分比加25（25 -> 50）

@@ -43,7 +43,7 @@ public class OddSnakeEvenNotCard : SnakeTheBiteCardModel
         if (enemies.Count > 0)
         {
             var target = Owner.RunState.Rng.CombatTargets.NextItem(enemies);
-            await PowerCmd.Apply<PoisonPower>(target, DynamicVars.Poison.IntValue, Owner.Creature, this);
+            await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), target, DynamicVars.Poison.IntValue, Owner.Creature, this, false);
         }
     }
 

@@ -52,6 +52,6 @@ public class SnakeBiteStatusCard : SnakeTheBiteCardModel
         // 自身获得2层中毒
         int poisonAmount = DynamicVars.Poison.IntValue;
         await Cmd.Wait(0.25f);
-        await PowerCmd.Apply<PoisonPower>(Owner.Creature, poisonAmount, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, poisonAmount, Owner.Creature, this, false);
     }
 }

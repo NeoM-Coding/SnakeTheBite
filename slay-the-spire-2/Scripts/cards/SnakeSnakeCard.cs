@@ -54,7 +54,7 @@ public class SnakeSnakeCard : SnakeTheBiteCardModel
         }
         
         // 批量添加到手牌（参考CrashLanding.cs）
-        await CardPileCmd.AddGeneratedCardsToCombat(list, PileType.Hand, addedByPlayer: true);
+        await CardPileCmd.AddGeneratedCardsToCombat(list, PileType.Hand, Owner);
     }
 
     // 升级后的效果逻辑 - 升级后费用减1（3 → 2）

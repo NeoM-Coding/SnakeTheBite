@@ -43,7 +43,7 @@ public class SnakePrecisionCard : SnakeTheBiteCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<SnakePrecisionPower>(Owner.Creature, DynamicVars["SnakePrecisionPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<SnakePrecisionPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, DynamicVars["SnakePrecisionPower"].BaseValue, Owner.Creature, this, false);
     }
 
     // 升级后的效果逻辑 - 费用减1（2 → 1），额外层数 +1（1 → 2）

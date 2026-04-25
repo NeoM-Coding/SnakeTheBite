@@ -46,7 +46,7 @@ public class FuriousSnakeCard : SnakeTheBiteCardModel
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
         // 给予自身中毒
-        await PowerCmd.Apply<PoisonPower>(Owner.Creature, DynamicVars.Poison.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, DynamicVars.Poison.BaseValue, Owner.Creature, this, false);
 
         // 退出其他蛇姿态
         if (Owner.Creature.HasPower<ChargingSnakePower>())
@@ -55,7 +55,7 @@ public class FuriousSnakeCard : SnakeTheBiteCardModel
             await PowerCmd.Remove<DivineSnakePower>(Owner.Creature);
 
         // 进入怒蛇姿态
-        await PowerCmd.Apply<FuriousSnakePower>(Owner.Creature, DynamicVars["FuriousSnakePower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<FuriousSnakePower>(new ThrowingPlayerChoiceContext(), Owner.Creature, DynamicVars["FuriousSnakePower"].BaseValue, Owner.Creature, this, false);
     }
 
     // 升级后的效果逻辑 - 费用减1（2 → 1）

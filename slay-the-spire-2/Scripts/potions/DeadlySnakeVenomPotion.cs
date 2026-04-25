@@ -36,6 +36,6 @@ public class DeadlySnakeVenomPotion : SnakeTheBitePotionModel
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
         PotionModel.AssertValidForTargetedPotion(target);
-        await PowerCmd.Apply<TruePoisonPower>(target!, DynamicVars["TruePoisonPower"].BaseValue, target!, null);
+        await PowerCmd.Apply<TruePoisonPower>(new ThrowingPlayerChoiceContext(), target!, DynamicVars["TruePoisonPower"].BaseValue, target!, null, false);
     }
 }

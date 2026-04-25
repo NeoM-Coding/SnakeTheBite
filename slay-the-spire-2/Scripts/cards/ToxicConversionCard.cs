@@ -37,7 +37,7 @@ public class ToxicConversionCard : SnakeTheBiteCardModel
         int poisonAmount = Owner.Creature.GetPowerAmount<PoisonPower>();
         if (poisonAmount > 0)
         {
-            await PowerCmd.Apply<PoisonPower>(target, poisonAmount, Owner.Creature, this);
+            await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), target, poisonAmount, Owner.Creature, this, false);
             await PowerCmd.Remove<PoisonPower>(Owner.Creature);
         }
 
@@ -46,7 +46,7 @@ public class ToxicConversionCard : SnakeTheBiteCardModel
             int truePoisonAmount = Owner.Creature.GetPowerAmount<TruePoisonPower>();
             if (truePoisonAmount > 0)
             {
-                await PowerCmd.Apply<TruePoisonPower>(target, truePoisonAmount, Owner.Creature, this);
+                await PowerCmd.Apply<TruePoisonPower>(new ThrowingPlayerChoiceContext(), target, truePoisonAmount, Owner.Creature, this, false);
                 await PowerCmd.Remove<TruePoisonPower>(Owner.Creature);
             }
         }

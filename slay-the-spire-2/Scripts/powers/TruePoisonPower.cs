@@ -59,7 +59,7 @@ public class TruePoisonPower : SnakeTheBitePowerModel
     // 标志位，用于 Harmony 补丁识别真实中毒造成的伤害
     public static bool IsDealingDamage { get; set; }
 
-    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
     {
         if (side != Owner.Side)
             return;

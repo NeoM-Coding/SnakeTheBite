@@ -45,10 +45,10 @@ public class SnakeBlasphemyCard : SnakeTheBiteCardModel
             await PowerCmd.Remove<ChargingSnakePower>(Owner.Creature);
 
         // 进入神蛇姿态
-        await PowerCmd.Apply<DivineSnakePower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<DivineSnakePower>(new ThrowingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this, false);
 
         // 给予渎蛇效果
-        await PowerCmd.Apply<SnakeBlasphemyPower>(Owner.Creature, DynamicVars["SnakeBlasphemyPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<SnakeBlasphemyPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, DynamicVars["SnakeBlasphemyPower"].BaseValue, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()

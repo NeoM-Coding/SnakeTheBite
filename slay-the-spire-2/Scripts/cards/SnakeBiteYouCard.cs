@@ -50,7 +50,7 @@ public class SnakeBiteYouCard : SnakeTheBiteCardModel
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         if (cardPlay.Target != null)
         {
-            await PowerCmd.Apply<PoisonPower>(cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this, false);
         }
         await CardPileCmd.Draw(choiceContext, DynamicVars["Cards"].IntValue, Owner);
         await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, Owner);

@@ -24,11 +24,11 @@ public class ChargingSnakePower : SnakeTheBitePowerModel
     //
     public override async Task AfterRemoved(Creature oldOwner)
     {
-        var player = oldOwner.Player;
+        var player = oldOwner;
         if (player == null)
             return;
 
-        var hand = PileType.Hand.GetPile(player);
+        var hand = PileType.Hand.GetPile(player.Player);
         var snakeBites = hand.Cards
             .Where(c => SnakeTheBiteCardTags.IsSnakeBiteCard(c))
             .ToList();
@@ -36,7 +36,7 @@ public class ChargingSnakePower : SnakeTheBitePowerModel
         if (snakeBites.Count == 0)
             return;
 
-        var selected = snakeBites.TakeRandom(Math.Min(2, snakeBites.Count), player.RunState.Rng.CombatCardSelection);
+        var selected = snakeBites.TakeRandom(Math.Min(2, snakeBites.Count), player.Player.RunState.Rng.CombatCardSelection);
 
         foreach (CardModel card in selected)
         {

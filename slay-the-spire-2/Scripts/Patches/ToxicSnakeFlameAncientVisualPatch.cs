@@ -1,4 +1,5 @@
 ﻿// 让 ToxicSnakeFlameCard 使用远古卡牌牌面，但保持原有稀有度不变
+using System.Reflection;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Assets;
@@ -6,15 +7,22 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Cards;
 using SnakeTheBite.Scripts.Cards;
+using MegaCrit.Sts2.Core.Entities.UI;
 
 namespace SnakeTheBite.Scripts.Patches;
 
 public static class ToxicSnakeFlameAncientVisualPatch
 {
-    // 在 NCard.ReloadVisuals 后强制切换为远古节点显示
-    [HarmonyPatch(typeof(NCard), nameof(NCard.ReloadVisuals))]
+    // 在 NCard.Reload 后强制切换为远古节点显示
+    // 0.104 中 Reload 为 private 方法，需使用 TargetMethod 动态查找
+    [HarmonyPatch]
     public static class NCardReloadVisualsPatch
     {
+        static MethodBase TargetMethod()
+        {
+            return AccessTools.DeclaredMethod(typeof(NCard), "Reload");
+        }
+
         static void Postfix(NCard __instance)
         {
             if (__instance.Model is not ToxicSnakeFlameCard)

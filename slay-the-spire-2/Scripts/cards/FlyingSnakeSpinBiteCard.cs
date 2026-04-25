@@ -76,7 +76,7 @@ public class FlyingSnakeSpinBiteCard : SnakeTheBiteCardModel
             VfxCmd.PlayOnCreatureCenter(enemy, "vfx/vfx_bite");
 
             // 施加中毒
-            await PowerCmd.Apply<PoisonPower>(enemy, poisonAmount, Owner.Creature, this);
+            await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), enemy, poisonAmount, Owner.Creature, this, false);
         }
     }
 

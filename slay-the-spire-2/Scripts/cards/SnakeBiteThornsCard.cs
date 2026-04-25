@@ -49,7 +49,7 @@ public class SnakeBiteThornsCard : SnakeTheBiteCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<SnakeBiteThornsPower>(Owner.Creature, DynamicVars["SnakeBiteThornsPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<SnakeBiteThornsPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, DynamicVars["SnakeBiteThornsPower"].BaseValue, Owner.Creature, this, false);
     }
 
     // 升级后的效果：费用减1（3 → 2）。

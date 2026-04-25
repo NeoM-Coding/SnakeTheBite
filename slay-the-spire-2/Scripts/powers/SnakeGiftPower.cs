@@ -27,7 +27,7 @@ public class SnakeGiftPower : SnakeTheBitePowerModel
     //
     public override async Task AfterCombatEnd(CombatRoom room)
     {
-        if (base.Owner.Player == null)
+        if (base.Owner == null)
             return;
 
         var deck = PileType.Deck.GetPile(base.Owner.Player);

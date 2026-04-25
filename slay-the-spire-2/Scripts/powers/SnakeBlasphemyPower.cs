@@ -31,12 +31,12 @@ public class SnakeBlasphemyPower : SnakeTheBitePowerModel
     }
 
     // 每回合开始时给予自身21*Amount层中毒
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
+    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, ICombatState combatState)
     {
         if (side != base.Owner.Side)
             return;
 
         Flash();
-        await PowerCmd.Apply<PoisonPower>(Owner, 21m * Amount, Owner, null);
+        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), Owner, 21m * Amount, Owner, null, false);
     }
 }

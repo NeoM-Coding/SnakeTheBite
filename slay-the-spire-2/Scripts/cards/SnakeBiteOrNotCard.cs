@@ -47,7 +47,7 @@ public class SnakeBiteOrNotCard : SnakeTheBiteCardModel
             if (enemies.Count > 0)
             {
                 var target = rng.NextItem(enemies);
-                await PowerCmd.Apply<PoisonPower>(target, poisonAmount, Owner.Creature, this);
+                await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), target, poisonAmount, Owner.Creature, this, false);
             }
         }
         else
@@ -56,7 +56,7 @@ public class SnakeBiteOrNotCard : SnakeTheBiteCardModel
             if (players.Count > 0)
             {
                 var targetPlayer = rng.NextItem(players);
-                await PowerCmd.Apply<PoisonPower>(targetPlayer.Creature, poisonAmount, Owner.Creature, this);
+                await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), targetPlayer.Creature, poisonAmount, Owner.Creature, this, false);
             }
         }
     }

@@ -53,9 +53,9 @@ public class SnakeOneBiteCard : SnakeTheBiteCardModel
         // 播放咬击特效
         VfxCmd.PlayOnCreatureCenter(cardPlay.Target, "vfx/vfx_bite");
         // 给予目标中毒，数值来源于卡牌的中毒属性
-        await PowerCmd.Apply<PoisonPower>(cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this, false);
         // 给予目标虚弱，数值来源于卡牌的虚弱属性
-        await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<WeakPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this, false);
     }
 
     // 升级后的效果逻辑

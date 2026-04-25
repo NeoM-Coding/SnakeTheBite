@@ -78,11 +78,11 @@ public class EndureNotSnakeCard : SnakeTheBiteCardModel
         VfxCmd.PlayOnCreatureCenter(cardPlay.Target, "vfx/vfx_bite");
         
         // 给予目标中毒
-        await PowerCmd.Apply<PoisonPower>(cardPlay.Target, poisonAmount, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, poisonAmount, Owner.Creature, this, false);
     }
 
     // 每回合开始时触发的效果 - 被保留时本场战斗耗能-1
-    public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
+    public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, ICombatState combatState)
     {
         // 只在自己的回合触发，且卡牌在手牌中时（被保留）减少费用
         if (side == Owner.Creature.Side && Pile?.Type == PileType.Hand)

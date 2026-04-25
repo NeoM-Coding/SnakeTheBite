@@ -48,7 +48,7 @@ public class SnakeFangRelic : SnakeTheBiteRelicModel
     // 层数变化量（正值表示增加）。
     // 施加该 Power 的生物（此处应为玩家角色）。
     // 触发该变化的卡牌来源（若有）。
-    public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext context, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (applier != Owner.Creature)
             return;
