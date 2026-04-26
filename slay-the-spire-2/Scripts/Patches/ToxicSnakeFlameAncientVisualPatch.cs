@@ -4,6 +4,7 @@ using HarmonyLib;
 using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Entities.UI;
 using MegaCrit.Sts2.Core.Nodes.Cards;
 using SnakeTheBite.Scripts.Cards;
 
@@ -11,9 +12,9 @@ namespace SnakeTheBite.Scripts.Patches;
 
 public static class ToxicSnakeFlameAncientVisualPatch
 {
-    // 在 NCard.ReloadVisuals 后强制切换为远古节点显示
-    [HarmonyPatch(typeof(NCard), nameof(NCard.ReloadVisuals))]
-    public static class NCardReloadVisualsPatch
+    // 在 NCard.Reload 后强制切换为远古节点显示
+    [HarmonyPatch(typeof(NCard), "Reload")]
+    public static class NCardReloadPatch
     {
         static void Postfix(NCard __instance)
         {

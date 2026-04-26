@@ -28,10 +28,10 @@ public class SnakeScatterCannonCard : SnakeTheBiteCardModel
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
-    // 卡牌的基础属性（每去除1层中毒，给予7层中毒）
+    // 卡牌的基础属性（每去除1层中毒，给予5层中毒）
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<PoisonPower>(7m)
+        new PowerVar<PoisonPower>(5m)
     ];
 
     // 悬停提示
@@ -89,6 +89,6 @@ public class SnakeScatterCannonCard : SnakeTheBiteCardModel
     // 升级后的效果逻辑
     protected override void OnUpgrade()
     {
-        DynamicVars.Poison.UpgradeValueBy(3m); // 升级后增加3层（7 -> 10）
+        DynamicVars.Poison.UpgradeValueBy(2m); // 升级后增加2层（5 -> 7）
     }
 }

@@ -29,6 +29,9 @@ public class SnakeScaleRelic : SnakeTheBiteRelicModel
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(StaticHoverTip.Block), HoverTipFactory.FromPower<PoisonPower>(), HoverTipFactory.FromPower<TruePoisonPower>()];
 
+    // 防止与「蛇不可挡」等能力产生无限循环的标志位
+    private bool _isGivingBlock;
+
     //
     // 当战场上任意 Power（状态/能力）的层数发生变化后触发。
     //
@@ -45,6 +48,8 @@ public class SnakeScaleRelic : SnakeTheBiteRelicModel
     // 触发该变化的卡牌来源（若有）。
     public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
+        if (_isGivingBlock)
+            return;
         if (applier != Owner.Creature)
             return;
         if (amount <= 0)
@@ -55,11 +60,19 @@ public class SnakeScaleRelic : SnakeTheBiteRelicModel
             return;
 
         Flash();
-        await CreatureCmd.GainBlock(
-            Owner.Creature,
-            DynamicVars.Block.IntValue,
-            ValueProp.Unpowered,
-            null
-        );
+        _isGivingBlock = true;
+        try
+        {
+            await CreatureCmd.GainBlock(
+                Owner.Creature,
+                DynamicVars.Block.IntValue,
+                ValueProp.Unpowered,
+                null
+            );
+        }
+        finally
+        {
+            _isGivingBlock = false;
+        }
     }
 }
