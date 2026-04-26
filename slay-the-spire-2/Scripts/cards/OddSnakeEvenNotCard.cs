@@ -1,4 +1,4 @@
-﻿// 奇蛇偶不蛇 - 0费红色技能，保留，无法打出。给予随机敌人7层中毒。回合结束后，若手牌数为奇数，自动打出这张牌。
+﻿// 奇蛇偶不蛇 - 保留，无法打出。给予随机敌人7层中毒。回合结束后，若手牌数为奇数，自动打出这张牌。
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -15,7 +15,7 @@ namespace SnakeTheBite.Scripts.Cards;
 [Pool(typeof(IroncladCardPool))]
 public class OddSnakeEvenNotCard : SnakeTheBiteCardModel
 {
-    private const int energyCost = 0;
+    private const int energyCost = -1;
     private const CardType type = CardType.Skill;
     private const CardRarity rarity = CardRarity.Uncommon;
     private const TargetType targetType = TargetType.AnyEnemy;

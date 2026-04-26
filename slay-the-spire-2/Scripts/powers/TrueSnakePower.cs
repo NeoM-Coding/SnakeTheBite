@@ -10,6 +10,7 @@ using HarmonyLib;
 using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -22,6 +23,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
+using MegaCrit.Sts2.Core.Rooms;
 
 namespace SnakeTheBite.Scripts.Powers;
 
@@ -35,6 +37,9 @@ public class TrueSnakePower : SnakeTheBitePowerModel
 
     // 当前被标记的毒牌（用于本实例）
     private readonly List<CardModel> _targetCards = new List<CardModel>();
+
+    // 跟踪本回合创建的升级动画 VFX，确保战斗结束或回合结束时被清理
+    private readonly List<Godot.Node> _activeVfx = new List<Godot.Node>();
 
     // 全局被标记的卡牌集合（用于描述修改和 PowerCmd 拦截）
     public static HashSet<CardModel> MarkedCards { get; } = new HashSet<CardModel>();
@@ -70,8 +75,16 @@ public class TrueSnakePower : SnakeTheBitePowerModel
             MarkedCards.Add(card);
             poisonCards.Remove(card);
             Flash();
-            // 播放升级动画（视觉效果）
-            NRun.Instance?.GlobalUi.CardPreviewContainer.AddChildSafely(NCardUpgradeVfx.Create(card));
+            // 播放升级动画（视觉效果），仅本地玩家可见
+            if (LocalContext.IsMe(player))
+            {
+                var vfx = NCardUpgradeVfx.Create(card);
+                if (vfx != null)
+                {
+                    NRun.Instance?.GlobalUi.CardPreviewContainer.AddChildSafely(vfx);
+                    _activeVfx.Add(vfx);
+                }
+            }
         }
 
         await Task.CompletedTask;
@@ -90,7 +103,7 @@ public class TrueSnakePower : SnakeTheBitePowerModel
         return Task.CompletedTask;
     }
 
-    // 回合结束时清除未打出的标记
+    // 回合结束时清除未打出的标记和残留动画
     public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
         if (side != Owner.Side)
@@ -101,6 +114,27 @@ public class TrueSnakePower : SnakeTheBitePowerModel
             MarkedCards.Remove(card);
         }
         _targetCards.Clear();
+
+        // 清理本回合创建的升级动画，防止战斗结束时卡死残留
+        foreach (var vfx in _activeVfx)
+        {
+            if (Godot.GodotObject.IsInstanceValid(vfx))
+                vfx.QueueFree();
+        }
+        _activeVfx.Clear();
+
+        await Task.CompletedTask;
+    }
+
+    // 战斗结束时清理残留动画（兜底）
+    public override async Task AfterCombatEnd(CombatRoom room)
+    {
+        foreach (var vfx in _activeVfx)
+        {
+            if (Godot.GodotObject.IsInstanceValid(vfx))
+                vfx.QueueFree();
+        }
+        _activeVfx.Clear();
 
         await Task.CompletedTask;
     }

@@ -1,4 +1,4 @@
-﻿// 暴蛇 - 2费红卡技能，给予自身7层中毒并进入怒蛇状态
+﻿// 暴蛇 - 2费红卡技能，给予敌人7层中毒并进入怒蛇状态
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -22,8 +22,8 @@ public class FuriousSnakeCard : SnakeTheBiteCardModel
     private const CardType type = CardType.Skill;
     // 卡牌稀有度 - 罕见(蓝卡)
     private const CardRarity rarity = CardRarity.Uncommon;
-    // 目标类型 - 自己
-    private const TargetType targetType = TargetType.Self;
+    // 目标类型 - 任意敌人
+    private const TargetType targetType = TargetType.AnyEnemy;
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
@@ -45,8 +45,8 @@ public class FuriousSnakeCard : SnakeTheBiteCardModel
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
 
-        // 给予自身中毒
-        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, DynamicVars.Poison.BaseValue, Owner.Creature, this, false);
+        // 给予敌人中毒
+        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this, false);
 
         // 退出其他蛇姿态
         if (Owner.Creature.HasPower<ChargingSnakePower>())

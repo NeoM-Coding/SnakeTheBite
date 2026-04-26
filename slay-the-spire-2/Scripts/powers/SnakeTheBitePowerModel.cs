@@ -16,20 +16,16 @@ public abstract class SnakeTheBitePowerModel : CustomPowerModel
     // 能力大图标路径。
     public override string? CustomBigIconPath => ImagePath;
 
-    //
-    // 卡牌悬浮提示（DumbHoverTip）统一显示"对应层数"，能力悬浮（SmartDescription）保持实际层数。
-    //
+    // 让 SmartDescription 也使用 .description 键，这样玩家身上能力栏会独立注入实际 Amount
+    protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
+
+    // Description 用于 DumbHoverTip（卡牌悬浮提示），注入 "对应层数" 字符串
     public override LocString Description
     {
         get
         {
             var desc = base.Description;
-            string rawText = desc.GetRawText();
-            if (rawText.Contains("{Amount}"))
-            {
-                rawText = rawText.Replace("{Amount}", "对应层数");
-                return new LocString(desc.LocTable, rawText);
-            }
+            desc.Add("Amount", "对应层数");
             return desc;
         }
     }
