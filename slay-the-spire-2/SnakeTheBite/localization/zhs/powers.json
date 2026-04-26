@@ -31,7 +31,7 @@
     "SNAKETHEBITE-KING_SNAKE_BITE_POWER.description": "本场战斗，每打出一张[gold]蛇[/gold]牌，所有敌人获得[blue]{Amount}[/blue]层[gold]中毒[/gold]。",
     "SNAKETHEBITE-SNAKE_FEAST_POWER.title": "蛇宴",
     "SNAKETHEBITE-SNAKE_FEAST_POWER.description": "若该敌人因[gold]中毒[/gold]死亡，获得其最大生命值[gold]等量[/gold]的最大生命值。",
-    "SNAKETHEBITE-SNAKE_BLAST_POWER.title": "蛇爆术",
+    "SNAKETHEBITE-SNAKE_BLAST_POWER.title": "蛇爆",
     "SNAKETHEBITE-SNAKE_BLAST_POWER.description": "死亡时，对其他敌人造成等于[blue]{Amount}[/blue]倍自身[gold]最大生命值[/gold]的[gold]伤害[/gold]。",
     "SNAKETHEBITE-SNAKE_UNSTOPPABLE_POWER.title": "蛇不可挡",
     "SNAKETHEBITE-SNAKE_UNSTOPPABLE_POWER.description": "每获得[blue]1[/blue]点[gold]格挡[/gold]，给予随机一名敌人[blue]{Amount}[/blue]层[gold]真实中毒[/gold]。",
