@@ -38,5 +38,7 @@
     "SNAKETHEBITE-DIVINE_SNAKE_POWER.title": "神蛇",
     "SNAKETHEBITE-DIVINE_SNAKE_POWER.description": "给予[gold]中毒[/gold]或[gold]真实中毒[/gold]时层数变为[blue]3[/blue]倍。",
     "SNAKETHEBITE-CHARGING_SNAKE_POWER.title": "蓄蛇",
-    "SNAKETHEBITE-CHARGING_SNAKE_POWER.description": "退出该[gold]姿态[/gold]时，随机使手中[blue]2[/blue]张蛇咬牌本回合不消耗[gold]能量[/gold]。"
+    "SNAKETHEBITE-CHARGING_SNAKE_POWER.description": "退出该[gold]姿态[/gold]时，随机使手中[blue]2[/blue]张蛇咬牌本回合不消耗[gold]能量[/gold]。",
+    "SNAKETHEBITE-SNAKE_VITALITY_POWER.title": "蛇之活力",
+    "SNAKETHEBITE-SNAKE_VITALITY_POWER.description": "下次给予[gold]中毒[/gold]或[gold]真实中毒[/gold]时额外给予[blue]{Amount}[/blue]层。"
 }

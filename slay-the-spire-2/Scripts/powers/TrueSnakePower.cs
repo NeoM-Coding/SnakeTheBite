@@ -146,7 +146,8 @@ public class TrueSnakePower : SnakeTheBitePowerModel
 [HarmonyPatch(typeof(CardModel), nameof(CardModel.GetDescriptionForPile), new[] { typeof(PileType), typeof(Creature) })]
 public static class TrueSnakeCardDescriptionPatch
 {
-    private static readonly Regex PoisonRegex = new Regex(@"(\d+)(\s*)(层|点)\s*中毒", RegexOptions.Compiled);
+    // 匹配带数值的中毒描述，兼容被 [gold] 包裹的格式，如 "2层[gold]中毒[/gold]"
+    private static readonly Regex PoisonRegex = new Regex(@"(\d+)(\s*)(层|点)\s*(?:\[gold\])?\s*中毒(?:\[/gold\])?", RegexOptions.Compiled);
 
     static void Postfix(CardModel __instance, ref string __result)
     {

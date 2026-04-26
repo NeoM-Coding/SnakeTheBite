@@ -10,5 +10,17 @@
     "SNAKETHEBITE-SNAKE_BOOK_RELIC.title": "蛇之书",
     "SNAKETHEBITE-SNAKE_BOOK_RELIC.description": "之后每场战斗额外掉落一组[gold]蛇[/gold]卡牌。",
     "SNAKETHEBITE-MEDUSA_EYE_RELIC.title": "美杜莎之眼",
-    "SNAKETHEBITE-MEDUSA_EYE_RELIC.description": "每当你对敌人给予[gold]中毒[/gold]或[gold]真实中毒[/gold]时，同时给予[blue]1[/blue]层[gold]虚弱[/gold]。"
+    "SNAKETHEBITE-MEDUSA_EYE_RELIC.description": "每当你对敌人给予[gold]中毒[/gold]或[gold]真实中毒[/gold]时，同时给予[blue]1[/blue]层[gold]虚弱[/gold]。",
+    "SNAKETHEBITE-TEAR_DROP_SNAKE_PENDANT_RELIC.title": "泪滴蛇吊盒",
+    "SNAKETHEBITE-TEAR_DROP_SNAKE_PENDANT_RELIC.description": "在战斗开始时进入[gold]蓄蛇[/gold]。",
+    "SNAKETHEBITE-TRIANGLE_SNAKE_RELIC.title": "三角蛇",
+    "SNAKETHEBITE-TRIANGLE_SNAKE_RELIC.description": "每回合，每当你打出[blue]{Cards}[/blue]张[gold]蛇[/gold]标签牌，获得[blue]{Energy:energyIcons()}[/blue]。",
+    "SNAKETHEBITE-SNAKE_FLUTE_RELIC.title": "蛇之长笛",
+    "SNAKETHEBITE-SNAKE_FLUTE_RELIC.description": "战斗开始时获得[blue]{SnakeVitalityPower:diff()}[/blue]层[gold]蛇之活力[/gold]。",
+    "SNAKETHEBITE-SNAKE_FRUIT_RELIC.title": "蛇果",
+    "SNAKETHEBITE-SNAKE_FRUIT_RELIC.description": "拾起时，将你的[gold]生命上限[/gold]提升[blue]{MaxHp}[/blue]。",
+    "SNAKETHEBITE-DOUBLE_SECTION_SNAKE_RELIC.title": "双截蛇",
+    "SNAKETHEBITE-DOUBLE_SECTION_SNAKE_RELIC.description": "你每打出[blue]{Cards}[/blue]张[gold]蛇[/gold]标签牌，获得[blue]{Energy:energyIcons()}[/blue]。",
+    "SNAKETHEBITE-ONE_SNAKE_RELIC.title": "一条蛇",
+    "SNAKETHEBITE-ONE_SNAKE_RELIC.description": "你牌组中的[gold]蛇咬[/gold]牌数值+[blue]1[/blue]。每回合第一次打出[gold]蛇咬[/gold]牌，获得[blue]{Energy:energyIcons()}[/blue]。"
 }
