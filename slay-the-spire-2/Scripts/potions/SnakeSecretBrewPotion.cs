@@ -1,4 +1,4 @@
-﻿// 蛇之秘酿 - 罕见药水，从3张随机蛇牌中选择一张加入手牌，本回合费用随机
+﻿// 蛇之秘酿 - 罕见药水，从3张随机蛇能力牌中选择一张加入手牌，本回合费用随机
 using System.Collections.Generic;
 using System.Linq;
 using BaseLib.Abstracts;
@@ -31,14 +31,14 @@ public class SnakeSecretBrewPotion : SnakeTheBitePotionModel
     public override string? CustomPackedImagePath => $"res://SnakeTheBite/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
     public override string? CustomPackedOutlinePath => $"res://SnakeTheBite/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
 
-    // 使用时的效果逻辑：从三张随机蛇牌中选择一张，本回合费用随机后加入手牌。
+    // 使用时的效果逻辑：从三张随机蛇能力牌中选择一张，本回合费用随机后加入手牌。
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
         PotionModel.AssertValidForTargetedPotion(target);
 
-        // 从所有卡牌中筛选出蛇牌，排除状态与诅咒
+        // 从所有卡牌中筛选出蛇能力牌
         var snakeCards = ModelDb.AllCards
-            .Where(c => SnakeTheBiteCardTags.IsSnakeCard(c) && c.Type != CardType.Status && c.Type != CardType.Curse)
+            .Where(c => SnakeTheBiteCardTags.IsSnakeCard(c) && c.Type == CardType.Power)
             .ToList();
 
         if (snakeCards.Count == 0)
