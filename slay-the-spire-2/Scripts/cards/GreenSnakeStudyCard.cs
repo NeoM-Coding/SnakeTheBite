@@ -7,9 +7,11 @@ using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace SnakeTheBite.Scripts.Cards;
@@ -33,6 +35,8 @@ public class GreenSnakeStudyCard : SnakeTheBiteCardModel
 
     // 定义变量：伤害(不升级14，升级18)
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(14, ValueProp.Move)];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(StaticHoverTip.Fatal)];
 
     public GreenSnakeStudyCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
@@ -66,7 +70,18 @@ public class GreenSnakeStudyCard : SnakeTheBiteCardModel
                 var cardToUpgrade = Owner.RunState.Rng.CombatCardSelection.NextItem(snakeBiteCards);
                 if (cardToUpgrade != null)
                 {
+                    // 升级牌库中的原始卡牌（永久生效）
                     CardCmd.Upgrade(cardToUpgrade);
+
+                    // 同时升级战斗中对应的所有克隆（当前战斗立即生效）
+                    var combatClones = Owner.PlayerCombatState.AllCards
+                        .Where(c => c.DeckVersion == cardToUpgrade && c.IsUpgradable)
+                        .ToList();
+                    if (combatClones.Count > 0)
+                    {
+                        CardCmd.Upgrade(combatClones, CardPreviewStyle.None);
+                    }
+
                     // 等待升级动画（NCardUpgradeVfx）播放完毕
                     await Cmd.Wait(1.5f);
                 }

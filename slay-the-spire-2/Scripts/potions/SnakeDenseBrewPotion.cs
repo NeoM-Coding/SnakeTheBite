@@ -10,6 +10,8 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.PotionPools;
 
@@ -22,9 +24,15 @@ public class SnakeDenseBrewPotion : SnakeTheBitePotionModel
     public override PotionUsage Usage => PotionUsage.CombatOnly;
     public override TargetType TargetType => TargetType.Self;
 
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(1)];
+
+    public override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(StaticHoverTip.Energy)];
+
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
         PotionModel.AssertValidForTargetedPotion(target);
+
+        await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, target.Player!);
 
         var snakeAttackCards = ModelDb.AllCards
             .Where(c => SnakeTheBiteCardTags.IsSnakeCard(c)

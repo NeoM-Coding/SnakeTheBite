@@ -11,8 +11,8 @@ public abstract class SnakeTheBiteCardModel : CustomCardModel
     // 例如 TestCard -> SnakeTheBite-test_card.png
     public override string? CustomPortraitPath => $"res://SnakeTheBite/images/cards/SnakeTheBite-{SnakeTheBiteModelHelper.ToSnakeCase(GetType().Name)}.png";
 
-    protected SnakeTheBiteCardModel(int energyCost, CardType type, CardRarity rarity, TargetType targetType, bool shouldShowInCardLibrary = true)
-        : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
+    protected SnakeTheBiteCardModel(int energyCost, CardType type, CardRarity rarity, TargetType targetType, bool shouldShowInCardLibrary = true, bool autoAdd = true)
+        : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary, autoAdd)
     {
     }
 }

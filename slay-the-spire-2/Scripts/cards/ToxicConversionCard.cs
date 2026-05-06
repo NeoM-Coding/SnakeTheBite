@@ -1,4 +1,4 @@
-﻿// 毒性转化 - 1费红卡技能，将自身中毒转移给随机敌人（升级后包含真实中毒）
+// 毒性转化 - 1费红卡技能，将自身中毒双倍给予所有敌人（升级后包含真实中毒）
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using SnakeTheBite.Scripts.Powers;
@@ -32,13 +32,13 @@ public class ToxicConversionCard : SnakeTheBiteCardModel
         if (enemies.Count == 0)
             return;
 
-        var target = Owner.RunState.Rng.CombatTargets.NextItem(enemies);
-
         int poisonAmount = Owner.Creature.GetPowerAmount<PoisonPower>();
         if (poisonAmount > 0)
         {
-            await PowerCmd.Apply<PoisonPower>(target, poisonAmount, Owner.Creature, this);
-            await PowerCmd.Remove<PoisonPower>(Owner.Creature);
+            foreach (var enemy in enemies)
+            {
+                await PowerCmd.Apply<PoisonPower>(enemy, poisonAmount * 2, Owner.Creature, this);
+            }
         }
 
         if (IsUpgraded)
@@ -46,8 +46,10 @@ public class ToxicConversionCard : SnakeTheBiteCardModel
             int truePoisonAmount = Owner.Creature.GetPowerAmount<TruePoisonPower>();
             if (truePoisonAmount > 0)
             {
-                await PowerCmd.Apply<TruePoisonPower>(target, truePoisonAmount, Owner.Creature, this);
-                await PowerCmd.Remove<TruePoisonPower>(Owner.Creature);
+                foreach (var enemy in enemies)
+                {
+                    await PowerCmd.Apply<TruePoisonPower>(enemy, truePoisonAmount * 2, Owner.Creature, this);
+                }
             }
         }
     }

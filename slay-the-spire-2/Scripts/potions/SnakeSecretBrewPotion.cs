@@ -10,6 +10,8 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.PotionPools;
 
@@ -27,14 +29,16 @@ public class SnakeSecretBrewPotion : SnakeTheBitePotionModel
     // 目标类型 - 自己（不能给队友）
     public override TargetType TargetType => TargetType.Self;
 
-    // 药水自定义图片路径
-    public override string? CustomPackedImagePath => $"res://SnakeTheBite/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
-    public override string? CustomPackedOutlinePath => $"res://SnakeTheBite/images/potions/{base.Id.Entry.ToLowerInvariant()}.png";
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(1)];
+
+    public override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(StaticHoverTip.Energy)];
 
     // 使用时的效果逻辑：从三张随机蛇能力牌中选择一张，本回合费用随机后加入手牌。
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
         PotionModel.AssertValidForTargetedPotion(target);
+
+        await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, target.Player!);
 
         // 从所有卡牌中筛选出蛇能力牌
         var snakeCards = ModelDb.AllCards

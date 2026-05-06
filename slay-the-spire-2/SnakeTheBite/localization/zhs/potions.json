@@ -1,16 +1,22 @@
 ﻿{
     "SNAKETHEBITE-GOLDEN_SNAKE_BLOOD_POTION.title": "黄金蛇血",
-    "SNAKETHEBITE-GOLDEN_SNAKE_BLOOD_POTION.description": "获得[gold]{Gold}[/gold]点[gold]金币[/gold]。",
+    "SNAKETHEBITE-GOLDEN_SNAKE_BLOOD_POTION.description": "获得[blue]{Gold}[/blue]点[gold]金币[/gold]。",
     "SNAKETHEBITE-SNAKE_IN_A_BOTTLE_POTION.title": "瓶中异蛇",
-    "SNAKETHEBITE-SNAKE_IN_A_BOTTLE_POTION.description": "受到致命伤害时，自动丢弃并以[blue]25%[/blue]生命值复活，但获得[blue]3[/blue]层[gold]中毒[/gold]。",
+    "SNAKETHEBITE-SNAKE_IN_A_BOTTLE_POTION.description": "当你的生命值将要被减少至0或以下时，改为丢弃这瓶药水，然后将你回复到你最大生命值的[blue]40%[/blue]生命值，但获得[blue]3[/blue]层[gold]中毒[/gold]。",
     "SNAKETHEBITE-SNAKE_SECRET_BREW_POTION.title": "蛇之秘酿",
-    "SNAKETHEBITE-SNAKE_SECRET_BREW_POTION.description": "从[blue]3[/blue]张随机[gold]蛇能力[/gold]牌中选择[blue]1[/blue]张加入手牌。该牌本回合[gold]费用[/gold]随机。",
+    "SNAKETHEBITE-SNAKE_SECRET_BREW_POTION.description": "获得{Energy:energyIcons()}。从[blue]3[/blue]张随机[gold]蛇能力[/gold]牌中选择[blue]1[/blue]张加入手牌。该牌本回合[gold]费用[/gold]随机。",
     "SNAKETHEBITE-ESSENCE_SNAKE_VENOM_POTION.title": "精粹蛇毒",
-    "SNAKETHEBITE-ESSENCE_SNAKE_VENOM_POTION.description": "本场战斗你的[gold]蛇[/gold]标签牌均获得[blue]1[/blue]次[gold]重放[/gold]。",
+    "SNAKETHEBITE-ESSENCE_SNAKE_VENOM_POTION.description": "本场战斗你的[gold]蛇[/gold]牌均获得[blue]1[/blue]次[gold]重放[/gold]。",
     "SNAKETHEBITE-DEADLY_SNAKE_VENOM_POTION.title": "致命蛇毒",
     "SNAKETHEBITE-DEADLY_SNAKE_VENOM_POTION.description": "对一名敌人造成[blue]{TruePoisonPower:diff()}[/blue]层[gold]真实中毒[/gold]。",
     "SNAKETHEBITE-SNAKE_HONEY_BREW_POTION.title": "蛇之蜜酿",
-    "SNAKETHEBITE-SNAKE_HONEY_BREW_POTION.description": "从[blue]3[/blue]张随机[gold]蛇技能[/gold]牌中选择[blue]1[/blue]张加入手牌。该牌本回合[gold]费用[/gold]随机。",
+    "SNAKETHEBITE-SNAKE_HONEY_BREW_POTION.description": "获得{Energy:energyIcons()}。从[blue]3[/blue]张随机[gold]蛇技能[/gold]牌中选择[blue]1[/blue]张加入手牌。该牌本回合[gold]费用[/gold]随机。",
     "SNAKETHEBITE-SNAKE_DENSE_BREW_POTION.title": "蛇之密酿",
-    "SNAKETHEBITE-SNAKE_DENSE_BREW_POTION.description": "从[blue]3[/blue]张随机[gold]蛇攻击[/gold]牌中选择[blue]1[/blue]张加入手牌。该牌本回合[gold]费用[/gold]随机。"
+    "SNAKETHEBITE-SNAKE_DENSE_BREW_POTION.description": "获得{Energy:energyIcons()}。从[blue]3[/blue]张随机[gold]蛇攻击[/gold]牌中选择[blue]1[/blue]张加入手牌。该牌本回合[gold]费用[/gold]随机。",
+    "SNAKETHEBITE-SNAKE_SERUM_POTION.title": "蛇之血清",
+    "SNAKETHEBITE-SNAKE_SERUM_POTION.description": "本回合你的手牌[gold]费用[/gold]正常。获得{Energy:energyIcons()}，下回合再获得{Energy:energyIcons()}。",
+    "SNAKETHEBITE-TOXIC_SLUDGE_POTION.title": "浑浊毒液",
+    "SNAKETHEBITE-TOXIC_SLUDGE_POTION.description": "给予[red]所有人[/red][blue]{PoisonPower:diff()}[/blue]层[gold]中毒[/gold]。",
+    "SNAKETHEBITE-CHAOS_SNAKE_LIQUID_POTION.title": "混沌蛇液",
+    "SNAKETHEBITE-CHAOS_SNAKE_LIQUID_POTION.description": "以[gold]蛇药水[/gold]填满你的空药水栏。"
 }

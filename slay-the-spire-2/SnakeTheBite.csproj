@@ -36,6 +36,7 @@
     <AdditionalFiles Include="SnakeTheBite\localization\zhs\relics.json" />
     <AdditionalFiles Include="SnakeTheBite\localization\zhs\enchantments.json" />
     <AdditionalFiles Include="SnakeTheBite\localization\zhs\events.json" />
+    <AdditionalFiles Include="SnakeTheBite\localization\zhs\ancients.json" />
   </ItemGroup>
 
   <!-- 自动复制dll和json -->

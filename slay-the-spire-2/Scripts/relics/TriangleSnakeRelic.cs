@@ -1,5 +1,6 @@
-﻿// 三角蛇 - 普通遗物，每回合打出4张蛇标签牌获得3点能量，只能打精英获得
+// 三角蛇 - 普通遗物，每回合打出4张蛇标签牌获得3点能量，只能打精英获得
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using SnakeTheBite.Scripts.Utils;
@@ -32,7 +33,17 @@ public class TriangleSnakeRelic : SnakeTheBiteRelicModel
     // 显示计数器
     public override bool ShowCounter => true;
 
-    public override int DisplayAmount => DynamicVars.Cards.IntValue - (_snakeCardsPlayedThisTurn % DynamicVars.Cards.IntValue);
+    private bool _isActivating;
+
+    public override int DisplayAmount
+    {
+        get
+        {
+            if (IsActivating)
+                return DynamicVars.Cards.IntValue;
+            return _snakeCardsPlayedThisTurn % DynamicVars.Cards.IntValue;
+        }
+    }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -45,6 +56,17 @@ public class TriangleSnakeRelic : SnakeTheBiteRelicModel
     // 本回合已打出的蛇牌数量
     [SavedProperty]
     private int _snakeCardsPlayedThisTurn;
+
+    private bool IsActivating
+    {
+        get => _isActivating;
+        set
+        {
+            AssertMutable();
+            _isActivating = value;
+            InvokeDisplayAmountChanged();
+        }
+    }
 
     // 只能打精英获得
     public override bool IsAllowed(IRunState runState)
@@ -59,6 +81,7 @@ public class TriangleSnakeRelic : SnakeTheBiteRelicModel
             return Task.CompletedTask;
 
         _snakeCardsPlayedThisTurn = 0;
+        base.Status = RelicStatus.Normal;
         InvokeDisplayAmountChanged();
         return Task.CompletedTask;
     }
@@ -73,11 +96,22 @@ public class TriangleSnakeRelic : SnakeTheBiteRelicModel
 
         _snakeCardsPlayedThisTurn++;
         int threshold = DynamicVars.Cards.IntValue;
-        if (_snakeCardsPlayedThisTurn % threshold == 0)
+        int remainder = _snakeCardsPlayedThisTurn % threshold;
+        base.Status = (remainder == threshold - 1) ? RelicStatus.Active : RelicStatus.Normal;
+        InvokeDisplayAmountChanged();
+
+        if (remainder == 0)
         {
-            Flash();
+            await DoActivateVisuals();
             await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
         }
-        InvokeDisplayAmountChanged();
+    }
+
+    private async Task DoActivateVisuals()
+    {
+        IsActivating = true;
+        Flash();
+        await Cmd.Wait(1f);
+        IsActivating = false;
     }
 }

@@ -27,10 +27,10 @@ public class SnakeSlashWaveCard : SnakeTheBiteCardModel
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
-    // 卡牌的基础属性（7点中毒，7点格挡）
+    // 卡牌的基础属性（5点中毒，7点格挡）
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<PoisonPower>(7m),
+        new PowerVar<PoisonPower>(5m),
         new BlockVar(7m, ValueProp.Move)
     ];
 
@@ -62,7 +62,7 @@ public class SnakeSlashWaveCard : SnakeTheBiteCardModel
     // 升级后的效果逻辑
     protected override void OnUpgrade()
     {
-        DynamicVars.Poison.UpgradeValueBy(3m); // 升级后增加3层中毒（7 -> 10）
+        DynamicVars.Poison.UpgradeValueBy(2m); // 升级后增加2层中毒（5 -> 7）
         DynamicVars.Block.UpgradeValueBy(3m);  // 升级后增加3点格挡（7 -> 10）
     }
 }

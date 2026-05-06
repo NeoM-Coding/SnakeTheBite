@@ -25,11 +25,11 @@ public class SnakeWalkCard : SnakeTheBiteCardModel
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
-    // 定义变量：抽牌数(不升级3，升级4)，中毒层数(2)
+    // 定义变量：抽牌数固定4张，中毒层数基础3/升级后2
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DynamicVar("Draw", 3m),
-        new PowerVar<PoisonPower>(2m)
+        new DynamicVar("Draw", 4m),
+        new PowerVar<PoisonPower>(3m)
     ];
 
     // 悬停提示 - 显示中毒 power 的提示
@@ -48,9 +48,9 @@ public class SnakeWalkCard : SnakeTheBiteCardModel
         await PowerCmd.Apply<PoisonPower>(Owner.Creature, DynamicVars.Poison.BaseValue, Owner.Creature, this);
     }
 
-    // 升级后的效果逻辑 - 抽牌数加1（3 -> 4）
+    // 升级后的效果逻辑 - 中毒层数减少1（3 -> 2）
     protected override void OnUpgrade()
     {
-        DynamicVars["Draw"].UpgradeValueBy(1m);
+        DynamicVars.Poison.UpgradeValueBy(-1m);
     }
 }

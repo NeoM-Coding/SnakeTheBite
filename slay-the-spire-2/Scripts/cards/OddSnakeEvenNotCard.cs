@@ -58,6 +58,6 @@ public class OddSnakeEvenNotCard : SnakeTheBiteCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Poison.UpgradeValueBy(2m);
+        DynamicVars.Poison.UpgradeValueBy(3m);
     }
 }

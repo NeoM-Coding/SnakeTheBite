@@ -31,7 +31,7 @@ public class SnakePrecisionCard : SnakeTheBiteCardModel
 
     // 定义变量：能力层数
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new PowerVar<SnakePrecisionPower>(2m)];
+        [new PowerVar<SnakePrecisionPower>(3m)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<SnakePrecisionPower>()];
 
@@ -46,7 +46,7 @@ public class SnakePrecisionCard : SnakeTheBiteCardModel
         await PowerCmd.Apply<SnakePrecisionPower>(Owner.Creature, DynamicVars["SnakePrecisionPower"].BaseValue, Owner.Creature, this);
     }
 
-    // 升级后的效果逻辑 - 费用减1（2 → 1），额外层数 +1（2 → 3）
+    // 升级后的效果逻辑 - 费用减1（2 → 1），额外层数 +1（3 → 4）
     protected override void OnUpgrade()
     {
         EnergyCost.UpgradeBy(-1);

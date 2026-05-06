@@ -1,4 +1,4 @@
-﻿// 蛇之长笛 - 普通遗物，战斗开始时获得3层蛇之活力
+﻿// 蛇之长笛 - 普通遗物，战斗开始时获得7层蛇之活力
 using System.Collections.Generic;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
@@ -23,7 +23,7 @@ public class SnakeFluteRelic : SnakeTheBiteRelicModel
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<SnakeVitalityPower>(3m)
+        new PowerVar<SnakeVitalityPower>(7m)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<SnakeVitalityPower>()];

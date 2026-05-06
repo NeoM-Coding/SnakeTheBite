@@ -47,6 +47,18 @@ public class SnakeLibraryEvent : CustomEventModel
                 && c is not SnakeFeastCard)
             .ToList();
 
+        // 根据单/多人模式过滤卡牌（排除仅限另一种模式的卡牌）
+        var constraint = Owner!.RunState.CardMultiplayerConstraint;
+        switch (constraint)
+        {
+            case CardMultiplayerConstraint.MultiplayerOnly:
+                snakeCards.RemoveAll(c => c.MultiplayerConstraint == CardMultiplayerConstraint.SingleplayerOnly);
+                break;
+            case CardMultiplayerConstraint.SingleplayerOnly:
+                snakeCards.RemoveAll(c => c.MultiplayerConstraint == CardMultiplayerConstraint.MultiplayerOnly);
+                break;
+        }
+
         if (snakeCards.Count == 0)
         {
             SetEventFinished(PageDescription("READ_BOOK"));
