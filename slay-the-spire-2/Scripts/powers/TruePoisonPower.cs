@@ -343,9 +343,14 @@ public static class TruePoisonDamageCapPatch
 [HarmonyPatch(typeof(HardenedShellPower), nameof(HardenedShellPower.AfterDamageReceived))]
 public static class TruePoisonHardenedShellAfterDamageReceivedPatch
 {
-    static bool Prefix()
+    static bool Prefix(ref Task __result)
     {
-        return !TruePoisonPower.IsDealingDamage;
+        if (TruePoisonPower.IsDealingDamage)
+        {
+            __result = Task.CompletedTask;
+            return false;
+        }
+        return true;
     }
 }
 
