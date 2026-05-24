@@ -12,6 +12,7 @@ public class SnakeFeastPower : SnakeTheBitePowerModel
 {
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Single;
+    public override bool IsInstanced => true;
 
     protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 

@@ -36,7 +36,8 @@ public class ColorfulSnakeCard : SnakeTheBiteCardModel
         var snakeCards = ModelDb.AllCards
             .Where(c => SnakeTheBiteCardTags.IsSnakeCard(c)
                 && c.Type != CardType.Status
-                && c.Type != CardType.Curse)
+                && c.Type != CardType.Curse
+                && c is not SnakeFeastCard)
             .ToList();
 
         var attacks = snakeCards.Where(c => c.Type == CardType.Attack).ToList();

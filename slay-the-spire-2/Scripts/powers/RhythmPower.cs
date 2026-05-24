@@ -1,11 +1,11 @@
-// 律动 - 荒疫卡牌的Debuff，每回合开始时受到等同于层数的伤害
+// 律动 - 每打出一张牌，该单位受到对应层数的伤害（参考勒紧，但不会消失）
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using BaseLib.Abstracts;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -13,19 +13,32 @@ namespace SnakeTheBite.Scripts.Powers;
 
 public class RhythmPower : SnakeTheBitePowerModel
 {
+    private class Data
+    {
+        public readonly Dictionary<CardModel, int> amountsForPlayedCards = new Dictionary<CardModel, int>();
+    }
+
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
     public override int DisplayAmount => (int)Amount;
-    protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
+    protected override object InitInternalData()
     {
-        if (side != Owner.Side)
-            return;
-        if (Amount <= 0)
-            return;
+        return new Data();
+    }
 
-        Flash();
-        await CreatureCmd.Damage(choiceContext, Owner, Amount, ValueProp.Move, (CardModel?)null);
+    public override Task BeforeCardPlayed(CardPlay cardPlay)
+    {
+        GetInternalData<Data>().amountsForPlayedCards.Add(cardPlay.Card, (int)Amount);
+        return Task.CompletedTask;
+    }
+
+    public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
+    {
+        if (GetInternalData<Data>().amountsForPlayedCards.Remove(cardPlay.Card, out var value))
+        {
+            Flash();
+            await CreatureCmd.Damage(context, Owner, value, ValueProp.Unblockable | ValueProp.Unpowered, null, null);
+        }
     }
 }

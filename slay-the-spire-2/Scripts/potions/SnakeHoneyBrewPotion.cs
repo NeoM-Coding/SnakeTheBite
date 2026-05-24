@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
+using SnakeTheBite.Scripts.Cards;
 using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -38,7 +39,8 @@ public class SnakeHoneyBrewPotion : SnakeTheBitePotionModel
             .Where(c => SnakeTheBiteCardTags.IsSnakeCard(c)
                 && c.Type == CardType.Skill
                 && c.Type != CardType.Status
-                && c.Type != CardType.Curse)
+                && c.Type != CardType.Curse
+                && c is not SnakeFeastCard)
             .ToList();
 
         if (snakeSkillCards.Count == 0)

@@ -4,9 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
+using SnakeTheBite.Scripts.Cards;
 using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -22,20 +25,24 @@ public class SnakeToolboxRelic : SnakeTheBiteRelicModel
     // 遗物稀有度：罕见（蓝）
     public override RelicRarity Rarity => RelicRarity.Uncommon;
 
-    public override async Task BeforeCombatStart()
+    public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, CombatState combatState)
     {
+        if (player != Owner || combatState.RoundNumber != 1)
+            return;
+
         var candidates = ModelDb.CardPool<ColorlessCardPool>()
             .GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint)
             .Where(c => SnakeTheBiteCardTags.IsSnakeCard(c)
                 && c.Type != CardType.Status
-                && c.Type != CardType.Curse);
+                && c.Type != CardType.Curse
+                && c is not SnakeFeastCard);
 
         var cards = CardFactory.GetDistinctForCombat(Owner, candidates, 3, Owner.RunState.Rng.CombatCardGeneration).ToList();
 
         if (cards.Count == 0)
             return;
 
-        var selected = await CardSelectCmd.FromChooseACardScreen(new BlockingPlayerChoiceContext(), cards, Owner, canSkip: true);
+        var selected = await CardSelectCmd.FromChooseACardScreen(choiceContext, cards, Owner, canSkip: true);
 
         if (selected != null)
         {

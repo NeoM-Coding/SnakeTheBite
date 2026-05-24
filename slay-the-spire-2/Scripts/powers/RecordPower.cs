@@ -20,20 +20,20 @@ public class RecordPower : SnakeTheBitePowerModel
 
     // 标记是否还在获得Power的本回合
     [SavedProperty]
-    private bool _isFirstTurn = true;
+    private bool SnakeTheBite_IsFirstTurn { get; set; } = true;
 
     // 已回复的生命值总和
     [SavedProperty]
-    private decimal _totalHealed;
+    private decimal SnakeTheBite_TotalHealed { get; set; }
 
     public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
     {
         if (side != Owner.Side)
             return;
 
-        if (_isFirstTurn)
+        if (SnakeTheBite_IsFirstTurn)
         {
-            _isFirstTurn = false;
+            SnakeTheBite_IsFirstTurn = false;
         }
         else
         {
@@ -46,15 +46,15 @@ public class RecordPower : SnakeTheBitePowerModel
     {
         if (cardPlay.Card.Owner != Owner.Player)
             return;
-        if (_isFirstTurn)
+        if (SnakeTheBite_IsFirstTurn)
             return;
 
-        decimal maxHeal = Amount - _totalHealed;
+        decimal maxHeal = Amount - SnakeTheBite_TotalHealed;
         decimal heal = Math.Min(2m, maxHeal);
         if (heal <= 0)
             return;
 
-        _totalHealed += heal;
+        SnakeTheBite_TotalHealed += heal;
         Flash();
         await CreatureCmd.Heal(Owner, heal);
     }

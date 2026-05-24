@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Saves.Runs;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace SnakeTheBite.Scripts.Powers;
 
@@ -21,7 +22,7 @@ public class ThisBattleEndsPower : SnakeTheBitePowerModel
     protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 
     [SavedProperty]
-    private int _basicCardsPlayed;
+    private int SnakeTheBite_BasicCardsPlayed { get; set; }
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
@@ -31,16 +32,34 @@ public class ThisBattleEndsPower : SnakeTheBitePowerModel
         var type = cardPlay.Card.GetType().Name;
         if (type.StartsWith("Strike") || type.StartsWith("Defend"))
         {
-            _basicCardsPlayed++;
+            SnakeTheBite_BasicCardsPlayed++;
         }
+    }
+
+    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    {
+        if (cardSource != null && cardSource.GetType().Name.StartsWith("Strike"))
+        {
+            return 5m;
+        }
+        return 0m;
+    }
+
+    public override decimal ModifyBlockAdditive(Creature target, decimal block, ValueProp props, CardModel? cardSource, CardPlay? cardPlay)
+    {
+        if (cardSource != null && cardSource.GetType().Name.StartsWith("Defend"))
+        {
+            return 7m;
+        }
+        return 0m;
     }
 
     public override async Task AfterCombatEnd(CombatRoom room)
     {
-        if (_basicCardsPlayed > 0)
+        if (SnakeTheBite_BasicCardsPlayed > 0)
         {
-            await CreatureCmd.Heal(Owner, _basicCardsPlayed);
-            _basicCardsPlayed = 0;
+            await CreatureCmd.Heal(Owner, SnakeTheBite_BasicCardsPlayed);
+            SnakeTheBite_BasicCardsPlayed = 0;
         }
     }
 }

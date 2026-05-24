@@ -35,7 +35,7 @@ public class DoubleSectionSnakeRelic : SnakeTheBiteRelicModel
         {
             if (IsActivating)
                 return DynamicVars.Cards.IntValue;
-            return _totalSnakeCardsPlayed;
+            return SnakeTheBite_TotalSnakeCardsPlayed;
         }
     }
 
@@ -49,7 +49,7 @@ public class DoubleSectionSnakeRelic : SnakeTheBiteRelicModel
 
     // 总共已打出的蛇牌数量（跨回合累计，取模存储）
     [SavedProperty]
-    private int _totalSnakeCardsPlayed;
+    private int SnakeTheBite_TotalSnakeCardsPlayed { get; set; }
 
     private bool IsActivating
     {
@@ -71,11 +71,11 @@ public class DoubleSectionSnakeRelic : SnakeTheBiteRelicModel
             return;
 
         int threshold = DynamicVars.Cards.IntValue;
-        _totalSnakeCardsPlayed = (_totalSnakeCardsPlayed + 1) % threshold;
-        base.Status = (_totalSnakeCardsPlayed == threshold - 1) ? RelicStatus.Active : RelicStatus.Normal;
+        SnakeTheBite_TotalSnakeCardsPlayed = (SnakeTheBite_TotalSnakeCardsPlayed + 1) % threshold;
+        base.Status = (SnakeTheBite_TotalSnakeCardsPlayed == threshold - 1) ? RelicStatus.Active : RelicStatus.Normal;
         InvokeDisplayAmountChanged();
 
-        if (_totalSnakeCardsPlayed == 0)
+        if (SnakeTheBite_TotalSnakeCardsPlayed == 0)
         {
             await DoActivateVisuals();
             await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);

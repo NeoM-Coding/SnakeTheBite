@@ -27,7 +27,7 @@ public class VenomSacRelic : SnakeTheBiteRelicModel
 
     // 回合计数，每2回合触发一次
     [SavedProperty]
-    private int _turnCount;
+    private int SnakeTheBite_TurnCount { get; set; }
 
     public override bool ShowCounter => true;
 
@@ -37,13 +37,13 @@ public class VenomSacRelic : SnakeTheBiteRelicModel
         {
             if (_isActivating)
                 return 2;
-            return _turnCount;
+            return SnakeTheBite_TurnCount;
         }
     }
 
     public override Task BeforeCombatStart()
     {
-        _turnCount = 0;
+        SnakeTheBite_TurnCount = 0;
         return Task.CompletedTask;
     }
 
@@ -52,10 +52,10 @@ public class VenomSacRelic : SnakeTheBiteRelicModel
         if (side != Owner.Creature.Side)
             return;
 
-        _turnCount++;
-        if (_turnCount >= 2)
+        SnakeTheBite_TurnCount++;
+        if (SnakeTheBite_TurnCount >= 2)
         {
-            _turnCount = 0;
+            SnakeTheBite_TurnCount = 0;
             await DoActivateVisuals();
             await PowerCmd.Apply<SnakeVitalityPower>(Owner.Creature, 2m, Owner.Creature, null);
         }

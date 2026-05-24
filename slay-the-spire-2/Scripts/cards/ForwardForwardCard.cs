@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
@@ -18,6 +19,13 @@ namespace SnakeTheBite.Scripts.Cards;
 [Pool(typeof(ColorlessCardPool))]
 public class ForwardForwardCard : SnakeTheBiteCardModel
 {
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new EnergyVar(2),
+        new StarsVar(3),
+        new CardsVar(3)
+    ];
+
     public ForwardForwardCard() : base(1, CardType.Skill, CardRarity.Ancient, TargetType.Self)
     {
     }
@@ -52,8 +60,6 @@ public class ForwardForwardCard : SnakeTheBiteCardModel
         // 将冲刺打出三次
         for (int i = 0; i < 3; i++)
         {
-            if (sprint.Pile?.Type != PileType.Hand)
-                break;
             var enemy = Owner.Creature.CombatState?.GetOpponentsOf(Owner.Creature).FirstOrDefault(c => c.IsAlive);
             await CardCmd.AutoPlay(choiceContext, sprint, enemy);
         }

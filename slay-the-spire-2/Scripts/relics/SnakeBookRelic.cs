@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
+using SnakeTheBite.Scripts.Cards;
 using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -41,7 +42,8 @@ public class SnakeBookRelic : SnakeTheBiteRelicModel
                 .GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint)
                 .Where(c => SnakeTheBiteCardTags.IsSnakeCard(c)
                     && c.Type != CardType.Status
-                    && c.Type != CardType.Curse)
+                    && c.Type != CardType.Curse
+                    && c is not SnakeFeastCard)
         ).ToList();
 
         // 从无色卡池获取蛇牌（权重低）
@@ -50,7 +52,8 @@ public class SnakeBookRelic : SnakeTheBiteRelicModel
                 .GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint)
                 .Where(c => SnakeTheBiteCardTags.IsSnakeCard(c)
                     && c.Type != CardType.Status
-                    && c.Type != CardType.Curse)
+                    && c.Type != CardType.Curse
+                    && c is not SnakeFeastCard)
         ).ToList();
 
         // 保底：完全找不到蛇牌时不生成奖励

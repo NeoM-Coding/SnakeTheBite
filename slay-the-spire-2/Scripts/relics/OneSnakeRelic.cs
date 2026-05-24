@@ -39,7 +39,7 @@ public class OneSnakeRelic : SnakeTheBiteRelicModel
 
     // 本回合是否已经打出过蛇咬牌并获得能量
     [SavedProperty]
-    private bool _hasGainedEnergyThisTurn;
+    private bool SnakeTheBite_HasGainedEnergyThisTurn { get; set; }
 
     // 蛇咬牌伤害+1
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
@@ -75,7 +75,7 @@ public class OneSnakeRelic : SnakeTheBiteRelicModel
         if (side != Owner.Creature.Side)
             return Task.CompletedTask;
 
-        _hasGainedEnergyThisTurn = false;
+        SnakeTheBite_HasGainedEnergyThisTurn = false;
         return Task.CompletedTask;
     }
 
@@ -86,10 +86,10 @@ public class OneSnakeRelic : SnakeTheBiteRelicModel
             return;
         if (!SnakeTheBiteCardTags.IsSnakeBiteCard(cardPlay.Card))
             return;
-        if (_hasGainedEnergyThisTurn)
+        if (SnakeTheBite_HasGainedEnergyThisTurn)
             return;
 
-        _hasGainedEnergyThisTurn = true;
+        SnakeTheBite_HasGainedEnergyThisTurn = true;
         Flash();
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
     }

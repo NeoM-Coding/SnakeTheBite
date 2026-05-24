@@ -37,12 +37,13 @@ public class DsnakeCard : SnakeTheBiteCardModel
         if (originalCard == null)
             return;
 
-        // 收集可变化的蛇标签牌选项（排除原卡牌自身、诅咒与状态牌）
+        // 收集可变化的蛇标签牌选项（排除原卡牌自身、诅咒、状态与事件专属牌）
         var snakeOptions = CardFactory.FilterForCombat(
             ModelDb.AllCards.Where(c => SnakeTheBiteCardTags.IsSnakeCard(c)
                 && c.Id != originalCard.Id
                 && c.Type != CardType.Curse
-                && c.Type != CardType.Status)
+                && c.Type != CardType.Status
+                && c is not SnakeFeastCard)
         ).ToList();
 
         if (snakeOptions.Count == 0)

@@ -2,7 +2,7 @@
     "SNAKETHEBITE-GOLDEN_SNAKE_BLOOD_POTION.title": "黄金蛇血",
     "SNAKETHEBITE-GOLDEN_SNAKE_BLOOD_POTION.description": "获得[blue]{Gold}[/blue]点[gold]金币[/gold]。",
     "SNAKETHEBITE-SNAKE_IN_A_BOTTLE_POTION.title": "瓶中异蛇",
-    "SNAKETHEBITE-SNAKE_IN_A_BOTTLE_POTION.description": "当你的生命值将要被减少至0或以下时，改为丢弃这瓶药水，然后将你回复到你最大生命值的[blue]40%[/blue]生命值，但获得[blue]3[/blue]层[gold]中毒[/gold]。",
+    "SNAKETHEBITE-SNAKE_IN_A_BOTTLE_POTION.description": "当你的生命值将要被减少至[blue]0[/blue]或以下时，改为丢弃这瓶药水，然后将你回复到你最大生命值的[blue]40%[/blue]生命值，但获得[blue]3[/blue]层[gold]中毒[/gold]。",
     "SNAKETHEBITE-SNAKE_SECRET_BREW_POTION.title": "蛇之秘酿",
     "SNAKETHEBITE-SNAKE_SECRET_BREW_POTION.description": "获得{Energy:energyIcons()}。从[blue]3[/blue]张随机[gold]蛇能力[/gold]牌中选择[blue]1[/blue]张加入手牌。该牌本回合[gold]费用[/gold]随机。",
     "SNAKETHEBITE-ESSENCE_SNAKE_VENOM_POTION.title": "精粹蛇毒",

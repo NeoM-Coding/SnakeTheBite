@@ -20,18 +20,21 @@ public class TraumaPower : SnakeTheBitePowerModel
     // 标志位，用于 Harmony 补丁识别创伤造成的流失生命
     public static bool IsDealingDamage { get; set; }
 
-    public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public override async Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
         if (target != Owner)
             return;
         if (!props.IsPoweredAttack())
+            return;
+        // 防御性检查：目标已死亡或已离开战斗时不再触发
+        if (Owner == null || Owner.IsDead || Owner.CombatState == null)
             return;
 
         IsDealingDamage = true;
         try
         {
             Flash();
-            await CreatureCmd.Damage(choiceContext, Owner, Amount, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move | ValueProp.SkipHurtAnim, dealer, cardSource);
+            await CreatureCmd.Damage(choiceContext, Owner, Amount, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.SkipHurtAnim, dealer, cardSource);
         }
         finally
         {

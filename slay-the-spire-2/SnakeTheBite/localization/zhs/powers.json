@@ -30,7 +30,7 @@
     "SNAKETHEBITE-KING_SNAKE_BITE_POWER.title": "王之蛇咬",
     "SNAKETHEBITE-KING_SNAKE_BITE_POWER.description": "本场战斗，每打出一张[gold]蛇[/gold]牌，所有敌人获得[blue]{Amount}[/blue]层[gold]中毒[/gold]。",
     "SNAKETHEBITE-SNAKE_FEAST_POWER.title": "蛇宴",
-    "SNAKETHEBITE-SNAKE_FEAST_POWER.description": "若该敌人因[gold]中毒[/gold]死亡，获得其最大生命值[gold]等量[/gold]的最大生命值。",
+    "SNAKETHEBITE-SNAKE_FEAST_POWER.description": "若该敌人因[gold]中毒[/gold]死亡，获得其最大生命值[gold]等量[/gold]的最大生命值。(来自：[color=aqua]{ApplierName}[/color])",
     "SNAKETHEBITE-SNAKE_BLAST_POWER.title": "蛇爆",
     "SNAKETHEBITE-SNAKE_BLAST_POWER.description": "死亡时，对其他敌人造成等于[blue]{Amount}[/blue]倍自身[gold]最大生命值[/gold]的[gold]伤害[/gold]。",
     "SNAKETHEBITE-SNAKE_UNSTOPPABLE_POWER.title": "蛇不可挡",
@@ -44,7 +44,7 @@
     "SNAKETHEBITE-RECORD_POWER.title": "记录",
     "SNAKETHEBITE-RECORD_POWER.description": "下回合你每打出1张牌，回复[blue]2[/blue]点生命，上限为[blue]{Amount}[/blue]。",
     "SNAKETHEBITE-RHYTHM_POWER.title": "律动",
-    "SNAKETHEBITE-RHYTHM_POWER.description": "回合开始时，受到[blue]{Amount}[/blue]点伤害。",
+    "SNAKETHEBITE-RHYTHM_POWER.description": "你每打出一张牌，对此单位造成[blue]{Amount}[/blue]点伤害。",
     "SNAKETHEBITE-THIS_BATTLE_ENDS_POWER.title": "此战方休",
     "SNAKETHEBITE-THIS_BATTLE_ENDS_POWER.description": "所有[gold]打击[/gold]额外获得[blue]5[/blue]点数值，[gold]防御[/gold]额外获得[blue]7[/blue]点数值。本场战斗每打出1张基础牌，战后回复[blue]1[/blue]点生命。",
     "SNAKETHEBITE-FLESH_ARMOR_POWER.title": "血肉加身",
@@ -52,5 +52,9 @@
     "SNAKETHEBITE-DEFECT_ROBOT_POWER.title": "缺陷机器人",
     "SNAKETHEBITE-DEFECT_ROBOT_POWER.description": "回合开始时获得[blue]3[/blue]点[gold]能量[/gold]。受到的伤害减少[blue]30%[/blue]。",
     "SNAKETHEBITE-TRAUMA_POWER.title": "创伤",
-    "SNAKETHEBITE-TRAUMA_POWER.description": "受到[gold]物理攻击[/gold]时流失[blue]{Amount}[/blue]点生命。无视[gold]限伤[/gold]。"
+    "SNAKETHEBITE-TRAUMA_POWER.description": "受到[gold]物理攻击[/gold]时流失[blue]{Amount}[/blue]点生命。无视[gold]限伤[/gold]。",
+    "SNAKETHEBITE-SNAKE_MOLT_POWER.title": "蛇蜕",
+    "SNAKETHEBITE-SNAKE_MOLT_POWER.description": "[gold]手牌上限[/gold][blue]+2[/blue]。回合结束时，第11和12张手牌会被[gold]保留[/gold]。持续[blue]{Amount}[/blue]回合。",
+    "SNAKETHEBITE-SNAKE_VENOM_THERAPY_PENDING_POWER.title": "蛇毒疗法",
+    "SNAKETHEBITE-SNAKE_VENOM_THERAPY_PENDING_POWER.description": "下回合结束时获得[blue]{Amount}[/blue]层[gold]中毒[/gold]。"
 }

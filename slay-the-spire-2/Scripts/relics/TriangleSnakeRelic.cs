@@ -41,7 +41,7 @@ public class TriangleSnakeRelic : SnakeTheBiteRelicModel
         {
             if (IsActivating)
                 return DynamicVars.Cards.IntValue;
-            return _snakeCardsPlayedThisTurn % DynamicVars.Cards.IntValue;
+            return SnakeTheBite_SnakeCardsPlayedThisTurn % DynamicVars.Cards.IntValue;
         }
     }
 
@@ -55,7 +55,7 @@ public class TriangleSnakeRelic : SnakeTheBiteRelicModel
 
     // 本回合已打出的蛇牌数量
     [SavedProperty]
-    private int _snakeCardsPlayedThisTurn;
+    private int SnakeTheBite_SnakeCardsPlayedThisTurn { get; set; }
 
     private bool IsActivating
     {
@@ -80,7 +80,7 @@ public class TriangleSnakeRelic : SnakeTheBiteRelicModel
         if (side != Owner.Creature.Side)
             return Task.CompletedTask;
 
-        _snakeCardsPlayedThisTurn = 0;
+        SnakeTheBite_SnakeCardsPlayedThisTurn = 0;
         base.Status = RelicStatus.Normal;
         InvokeDisplayAmountChanged();
         return Task.CompletedTask;
@@ -94,9 +94,9 @@ public class TriangleSnakeRelic : SnakeTheBiteRelicModel
         if (!SnakeTheBiteCardTags.IsSnakeCard(cardPlay.Card))
             return;
 
-        _snakeCardsPlayedThisTurn++;
+        SnakeTheBite_SnakeCardsPlayedThisTurn++;
         int threshold = DynamicVars.Cards.IntValue;
-        int remainder = _snakeCardsPlayedThisTurn % threshold;
+        int remainder = SnakeTheBite_SnakeCardsPlayedThisTurn % threshold;
         base.Status = (remainder == threshold - 1) ? RelicStatus.Active : RelicStatus.Normal;
         InvokeDisplayAmountChanged();
 

@@ -23,13 +23,13 @@ public class FrozenBloodRelic : SnakeTheBiteRelicModel
     public override RelicRarity Rarity => RelicRarity.Ancient;
 
     [SavedProperty]
-    private decimal _hpLostSinceLastTurn;
+    private decimal SnakeTheBite_HpLostSinceLastTurn { get; set; }
 
     public override Task AfterCurrentHpChanged(Creature creature, decimal delta)
     {
         if (creature == Owner.Creature && delta < 0)
         {
-            _hpLostSinceLastTurn += -delta;
+            SnakeTheBite_HpLostSinceLastTurn += -delta;
         }
         return Task.CompletedTask;
     }
@@ -39,18 +39,18 @@ public class FrozenBloodRelic : SnakeTheBiteRelicModel
         if (side != Owner.Creature.Side)
             return;
 
-        if (_hpLostSinceLastTurn >= 7)
+        if (SnakeTheBite_HpLostSinceLastTurn >= 7)
         {
-            int stacks = (int)(_hpLostSinceLastTurn / 7);
+            int stacks = (int)(SnakeTheBite_HpLostSinceLastTurn / 7);
             Flash();
             await PowerCmd.Apply<IntangiblePower>(Owner.Creature, stacks, Owner.Creature, null);
-            _hpLostSinceLastTurn = 0;
+            SnakeTheBite_HpLostSinceLastTurn = 0;
         }
     }
 
     public override Task BeforeCombatStart()
     {
-        _hpLostSinceLastTurn = 0;
+        SnakeTheBite_HpLostSinceLastTurn = 0;
         return Task.CompletedTask;
     }
 }

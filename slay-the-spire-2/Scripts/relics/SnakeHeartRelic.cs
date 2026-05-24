@@ -20,23 +20,32 @@ public class SnakeHeartRelic : SnakeTheBiteRelicModel
 {
     public override bool IsAllowedInShops => false;
     public override RelicRarity Rarity => RelicRarity.Ancient;
+    public override bool ShowCounter => true;
+    public override int DisplayAmount => SnakeTheBite_BattlesSinceLastProc;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DynamicVar("Cooldown", 3m)];
 
     [SavedProperty]
-    private int _battlesSinceLastProc;
+    private int SnakeTheBite_BattlesSinceLastProc { get; set; }
 
     [SavedProperty]
-    private bool _shouldTakeExtraTurn;
+    private bool SnakeTheBite_ExtraTurnPending { get; set; }
+
+    public override Task AfterObtained()
+    {
+        SnakeTheBite_BattlesSinceLastProc = 1;
+        UpdateStatus();
+        return Task.CompletedTask;
+    }
 
     public override Task BeforeCombatStart()
     {
-        _shouldTakeExtraTurn = false;
+        SnakeTheBite_ExtraTurnPending = false;
         return Task.CompletedTask;
     }
 
     public override bool ShouldDieLate(Creature creature)
     {
-        if (creature == Owner.Creature && _battlesSinceLastProc >= 3)
+        if (creature == Owner.Creature && SnakeTheBite_BattlesSinceLastProc >= 3)
         {
             return false;
         }
@@ -47,17 +56,21 @@ public class SnakeHeartRelic : SnakeTheBiteRelicModel
     {
         if (creature != Owner.Creature) return;
 
-        _battlesSinceLastProc = 0;
-        _shouldTakeExtraTurn = true;
+        SnakeTheBite_BattlesSinceLastProc = 1;
+        SnakeTheBite_ExtraTurnPending = true;
+        UpdateStatus();
         Flash();
-        await CreatureCmd.Heal(creature, 1);
+        // 如果玩家受到过量伤害（CurrentHp 为负数），仅治疗1点无法使其复活。
+        // 计算所需治疗量，确保复活后 CurrentHp 至少为1。
+        decimal healAmount = Math.Max(1m, 1m - creature.CurrentHp);
+        await CreatureCmd.Heal(creature, healAmount);
     }
 
     public override bool ShouldTakeExtraTurn(Player player)
     {
-        if (player == Owner && _shouldTakeExtraTurn)
+        if (player == Owner && SnakeTheBite_ExtraTurnPending)
         {
-            _shouldTakeExtraTurn = false;
+            SnakeTheBite_ExtraTurnPending = false;
             return true;
         }
         return false;
@@ -65,10 +78,17 @@ public class SnakeHeartRelic : SnakeTheBiteRelicModel
 
     public override Task AfterCombatVictory(CombatRoom room)
     {
-        if (!_shouldTakeExtraTurn)
+        if (!SnakeTheBite_ExtraTurnPending)
         {
-            _battlesSinceLastProc++;
+            SnakeTheBite_BattlesSinceLastProc++;
+            InvokeDisplayAmountChanged();
+            UpdateStatus();
         }
         return Task.CompletedTask;
+    }
+
+    private void UpdateStatus()
+    {
+        Status = SnakeTheBite_BattlesSinceLastProc >= 3 ? RelicStatus.Active : RelicStatus.Normal;
     }
 }
