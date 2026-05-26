@@ -32,7 +32,7 @@ public class SnakeHeartRelic : SnakeTheBiteRelicModel
 
     public override Task AfterObtained()
     {
-        SnakeTheBite_BattlesSinceLastProc = 1;
+        SnakeTheBite_BattlesSinceLastProc = 0;
         UpdateStatus();
         return Task.CompletedTask;
     }
@@ -56,7 +56,7 @@ public class SnakeHeartRelic : SnakeTheBiteRelicModel
     {
         if (creature != Owner.Creature) return;
 
-        SnakeTheBite_BattlesSinceLastProc = 1;
+        SnakeTheBite_BattlesSinceLastProc = 0;
         SnakeTheBite_ExtraTurnPending = true;
         UpdateStatus();
         Flash();

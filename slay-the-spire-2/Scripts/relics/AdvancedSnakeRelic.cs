@@ -188,7 +188,7 @@ public class AdvancedSnakeRelic : SnakeTheBiteRelicModel
         return cost * (100 - discount) / 100m;
     }
 
-    private static string BuildEffectsDescription(int ascension)
+    internal static string BuildEffectsDescription(int ascension)
     {
         if (ascension <= 0)
             return "当前进阶等级未激活任何效果。";

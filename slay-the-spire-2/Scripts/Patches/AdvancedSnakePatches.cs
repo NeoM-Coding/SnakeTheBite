@@ -8,7 +8,9 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Events;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models.Events;
+using SnakeTheBite.Scripts.Cards;
 using SnakeTheBite.Scripts.Relics;
 
 namespace SnakeTheBite.Scripts.Patches;
@@ -48,5 +50,35 @@ public static class NeowAdvancedSnakeOptionPatch
         var list = __result.ToList();
         list.Add(option);
         __result = list;
+    }
+}
+
+// 进阶之蛇描述动态注入（修复 DynamicVars 中 StringVar 在 SmartFormat 中不生效的问题）
+[HarmonyPatch(typeof(RelicModel), "DynamicDescription", MethodType.Getter)]
+public static class AdvancedSnakeRelicDynamicDescriptionPatch
+{
+    static void Postfix(RelicModel __instance, ref LocString __result)
+    {
+        if (__instance is not AdvancedSnakeRelic relic)
+            return;
+        if (!relic.IsMutable)
+            return;
+        int asc = relic.Owner?.RunState.AscensionLevel ?? 0;
+        __result.Add("EffectsDescription", AdvancedSnakeRelic.BuildEffectsDescription(asc));
+    }
+}
+
+// 进阶之福禁止被附魔
+[HarmonyPatch(typeof(EnchantmentModel), nameof(EnchantmentModel.CanEnchant))]
+public static class AscendersBlessingNoEnchantPatch
+{
+    static bool Prefix(CardModel card, ref bool __result)
+    {
+        if (card is AscendersBlessingCard)
+        {
+            __result = false;
+            return false;
+        }
+        return true;
     }
 }

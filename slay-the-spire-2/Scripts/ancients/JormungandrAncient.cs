@@ -54,7 +54,7 @@ public class JormungandrAncient : CustomAncientModel
 
     protected override IReadOnlyList<EventOption> GenerateInitialOptions()
     {
-        var options = OptionPools.Roll(Rng);
+        var options = OptionPools.Roll(Rng, this);
         return options.Select(option =>
         {
             var relic = option.ModelForOption;

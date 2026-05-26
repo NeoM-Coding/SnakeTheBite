@@ -24,7 +24,7 @@ public class RecordPower : SnakeTheBitePowerModel
 
     // 已回复的生命值总和
     [SavedProperty]
-    private decimal SnakeTheBite_TotalHealed { get; set; }
+    private int SnakeTheBite_TotalHealed { get; set; }
 
     public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
     {
@@ -49,8 +49,8 @@ public class RecordPower : SnakeTheBitePowerModel
         if (SnakeTheBite_IsFirstTurn)
             return;
 
-        decimal maxHeal = Amount - SnakeTheBite_TotalHealed;
-        decimal heal = Math.Min(2m, maxHeal);
+        int maxHeal = (int)Amount - SnakeTheBite_TotalHealed;
+        int heal = Math.Min(2, maxHeal);
         if (heal <= 0)
             return;
 

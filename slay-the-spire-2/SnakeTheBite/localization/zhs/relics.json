@@ -45,7 +45,7 @@
     "SNAKETHEBITE-SNAKE_IDOL_RELIC.description": "战斗结束后额外掉落[blue]1[/blue]瓶[gold]蛇[/gold]药。",
     "SNAKETHEBITE-SNAKE_IDOL_RELIC.flavor": "白蛇盘绕于雕像之上，仿佛在等待下一位饮下蛇药之人。",
     "SNAKETHEBITE-SNAKE_HEART_RELIC.title": "蛇之心",
-    "SNAKETHEBITE-SNAKE_HEART_RELIC.description": "每[blue]{Cooldown}[/blue]场战斗，首次当你的生命值将要被减少至0或以下时，拒绝这次死亡，回复[blue]1[/blue]点生命并获得一个额外回合。",
+    "SNAKETHEBITE-SNAKE_HEART_RELIC.description": "每[blue]{Cooldown}[/blue]场战斗结束后，首次当你的生命值将要被减少至0或以下时，拒绝这次死亡，回复[blue]1[/blue]点生命并在你的下回合结束后获得一个额外回合。",
     "SNAKETHEBITE-SNAKE_HEART_RELIC.flavor": "命运替我拒绝了死亡！——耶梦加得",
     "SNAKETHEBITE-FROZEN_BLOOD_RELIC.title": "寒冰之血",
     "SNAKETHEBITE-FROZEN_BLOOD_RELIC.description": "每当你在一回合内累计失去[blue]7[/blue]点生命，下回合开始时获得[blue]1[/blue]层[gold]无实体[/gold]。",
