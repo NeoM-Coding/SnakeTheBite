@@ -16,6 +16,8 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Saves.Runs;
+using SnakeTheBite.Scripts.Keywords;
+using SnakeTheBite.Scripts.Powers;
 
 namespace SnakeTheBite.Scripts.Cards;
 
@@ -35,13 +37,17 @@ public class AscensionDemonCard : SnakeTheBiteCardModel
     {
     }
 
-    // 悬浮提示：显示命定效果、升魔·破与升魔·御
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [SnakeKeywords.Fated, CardKeyword.Eternal];
+
+    protected override void OnUpgrade()
+    {
+        EnergyCost.UpgradeBy(-1);
+    }
+
+    // 悬浮提示：显示升魔能力效果、升魔·破与升魔·御
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        new HoverTip(
-            new LocString("cards", "SNAKETHEBITE-ASCENSION_DEMON_CARD.fatedTitle"),
-            new LocString("cards", "SNAKETHEBITE-ASCENSION_DEMON_CARD.fatedDescription")
-        ),
+        HoverTipFactory.FromPower<AscensionDemonPower>(),
         HoverTipFactory.FromCard<AscensionDemonAttackCard>(),
         HoverTipFactory.FromCard<AscensionDemonSkillCard>()
     ];
@@ -63,7 +69,15 @@ public class AscensionDemonCard : SnakeTheBiteCardModel
 
     private void TryAddTokens()
     {
-        if (SnakeTheBite_HasAddedTokens || Owner == null || Pile?.Type != PileType.Deck)
+        if (SnakeTheBite_HasAddedTokens || Owner == null)
+            return;
+
+        // Pile 已设置但不是 Deck 时直接返回（不设置标志，因为之后可能移到 Deck）
+        if (Pile != null && Pile.Type != PileType.Deck)
+            return;
+
+        // Pile 尚未设置（如 RunState.CreateCard 过程中），等待 AfterCardChangedPiles 再触发
+        if (Pile == null)
             return;
 
         SnakeTheBite_HasAddedTokens = true;
@@ -77,36 +91,8 @@ public class AscensionDemonCard : SnakeTheBiteCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 主牌打出时不再创建临时token（token已通过命定机制加入牌组）
-        await Task.CompletedTask;
-    }
-
-    // 战斗结束后选择一张攻击或技能牌，将其效果存储并移除
-    public override async Task AfterCombatVictory(CombatRoom room)
-    {
-        var deckCards = Owner.Deck.Cards
-            .Where(c => c.Type == CardType.Attack || c.Type == CardType.Skill)
-            .ToList();
-        if (deckCards.Count == 0)
-            return;
-
-        var selected = await CardSelectCmd.FromDeckGeneric(
-            Owner,
-            new CardSelectorPrefs(CardSelectorPrefs.RemoveSelectionPrompt, 1),
-            filter: c => c.Type == CardType.Attack || c.Type == CardType.Skill
-        );
-
-        var card = selected.FirstOrDefault();
-        if (card == null)
-            return;
-
-        if (card.Type == CardType.Attack)
-            SnakeTheBite_SelectedAttackCards.Add(card.ToSerializable());
-        else
-            SnakeTheBite_SelectedSkillCards.Add(card.ToSerializable());
-
-        SnakeTheBite_SelectionCount++;
-        await CardPileCmd.RemoveFromDeck(card);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await PowerCmd.Apply<AscensionDemonPower>(Owner.Creature, 1m, Owner.Creature, this);
     }
 
     // 每场战斗开始时获得等于选择次数的瓦解层数

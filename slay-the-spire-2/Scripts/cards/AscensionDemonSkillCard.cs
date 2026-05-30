@@ -33,44 +33,40 @@ public class AscensionDemonSkillCard : SnakeTheBiteCardModel
     {
     }
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(0m, ValueProp.Move)];
+    public override int MaxUpgradeLevel => 0;
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Eternal];
+
+    // 不定义格挡变量，所有效果来自被吸收牌的反射调用
 
     private static void OnCustomizeDescriptionPost(CardModel card, Creature? target, ref string description)
     {
-        if (card is not AscensionDemonSkillCard skillCard || skillCard.SourceCards?.Count == 0)
+        if (card is not AscensionDemonSkillCard skillCard || skillCard.SourceCards == null || skillCard.SourceCards.Count == 0)
             return;
 
-        decimal totalBlock = 0;
-        foreach (var sourceCard in skillCard.SourceCards)
-        {
-            var c = CardModel.FromSerializable(sourceCard);
-            if (c.DynamicVars.TryGetValue("Block", out var bv))
-                totalBlock += bv.BaseValue;
-        }
+        var loc = new LocString("cards", "SNAKETHEBITE-ASCENSION_DEMON_SKILL_CARD.absorbedDescription");
+        loc.Add("CardCount", skillCard.SourceCards.Count);
+        description = loc.GetFormattedText();
+    }
 
-        if (totalBlock > 0)
+    public override Task BeforeCombatStart()
+    {
+        if (Owner != null)
         {
-            var loc = new LocString("cards", "SNAKETHEBITE-ASCENSION_DEMON_SKILL_CARD.combinedDescription");
-            loc.Add("TotalBlock", totalBlock);
-            loc.Add("CardCount", skillCard.SourceCards.Count);
-            description = loc.GetFormattedText();
+            var demonCard = Owner.Deck.Cards.OfType<AscensionDemonCard>().FirstOrDefault();
+            if (demonCard != null)
+            {
+                SourceCards = demonCard.SnakeTheBite_SelectedSkillCards;
+            }
         }
-        else
-        {
-            var loc = new LocString("cards", "SNAKETHEBITE-ASCENSION_DEMON_SKILL_CARD.absorbedDescription");
-            loc.Add("CardCount", skillCard.SourceCards.Count);
-            description = loc.GetFormattedText();
-        }
+        return Task.CompletedTask;
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 如果没有吸收效果，执行默认的0格挡
+        // 如果没有吸收效果，无事发生
         if (SourceCards == null || SourceCards.Count == 0)
-        {
-            await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
             return;
-        }
 
         // 依次执行所有被吸收的技能牌效果
         foreach (var sourceCard in SourceCards)

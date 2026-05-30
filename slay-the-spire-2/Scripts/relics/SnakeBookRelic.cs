@@ -7,6 +7,7 @@ using BaseLib.Abstracts;
 using BaseLib.Utils;
 using SnakeTheBite.Scripts.Cards;
 using SnakeTheBite.Scripts.Utils;
+using HarmonyLib;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -91,7 +92,20 @@ public class SnakeBookRelic : SnakeTheBiteRelicModel
         if (offerCards.Count == 0)
             return;
 
-        var reward = new CardReward(offerCards, CardCreationSource.Encounter, Owner);
+        // 新版 CardReward 取消了 (IEnumerable<CardModel>, CardCreationSource, Player) 构造函数，
+        // 需使用 (CardCreationOptions, int, Player) 构造后通过 Traverse 注入已创建好的卡牌
+        var options = new CardCreationOptions(
+            offerCards.Select(c => c.CanonicalInstance).ToList(),
+            CardCreationSource.Encounter,
+            CardRarityOddsType.Uniform
+        ).WithFlags(CardCreationFlags.NoCardPoolModifications | CardCreationFlags.NoCardModelModifications);
+        var reward = new CardReward(options, offerCards.Count, Owner);
+
+        var traverse = Traverse.Create(reward);
+        traverse.Field<List<CardCreationResult>>("_cards").Value.Clear();
+        traverse.Field<List<CardCreationResult>>("_cards").Value.AddRange(offerCards.Select(c => new CardCreationResult(c)));
+        traverse.Field<bool>("_cardsWereManuallySet").Value = true;
+
         room.AddExtraReward(Owner, reward);
 
         await Task.CompletedTask;

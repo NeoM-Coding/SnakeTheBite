@@ -103,18 +103,13 @@ public class AdvancedSnakeRelic : SnakeTheBiteRelicModel
             await PowerCmd.Apply<SnakePrecisionPower>(Owner.Creature, precision, Owner.Creature, null);
         }
 
-        // 进阶5：战斗开始将进阶之灾放入手牌（进阶十增强：额外往牌组增加一张进阶之福）
+        // 进阶5：战斗开始将进阶之灾放入手牌
         if (asc >= 5)
         {
             var ascendersBane = Owner.PlayerCombatState?.AllCards.FirstOrDefault(c => c is AscendersBane);
             if (ascendersBane != null)
             {
                 await CardPileCmd.Add(ascendersBane, PileType.Hand, CardPilePosition.Top, this);
-            }
-            if (asc >= 10)
-            {
-                var blessing = combatState.CreateCard<AscendersBlessingCard>(Owner);
-                await CardPileCmd.AddGeneratedCardToCombat(blessing, PileType.Draw, addedByPlayer: false);
             }
         }
 
@@ -205,15 +200,10 @@ public class AdvancedSnakeRelic : SnakeTheBiteRelicModel
             sb.AppendLine($"[gold]进阶3[/gold]：战斗后额外获得[blue]{GetValue(7, 10, boosted)}[/blue]金币。");
 
         if (ascension >= 4)
-            sb.AppendLine($"[gold]进阶4[/gold]：拾起时获得[blue]{GetValue(1, 2, boosted)}[/blue]瓶药水。");
+            sb.AppendLine($"[gold]进阶4[/gold]：拾起时获得[blue]{GetValue(1, 2, boosted)}[/blue]瓶[gold]蛇药[/gold]。");
 
         if (ascension >= 5)
-        {
-            if (boosted)
-                sb.AppendLine($"[gold]进阶5[/gold]：战斗开始将[gold]牌组[/gold]中的[gold]进阶之灾[/gold]放入手牌，并额外往牌组增加一张[gold]进阶之福[/gold]。");
-            else
-                sb.AppendLine($"[gold]进阶5[/gold]：战斗开始将[gold]牌组[/gold]中的[gold]进阶之灾[/gold]放入手牌。");
-        }
+            sb.AppendLine($"[gold]进阶5[/gold]：战斗开始将[gold]牌组[/gold]中的[gold]进阶之灾[/gold]放入手牌。");
 
         if (ascension >= 6)
             sb.AppendLine($"[gold]进阶6[/gold]：商人移除价格下降[blue]{GetValue(7, 10, boosted)}%[/blue]。");

@@ -2,9 +2,11 @@
     "id": "SnakeTheBite",
     "author": "MapleShadow",
     "description": "蛇咬宇宙",
-    "version": "0.12.0",
+    "version": "0.12.1",
     "has_pck": true,
     "has_dll": true,
-    "dependencies": [],
+    "dependencies": [
+        "BaseLib"
+    ],
     "affects_gameplay": true
 }

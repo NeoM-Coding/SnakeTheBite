@@ -68,13 +68,13 @@ public static class AdvancedSnakeRelicDynamicDescriptionPatch
     }
 }
 
-// 进阶之福禁止被附魔
+// 进阶之福与升魔·破/御禁止被附魔
 [HarmonyPatch(typeof(EnchantmentModel), nameof(EnchantmentModel.CanEnchant))]
 public static class AscendersBlessingNoEnchantPatch
 {
     static bool Prefix(CardModel card, ref bool __result)
     {
-        if (card is AscendersBlessingCard)
+        if (card is AscendersBlessingCard or AscensionDemonAttackCard or AscensionDemonSkillCard)
         {
             __result = false;
             return false;

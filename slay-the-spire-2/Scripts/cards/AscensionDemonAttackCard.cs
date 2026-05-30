@@ -33,46 +33,40 @@ public class AscensionDemonAttackCard : SnakeTheBiteCardModel
     {
     }
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(0m, ValueProp.Move)];
+    public override int MaxUpgradeLevel => 0;
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Eternal];
+
+    // 不定义伤害变量，所有效果来自被吸收牌的反射调用
 
     private static void OnCustomizeDescriptionPost(CardModel card, Creature? target, ref string description)
     {
-        if (card is not AscensionDemonAttackCard attackCard || attackCard.SourceCards?.Count == 0)
+        if (card is not AscensionDemonAttackCard attackCard || attackCard.SourceCards == null || attackCard.SourceCards.Count == 0)
             return;
 
-        decimal totalDamage = 0;
-        foreach (var sourceCard in attackCard.SourceCards)
-        {
-            var c = CardModel.FromSerializable(sourceCard);
-            if (c.DynamicVars.TryGetValue("Damage", out var dv))
-                totalDamage += dv.BaseValue;
-        }
+        var loc = new LocString("cards", "SNAKETHEBITE-ASCENSION_DEMON_ATTACK_CARD.absorbedDescription");
+        loc.Add("CardCount", attackCard.SourceCards.Count);
+        description = loc.GetFormattedText();
+    }
 
-        if (totalDamage > 0)
+    public override Task BeforeCombatStart()
+    {
+        if (Owner != null)
         {
-            var loc = new LocString("cards", "SNAKETHEBITE-ASCENSION_DEMON_ATTACK_CARD.combinedDescription");
-            loc.Add("TotalDamage", totalDamage);
-            loc.Add("CardCount", attackCard.SourceCards.Count);
-            description = loc.GetFormattedText();
+            var demonCard = Owner.Deck.Cards.OfType<AscensionDemonCard>().FirstOrDefault();
+            if (demonCard != null)
+            {
+                SourceCards = demonCard.SnakeTheBite_SelectedAttackCards;
+            }
         }
-        else
-        {
-            var loc = new LocString("cards", "SNAKETHEBITE-ASCENSION_DEMON_ATTACK_CARD.absorbedDescription");
-            loc.Add("CardCount", attackCard.SourceCards.Count);
-            description = loc.GetFormattedText();
-        }
+        return Task.CompletedTask;
     }
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 如果没有吸收效果，执行默认的0伤害攻击
+        // 如果没有吸收效果，无事发生
         if (SourceCards == null || SourceCards.Count == 0)
-        {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
-                .Execute(choiceContext);
             return;
-        }
 
         // 依次执行所有被吸收的攻击牌效果
         foreach (var sourceCard in SourceCards)

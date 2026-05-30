@@ -45,7 +45,6 @@ public class JormungandrAncient : CustomAncientModel
         ),
         MakePool(
             AncientOption<VenomFangRelic>(),
-            AncientOption<SnakeIdolRelic>(),
             AncientOption<FrozenBloodRelic>()
         )
     );

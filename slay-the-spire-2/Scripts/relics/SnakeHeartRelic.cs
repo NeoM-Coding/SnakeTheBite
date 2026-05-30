@@ -59,6 +59,7 @@ public class SnakeHeartRelic : SnakeTheBiteRelicModel
         SnakeTheBite_BattlesSinceLastProc = 0;
         SnakeTheBite_ExtraTurnPending = true;
         UpdateStatus();
+        InvokeDisplayAmountChanged();
         Flash();
         // 如果玩家受到过量伤害（CurrentHp 为负数），仅治疗1点无法使其复活。
         // 计算所需治疗量，确保复活后 CurrentHp 至少为1。
