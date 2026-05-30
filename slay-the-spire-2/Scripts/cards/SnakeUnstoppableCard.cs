@@ -24,7 +24,7 @@ public class SnakeUnstoppableCard : SnakeTheBiteCardModel
     private const TargetType targetType = TargetType.Self;
     private const bool shouldShowInCardLibrary = true;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<SnakeUnstoppablePower>(1m)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<SnakeUnstoppablePower>(2m)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<SnakeUnstoppablePower>()];
 
@@ -38,6 +38,6 @@ public class SnakeUnstoppableCard : SnakeTheBiteCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars["SnakeUnstoppablePower"].UpgradeValueBy(1m); // 1 -> 2
+        DynamicVars["SnakeUnstoppablePower"].UpgradeValueBy(1m); // 2 -> 3
     }
 }

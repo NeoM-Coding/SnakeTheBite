@@ -30,8 +30,8 @@ public class SnakeDanceCard : SnakeTheBiteCardModel
     public override bool GainsBlock => true;
 
     //
-    // 卡牌动态变量：7点格挡 + 1点下回合能量。
-    // 升级后分别为9点格挡和2点能量。
+    // 卡牌动态变量：固定7点格挡 + 1点下回合能量。
+    // 升级后能量变为2点，格挡保持7不变。
     //
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -58,10 +58,9 @@ public class SnakeDanceCard : SnakeTheBiteCardModel
         await PowerCmd.Apply<EnergyNextTurnPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, DynamicVars.Energy.BaseValue, Owner.Creature, this, false);
     }
 
-    // 升级后的效果：格挡 +2，下回合能量 +1。
+    // 升级后的效果：下回合能量 +1（格挡保持7不变）。
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(2m);  // 7 -> 9
         DynamicVars.Energy.UpgradeValueBy(1m); // 1 -> 2
     }
 }

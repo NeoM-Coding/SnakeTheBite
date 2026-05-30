@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 using SnakeTheBite.Scripts.Powers;
 
 namespace SnakeTheBite.Scripts.Cards;
@@ -15,37 +16,38 @@ namespace SnakeTheBite.Scripts.Cards;
 [Pool(typeof(IroncladCardPool))]
 public class SneakySnakeCard : SnakeTheBiteCardModel
 {
-    // 基础耗能 - 1费(蓝卡)
     private const int energyCost = 1;
-    // 卡牌类型 - 技能牌
     private const CardType type = CardType.Skill;
-    // 卡牌稀有度 - 罕见
     private const CardRarity rarity = CardRarity.Uncommon;
-    // 目标类型 - 自己
     private const TargetType targetType = TargetType.Self;
-    // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
-    // 定义变量：伤害减免百分比(不升级25，升级50)
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new PowerVar<SneakySnakePower>(25m)];
+        [new BlockVar(3, ValueProp.Move), new PowerVar<SneakySnakePower>(1m)];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<SneakySnakePower>()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(StaticHoverTip.Block), HoverTipFactory.FromPower<SneakySnakePower>()];
 
     public SneakySnakeCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
     }
 
-    // 打出时的效果逻辑 - 给予自身偷偷的蛇能力
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<SneakySnakePower>(new ThrowingPlayerChoiceContext(), Owner.Creature, DynamicVars["SneakySnakePower"].BaseValue, Owner.Creature, this, false);
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
+        var power = await PowerCmd.Apply<SneakySnakePower>(new ThrowingPlayerChoiceContext(), Owner.Creature, DynamicVars["SneakySnakePower"].BaseValue, Owner.Creature, this, false);
+        if (power != null)
+        {
+            decimal cardMultiplier = IsUpgraded ? 0.50m : 0.75m;
+            if (power.DynamicVars["DamageReduction"].BaseValue > cardMultiplier)
+            {
+                power.DynamicVars["DamageReduction"].BaseValue = cardMultiplier;
+            }
+        }
     }
 
-    // 升级后的效果逻辑 - 减免百分比加25（25 -> 50）
     protected override void OnUpgrade()
     {
-        DynamicVars["SneakySnakePower"].UpgradeValueBy(25m);
+        DynamicVars.Block.UpgradeValueBy(2m);
     }
 }

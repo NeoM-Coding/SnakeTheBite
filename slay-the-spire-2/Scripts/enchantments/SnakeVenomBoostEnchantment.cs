@@ -1,7 +1,9 @@
 ﻿using System;
+using HarmonyLib;
 using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Commands;
 
 namespace SnakeTheBite.Scripts.Enchantments;
 
@@ -62,5 +64,40 @@ public class SnakeVenomBoostEnchantment : SnakeTheBiteEnchantmentModel
         return canonical.DynamicVars.TryGetValue(dynamicVarName, out var var)
             ? var.BaseValue
             : 0m;
+    }
+}
+
+// Harmony 补丁：卡牌升级后重新计算蛇液强化附魔的数值
+// 修复 FromSerializable 中先附魔后升级导致的数值不一致问题
+[HarmonyPatch(typeof(CardModel), nameof(CardModel.UpgradeInternal))]
+public static class SnakeVenomBoostUpgradePostfix
+{
+    static void Postfix(CardModel __instance)
+    {
+        if (__instance.Enchantment is SnakeVenomBoostEnchantment venomBoost)
+        {
+            venomBoost.RecalculateValues();
+        }
+    }
+}
+
+// Harmony 补丁：CardCmd.Enchant 增加已有附魔的 Amount 后重新计算数值
+// CardCmd.Enchant 在附魔已存在时只增加 Amount，不调用 ModifyCard
+[HarmonyPatch]
+public static class SnakeVenomBoostEnchantPostfix
+{
+    static System.Reflection.MethodBase TargetMethod()
+    {
+        var method = typeof(CardCmd).GetMethod("Enchant", new[] { typeof(CardModel), typeof(decimal) })
+            ?? throw new InvalidOperationException("CardCmd.Enchant method not found");
+        return method.MakeGenericMethod(typeof(SnakeVenomBoostEnchantment));
+    }
+
+    static void Postfix(EnchantmentModel __result)
+    {
+        if (__result is SnakeVenomBoostEnchantment venomBoost)
+        {
+            venomBoost.RecalculateValues();
+        }
     }
 }

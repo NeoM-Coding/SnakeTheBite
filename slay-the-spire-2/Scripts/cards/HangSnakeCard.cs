@@ -27,9 +27,9 @@ public class HangSnakeCard : SnakeTheBiteCardModel
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
-    // 定义变量：中毒(不升级10，升级14)
+    // 定义变量：中毒(不升级7，升级10)
     protected override IEnumerable<DynamicVar> CanonicalVars =>
-        [new PowerVar<PoisonPower>(10m)];
+        [new PowerVar<PoisonPower>(7m)];
 
     // 悬停提示：显示吊蛇能力的提示信息
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -63,9 +63,9 @@ public class HangSnakeCard : SnakeTheBiteCardModel
         await PowerCmd.Apply<HangSnakePower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, num, Owner.Creature, this, false);
     }
 
-    // 升级后的效果逻辑 - 中毒加4
+    // 升级后的效果逻辑 - 中毒加3
     protected override void OnUpgrade()
     {
-        DynamicVars.Poison.UpgradeValueBy(4m);
+        DynamicVars.Poison.UpgradeValueBy(3m);
     }
 }

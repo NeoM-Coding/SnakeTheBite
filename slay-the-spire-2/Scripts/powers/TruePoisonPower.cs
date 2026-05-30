@@ -339,6 +339,39 @@ public static class TruePoisonDamageCapPatch
     }
 }
 
+// Harmony 补丁：阻止 HardenedShellPower 将真实中毒伤害计入计数
+[HarmonyPatch(typeof(HardenedShellPower), nameof(HardenedShellPower.AfterDamageReceived))]
+public static class TruePoisonHardenedShellAfterDamageReceivedPatch
+{
+    static bool Prefix(ref Task __result)
+    {
+        if (TruePoisonPower.IsDealingDamage)
+        {
+            __result = Task.CompletedTask;
+            return false;
+        }
+        return true;
+    }
+}
+
+// Harmony 补丁：统一阻止通过 ModifyHpLostBeforeOstyLate 限制真实中毒伤害（兜底）
+[HarmonyPatch(typeof(AbstractModel), nameof(AbstractModel.ModifyHpLostBeforeOstyLate))]
+public static class TruePoisonHpLostBeforeOstyLatePatch
+{
+    static bool Prefix(AbstractModel __instance, Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, ref decimal __result)
+    {
+        if (TruePoisonPower.IsDealingDamage)
+        {
+            if (__instance is HardenedShellPower)
+            {
+                __result = amount;
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
 // Harmony 补丁：统一阻止通过 ModifyHpLostAfterOstyLate 抵消真实中毒伤害的 Power（兜底）
 [HarmonyPatch(typeof(AbstractModel), nameof(AbstractModel.ModifyHpLostAfterOstyLate))]
 public static class TruePoisonHpLostAfterOstyLatePatch

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
+using SnakeTheBite.Scripts.Cards;
 using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -10,6 +11,8 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Potions;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.PotionPools;
 
@@ -22,15 +25,22 @@ public class SnakeHoneyBrewPotion : SnakeTheBitePotionModel
     public override PotionUsage Usage => PotionUsage.CombatOnly;
     public override TargetType TargetType => TargetType.Self;
 
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new EnergyVar(1)];
+
+    public override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(StaticHoverTip.Energy)];
+
     protected override async Task OnUse(PlayerChoiceContext choiceContext, Creature? target)
     {
         PotionModel.AssertValidForTargetedPotion(target);
+
+        await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, target.Player!);
 
         var snakeSkillCards = ModelDb.AllCards
             .Where(c => SnakeTheBiteCardTags.IsSnakeCard(c)
                 && c.Type == CardType.Skill
                 && c.Type != CardType.Status
-                && c.Type != CardType.Curse)
+                && c.Type != CardType.Curse
+                && c is not SnakeFeastCard)
             .ToList();
 
         if (snakeSkillCards.Count == 0)

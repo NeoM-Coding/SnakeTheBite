@@ -1,0 +1,23 @@
+{
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.title": "耶梦加得",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.epithet": "世界之蛇",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.firstVisitEver.0-0.ancient": "你踏入了这片被[b]蛇鳞[/b]覆盖的荒野。大地在微微颤动，仿佛有什么庞然大物正从地底缓缓游过。\n远处的天际，一条[gold]巨大的蛇影[/gold]环绕着整个世界，它的头颅与尾巴在遥远的地平线相接。",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.ANY.0-0r.ancient": "[gold]耶梦加得[/gold]的鳞片在虚空中闪烁。它不曾开口，但你听见了——\n[i]……轮回……吞噬……重生……[/i]",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.SILENT.0-0.ancient": "嗯……我闻到你的命运了……小家伙",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.SILENT.0-1.char": "……",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.SILENT.0-2.ancient": "看看！看看荒疫把你变成了什么样子！",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.IRONCLAD.0-0.ancient": "我在轮回的尽头见过你，最后的战士",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.IRONCLAD.0-1.char": "杀……戮……",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.IRONCLAD.0-2.ancient": "祝愿你能寻回平静与荣耀",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.REGENT.0-0.char": "你真大！",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.REGENT.0-1.ancient": "异星的客人，哦，我看不清你的命运",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.REGENT.0-2.char": "如果我有逃不掉的命运……嗯！那就是胜利！",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.NECROBINDER.0-0.ancient": "可怜！多么悲惨的命运！或许你应该去见见我的姐妹",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.NECROBINDER.0-1.char": "我只希望让他死亡",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.NECROBINDER.0-2.ancient": "[red]建筑师[/red]拿走了你很多东西……我不介意帮你",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.NECROBINDER.0-3.char": "那就别废话了",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.NECROBINDER.0-4.ancient": "当然，当然……",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.DEFECT.0-0.ancient": "你好啊小家伙，可爱的小构装体",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.DEFECT.0-1.char": "[i]<羞涩的滴滴声>[/i]",
+    "SNAKETHEBITE-JORMUNGANDR_ANCIENT.talk.DEFECT.0-2.ancient": "好吧，我会试试修好你"
+}

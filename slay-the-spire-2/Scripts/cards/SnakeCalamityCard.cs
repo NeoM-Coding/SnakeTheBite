@@ -1,4 +1,4 @@
-﻿// 灾厄之蛇 - 2费红卡技能，给予7层灾厄
+﻿// 灾厄之蛇 - 2费红卡技能，给予7层灾厄，根据玩家中毒额外给予灾厄
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
+using SnakeTheBite.Scripts.Powers;
 
 namespace SnakeTheBite.Scripts.Cards;
 
@@ -26,10 +27,11 @@ public class SnakeCalamityCard : SnakeTheBiteCardModel
     // 是否在卡牌图鉴中显示
     private const bool shouldShowInCardLibrary = true;
 
-    // 卡牌的基础属性（7点灾厄）
+    // 卡牌的基础属性（7点灾厄，额外5点灾厄）
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<DoomPower>(7m)
+        new PowerVar<DoomPower>(7m),
+        new DynamicVar("ExtraDoom", 5m)
     ];
 
     // 保留关键词
@@ -38,7 +40,11 @@ public class SnakeCalamityCard : SnakeTheBiteCardModel
 
     // 悬停提示
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-        new[] { HoverTipFactory.FromPower<DoomPower>() };
+    [
+        HoverTipFactory.FromPower<DoomPower>(),
+        HoverTipFactory.FromPower<PoisonPower>(),
+        HoverTipFactory.FromPower<TruePoisonPower>()
+    ];
 
     public SnakeCalamityCard() : base(energyCost, type, rarity, targetType, shouldShowInCardLibrary)
     {
@@ -52,11 +58,23 @@ public class SnakeCalamityCard : SnakeTheBiteCardModel
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         // 给予目标灾厄，数值来源于卡牌的灾厄属性
         await PowerCmd.Apply<DoomPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this, false);
+
+        // 额外灾厄：你身上每有一层中毒或真实中毒，额外给予灾厄
+        int poisonAmount = (int)(Owner.Creature.GetPower<PoisonPower>()?.Amount ?? 0);
+        int truePoisonAmount = (int)(Owner.Creature.GetPower<TruePoisonPower>()?.Amount ?? 0);
+        int totalPoison = poisonAmount + truePoisonAmount;
+
+        if (totalPoison > 0)
+        {
+            decimal extraDoom = DynamicVars["ExtraDoom"].BaseValue * totalPoison;
+            await PowerCmd.Apply<DoomPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, extraDoom, Owner.Creature, this, false);
+        }
     }
 
     // 升级后的效果逻辑
     protected override void OnUpgrade()
     {
-        DynamicVars.Doom.UpgradeValueBy(2m); // 升级后增加2层灾厄（7 -> 9）
+        DynamicVars.Doom.UpgradeValueBy(3m); // 升级后增加3层灾厄（7 -> 10）
+        DynamicVars["ExtraDoom"].UpgradeValueBy(2m); // 额外灾厄 5 -> 7
     }
 }

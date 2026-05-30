@@ -1,4 +1,4 @@
-﻿// 王之蛇咬能力 - 本场战斗每打出一张蛇牌，所有敌人获得中毒（不叠加）
+﻿// 王之蛇咬能力 - 本场战斗每打出一张蛇牌，所有敌人获得中毒（可叠加）
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,7 +18,7 @@ namespace SnakeTheBite.Scripts.Powers;
 public class KingSnakeBitePower : SnakeTheBitePowerModel
 {
     public override PowerType Type => PowerType.Buff;
-    public override PowerStackType StackType => PowerStackType.Single;
+    public override PowerStackType StackType => PowerStackType.Counter;
     public override int DisplayAmount => (int)Amount;
 
     protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";

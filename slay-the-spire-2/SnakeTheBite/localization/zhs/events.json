@@ -18,5 +18,6 @@
     "SNAKETHEBITE-MYSTERIOUS_SNAKE_CULT_EVENT.pages.INITIAL.options.TAKE_MONEY_AND_RUN.title": "抢了钱就跑",
     "SNAKETHEBITE-MYSTERIOUS_SNAKE_CULT_EVENT.pages.INITIAL.options.TAKE_MONEY_AND_RUN.description": "获得[blue]50[/blue]至[blue]100[/blue]金币。",
     "SNAKETHEBITE-MYSTERIOUS_SNAKE_CULT_EVENT.pages.JOIN_CULT.description": "你走向[gold]祭坛[/gold]，[aqua]幽绿的火焰[/aqua]瞬间缠绕上你的双手。[purple]低语声[/purple]灌入脑海，[green]蛇影[/green]在视野中扭曲缠绕。当[purple]幻觉[/purple]散去，你发现自己的牌组中多了几张不该存在的牌。",
-    "SNAKETHEBITE-MYSTERIOUS_SNAKE_CULT_EVENT.pages.TAKE_MONEY_AND_RUN.description": "你趁信徒们沉浸在吟诵之际，一把抓走[gold]祭坛[/gold]上的[gold]供奉金[/gold]，转身冲入[purple]迷雾[/purple]。身后传来愤怒的[green]嘶嘶声[/green]与[aqua]蛇鳞摩擦地面[/aqua]的声响，但你已经跑远了。"
+    "SNAKETHEBITE-MYSTERIOUS_SNAKE_CULT_EVENT.pages.TAKE_MONEY_AND_RUN.description": "你趁信徒们沉浸在吟诵之际，一把抓走[gold]祭坛[/gold]上的[gold]供奉金[/gold]，转身冲入[purple]迷雾[/purple]。身后传来愤怒的[green]嘶嘶声[/green]与[aqua]蛇鳞摩擦地面[/aqua]的声响，但你已经跑远了。",
+    "NEOW.pages.INITIAL.SNAKETHEBITE-ADVANCED_SNAKE_RELIC.description": "根据进阶不断获得效果。"
 }

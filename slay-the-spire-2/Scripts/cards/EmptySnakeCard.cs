@@ -18,12 +18,12 @@ public class EmptySnakeCard : SnakeTheBiteCardModel
 {
     private const int energyCost = 1;
     private const CardType type = CardType.Skill;
-    private const CardRarity rarity = CardRarity.Rare;
+    private const CardRarity rarity = CardRarity.Uncommon;
     private const TargetType targetType = TargetType.Self;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(6m, ValueProp.Move)
+        new BlockVar(7m, ValueProp.Move)
     ];
 
     public EmptySnakeCard() : base(energyCost, type, rarity, targetType) { }

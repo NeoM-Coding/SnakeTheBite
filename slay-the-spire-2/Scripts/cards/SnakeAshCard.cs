@@ -1,4 +1,4 @@
-﻿// 蛇烬 - 2费红卡攻击，给予11层中毒并消耗抽牌堆顶牌
+﻿// 蛇烬 - 2费红卡攻击，给予11层中毒并随机消耗一张手牌
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -52,13 +52,15 @@ public class SnakeAshCard : SnakeTheBiteCardModel
         // 给予目标中毒，数值来源于卡牌的中毒属性
         await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this, false);
 
-        // 消耗抽牌堆顶的一张牌（参考Cinder.cs写法）
-        await CardPileCmd.ShuffleIfNecessary(choiceContext, Owner);
-        CardPile drawPile = PileType.Draw.GetPile(Owner);
-        CardModel topCard = drawPile.Cards.FirstOrDefault();
-        if (topCard != null)
+        // 随机消耗手牌中的一张牌
+        var hand = PileType.Hand.GetPile(Owner);
+        if (hand.Cards.Count > 0)
         {
-            await CardCmd.Exhaust(choiceContext, topCard);
+            var cardToExhaust = Owner.RunState.Rng.CombatCardSelection.NextItem<CardModel>(hand.Cards);
+            if (cardToExhaust != null)
+            {
+                await CardCmd.Exhaust(choiceContext, cardToExhaust);
+            }
         }
     }
 

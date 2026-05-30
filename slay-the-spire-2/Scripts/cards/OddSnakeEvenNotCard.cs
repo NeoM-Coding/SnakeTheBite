@@ -1,4 +1,4 @@
-﻿// 奇蛇偶不蛇 - 保留，无法打出。给予随机敌人7层中毒。回合结束后，若手牌数为奇数，自动打出这张牌。
+﻿// 奇蛇偶不蛇 - 无法打出。给予随机敌人7层中毒。回合结束后，若手牌数为奇数，自动打出这张牌。
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -20,7 +20,7 @@ public class OddSnakeEvenNotCard : SnakeTheBiteCardModel
     private const CardRarity rarity = CardRarity.Uncommon;
     private const TargetType targetType = TargetType.AnyEnemy;
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [];
 
     public override bool HasTurnEndInHandEffect => true;
 
@@ -31,7 +31,7 @@ public class OddSnakeEvenNotCard : SnakeTheBiteCardModel
         new PowerVar<PoisonPower>(7m)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromKeyword(CardKeyword.Retain)];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [];
 
     public OddSnakeEvenNotCard() : base(energyCost, type, rarity, targetType) { }
 
@@ -58,6 +58,6 @@ public class OddSnakeEvenNotCard : SnakeTheBiteCardModel
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Poison.UpgradeValueBy(2m);
+        DynamicVars.Poison.UpgradeValueBy(3m);
     }
 }

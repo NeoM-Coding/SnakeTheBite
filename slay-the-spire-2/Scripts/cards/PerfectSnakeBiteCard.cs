@@ -24,6 +24,9 @@ public class PerfectSnakeBiteCard : SnakeTheBiteCardModel
     private const CardRarity rarity = CardRarity.Uncommon;
     private const TargetType targetType = TargetType.AnyEnemy;
     private const bool shouldShowInCardLibrary = true;
+    // 保留关键词
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+        new[] { CardKeyword.Retain };
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
