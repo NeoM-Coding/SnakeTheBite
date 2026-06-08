@@ -1,4 +1,4 @@
-﻿using BaseLib.Abstracts;
+using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -69,7 +69,7 @@ public class SnakeBiteStormCard : SnakeTheBiteCardModel
         }
 
         // 批量加入手牌
-        await CardPileCmd.AddGeneratedCardsToCombat(snakeBites, PileType.Hand, Owner);
+        await CardPileCmd.AddGeneratedCardsToCombat(snakeBites, PileType.Hand, Owner, CardPilePosition.Random);
     }
 
     // 升级后的效果逻辑 - 在 OnPlay 中通过 IsUpgraded 判断生成蛇咬+

@@ -1,4 +1,4 @@
-﻿// 枯木 - 所有攻击/技能牌获得消耗且费用-1，消耗时从本职业卡池随机加牌到手牌
+// 枯木 - 所有攻击/技能牌获得消耗且费用-1，消耗时从本职业卡池随机加牌到手牌
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -47,7 +47,7 @@ public class WitheredWoodRelic : SnakeTheBiteRelicModel
         var randomCard = CardFactory.GetDistinctForCombat(Owner, poolCards, 1, Owner.RunState.Rng.CombatCardGeneration).FirstOrDefault();
         if (randomCard != null)
         {
-            await CardPileCmd.AddGeneratedCardToCombat(randomCard, PileType.Hand, addedByPlayer: false);
+            await CardPileCmd.AddGeneratedCardToCombat(randomCard, PileType.Hand, Owner, CardPilePosition.Random);
         }
     }
 }

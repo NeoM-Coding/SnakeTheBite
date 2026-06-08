@@ -104,7 +104,7 @@ public class TrueSnakePower : SnakeTheBitePowerModel
     }
 
     // 回合结束时清除未打出的标记和残留动画
-    public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> creatures)
     {
         if (side != Owner.Side)
             return;

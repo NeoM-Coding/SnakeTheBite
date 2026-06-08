@@ -58,7 +58,7 @@ public class GreenSnakeStudyCard : SnakeTheBiteCardModel
             .Execute(choiceContext);
 
         // 若确实造成斩杀，随机升级牌库中的一张可升级蛇咬牌
-        if (shouldTriggerFatal && attackCommand.Results.Any((DamageResult r) => r.WasTargetKilled))
+        if (shouldTriggerFatal && attackCommand.Results.Any(list => list.Any(r => r.WasTargetKilled)))
         {
             var deck = PileType.Deck.GetPile(Owner);
             var snakeBiteCards = deck.Cards

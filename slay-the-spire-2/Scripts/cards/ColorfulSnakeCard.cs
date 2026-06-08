@@ -68,7 +68,7 @@ public class ColorfulSnakeCard : SnakeTheBiteCardModel
 
         if (selectedCards.Count > 0)
         {
-            await CardPileCmd.AddGeneratedCardsToCombat(selectedCards, PileType.Hand, addedByPlayer: true);
+            await CardPileCmd.AddGeneratedCardsToCombat(selectedCards, PileType.Hand, Owner, CardPilePosition.Random);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿// 蛇干咬 - 1费红卡攻击，造成9点伤害
+// 蛇干咬 - 1费红卡攻击，造成9点伤害
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -49,7 +49,7 @@ public class SnakeDryBiteCard : SnakeTheBiteCardModel
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);
 
-        await PowerCmd.Apply<TraumaPower>(cardPlay.Target, DynamicVars["TraumaPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<TraumaPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, DynamicVars["TraumaPower"].BaseValue, Owner.Creature, this, false);
     }
 
     // 升级后的效果：伤害 +3（5 → 8），创伤 +1（1 → 2）。

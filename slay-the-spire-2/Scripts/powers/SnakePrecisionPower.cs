@@ -17,15 +17,15 @@ public class SnakePrecisionPower : SnakeTheBitePowerModel
     protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 
     // 在 Power 被施加前修改数值，避免触发两次"给予中毒后"的逻辑
-    public override decimal ModifyPowerAmountGiven(PowerModel power, Creature giver, decimal amount, Creature? target, CardModel? cardSource)
+    public override decimal ModifyPowerAmountGivenAdditive(PowerModel power, Creature giver, decimal amount, Creature? target, CardModel? cardSource)
     {
         if (giver != Owner)
-            return amount;
+            return 0m;
         if (power is not PoisonPower and not TruePoisonPower)
-            return amount;
+            return 0m;
         if (target == null || !target.IsEnemy)
-            return amount;
+            return 0m;
 
-        return amount + Amount;
+        return Amount;
     }
 }

@@ -22,6 +22,6 @@ public class FleshArmorCard : SnakeTheBiteCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<FleshArmorPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<FleshArmorPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this, false);
     }
 }

@@ -22,20 +22,20 @@ public class SnakeVitalityPower : SnakeTheBitePowerModel
     private bool _isRemoving;
 
     // 修改给予的中毒层数，额外增加 Amount 层
-    public override decimal ModifyPowerAmountGiven(PowerModel power, Creature giver, decimal amount, Creature? target, CardModel? cardSource)
+    public override decimal ModifyPowerAmountGivenAdditive(PowerModel power, Creature giver, decimal amount, Creature? target, CardModel? cardSource)
     {
         if (giver != Owner)
-            return amount;
+            return 0m;
         if (power is not PoisonPower and not TruePoisonPower)
-            return amount;
+            return 0m;
         if (Amount <= 0)
-            return amount;
+            return 0m;
 
-        return amount + Amount;
+        return Amount;
     }
 
     // 中毒施加完成后，移除本能力
-    public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (_isRemoving)
             return;

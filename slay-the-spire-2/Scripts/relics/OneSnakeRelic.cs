@@ -55,22 +55,22 @@ public class OneSnakeRelic : SnakeTheBiteRelicModel
     }
 
     // 蛇咬牌中毒+1
-    public override decimal ModifyPowerAmountGiven(PowerModel power, Creature giver, decimal amount, Creature? target, CardModel? cardSource)
+    public override decimal ModifyPowerAmountGivenAdditive(PowerModel power, Creature giver, decimal amount, Creature? target, CardModel? cardSource)
     {
         if (cardSource == null)
-            return amount;
+            return 0m;
         if (!SnakeTheBiteCardTags.IsSnakeBiteCard(cardSource))
-            return amount;
+            return 0m;
         if (giver != Owner.Creature && cardSource.Owner != Owner)
-            return amount;
+            return 0m;
         if (power is not PoisonPower and not TruePoisonPower)
-            return amount;
+            return 0m;
 
-        return amount + 1m;
+        return 1m;
     }
 
     // 回合开始时重置标志
-    public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
+    public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> creatures, ICombatState combatState)
     {
         if (side != Owner.Creature.Side)
             return Task.CompletedTask;

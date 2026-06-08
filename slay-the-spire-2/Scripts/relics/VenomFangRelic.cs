@@ -90,7 +90,7 @@ public class VenomFangRelic : SnakeTheBiteRelicModel
         return _debuffPool;
     }
 
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
+    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> creatures, ICombatState combatState)
     {
         if (side != Owner.Creature.Side)
             return;
@@ -107,10 +107,10 @@ public class VenomFangRelic : SnakeTheBiteRelicModel
             return;
 
         var debuff = pool[Owner.RunState.Rng.CombatTargets.NextInt(pool.Count)];
-        await PowerCmd.Apply(debuff.ToMutable(), target, 1, Owner.Creature, null);
+        await PowerCmd.Apply(new ThrowingPlayerChoiceContext(), debuff.ToMutable(), target, 1m, Owner.Creature, null, false);
     }
 
-    public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (_isProcessing)
             return;

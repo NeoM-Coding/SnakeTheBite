@@ -59,7 +59,7 @@ public class TruePoisonPower : SnakeTheBitePowerModel
     // 标志位，用于 Harmony 补丁识别真实中毒造成的伤害
     public static bool IsDealingDamage { get; set; }
 
-    public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> creatures, ICombatState combatState)
     {
         if (side != Owner.Side)
             return;
@@ -276,15 +276,15 @@ public static class TruePoisonHardToKillDamageCapPatch
     }
 }
 
-// Harmony 补丁：阻止 SlipperyPower 限制真实中毒伤害
-[HarmonyPatch(typeof(SlipperyPower), nameof(SlipperyPower.ModifyDamageCap))]
-public static class TruePoisonSlipperyDamageCapPatch
+// Harmony 补丁：阻止 SlipperyPower 限制真实中毒伤害（0.106 中 SlipperyPower 改用 ModifyHpLostAfterOsty）
+[HarmonyPatch(typeof(SlipperyPower), nameof(SlipperyPower.ModifyHpLostAfterOsty))]
+public static class TruePoisonSlipperyHpLostPatch
 {
-    static bool Prefix(Creature? target, ValueProp props, Creature? dealer, CardModel? cardSource, ref decimal __result)
+    static bool Prefix(Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, ref decimal __result)
     {
         if (TruePoisonPower.IsDealingDamage)
         {
-            __result = decimal.MaxValue;
+            __result = amount;
             return false;
         }
         return true;
@@ -329,7 +329,7 @@ public static class TruePoisonDamageCapPatch
     {
         if (TruePoisonPower.IsDealingDamage)
         {
-            if (__instance is IntangiblePower or HardToKillPower or SlipperyPower)
+            if (__instance is IntangiblePower or HardToKillPower)
             {
                 __result = decimal.MaxValue;
                 return false;

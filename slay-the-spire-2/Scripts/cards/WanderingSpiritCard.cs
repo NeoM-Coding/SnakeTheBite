@@ -22,6 +22,6 @@ public class WanderingSpiritCard : SnakeTheBiteCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<RecordPower>(Owner.Creature, Owner.Creature.CurrentHp, Owner.Creature, this);
+        await PowerCmd.Apply<RecordPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, Owner.Creature.CurrentHp, Owner.Creature, this, false);
     }
 }

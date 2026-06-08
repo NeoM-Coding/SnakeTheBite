@@ -1,4 +1,4 @@
-﻿// ！？蛇蛇？！ - 3费无色技能，将2张蛇咬放入手牌
+// ！？蛇蛇？！ - 3费无色技能，将2张蛇咬放入手牌
 using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -57,7 +57,7 @@ public class SnakeSnakeCard : SnakeTheBiteCardModel
         }
         
         // 批量添加到手牌（参考CrashLanding.cs）
-        await CardPileCmd.AddGeneratedCardsToCombat(list, PileType.Hand, Owner);
+        await CardPileCmd.AddGeneratedCardsToCombat(list, PileType.Hand, Owner, CardPilePosition.Random);
     }
 
     // 升级后的效果逻辑 - 升级后费用减1（3 → 2）

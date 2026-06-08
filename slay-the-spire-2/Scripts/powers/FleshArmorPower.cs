@@ -16,21 +16,24 @@ public class FleshArmorPower : SnakeTheBitePowerModel
     public override PowerStackType StackType => PowerStackType.None;
     protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 
-    public override async Task AfterAttack(AttackCommand command)
+    public override async Task AfterAttack(PlayerChoiceContext choiceContext, AttackCommand command)
     {
         if (command.Attacker != Owner.Player?.Osty)
             return;
 
-        foreach (var result in command.Results)
+        foreach (var resultList in command.Results)
         {
-            if (result.TotalDamage <= 0)
-                continue;
-
-            Flash();
-            await CreatureCmd.GainBlock(Owner, result.TotalDamage, ValueProp.Move, null);
-            if (Owner.Player?.Osty != null)
+            foreach (var result in resultList)
             {
-                await CreatureCmd.GainBlock(Owner.Player.Osty, result.TotalDamage, ValueProp.Move, null);
+                if (result.TotalDamage <= 0)
+                    continue;
+
+                Flash();
+                await CreatureCmd.GainBlock(Owner, result.TotalDamage, ValueProp.Move, null);
+                if (Owner.Player?.Osty != null)
+                {
+                    await CreatureCmd.GainBlock(Owner.Player.Osty, result.TotalDamage, ValueProp.Move, null);
+                }
             }
         }
     }

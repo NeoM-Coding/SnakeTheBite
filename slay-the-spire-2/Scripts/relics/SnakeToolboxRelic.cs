@@ -25,7 +25,7 @@ public class SnakeToolboxRelic : SnakeTheBiteRelicModel
     // 遗物稀有度：罕见（蓝）
     public override RelicRarity Rarity => RelicRarity.Uncommon;
 
-    public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, CombatState combatState)
+    public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
     {
         if (player != Owner || combatState.RoundNumber != 1)
             return;
@@ -47,7 +47,7 @@ public class SnakeToolboxRelic : SnakeTheBiteRelicModel
         if (selected != null)
         {
             Flash();
-            await CardPileCmd.AddGeneratedCardToCombat(selected, PileType.Hand, addedByPlayer: true);
+            await CardPileCmd.AddGeneratedCardToCombat(selected, PileType.Hand, Owner, CardPilePosition.Random);
         }
     }
 }

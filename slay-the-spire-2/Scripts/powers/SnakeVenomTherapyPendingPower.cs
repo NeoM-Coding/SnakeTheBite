@@ -20,7 +20,7 @@ public class SnakeVenomTherapyPendingPower : SnakeTheBitePowerModel
     [SavedProperty] public int SnakeTheBite_PoisonAmount { get; set; }
 
     // 玩家回合结束时递减计数器，到1时触发中毒并移除
-    public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> creatures)
     {
         if (side != Owner.Side)
             return;
@@ -29,7 +29,7 @@ public class SnakeVenomTherapyPendingPower : SnakeTheBitePowerModel
             await PowerCmd.Decrement(this);
             return;
         }
-        await PowerCmd.Apply<PoisonPower>(Owner, SnakeTheBite_PoisonAmount, Owner, null);
+        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), Owner, SnakeTheBite_PoisonAmount, Owner, null, false);
         await PowerCmd.Remove(this);
     }
 }

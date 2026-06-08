@@ -58,5 +58,5 @@
     "SNAKETHEBITE-SNAKE_VENOM_THERAPY_PENDING_POWER.title": "蛇毒疗法",
     "SNAKETHEBITE-SNAKE_VENOM_THERAPY_PENDING_POWER.description": "下回合结束时获得[blue]{Amount}[/blue]层[gold]中毒[/gold]。",
     "SNAKETHEBITE-ASCENSION_DEMON_POWER.title": "升魔",
-    "SNAKETHEBITE-ASCENSION_DEMON_POWER.description": "战斗结束后，从牌组中选择一张攻击或技能牌，将其效果累积到[gold]升魔·破[/gold]或[gold]升魔·御[/gold]上。{DisintegrationDescription}"
+    "SNAKETHEBITE-ASCENSION_DEMON_POWER.description": "战斗结束后，从牌组中选择一张攻击或技能牌，将其效果累积到[gold]升魔·破[/gold]或[gold]升魔·御[/gold]上。[red]{DisintegrationDescription}[/red]"
 }

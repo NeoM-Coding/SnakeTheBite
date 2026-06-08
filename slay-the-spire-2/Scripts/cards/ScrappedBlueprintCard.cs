@@ -24,15 +24,15 @@ public class ScrappedBlueprintCard : SnakeTheBiteCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<StrengthPower>(Owner.Creature, 1m, Owner.Creature, this);
-        await PowerCmd.Apply<DexterityPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this, false);
+        await PowerCmd.Apply<DexterityPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this, false);
     }
 
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
         if (card != this)
             return;
-        await PowerCmd.Apply<StrengthPower>(Owner.Creature, 1m, Owner.Creature, this);
-        await PowerCmd.Apply<DexterityPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this, false);
+        await PowerCmd.Apply<DexterityPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this, false);
     }
 }

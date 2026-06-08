@@ -42,7 +42,7 @@ public class SnakeVenomTherapyCard : SnakeTheBiteCardModel
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await CreatureCmd.Heal(Owner.Creature, DynamicVars.Heal.BaseValue);
         var power = new SnakeVenomTherapyPendingPower { SnakeTheBite_PoisonAmount = (int)DynamicVars.Poison.BaseValue };
-        await PowerCmd.Apply(power, Owner.Creature, 2m, Owner.Creature, this);
+        await PowerCmd.Apply(new ThrowingPlayerChoiceContext(), power, Owner.Creature, 2m, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()

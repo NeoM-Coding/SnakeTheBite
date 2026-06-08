@@ -75,7 +75,7 @@ public class TriangleSnakeRelic : SnakeTheBiteRelicModel
     }
 
     // 回合开始时重置计数
-    public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
+    public override Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> creatures, ICombatState combatState)
     {
         if (side != Owner.Creature.Side)
             return Task.CompletedTask;

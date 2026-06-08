@@ -87,15 +87,15 @@ public static class TraumaHardToKillDamageCapPatch
     }
 }
 
-// Harmony 补丁：阻止 SlipperyPower 限制创伤伤害
-[HarmonyPatch(typeof(SlipperyPower), nameof(SlipperyPower.ModifyDamageCap))]
-public static class TraumaSlipperyDamageCapPatch
+// Harmony 补丁：阻止 SlipperyPower 限制创伤伤害（0.106 中 SlipperyPower 改用 ModifyHpLostAfterOsty）
+[HarmonyPatch(typeof(SlipperyPower), nameof(SlipperyPower.ModifyHpLostAfterOsty))]
+public static class TraumaSlipperyHpLostPatch
 {
-    static bool Prefix(Creature? target, ValueProp props, Creature? dealer, CardModel? cardSource, ref decimal __result)
+    static bool Prefix(Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource, ref decimal __result)
     {
         if (TraumaPower.IsDealingDamage)
         {
-            __result = decimal.MaxValue;
+            __result = amount;
             return false;
         }
         return true;
@@ -140,7 +140,7 @@ public static class TraumaDamageCapPatch
     {
         if (TraumaPower.IsDealingDamage)
         {
-            if (__instance is IntangiblePower or HardToKillPower or SlipperyPower)
+            if (__instance is IntangiblePower or HardToKillPower)
             {
                 __result = decimal.MaxValue;
                 return false;

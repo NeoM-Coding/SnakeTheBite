@@ -1,4 +1,4 @@
-﻿// 泪滴蛇吊盒 - 罕见遗物，战斗开始时进入蓄蛇
+// 泪滴蛇吊盒 - 罕见遗物，战斗开始时进入蓄蛇
 using System.Collections.Generic;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
@@ -25,6 +25,6 @@ public class TearDropSnakePendantRelic : SnakeTheBiteRelicModel
     // 战斗开始时进入蓄蛇
     public override async Task BeforeCombatStart()
     {
-        await PowerCmd.Apply<ChargingSnakePower>(Owner.Creature, 1m, Owner.Creature, null);
+        await PowerCmd.Apply<ChargingSnakePower>(new ThrowingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, null, false);
     }
 }

@@ -29,7 +29,7 @@ public class SnakeMysteryPower : SnakeTheBitePowerModel
     public override int DisplayAmount => GetInternalData<Data>().points;
 
     // 该能力使用实例化内部数据。
-    public override bool IsInstanced => true;
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
 
     // 每次打出蛇咬获得的隐秘点数（默认2点）。
     protected override IEnumerable<DynamicVar> CanonicalVars =>

@@ -1,4 +1,4 @@
-﻿// 蛇之密酿 - 罕见药水，从3张随机蛇攻击牌中选择一张加入手牌，本回合费用随机
+// 蛇之密酿 - 罕见药水，从3张随机蛇攻击牌中选择一张加入手牌，本回合费用随机
 using System.Collections.Generic;
 using System.Linq;
 using BaseLib.Abstracts;
@@ -60,7 +60,7 @@ public class SnakeDenseBrewPotion : SnakeTheBitePotionModel
         {
             int cost = base.Owner.RunState.Rng.CombatEnergyCosts.NextInt(4);
             selectedCard.EnergyCost.SetThisTurn(cost);
-            await CardPileCmd.AddGeneratedCardToCombat(selectedCard, PileType.Hand, Owner);
+            await CardPileCmd.AddGeneratedCardToCombat(selectedCard, PileType.Hand, Owner, CardPilePosition.Random);
         }
     }
 }

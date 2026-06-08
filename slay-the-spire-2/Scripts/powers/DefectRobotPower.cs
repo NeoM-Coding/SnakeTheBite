@@ -18,7 +18,7 @@ public class DefectRobotPower : SnakeTheBitePowerModel
     protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 
     // 每回合开始时获得3能量
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
+    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> creatures, ICombatState combatState)
     {
         if (side != Owner.Side)
             return;

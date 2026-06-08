@@ -92,7 +92,7 @@ public class AscensionDemonCard : SnakeTheBiteCardModel
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<AscensionDemonPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<AscensionDemonPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this, false);
     }
 
     // 每场战斗开始时获得等于选择次数的瓦解层数
@@ -104,7 +104,7 @@ public class AscensionDemonCard : SnakeTheBiteCardModel
 
         if (SnakeTheBite_SelectionCount > 0)
         {
-            await PowerCmd.Apply<DisintegrationPower>(Owner.Creature, SnakeTheBite_SelectionCount, Owner.Creature, this);
+            await PowerCmd.Apply<DisintegrationPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, SnakeTheBite_SelectionCount, Owner.Creature, this, false);
         }
     }
 }

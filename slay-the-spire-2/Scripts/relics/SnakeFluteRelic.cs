@@ -1,4 +1,4 @@
-﻿// 蛇之长笛 - 普通遗物，战斗开始时获得7层蛇之活力
+// 蛇之长笛 - 普通遗物，战斗开始时获得7层蛇之活力
 using System.Collections.Generic;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
@@ -31,6 +31,6 @@ public class SnakeFluteRelic : SnakeTheBiteRelicModel
     // 战斗开始时获得蛇之活力
     public override async Task BeforeCombatStart()
     {
-        await PowerCmd.Apply<SnakeVitalityPower>(Owner.Creature, DynamicVars["SnakeVitalityPower"].BaseValue, Owner.Creature, null);
+        await PowerCmd.Apply<SnakeVitalityPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, DynamicVars["SnakeVitalityPower"].BaseValue, Owner.Creature, null, false);
     }
 }

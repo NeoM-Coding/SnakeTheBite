@@ -47,7 +47,7 @@ public class OddSnakeEvenNotCard : SnakeTheBiteCardModel
         }
     }
 
-    public override async Task OnTurnEndInHand(PlayerChoiceContext choiceContext)
+    protected override async Task OnTurnEndInHand(PlayerChoiceContext choiceContext)
     {
         var hand = PileType.Hand.GetPile(Owner);
         if (hand.Cards.Count % 2 == 1)

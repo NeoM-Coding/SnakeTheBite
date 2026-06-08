@@ -29,22 +29,22 @@ public class SufferingReincarnationCard : SnakeTheBiteCardModel
 
         // 手牌2张灵魂
         var handSouls = Soul.Create(Owner, 2, combatState);
-        await CardPileCmd.AddGeneratedCardsToCombat(handSouls, PileType.Hand, addedByPlayer: true);
+        await CardPileCmd.AddGeneratedCardsToCombat(handSouls, PileType.Hand, Owner, CardPilePosition.Random);
 
         // 抽牌堆2张灵魂
         var drawSouls = Soul.Create(Owner, 2, combatState);
-        await CardPileCmd.AddGeneratedCardsToCombat(drawSouls, PileType.Draw, addedByPlayer: true);
+        await CardPileCmd.AddGeneratedCardsToCombat(drawSouls, PileType.Draw, Owner, CardPilePosition.Random);
 
         // 弃牌堆2张灵魂
         var discardSouls = Soul.Create(Owner, 2, combatState);
-        await CardPileCmd.AddGeneratedCardsToCombat(discardSouls, PileType.Discard, addedByPlayer: true);
+        await CardPileCmd.AddGeneratedCardsToCombat(discardSouls, PileType.Discard, Owner, CardPilePosition.Random);
 
         // 给予随机敌人20层灾厄
         var enemies = combatState.GetOpponentsOf(Owner.Creature).Where(c => c.IsAlive).ToList();
         if (enemies.Count > 0)
         {
             var target = enemies[Owner.RunState.Rng.CombatTargets.NextInt(enemies.Count)];
-            await PowerCmd.Apply<DoomPower>(target, 20m, Owner.Creature, this);
+            await PowerCmd.Apply<DoomPower>(new ThrowingPlayerChoiceContext(), target, 20m, Owner.Creature, this, false);
         }
     }
 }

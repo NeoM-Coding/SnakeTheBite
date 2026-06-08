@@ -1,4 +1,4 @@
-﻿// 毒囊 - 每两回合，为自己添加蛇之活力
+// 毒囊 - 每两回合，为自己添加蛇之活力
 using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
@@ -47,7 +47,7 @@ public class VenomSacRelic : SnakeTheBiteRelicModel
         return Task.CompletedTask;
     }
 
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
+    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> creatures, ICombatState combatState)
     {
         if (side != Owner.Creature.Side)
             return;
@@ -57,7 +57,7 @@ public class VenomSacRelic : SnakeTheBiteRelicModel
         {
             SnakeTheBite_TurnCount = 0;
             await DoActivateVisuals();
-            await PowerCmd.Apply<SnakeVitalityPower>(Owner.Creature, 2m, Owner.Creature, null);
+            await PowerCmd.Apply<SnakeVitalityPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, 2m, Owner.Creature, null, false);
         }
         else
         {

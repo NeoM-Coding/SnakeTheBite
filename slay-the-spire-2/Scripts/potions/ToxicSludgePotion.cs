@@ -51,7 +51,7 @@ public class ToxicSludgePotion : SnakeTheBitePotionModel
 
         foreach (var creature in allCreatures)
         {
-            await PowerCmd.Apply<PoisonPower>(creature, DynamicVars["PoisonPower"].BaseValue, Owner.Creature, null);
+            await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), creature, DynamicVars["PoisonPower"].BaseValue, Owner.Creature, null, false);
         }
     }
 }

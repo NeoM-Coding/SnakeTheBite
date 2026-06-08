@@ -45,11 +45,11 @@ public class DefectRobotCard : SnakeTheBiteCardModel
             };
             foreach (var c in defectCards)
             {
-                await CardPileCmd.AddGeneratedCardToCombat(c, PileType.Draw, addedByPlayer: true);
+                await CardPileCmd.AddGeneratedCardToCombat(c, PileType.Draw, Owner, CardPilePosition.Random);
             }
         }
 
         // 施加综合Power
-        await PowerCmd.Apply<DefectRobotPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<DefectRobotPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this, false);
     }
 }

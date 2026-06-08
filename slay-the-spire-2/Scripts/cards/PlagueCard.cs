@@ -33,8 +33,8 @@ public class PlagueCard : SnakeTheBiteCardModel
         ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .Execute(choiceContext);
-        await PowerCmd.Apply<RhythmPower>(cardPlay.Target, 1m, Owner.Creature, this);
-        await PowerCmd.Apply<WeakPower>(cardPlay.Target, 2m, Owner.Creature, this);
-        await PowerCmd.Apply<PoisonPower>(cardPlay.Target, 5m, Owner.Creature, this);
+        await PowerCmd.Apply<RhythmPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, 1m, Owner.Creature, this, false);
+        await PowerCmd.Apply<WeakPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, 2m, Owner.Creature, this, false);
+        await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), cardPlay.Target, 5m, Owner.Creature, this, false);
     }
 }

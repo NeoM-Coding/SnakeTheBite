@@ -23,6 +23,6 @@ public class ThisBattleEndsCard : SnakeTheBiteCardModel
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<ThisBattleEndsPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<ThisBattleEndsPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, 1m, Owner.Creature, this, false);
     }
 }

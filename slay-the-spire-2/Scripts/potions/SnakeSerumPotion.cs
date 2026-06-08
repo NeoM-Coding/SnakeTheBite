@@ -55,6 +55,6 @@ public class SnakeSerumPotion : SnakeTheBitePotionModel
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, target.Player!);
 
         // 3. 下回合获得 1 点能量
-        await PowerCmd.Apply<EnergyNextTurnPower>(target, DynamicVars.Energy.BaseValue, target, null);
+        await PowerCmd.Apply<EnergyNextTurnPower>(new ThrowingPlayerChoiceContext(), target, DynamicVars.Energy.BaseValue, target, null, false);
     }
 }

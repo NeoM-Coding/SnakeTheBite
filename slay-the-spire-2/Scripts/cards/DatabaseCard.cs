@@ -47,7 +47,7 @@ public class DatabaseCard : SnakeTheBiteCardModel
         // 给予集中
         if (energySum > 0)
         {
-            await PowerCmd.Apply<FocusPower>(Owner.Creature, energySum, Owner.Creature, this);
+            await PowerCmd.Apply<FocusPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, energySum, Owner.Creature, this, false);
         }
     }
 }

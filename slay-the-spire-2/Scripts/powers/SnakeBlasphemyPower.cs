@@ -31,7 +31,7 @@ public class SnakeBlasphemyPower : SnakeTheBitePowerModel
     }
 
     // 每回合开始时给予自身21*Amount层中毒
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, ICombatState combatState)
+    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> creatures, ICombatState combatState)
     {
         if (side != base.Owner.Side)
             return;

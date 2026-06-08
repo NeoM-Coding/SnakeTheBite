@@ -1,10 +1,11 @@
-﻿using BaseLib.Abstracts;
+using BaseLib.Abstracts;
 using SnakeTheBite.Scripts.Cards;
 using SnakeTheBite.Scripts.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 
 using MegaCrit.Sts2.Core.Models;
@@ -23,7 +24,7 @@ public class SnakeBitePower : SnakeTheBitePowerModel
     protected override string SmartDescriptionLocKey => base.Id.Entry + ".description";
 
     // 回合开始时触发
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, ICombatState combatState)
+    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> creatures, ICombatState combatState)
     {
         if (side != Owner.Side)
             return;
@@ -48,7 +49,7 @@ public class SnakeBitePower : SnakeTheBitePowerModel
 
             Flash();
             var card = CombatState.CreateCard(selected, Owner.Player!);
-            await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner.Player);
+            await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner.Player, CardPilePosition.Random);
         }
     }
 }

@@ -26,7 +26,7 @@ public class RecordPower : SnakeTheBitePowerModel
     [SavedProperty]
     private int SnakeTheBite_TotalHealed { get; set; }
 
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
+    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> creatures, ICombatState combatState)
     {
         if (side != Owner.Side)
             return;

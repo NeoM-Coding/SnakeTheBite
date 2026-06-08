@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 
 namespace SnakeTheBite.Scripts.Powers;
@@ -44,7 +45,7 @@ public class SnakeMoltPower : SnakeTheBitePowerModel, IMaxHandSizeModifier
     }
 
     // 敌方回合结束时减少1层持续时间
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> creatures)
     {
         if (side != CombatSide.Enemy)
             return;

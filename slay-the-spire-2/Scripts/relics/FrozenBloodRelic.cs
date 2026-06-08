@@ -1,4 +1,4 @@
-﻿// 寒冰之血 - 每损失7点生命值，下回合获得1层无实体
+// 寒冰之血 - 每损失7点生命值，下回合获得1层无实体
 using System.Threading.Tasks;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
@@ -34,7 +34,7 @@ public class FrozenBloodRelic : SnakeTheBiteRelicModel
         return Task.CompletedTask;
     }
 
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, CombatState combatState)
+    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> creatures, ICombatState combatState)
     {
         if (side != Owner.Creature.Side)
             return;
@@ -43,7 +43,7 @@ public class FrozenBloodRelic : SnakeTheBiteRelicModel
         {
             int stacks = SnakeTheBite_HpLostSinceLastTurn / 7;
             Flash();
-            await PowerCmd.Apply<IntangiblePower>(Owner.Creature, stacks, Owner.Creature, null);
+            await PowerCmd.Apply<IntangiblePower>(new ThrowingPlayerChoiceContext(), Owner.Creature, stacks, Owner.Creature, null, false);
             SnakeTheBite_HpLostSinceLastTurn = 0;
         }
     }

@@ -100,7 +100,7 @@ public class AdvancedSnakeRelic : SnakeTheBiteRelicModel
         if (asc >= 1 && combatState.Encounter.RoomType == RoomType.Elite)
         {
             int precision = GetValue(1, 2, asc >= 10);
-            await PowerCmd.Apply<SnakePrecisionPower>(Owner.Creature, precision, Owner.Creature, null);
+            await PowerCmd.Apply<SnakePrecisionPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, precision, Owner.Creature, null, false);
         }
 
         // 进阶5：战斗开始将进阶之灾放入手牌
@@ -133,8 +133,7 @@ public class AdvancedSnakeRelic : SnakeTheBiteRelicModel
             int strengthLoss = GetValue(1, 2, asc >= 10);
             foreach (var enemy in combatState.Enemies.Where(e => e.IsAlive))
             {
-                await PowerCmd.Apply<DarkShacklesPower>(
-                    enemy, strengthLoss, Owner.Creature, null);
+                await PowerCmd.Apply<DarkShacklesPower>(new ThrowingPlayerChoiceContext(), enemy, strengthLoss, Owner.Creature, null, false);
             }
         }
     }
