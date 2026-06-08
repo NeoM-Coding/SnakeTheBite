@@ -126,7 +126,7 @@
     "SNAKETHEBITE-FLESH_ARMOR_CARD.title": "血肉加身",
     "SNAKETHEBITE-FLESH_ARMOR_CARD.description": "奥斯提造成伤害时，你与奥斯提获得等量的[gold]格挡[/gold]。",
     "SNAKETHEBITE-ASCENSION_DEMON_CARD.title": "升魔",
-    "SNAKETHEBITE-ASCENSION_DEMON_CARD.description": "获得升魔。",
+    "SNAKETHEBITE-ASCENSION_DEMON_CARD.description": "获得[gold]升魔[/gold]。",
     "SNAKETHEBITE-ASCENSION_DEMON_ATTACK_CARD.title": "升魔·破",
     "SNAKETHEBITE-ASCENSION_DEMON_ATTACK_CARD.description": "似乎升魔后会发生什么....",
     "SNAKETHEBITE-ASCENSION_DEMON_ATTACK_CARD.combinedDescription": "依次执行{CardCount}张被吸收的攻击牌的效果。",

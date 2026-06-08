@@ -33,7 +33,9 @@ export_presets.cfg
 .DS_Store
 Thumbs.db
 尖塔2baselib源码
+尖塔2beta分支源码
 AGENTS.md
+BaseLib-StS2-3.2.0
 BaseLib-StS2-3.1.8
-BaseLib-StS2-3.1.6
 BaseLib-StS2-3.1.0
+sts2_inspector/

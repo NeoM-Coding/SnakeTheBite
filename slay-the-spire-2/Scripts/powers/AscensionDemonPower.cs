@@ -35,7 +35,7 @@ public class AscensionDemonPower : SnakeTheBitePowerModel
         {
             var desc = base.Description;
             // 避免在 canonical 实例上访问 Owner（如 HoverTipFactory.FromPower 使用时）
-            var disintegrationDesc = "";
+            var disintegrationDesc = "凡事皆有代价.....";
             if (IsMutable)
             {
                 var demonCard = Owner?.Player?.Deck.Cards.OfType<AscensionDemonCard>().FirstOrDefault();
